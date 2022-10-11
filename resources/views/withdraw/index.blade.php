@@ -101,7 +101,8 @@
                 <div class="row">
                     <div class="col-md-6 form-group">
                         <label>{{trans('Withdraw Purpose')}} *</label>
-                        <input type="text" name="title" class="form-control" required>
+                        <input type="text" name="title"  placeholder="Enter Withdraw Purpose"
+                    class="form-control" required>
                     </div>
                     <div class="col-md-6 form-group">
                         <label> {{trans('file.Account')}} *</label>
@@ -117,11 +118,11 @@
                     </div>
                     <div class="col-md-6 form-group">
                         <label>{{trans('Date')}} *</label>
-                        <input type="text" name="date" class="datepicker form-control" required>
+                        <input type="text" name="date" class="datepicker form-control" placeholder="Enter Date" required>
                     </div>
                     <div class="col-md-6 form-group">
                         <label>{{trans('Withdraw By')}} *</label>
-                        <input type="text" name="withdraw_by" class="form-control" required>
+                        <input type="text" name="withdraw_by" class="form-control" placeholder="Enter withdraw_by" required>
                     </div>
                     <div class="col-md-6 form-group">
                         <label>{{trans('file.Method')}} *</label>
@@ -133,7 +134,7 @@
                     </div>
                     <div class="col-md-6 form-group">
                         <label>{{trans('file.Amount')}} *</label>
-                        <input type="number" step="any" name="amount" class="form-control" required>
+                        <input type="number" step="any" name="amount" class="form-control" placeholder="Enter Amount" required>
                     </div>
                     <div class="col-md-12 form-group" id="reference_section">
                         <label>{{trans('Reference')}} *</label>
@@ -141,7 +142,7 @@
                     </div>
                     <div class="col-md-12 form-group">
                         <label>{{trans('file.Note')}}</label>
-                        <textarea name="note" rows="3" class="form-control"></textarea>
+                        <textarea name="note" placeholder="Enter Note" rows="3" class="form-control"></textarea>
                     </div>
                 </div>
                 <div class="form-group">
@@ -167,7 +168,7 @@
                     <div class="col-md-6 form-group">
                         <label>{{trans('Withdraw Purpose')}} *</label>
                         <input type="hidden" name="withdraw_id">
-                        <input type="text" name="title" class="form-control" required>
+                        <input type="text" name="title" placeholder="Enter  Withdraw Purpose" class="form-control" required>
                     </div>
                     <div class="col-md-6 form-group">
                         <label> {{trans('file.Account')}} *</label>
@@ -183,11 +184,11 @@
                     </div>
                     <div class="col-md-6 form-group">
                         <label>{{trans('Date')}} *</label>
-                        <input type="text" name="date" class="datepicker form-control" required>
+                        <input type="text" name="date" placeholder="Enter Date" class="datepicker form-control" required>
                     </div>
                     <div class="col-md-6 form-group">
                         <label>{{trans('Withdraw By')}} *</label>
-                        <input type="text" name="withdraw_by" class="form-control" required>
+                        <input type="text" name="withdraw_by" placeholder="Enter Withdraw By" class="form-control" required>
                     </div>
                     <div class="col-md-6 form-group">
                         <label>{{trans('file.Method')}} *</label>
@@ -199,7 +200,7 @@
                     </div>
                     <div class="col-md-6 form-group">
                         <label>{{trans('file.Amount')}} *</label>
-                        <input type="number" step="any" name="amount" class="form-control" required>
+                        <input type="number" step="any" name="amount" placeholder="Enter Amount" class="form-control" required>
                     </div>
                     <div class="col-md-12 form-group" id="edit_reference_section">
                         <label>{{trans('Reference')}} *</label>
@@ -208,7 +209,7 @@
 
                     <div class="col-md-12 form-group">
                         <label>{{trans('file.Note')}}</label>
-                        <textarea name="note" rows="3" class="form-control"></textarea>
+                        <textarea name="note" placeholder="Enter Note" rows="3" class="form-control"></textarea>
                     </div>
                 </div>
                 <div class="form-group">

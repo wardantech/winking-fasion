@@ -33,7 +33,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Season *</label>
-                                            <input type="text" name="season" class="form-control" required>
+                                            <input type="text" name="season" class="form-control" placeholder="Enter Season" required>
                                             @if($errors->has('season'))
                                                 <span class="text-danger">
                                                    {{ $errors->first('season') }}
@@ -44,7 +44,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Customer *</label>
-                                            <select name="customer_id" class="selectpicker form-control" data-live-search="true" data-live-search-style="begins" title="Select invoice to...">
+                                            <select name="customer_id" class="selectpicker form-control" data-live-search="true" data-live-search-style="begins" title="Select Customer">
                                                 @foreach ($lims_customer_all as $customer)
                                                     <option value="{{ $customer->id }}">{{ $customer->name }}</option>
                                                 @endforeach
@@ -75,7 +75,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>LC/Contract Number *</label>
-                                            <input type="text" name="lc_number" class="form-control" required>
+                                            <input type="text" name="lc_number" class="form-control" placeholder="Enter LC/Contract Number " required>
                                             @if($errors->has('lc_number'))
                                                 <span class="text-danger">
                                                     {{ $errors->first('lc_number') }}
@@ -86,7 +86,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Order Quantity *</label>
-                                            <input type="text" name="order_qty" min="0" id="order_qty" class="form-control" required>
+                                            <input type="text" name="order_qty" min="0" id="order_qty" placeholder="Enter Order Quantity"  class="form-control" required>
                                             @if($errors->has('order_qty'))
                                                 <span class="text-danger">
                                                     {{ $errors->first('order_qty') }}
@@ -98,7 +98,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Order Value (Customer) *</label>
-                                            <input type="text" name="order_value_customer" id="order_value_customer" class="form-control" required>
+                                            <input type="text" name="order_value_customer" id="order_value_customer" class="form-control" placeholder="Enter Order Value (Customer)" required>
                                             @if($errors->has('order_value_customer'))
                                                 <span class="text-danger">
                                                     {{ $errors->first('order_value_customer') }}
@@ -110,7 +110,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Order Value (Vendor) *</label>
-                                            <input type="text" name="order_value_vendor" id="order_value_vendor" class="form-control" required>
+                                            <input type="text" name="order_value_vendor" id="order_value_vendor" class="form-control" placeholder="Enter Order Value (Vendor)" required>
                                             @if($errors->has('order_value_vendor'))
                                                 <span class="text-danger">
                                                     {{ $errors->first('order_value_vendor') }}
@@ -137,7 +137,8 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Delivery Date *</label>
-                                            <input type="text" name="delivery_date" class="datepicker form-control" required>
+                                            <input type="text" name="delivery_date" class="datepicker form-control"
+                                            placeholder="Enter Delivery Date " required>
                                             @if($errors->has('delivery_date'))
                                                 <span class="text-danger">
                                                    {{ $errors->first('delivery_date') }}

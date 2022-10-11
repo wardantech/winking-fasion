@@ -191,16 +191,16 @@
                     --}}
                         <div class="col-md-4 form-group">
                             <label>{{trans('Billing Date')}} *</label>
-                            <input type="text" name="billing_date" required class="datepicker form-control">
+                            <input type="text" name="billing_date" placeholder="Please select your billing_date" required class="datepicker form-control">
                         </div>
                         <div class="col-md-4 form-group">
                             <label>{{trans('Payment Date')}} *</label>
-                            <input type="text" name="payment_date" required class="datepicker form-control">
+                            <input type="text" name="payment_date" placeholder="Please select payment_date" required class="datepicker form-control">
                         </div>
 
                         <div class="col-md-6 form-group">
                             <label>{{trans('file.Amount')}} *</label>
-                            <input type="number" name="amount" step="any" required class="form-control">
+                            <input type="number" name="amount" placeholder="Please Enter Amount" step="any" required class="form-control">
                         </div>
                         <div class="col-md-6 form-group">
                             <label> {{trans('file.Account')}}</label>
@@ -217,7 +217,7 @@
                     </div>
                   <div class="form-group">
                       <label>{{trans('file.Note')}}</label>
-                      <textarea name="note" rows="3" class="form-control"></textarea>
+                      <textarea name="note" rows="3" placeholder="Please Write note" class="form-control"></textarea>
                   </div>
                   <div class="form-group">
                       <button type="submit" class="btn btn-primary">{{trans('file.submit')}}</button>

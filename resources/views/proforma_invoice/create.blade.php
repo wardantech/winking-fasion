@@ -19,7 +19,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Invoice No *</label>
-                                            <input type="text" name="invoice_no" class="form-control" required>
+                                            <input type="text" name="invoice_no" class="form-control" placeholder="Enter Invoice No" required>
                                             @if($errors->has('invoice_no'))
                                                 <span class="text-danger">
                                                     {{ $errors->first('invoice_no') }}
@@ -31,7 +31,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Date *</label>
-                                            <input type="text" name="date" class="datepicker form-control" placeholder="Author name" required>
+                                            <input type="text" name="date" class="datepicker form-control" placeholder="Enter Date" required>
                                             @if($errors->has('date'))
                                                 <span class="text-danger">
                                                    {{ $errors->first('date') }}
@@ -60,7 +60,8 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Revised Date</label>
-                                            <input type="text" name="revised_date" class="datepicker form-control">
+                                            <input type="text"
+                                            placeholder="Enter Revised Date"name="revised_date" class="datepicker form-control">
                                             @if($errors->has('revised_date'))
                                                 <span class="text-danger">
                                                    {{ $errors->first('revised_date') }}
@@ -104,7 +105,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Season</label>
-                                            <input type="text" name="season" class="form-control">
+                                            <input type="text" name="season" class="form-control" placeholder="Enter Season">
                                             @if($errors->has('season'))
                                                 <span class="text-danger">
                                                    {{ $errors->first('season') }}
@@ -115,7 +116,8 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Delivery Date *</label>
-                                            <input type="text" name="delivery_date" class="datepicker form-control" required>
+                                            <input type="text" name="delivery_date" class="datepicker form-control"
+                                            placeholder="Enter Delivery Date" required>
                                             @if($errors->has('delivery_date'))
                                                 <span class="text-danger">
                                                    {{ $errors->first('delivery_date') }}
@@ -126,13 +128,15 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Total Quantity *</label>
-                                            <input type="number" name="total_qty" min="0" id="total_qty" class="form-control total_qty" required>
+                                            <input type="number" name="total_qty" min="0" id="total_qty" class="form-control total_qty" placeholder="Enter Total Quantity" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Total Amount *</label>
-                                            <input type="number" name="total_amount" id="total_amount" class="form-control total_amount" required>
+                                            <input type="number" name="total_amount" id="total_amount"
+
+                                            placeholder="Enter Total Amount" class="form-control total_amount" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6">

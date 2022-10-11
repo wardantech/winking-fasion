@@ -27,26 +27,26 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>{{trans('Customer Name')}} *</strong> </label>
-                                    <input type="text" id="name" name="name" required class="form-control" onkeyup='saveValue(this);'>
+                                    <input type="text" id="name" name="name" required class="form-control" onkeyup='saveValue(this);' placeholder="Enter Customer Name">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>{{trans('Contract Person')}} *</label>
-                                    <input type="text" name="contract_person" class="form-control">
+                                    <input type="text" name="contract_person" class="form-control" placeholder="Enter Contract Person">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>{{trans('file.Address')}} *</label>
-                                    <input type="text" name="address" required class="form-control">
+                                    <input type="text" name="address" required class="form-control" placeholder="Enter Address">
                                 </div>
                             </div>
-                            
+
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>{{trans('file.Phone Number')}} *</label>
-                                    <input type="text" name="phone_number" required class="form-control">
+                                    <input type="text" name="phone_number" required class="form-control" placeholder="Enter Phone Number">
                                     @if($errors->has('phone_number'))
                                    <span>
                                        <strong>{{ $errors->first('phone_number') }}</strong>
@@ -63,38 +63,38 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>{{trans('file.Email')}} </label>
-                                    <input type="email" name="email" placeholder="example@example.com" class="form-control">
+                                    <input type="email" name="email" placeholder="example@example.com" class="form-control" >
                                 </div>
                             </div>
-                            
+
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>{{trans('file.City')}} *</label>
-                                    <input type="text" name="city" required class="form-control">
+                                    <input type="text" name="city" required class="form-control" placeholder="Enter City">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>{{trans('file.State')}}</label>
-                                    <input type="text" name="state" class="form-control">
+                                    <input type="text" name="state" class="form-control" placeholder="Enter State">
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>{{trans('file.Postal Code')}} *</label>
-                                    <input type="text" name="postal_code" class="form-control" required>
+                                    <input type="text" name="postal_code" class="form-control" placeholder="Enter Postal Code"  required>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label>{{trans('file.Country')}} *</label>
-                                    <input type="text" name="country" class="form-control" required>
+                                    <input type="text" name="country" class="form-control" placeholder="Enter Country" required>
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>{{trans('Fax')}}</label>
-                                    <input type="text" name="fax" class="form-control">
+                                    <input type="text" name="fax" class="form-control" placeholder="Enter Customer Fax">
                                 </div>
                             </div>
 
