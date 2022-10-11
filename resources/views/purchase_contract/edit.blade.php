@@ -19,7 +19,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Purchase Contract No *</label>
-                                            <input type="text" name="contract_no" class="form-control" required value="{{ $lims_contract_data->contract_no }}">
+                                            <input type="text" name="contract_no" class="form-control" placeholder="Enter Purchase Contract No " required value="{{ $lims_contract_data->contract_no }}">
                                             @if($errors->has('contract_no'))
                                                 <span class="text-danger">
                                                     {{ $errors->first('contract_no') }}
@@ -30,7 +30,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Master Purchase Contract No *</label>
-                                            <input type="text" name="master_contract_no" class="form-control" value="{{ $lims_contract_data->master_contract_no }}" required>
+                                            <input type="text" name="master_contract_no" class="form-control" value="{{ $lims_contract_data->master_contract_no }}" placeholder="Enter Master Purchase Contract No  " required>
                                             @if($errors->has('master_contract_no'))
                                                 <span class="text-danger">
                                                     {{ $errors->first('master_contract_no') }}
@@ -42,7 +42,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Vendor Contract Date *</label>
-                                            <input type="text" name="vendor_date" class="datepicker form-control" value="{{date("d-M-Y", strtotime($lims_contract_data->vendor_date))}}" required>
+                                            <input type="text" name="vendor_date" class="datepicker form-control" placeholder="Enter Vendor Contract Date" value="{{date("d-M-Y", strtotime($lims_contract_data->vendor_date))}}" required>
                                             @if($errors->has('vendor_date'))
                                                 <span class="text-danger">
                                                    {{ $errors->first('vendor_date') }}
@@ -54,7 +54,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Master Contract Date *</label>
-                                            <input type="text" name="master_date" class="datepicker form-control" value="{{date("d-M-Y", strtotime($lims_contract_data->master_date))}}" required>
+                                            <input type="text" name="master_date" class="datepicker form-control" placeholder="Enter Master Contract Date"  value="{{date("d-M-Y", strtotime($lims_contract_data->master_date))}}" required>
                                             @if($errors->has('master_date'))
                                                 <span class="text-danger">
                                                    {{ $errors->first('master_date') }}
@@ -113,7 +113,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Vendor Delivery Date *</label>
-                                            <input type="text" name="delivery_date" class="datepicker form-control" value="{{ date("d-M-Y", strtotime($lims_contract_data->delivery_date))}}" required>
+                                            <input type="text" name="delivery_date" class="datepicker form-control"  placeholder="Enter Vendor Delivery Date" value="{{ date("d-M-Y", strtotime($lims_contract_data->delivery_date))}}" required>
                                             @if($errors->has('delivery_date'))
                                                 <span class="text-danger">
                                                    {{ $errors->first('delivery_date') }}
@@ -165,14 +165,15 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Total Quantity *</label>
-                                            <input type="number" name="total_qty" id="total_qty" class="form-control total_qty" value="{{ $lims_contract_data->total_qty }}" required>
+                                            <input type="number" name="total_qty" id="total_qty" class="form-control total_qty" placeholder="Enter Total Quantity " value="{{ $lims_contract_data->total_qty }}" required>
                                         </div>
                                     </div>
 
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Master Delivery Date *</label>
-                                            <input type="text" name="delivery_date_master" class="datepicker form-control" value="{{ date("d-M-Y", strtotime($lims_contract_data->delivery_date_master)) }}" required>
+                                            <input type="text" name="delivery_date_master" class="datepicker form-control"
+                                            placeholder="Enter Master Delivery Date"  value="{{ date("d-M-Y", strtotime($lims_contract_data->delivery_date_master)) }}" required>
                                             @if($errors->has('delivery_date_master'))
                                                 <span class="text-danger">
                                                    {{ $errors->first('delivery_date_master') }}
@@ -184,13 +185,17 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Total Amount (Vendor)*</label>
-                                            <input type="number" name="total_amount" id="total_amount" class="form-control total_amount" value="{{ $lims_contract_data->total_amount }}" required>
+                                            <input type="number" name="total_amount" id="total_amount" class="form-control total_amount"
+                                            placeholder="Enter Total Amount (Vendor)"
+                                            value="{{ $lims_contract_data->total_amount }}" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Total Amount (Master)*</label>
-                                            <input type="number" name="total_amount_master" id="total_amount" class="form-control total_amount" value="{{ $lims_contract_data->total_amount_master }}" required>
+                                            <input type="number" name="total_amount_master" id="total_amount" class="form-control total_amount"
+                                            placeholder="Enter Total Amount (Master)"
+                                            value="{{ $lims_contract_data->total_amount_master }}" required>
                                         </div>
                                     </div>
 

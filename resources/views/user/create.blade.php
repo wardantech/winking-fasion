@@ -1,7 +1,7 @@
 @extends('layout.main') @section('content')
 
 @if(session()->has('not_permitted'))
-  <div class="alert alert-danger alert-dismissible text-center"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>{{ session()->get('not_permitted') }}</div> 
+  <div class="alert alert-danger alert-dismissible text-center"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>{{ session()->get('not_permitted') }}</div>
 @endif
 <section class="forms">
     <div class="container-fluid">
@@ -50,7 +50,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label><strong>{{trans('file.Phone Number')}} *</strong></label>
-                                        <input type="text" name="phone_number" required class="form-control">
+                                        <input type="text" name="phone_number" required class="form-control" placeholder="Enter Phone No" >
                                         @if($errors->has('phone_number'))
                                             <span>
                                                <strong>{{ $errors->first('phone_number') }}</strong>
@@ -82,7 +82,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label><strong>{{trans('file.Company Name')}}</strong></label>
-                                        <input type="text" name="company_name" class="form-control">
+                                        <input type="text" name="company_name" class="form-control" placeholder="Enter Company Name">
                                     </div>
                                     <div class="form-group">
                                         <label><strong>{{trans('file.Role')}} *</strong></label>
@@ -134,7 +134,7 @@
                                     <!--      @endforeach-->
                                     <!--    </select>-->
                                     <!--</div>-->
-                                </div>                              
+                                </div>
                             </div>
                         {!! Form::close() !!}
                     </div>
@@ -157,7 +157,7 @@
     $('.selectpicker').selectpicker({
       style: 'btn-link',
     });
-    
+
     $('#genbutton').on("click", function(){
       $.get('genpass', function(data){
         $("input[name='password']").val(data);

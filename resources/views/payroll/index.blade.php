@@ -174,7 +174,7 @@
                     </div>
                     <div class="col-md-6 form-group">
                         <label>{{trans('file.Amount')}} *</label>
-                        <input type="number" step="any" name="amount" class="form-control" required>
+                        <input type="number" step="any" name="amount" class="form-control" placeholder="Enter Amount" required>
                     </div>
                     <div class="col-md-12 form-group" id="reference_section">
                         <label>{{trans('Reference')}} *</label>
@@ -182,7 +182,7 @@
                     </div>
                     <div class="col-md-12 form-group">
                         <label>{{trans('file.Note')}}</label>
-                        <textarea name="note" rows="3" class="form-control"></textarea>
+                        <textarea name="note" rows="3" placeholder="Enter Note" class="form-control"></textarea>
                     </div>
                 </div>
                 <div class="form-group">
@@ -253,7 +253,7 @@
 
                     <div class="col-md-12 form-group">
                         <label>{{trans('file.Note')}}</label>
-                        <textarea name="note" rows="3" class="form-control"></textarea>
+                        <textarea name="note" rows="3" placeholder="Enter Note" class="form-control"></textarea>
                     </div>
                 </div>
                 <div class="form-group">

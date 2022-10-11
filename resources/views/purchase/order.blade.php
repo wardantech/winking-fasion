@@ -22,7 +22,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>PO Number*</label>
-                                                <input type="text" name="po_number" class="form-control">
+                                                <input type="text" name="po_number" class="form-control" placeholder="Enter PO Number">
                                                 @if($errors->has('po_number'))
                                                     <span class="text-danger">
                                                    {{ $errors->first('po_number') }}
@@ -33,7 +33,8 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Last Revised</label>
-                                                <input type="text" name="rivision_no" class="datepicker form-control " >
+                                                <input type="text" name="rivision_no" class="datepicker form-control "
+                                                placeholder="Enter Last Revised" >
                                                 @if($errors->has('rivision_no'))
                                                     <span class="text-danger">
                                                    {{ $errors->first('rivision_no') }}
@@ -112,7 +113,9 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Season*</label>
-                                                <input type="text" name="season" class="form-control" required>
+                                                <input type="text"
+                                                placeholder="Enter Season"
+                                                name="season" class="form-control" required>
                                                 @if($errors->has('season'))
                                                     <span class="text-danger">
                                                    {{ $errors->first('season') }}
@@ -123,7 +126,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Order date*</label>
-                                                <input type="text" name="order_date" class="datepicker form-control" required>
+                                                <input type="text" name="order_date" class="datepicker form-control" placeholder="Enter Order Date" required>
                                                 @if($errors->has('order_date'))
                                                     <span class="text-danger">
                                                    {{ $errors->first('order_date') }}
@@ -145,7 +148,8 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>X-Country Date*</label>
-                                                <input type="text" name="ship_exp_date" class="datepicker form-control" required>
+                                                <input type="text" name="ship_exp_date" class="datepicker form-control" placeholder="Enter X-Country Date"
+                                            required>
                                                 @if($errors->has('ship_exp_date'))
                                                     <span class="text-danger">
                                                    {{ $errors->first('ship_exp_date') }}
@@ -156,7 +160,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Terms*</label>
-                                                <input type="text" name="ship_terms" class="form-control" required>
+                                                <input type="text" name="ship_terms" class="form-control" placeholder="Enter Terms " required>
                                                 @if($errors->has('ship_terms'))
                                                     <span class="text-danger">
                                                    {{ $errors->first('ship_terms') }}
@@ -167,7 +171,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Payment / Draft at*</label>
-                                                <input type="text" name="payment_terms" class="form-control" required>
+                                                <input type="text" name="payment_terms" class="form-control" placeholder="Enter Payment / Draft at " required>
                                                 @if($errors->has('payment_terms'))
                                                     <span class="text-danger">
                                                    {{ $errors->first('payment_terms') }}
@@ -178,7 +182,9 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Fabric Ref*</label>
-                                                <input type="text" name="febric_ref" class="form-control" required>
+                                                <input type="text" name="febric_ref" class="form-control"
+                                                placeholder="Enter Fabric Ref"
+                                                 required>
                                                 @if($errors->has('febric_ref'))
                                                     <span class="text-danger">
                                                    {{ $errors->first('febric_ref') }}
@@ -189,7 +195,7 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Brand/Label*</label>
-                                                <input type="text" name="brand" class="form-control">
+                                                <input type="text" name="brand" class="form-control" placeholder="Enter Brand/Label">
                                                 @if($errors->has('brand'))
                                                     <span class="text-danger">
                                                    {{ $errors->first('brand') }}
@@ -200,7 +206,7 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Ship Via*</label>
-                                                <input type="text" name="ship_via" class="form-control">
+                                                <input type="text" name="ship_via" class="form-control" placeholder="Enter Ship Via">
                                                 @if($errors->has('ship_via'))
                                                     <span class="text-danger">
                                                    {{ $errors->first('ship_via') }}
@@ -211,7 +217,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Style No</label>
-                                                <input type="text" name="style_no" class="form-control" required>
+                                                <input type="text" name="style_no" class="form-control" placeholder="Enter Style No" required>
                                                 @if($errors->has('style_no'))
                                                     <span class="text-danger">
                                                    {{ $errors->first('style_no') }}
@@ -222,7 +228,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>CA/RN*</label>
-                                                <input type="text" name="ca" class="form-control" required>
+                                                <input type="text" name="ca" class="form-control" placeholder="Enter CA/RN" required>
                                                 @if($errors->has('ca'))
                                                     <span class="text-danger">
                                                    {{ $errors->first('ca') }}
@@ -257,7 +263,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Item Description</label>
-                                                <input type="text" name="description" class="form-control" id="description">
+                                                <input type="text" name="description" class="form-control" id="description" placeholder="Enter Description">
                                                 @if($errors->has('description'))
                                                     <span class="text-danger">
                                                    {{ $errors->first('description') }}
@@ -269,7 +275,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Fabrication</label>
-                                                <input type="text" name="fabrication" class="form-control" id="description">
+                                                <input type="text" name="fabrication" class="form-control" id="description" placeholder="Enter Febrication">
                                                 @if($errors->has('fabrication'))
                                                     <span class="text-danger">
                                                    {{ $errors->first('fabrication') }}
@@ -324,10 +330,10 @@
                                                     </thead>
                                                     <tbody>
                                                     <tr>
-                                                        <td><input type="text" name="color[]" class="form-control"></td>
-                                                        <td><input type="text" name="color_code[]" class="form-control"></td>
+                                                        <td><input type="text" name="color[]" class="form-control" placeholder="Enter Color Name"></td>
+                                                        <td><input type="text" name="color_code[]" class="form-control" placeholder="Enter Color Code"></></td>
                                                         <td><input type="number" min="0" step="any" name="color_wise_quantity[]" value="0" id="color_wise_quantity1" class="form-control color_wise_quantity1" readonly></td>
-                                                        <td><input type="number" min="0" step="any" name="color_unit_price[]" id="color_unit_price1" class="form-control color_unit_price1"></td>
+                                                        <td><input type="number" min="0" step="any" name="color_unit_price[]" id="color_unit_price1" class="form-control color_unit_price1" placeholder="Enter Unit Price "></></td>
                                                         <td><input type="number" min="0" step="any" name="sub_total[]" id="sub_total1" value="0.00" class="form-control sub_total1" readonly></td>
                                                     </tr>
                                                     </tbody>
@@ -343,9 +349,9 @@
                                                     </thead>
                                                     <tbody>
                                                     <tr>
-                                                        <td><input type="text" name="size1[]" class="form-control"></td>
-                                                        <td><input type="text" name="prepack1[]" class="form-control"></td>
-                                                        <td><input type="number" min="0" step="any" name="quantity1[]" id="quantity1" class="form-control quantity1"></td>
+                                                        <td><input type="text" name="size1[]" class="form-control" placeholder="Enter Size"></td>
+                                                        <td><input type="text" name="prepack1[]" class="form-control" placeholder="Enter Prepack"></td>
+                                                        <td><input type="number" min="0" step="any" name="quantity1[]" id="quantity1" class="form-control quantity1" placeholder="Enter Quantity"></td>
                                                     </tr>
                                                     <tr>
                                                         <td><input type="text" name="size2[]" class="form-control"></td>

@@ -1,14 +1,14 @@
 @extends('layout.main') @section('content')
 @if(session()->has('message'))
-  <div class="alert alert-success alert-dismissible text-center"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>{{ session()->get('message') }}</div> 
+  <div class="alert alert-success alert-dismissible text-center"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>{{ session()->get('message') }}</div>
 @endif
 @if(session()->has('not_permitted'))
-  <div class="alert alert-danger alert-dismissible text-center"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>{{ session()->get('not_permitted') }}</div> 
+  <div class="alert alert-danger alert-dismissible text-center"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>{{ session()->get('not_permitted') }}</div>
 @endif
 @if($errors->has('account_no'))
 <div class="alert alert-danger alert-dismissible text-center">
     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>{{ $errors->first('account_no') }}</div>
-@endif 
+@endif
 
 <section>
     <div class="container-fluid">
@@ -91,20 +91,20 @@
                 {!! Form::open(['route' => ['accounts.update', 1], 'method' => 'put']) !!}
                     <div class="form-group">
                         <label>{{trans('file.Account')}} No *</label>
-                        <input type="text" name="account_no" required class="form-control">
+                        <input type="text" name="account_no" required class="form-control" placeholder="Enter Account No">
                         <input type="hidden" name="account_id">
                     </div>
                     <div class="form-group">
                         <label>{{trans('file.name')}} *</label>
-                        <input type="text" name="name" required class="form-control">
+                        <input type="text" name="name" placeholder="Enter Name"   required class="form-control">
                     </div>
                     <div class="form-group">
                         <label>{{trans('file.Initial Balance')}}</label>
-                        <input type="number" name="initial_balance" step="any" class="form-control">
+                        <input type="number" name="initial_balance" step="any" class="form-control" placeholder="Enter initial_balance">
                     </div>
                     <div class="form-group">
                         <label>{{trans('file.Note')}}</label>
-                        <textarea name="note" rows="3" class="form-control"></textarea>
+                        <textarea name="note" rows="3" class="form-control" placeholder="Enter Note"></textarea>
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary">{{trans('file.update')}}</button>
