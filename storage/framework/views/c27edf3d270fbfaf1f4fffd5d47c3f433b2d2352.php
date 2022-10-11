@@ -7,7 +7,7 @@
 <?php endif; ?>
 <section>
     <div class="container-fluid">
-        <button class="btn btn-info" data-toggle="modal" data-target="#createModal"><i class="dripicons-plus"></i> <?php echo e(trans('file.Add Payroll')); ?> </button>
+        <button class="btn btn-info" data-toggle="modal" data-target="#createModal"><i class="dripicons-plus"></i> <?php echo e(trans('file.Add Salary Sheet')); ?> </button>
     </div>
     <div class="container-fluid" style="margin-top:20px;">
         <div class="card">
@@ -134,7 +134,7 @@
     <div role="document" class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 id="exampleModalLabel" class="modal-title"><?php echo e(trans('file.Add Payroll')); ?></h5>
+                <h5 id="exampleModalLabel" class="modal-title"><?php echo e(trans('file.Add Salary Sheet')); ?></h5>
                 <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true"><i class="dripicons-cross"></i></span></button>
             </div>
             <div class="modal-body">
@@ -205,7 +205,7 @@
     <div role="document" class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 id="exampleModalLabel" class="modal-title"><?php echo e(trans('file.Update Payroll')); ?></h5>
+                <h5 id="exampleModalLabel" class="modal-title"><?php echo e(trans('file.Update Salary Sheet')); ?></h5>
                 <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span aria-hidden="true"><i class="dripicons-cross"></i></span></button>
             </div>
             <div class="modal-body">

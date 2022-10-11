@@ -1,4 +1,4 @@
-<?php 
+<?php
 return [
 	'dashboard' => 'Dashboard',
 	'language' => 'Language',
@@ -461,9 +461,9 @@ return [
 	"Employee" => "Employee",
 	"Add Employee" => "Add Employee",
 	"Update Employee" => "Update Employee",
-	"Payroll" => "Payroll",
-	"Add Payroll" => "Add Payroll",
-	"Update Payroll" => "Update Payroll",
+	"Salary Sheet" => "Salary Sheet",
+	"Add Salary Sheet" => "Add Salary Sheet",
+	"Update Salary Sheet" => "Update Salary Sheet",
 	"Method" => "Method",
 	"Sale Return" => "Sale Return",
 	"Purchase Return" => "Purchase Return",

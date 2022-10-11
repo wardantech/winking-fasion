@@ -449,7 +449,7 @@
                                 
 
                                 <?php if($payroll_active): ?>
-                                    <li id="payroll-menu"><a href="<?php echo e(route('payroll.index')); ?>"><?php echo e(trans('file.Payroll')); ?></a></li>
+                                    <li id="payroll-menu"><a href="<?php echo e(route('payroll.index')); ?>"><?php echo e(trans('file.Salary Sheet')); ?></a></li>
                                 <?php endif; ?>
 
                             </ul>

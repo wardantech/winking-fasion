@@ -111,10 +111,12 @@ class EmployeeController extends Controller
             $cn_doc->move('public/images/employee/cv', $docName);
             $data['image_cv'] = $docName;
         }
-
+        $data['status'] = "active";
         $data['name'] = $data['employee_name'];
         $data['is_active'] = true;
-        //dd($data);
+
+
+        //\dd($data);
         Employee::create($data);
 
         return redirect('employees')->with('message', $message);
@@ -180,6 +182,11 @@ class EmployeeController extends Controller
             $cn_doc->move('public/images/employee/cv', $docName);
             $data['image_cv'] = $docName;
         }
+        if($data['status'] == "in-active"){
+            $data['is_active'] = false;
+        }
+
+
         $lims_employee_data->update($data);
         return redirect('employees')->with('message', 'Employee updated successfully');
     }

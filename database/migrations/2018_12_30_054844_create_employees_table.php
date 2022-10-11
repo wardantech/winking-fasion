@@ -22,7 +22,10 @@ class CreateEmployeesTable extends Migration
             $table->string('image')->nullable();
             $table->string('address')->nullable();
             $table->string('city')->nullable();
+            $table->string('designation')->nullable();
+            $table->string('status')->nullable();
             $table->string('country')->nullable();
+            $table->string('left-job-date')->nullable();
             $table->boolean('is_active');
             $table->timestamps();
         });
