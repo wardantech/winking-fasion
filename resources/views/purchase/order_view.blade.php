@@ -236,55 +236,94 @@
 
                     <div class="row">
                          <div class="col-md-12">
-                            <table class="custom_table details" width="100%">
+                            <table class="custom_table details table table-responsive" width="100%">
                                 <thead>
                                     <tr>
                                         <th width="10%">Color</th>
                                         <th width="10%">Code</th>
                                         <th width="10%">PRE PACK</th>
+                                        @if($lim_sizes->size1)
                                         <th style="text-align:center;">{{$lim_sizes->size1 }}</th>
+                                        @endif
+                                        @if($lim_sizes->size2)
                                         <th style="text-align:center;">{{$lim_sizes->size2 }}</th>
+                                        @endif
+                                        @if($lim_sizes->size3)
                                         <th style="text-align:center;">{{$lim_sizes->size3 }}</th>
+                                        @endif
+                                        @if($lim_sizes->size4)
                                         <th style="text-align:center;">{{$lim_sizes->size4 }}</th>
+                                        @endif
+                                        @if($lim_sizes->size5)
                                         <th style="text-align:center;">{{$lim_sizes->size5 }}</th>
+                                        @endif
+                                        @if($lim_sizes->size6)
                                         <th style="text-align:center;">{{$lim_sizes->size6 }}</th>
+                                        @endif
+                                        @if($lim_sizes->size7)
                                         <th style="text-align:center;">{{$lim_sizes->size7 }}</th>
+                                        @endif
+                                        @if($lim_sizes->size8)
                                         <th style="text-align:center;">{{$lim_sizes->size8 }}</th>
+                                        @endif
+                                        @if($lim_sizes->size9)
                                         <th style="text-align:center;">{{$lim_sizes->size9 }}</th>
+                                        @endif
+                                        @if($lim_sizes->size10)
                                         <th style="text-align:center;">{{$lim_sizes->size10 }}</th>
+                                        @endif
+                                        @if($lim_sizes->size11)
                                         <th style="text-align:center;">{{$lim_sizes->size11 }}</th>
+                                        @endif
+                                        @if($lim_sizes->size12)
                                         <th style="text-align:center;">{{$lim_sizes->size12 }}</th>
+                                        @endif
+                                        @if($lim_sizes->size13)
                                         <th style="text-align:center;">{{$lim_sizes->size13 }}</th>
+                                        @endif
                                         <th style="text-align:center;" width="10%">Total Units</th>
                                         <th style="text-align:center;" width="12%">Unit Price</th>
                                         <th style="text-align:center;" width="13%">Total Amount</th>
                                     </tr>
                                 </thead>
                                     <tbody>
+                                        @php($count=0)
                                         @foreach ($lim_details as $key=>$detail)
+                                        {{-- {{ dd($detail) }} --}}
+                                            {{-- {{ dd(sizeOf($detail->toArray())) }} --}}
                                             <tr>
                                                 <td>{{ $detail->color }}</td>
                                                 <td>{{ $detail->color_code }}</td>
                                                 <td>
+                                                    @if($detail->prepack1)
                                                     {{ $detail->prepack1 }}
                                                     @if($detail->prepack2 !== null)
-                                                       ,
+                                                    ,
                                                     @endif
+                                                    @endif
+                                                    @if($detail->prepack2)
                                                     {{ $detail->prepack2 }}
                                                     @if($detail->prepack3 !== null)
-                                                       ,
+                                                    ,
                                                     @endif
+                                                    @endif
+                                                    @if($detail->prepack3)
                                                     {{ $detail->prepack3 }}
                                                     @if($detail->prepack4 !== null)
                                                        ,
                                                     @endif
+                                                    @endif
+                                                    @if($detail->prepack4)
                                                     {{ $detail->prepack4 }}
                                                     @if($detail->prepack5 !== null)
                                                        ,
                                                     @endif
+                                                    @endif
+                                                    @if($detail->prepack5)
                                                     {{ $detail->prepack5 }}
                                                     @if($detail->prepack6 !== null)
                                                        ,
+                                                    @endif
                                                     @endif
                                                     {{ $detail->prepack6 }}
                                                     @if($detail->prepack7 !== null)
@@ -316,19 +355,45 @@
                                                     @endif
                                                     {{ $detail->prepack13 }}
                                                 </td>
+                                                @if($detail->quantity1)
                                                 <td style="text-align:center;">{{ $detail->quantity1 }}</td>
+                                                @endif
+                                                @if($detail->quantity2)
                                                 <td style="text-align:center;">{{ $detail->quantity2 }}</td>
+                                                @endif
+                                                @if($detail->quantity3)
                                                 <td style="text-align:center;">{{ $detail->quantity3 }}</td>
+                                                @endif
+                                                @if($detail->quantity4)
                                                 <td style="text-align:center;">{{ $detail->quantity4 }}</td>
+                                                @endif
+                                                @if($detail->quantity5)
                                                 <td style="text-align:center;">{{ $detail->quantity5 }}</td>
+                                                @endif
+                                                @if($detail->quantity6)
                                                 <td style="text-align:center;">{{ $detail->quantity6 }}</td>
+                                                @endif
+                                                @if($detail->quantity7)
                                                 <td style="text-align:center;">{{ $detail->quantity7 }}</td>
+                                                @endif
+                                                @if($detail->quantity8)
                                                 <td style="text-align:center;">{{ $detail->quantity8 }}</td>
+                                                @endif
+                                                @if($detail->quantity9)
                                                 <td style="text-align:center;">{{ $detail->quantity9 }}</td>
+                                                @endif
+                                                @if($detail->quantity10)
                                                 <td style="text-align:center;">{{ $detail->quantity10 }}</td>
+                                                @endif
+                                                @if($detail->quantity11)
                                                 <td style="text-align:center;">{{ $detail->quantity11 }}</td>
+                                                @endif
+                                                @if($detail->quantity12)
                                                 <td style="text-align:center;">{{ $detail->quantity12 }}</td>
+                                                @endif
+                                                @if($detail->quantity13)
                                                 <td style="text-align:center;">{{ $detail->quantity13 }}</td>
+                                                @endif
                                                 <td style="text-align:center;">{{ $detail->color_wise_quantity }}</td>
                                                 <td style="text-align:center;">$ {{ number_format((float)$detail->color_unit_price, 2, '.', '') }}</td>
                                                 <td style="text-align:center;">$ {{ number_format((float)$detail->sub_total, 2, '.', '') }}</td>
@@ -337,7 +402,7 @@
                                     </tbody>
                                     <tfoot>
                                         <tr>
-                                            <th colspan="16" style="text-align: right;">Total</th>
+                                            <th colspan="{{ $sizeCount+3 }}" style="text-align: right;">Total</th>
                                             <th style="text-align:center;">{{$order->total_quantity}}</th>
                                             <th></th>
                                             <th style="text-align:center;">${{ number_format((float)$order->total_amount, 2, '.', '') }}</th>
