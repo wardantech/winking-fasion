@@ -347,13 +347,14 @@
                                                         <th>Quantity</th>
                                                     </tr>
                                                     </thead>
-                                                    <tbody>
-                                                    <tr>
+                                                    <tbody id="t_body_id">
+                                                    <tr class="row-concat1" id="row-concat_1">
                                                         <td><input type="text" name="size1[]" class="form-control" placeholder="Enter Size"></td>
                                                         <td><input type="text" name="prepack1[]" class="form-control" placeholder="Enter Prepack"></td>
                                                         <td><input type="number" min="0" step="any" name="quantity1[]" id="quantity1" class="form-control quantity1" placeholder="Enter Quantity"></td>
+                                                        <td><a id="remove_concat" class="btn btn-danger btn-sm" style="color:white;margin-left:10px;" onclick="removeRow(1, 1)">-</a></td>
                                                     </tr>
-                                                    <tr>
+                                                    {{-- <tr>
                                                         <td><input type="text" name="size2[]" class="form-control"></td>
                                                         <td><input type="text" name="prepack2[]" class="form-control"></td>
                                                         <td><input type="number" min="0" step="any" name="quantity2[]" id="quantity1" class="form-control quantity1"></td>
@@ -412,7 +413,17 @@
                                                         <td><input type="text" name="size13[]" class="form-control"></td>
                                                         <td><input type="text" name="prepack13[]" class="form-control"></td>
                                                         <td><input type="number" min="0" step="any" name="quantity13[]" id="quantity1" class="form-control quantity1"></td>
+                                                    </tr> --}}
+                                                    <tr>
+                                                        <a class="btn btn-success btn-sm" id="add_contact" style="color: white; ">
+                                                            <i class="fa fa-plus"></i>
+                                                        </a>
                                                     </tr>
+                                                    {{-- <div class="col-12 col-sm-6 col-md-2"><br>
+                                                        <a class="btn btn-success btn-sm" id="add_contact" style="width:100%;color: white; ">
+                                                            <i class="fa fa-plus"></i>
+                                                        </a>
+                                                    </div> --}}
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -438,13 +449,28 @@
         $("ul#order-summary").siblings('a').attr('aria-expanded','true');
         $("ul#order-summary").addClass("show");
         $("ul#order-summary #purchase-order-menu").addClass("active");
+
+        var y= 1;
         $(document).ready(function(){
             var max_field = 7;
+            console.log(max_field);
+            var concatMaxField= 13;
             var wrapper = $(".color_box");
             var x = 1;
+            // var y= 1;
+            $('#add_contact').click(function(){
+                if(y<concatMaxField){
+                    y++;
+                    $('#t_body_id').append('<tr class="row-concat1" id="row-concat_'+y+'"><td><input type="text" name="size'+y+'[]" class="form-control" placeholder="Enter Size"></td><td><input type="text" name="prepack'+y+'[]" class="form-control" placeholder="Enter Prepack"></td><td><input type="number" min="0" step="any" name="quantity'+y+'[]" id="quantity'+y+'" class="form-control quantity1" placeholder="Enter Quantity"></td><td><a id="remove_concat" class="btn btn-danger btn-sm" style="color:white;margin-left:10px;" onclick="removeRow('+y+', 1)">-</a></td></tr>');
+                }
+            });
+
+            // onclick="addRow('+x+','+y+')"
+
             $("#add_size").click(function(){
                 if(x < max_field){
                     x++;
+                    // y=1;
                     $('#color_number').val(x);
                     $(wrapper).append('<div class="row">\
                                     <div class="col-md-12" style="margin: 30px 0px;">\
@@ -452,6 +478,11 @@
                                              <thead>\
                                                  <tr>\
                                                      <th>Color Name <a id="remove_size" class="btn btn-danger btn-sm" style="color:white;margin-left:10px;">-</a></th>\
+                                                     <th>\
+                                                        <a class="btn btn-success btn-sm" id="add_contact_'+x+'" onclick="addRow('+x+')" style="color: white; ">\
+                                                            <i class="fa fa-plus"></i>\
+                                                        </a>\
+                                                    </th>\
                                                      <th>Code</th>\
                                                      <th>Quantity</th>\
                                                      <th>Unit Price</th>\
@@ -476,80 +507,45 @@
                                                     <th>Quantity</th>\
                                                 </tr>\
                                             </thead>\
-                                            <tbody>\
-                                                <tr>\
+                                            <tbody id="t_body_id_'+x+'">\
+                                                <tr class="row-concat'+x+'" id="row-concat_1">\
                                                     <td><input type="text" name="size1[]" class="form-control"></td>\
                                                     <td><input type="text" name="prepack1[]" class="form-control"></td>\
                                                     <td><input type="number" min="0" step="any" name="quantity1[]" id="quantity'+x+'" class="form-control quantity'+x+'"></td>\
-                                                </tr>\
-                                                <tr>\
-                                                    <td><input type="text" name="size2[]" class="form-control"></td>\
-                                                    <td><input type="text" name="prepack2[]" class="form-control"></td>\
-                                                    <td><input type="number" min="0" step="any" name="quantity2[]" id="quantity'+x+'" class="form-control quantity'+x+'"></td>\
-                                                </tr>\
-                                                <tr>\
-                                                    <td><input type="text" name="size3[]" class="form-control"></td>\
-                                                    <td><input type="text" name="prepack3[]" class="form-control"></td>\
-                                                    <td><input type="number" min="0" step="any" name="quantity3[]" id="quantity'+x+'" class="form-control quantity'+x+'"></td>\
-                                                </tr>\
-                                                <tr>\
-                                                    <td><input type="text" name="size4[]" class="form-control"></td>\
-                                                    <td><input type="text" name="prepack4[]" class="form-control"></td>\
-                                                    <td><input type="number" min="0" step="any" name="quantity4[]" id="quantity'+x+'" class="form-control quantity'+x+'"></td>\
-                                                </tr>\
-                                                <tr>\
-                                                    <td><input type="text" name="size5[]" class="form-control"></td>\
-                                                    <td><input type="text" name="prepack5[]" class="form-control"></td>\
-                                                    <td><input type="number" min="0" step="any" name="quantity5[]" id="quantity'+x+'" class="form-control quantity'+x+'"></td>\
-                                                </tr>\
-                                                <tr>\
-                                                    <td><input type="text" name="size6[]" class="form-control"></td>\
-                                                    <td><input type="text" name="prepack6[]" class="form-control"></td>\
-                                                    <td><input type="number" min="0" step="any" name="quantity6[]" id="quantity'+x+'" class="form-control quantity'+x+'"></td>\
-                                                </tr>\
-                                                <tr>\
-                                                    <td><input type="text" name="size7[]" class="form-control"></td>\
-                                                    <td><input type="text" name="prepack7[]" class="form-control"></td>\
-                                                    <td><input type="number" min="0" step="any" name="quantity7[]" id="quantity'+x+'" class="form-control quantity'+x+'"></td>\
-                                                </tr>\
-                                                <tr>\
-                                                    <td><input type="text" name="size8[]" class="form-control"></td>\
-                                                    <td><input type="text" name="prepack8[]" class="form-control"></td>\
-                                                    <td><input type="number" min="0" step="any" name="quantity8[]" id="quantity'+x+'" class="form-control quantity'+x+'"></td>\
-                                                </tr>\
-                                                <tr>\
-                                                    <td><input type="text" name="size9[]" class="form-control"></td>\
-                                                    <td><input type="text" name="prepack9[]" class="form-control"></td>\
-                                                    <td><input type="number" min="0" step="any" name="quantity9[]" id="quantity'+x+'" class="form-control quantity'+x+'"></td>\
-                                                </tr>\
-                                                <tr>\
-                                                    <td><input type="text" name="size10[]" class="form-control"></td>\
-                                                    <td><input type="text" name="prepack10[]" class="form-control"></td>\
-                                                    <td><input type="number" min="0" step="any" name="quantity10[]" id="quantity'+x+'" class="form-control quantity'+x+'"></td>\
-                                                </tr>\
-                                                <tr>\
-                                                    <td><input type="text" name="size11[]" class="form-control"></td>\
-                                                    <td><input type="text" name="prepack11[]" class="form-control"></td>\
-                                                    <td><input type="number" min="0" step="any" name="quantity11[]" id="quantity'+x+'" class="form-control quantity'+x+'"></td>\
-                                                </tr>\
-                                                <tr>\
-                                                    <td><input type="text" name="size12[]" class="form-control"></td>\
-                                                    <td><input type="text" name="prepack12[]" class="form-control"></td>\
-                                                    <td><input type="number" min="0" step="any" name="quantity12[]" id="quantity'+x+'" class="form-control quantity'+x+'"></td>\
-                                                </tr>\
-                                                <tr>\
-                                                    <td><input type="text" name="size13[]" class="form-control"></td>\
-                                                    <td><input type="text" name="prepack13[]" class="form-control"></td>\
-                                                    <td><input type="number" min="0" step="any" name="quantity13[]" id="quantity'+x+'" class="form-control quantity'+x+'"></td>\
+                                                    <td><a id="remove_concat" class="btn btn-danger btn-sm" style="color:white;margin-left:10px;" onclick="removeRow(1, '+x+')">-</a></td>\
                                                 </tr>\
                                             </tbody>\
                                        </table>\
                                     </div>\
                                 </div>');
+
+                                // var concatCount= x-1;
+                                //     $('#add_contact').hide();
+                                //     $('#add_contact_'+concatCount).hide();
+
+                                // function addRow(x){
+                                //     if(y<concatMaxField){
+                                //         y++;
+                                //         $('#t_body_id_'+x).append('<tr><td><input type="text" name="size'+y+'[]" class="form-control" placeholder="Enter Size"></td><td><input type="text" name="prepack'+y+'[]" class="form-control" placeholder="Enter Prepack"></td><td><input type="number" min="0" step="any" name="quantity'+y+'[]" id="quantity'+y+'" class="form-control quantity1" placeholder="Enter Quantity"></td></tr>');
+                                //     }
+                                // }
+
+                                // $('#add_contact_'+x).click(function(){
+                                //     console.log($('#add_contact_'+x));
+                                //     if(y<concatMaxField){
+                                //         y++;
+                                //         $('#t_body_id_'+x).append('<tr><td><input type="text" name="size'+y+'[]" class="form-control" placeholder="Enter Size"></td><td><input type="text" name="prepack'+y+'[]" class="form-control" placeholder="Enter Prepack"></td><td><input type="number" min="0" step="any" name="quantity'+y+'[]" id="quantity'+y+'" class="form-control quantity1" placeholder="Enter Quantity"></td></tr>');
+                                //     }
+                                // });
                 }else{
                     alert('you can not add more than 7 field');
                 }
             });
+
+
+
+
+
             $(wrapper).on("click","#remove_size", function(e){ //user click on remove text
                 e.preventDefault();
                 $(this).parent('th').parent('tr').parent('thead').parent('table').parent('div').parent('div').remove(); x--;
@@ -735,6 +731,24 @@
                 $('.total_amount').val(parseFloat(total_amount).toFixed(2));
             }
         });
+
+        function addRow(x){
+            // console.log($('.dd_'+x).length+2);
+            var counter= $('.row-concat'+x).length+2;
+            // console.log($('.row-concat'+x).length);
+                if(counter-1<13){
+                    // y++;
+                    $('#t_body_id_'+x).append('<tr class="row-concat'+x+'" id="row-concat_'+counter+'"><td><input type="text" name="size'+counter+'[]" class="form-control" placeholder="Enter Size"></td><td><input type="text" name="prepack'+counter+'[]" class="form-control" placeholder="Enter Prepack"></td><td><input type="number" min="0" step="any" name="quantity'+counter+'[]" id="quantity'+counter+'" class="form-control quantity1" placeholder="Enter Quantity"></td><td><a id="remove_concat" class="btn btn-danger btn-sm" style="color:white;margin-left:10px;" onclick="removeRow('+counter+','+x+')">-</a></td></tr>');
+                }else{
+                    alert("Maximum row is 13");
+                }
+            }
+
+        function removeRow(counter, x){
+            // console.log(counter);
+            $('.row-concat'+x+ '#row-concat_'+counter).remove();
+        }
+
         tinymce.init({
             selector: 'textarea',
             height: 150,

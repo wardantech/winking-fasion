@@ -107,7 +107,10 @@
               <button class="btn btn-secondary date-btn" data-start_date="{{date('Y-m-d')}}" data-end_date="{{date('Y-m-d')}}">{{trans('file.Today')}}</button>
               <button class="btn btn-secondary date-btn" data-start_date="{{date('Y-m-d', strtotime(' -7 day'))}}" data-end_date="{{date('Y-m-d')}}">{{trans('file.Last 7 Days')}}</button>
               <button class="btn btn-secondary date-btn active" data-start_date="{{date('Y').'-'.date('m').'-'.'01'}}" data-end_date="{{date('Y-m-d')}}">{{trans('file.This Month')}}</button>
+              <button class="btn btn-secondary date-btn active" data-start_date="{{date('Y-m-d', strtotime('-3 month'))}}" data-end_date="{{date('Y-m-d')}}">{{trans('file.Last 3 Months')}}</button>
+              <button class="btn btn-secondary date-btn active" data-start_date="{{date('Y-m-d', strtotime('-6 month'))}}" data-end_date="{{date('Y-m-d')}}">{{trans('file.Last 6 Months')}}</button>
               <button class="btn btn-secondary date-btn" data-start_date="{{date('Y').'-01'.'-01'}}" data-end_date="{{date('Y').'-12'.'-31'}}">{{trans('file.This Year')}}</button>
+              <button class="btn btn-secondary date-btn" data-start_date="{{date('Y-m-d', strtotime('-1 year'))}}" data-end_date="{{date('Y').'-12'.'-31'}}">{{trans('file.Last Year')}}</button>
             </div>
           </div>
         </div>

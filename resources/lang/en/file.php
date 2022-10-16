@@ -1,4 +1,4 @@
-<?php 
+<?php
 return [
 	'dashboard' => 'Dashboard',
 	'language' => 'Language',
@@ -216,7 +216,10 @@ return [
 	'Today' => 'Today',
 	'Last 7 Days' => 'Last 7 Days',
 	'This Month' => 'This Month',
+	'Last 3 Months' => 'Last 3 Months',
+	'Last 6 Months' => 'Last 6 Months',
 	'This Year' => 'This Year',
+	'Last Year' => 'Last Year',
 	'Cash in Hand' => 'Cash in Hand',
 	'In Hand' => 'In Hand',
 	'Summary Report' => 'Summary Report',
