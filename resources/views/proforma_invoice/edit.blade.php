@@ -19,7 +19,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Invoice No *</label>
-                                            <input type="text" name="invoice_no" class="form-control" value="{{$lim_invoice_data->invoice_no}}" required>
+                                            <input type="text" name="invoice_no" class="form-control" placeholder="Enter Invoice No" value="{{$lim_invoice_data->invoice_no}}" required>
                                             @if($errors->has('invoice_no'))
                                                 <span class="text-danger">
                                                     {{ $errors->first('invoice_no') }}
@@ -31,7 +31,9 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Date *</label>
-                                            <input type="text" name="date" class="datepicker form-control" value="{{ date("d-M-Y", strtotime($lim_invoice_data->date))}}" required>
+                                            <input type="text"
+                                            placeholder="Enter Date"
+                                             name="date" class="datepicker form-control" value="{{ date("d-M-Y", strtotime($lim_invoice_data->date))}}" required>
                                             @if($errors->has('date'))
                                                 <span class="text-danger">
                                                    {{ $errors->first('date') }}
@@ -62,7 +64,7 @@
                                             @if(!empty($lim_invoice_data->revised_date))
                                                 <input type="text" name="revised_date" value="{{ date("d-M-Y", strtotime($lim_invoice_data->revised_date))}}" class="datepicker form-control">
                                             @else
-                                                <input type="text" name="revised_date" value="" class="datepicker form-control">
+                                                <input type="text" name="revised_date"  placeholder="Enter Revised Date" value="" class="datepicker form-control">
                                             @endif
 
 
@@ -110,7 +112,9 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Season</label>
-                                            <input type="text" name="season" class="form-control" value="{{$lim_invoice_data->season}}">
+                                            <input type="text" name="season" class="form-control"
+                                            placeholder="Enter Season"
+                                            value="{{$lim_invoice_data->season}}">
                                             @if($errors->has('season'))
                                                 <span class="text-danger">
                                                    {{ $errors->first('season') }}
@@ -121,7 +125,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Delivery Date *</label>
-                                            <input type="text" name="delivery_date" class="datepicker form-control" value={{ date("d-M-Y", strtotime($lim_invoice_data->delivery_date))}} required>
+                                            <input type="text" name="delivery_date" placeholder="Enter Delivery Date"class="datepicker form-control" value={{ date("d-M-Y", strtotime($lim_invoice_data->delivery_date))}} required>
                                             @if($errors->has('delivery_date'))
                                                 <span class="text-danger">
                                                    {{ $errors->first('delivery_date') }}
@@ -146,13 +150,16 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Total Quantity *</label>
-                                            <input type="number" name="total_qty" id="total_qty" class="form-control total_qty" required value={{$lim_invoice_data->total_qty}}>
+                                            <input type="number"
+                                            placeholder="Enter Total Quantity" name="total_qty" id="total_qty" class="form-control total_qty" required value={{$lim_invoice_data->total_qty}}>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Total Amount *</label>
-                                            <input type="number" name="total_amount" id="total_amount" class="form-control total_amount" required value={{$lim_invoice_data->total_amount}}>
+                                            <input type="number" name="total_amount" id="total_amount"
+                                            placeholder="Enter Total Amount"
+                                             class="form-control total_amount" required value={{$lim_invoice_data->total_amount}}>
                                         </div>
                                     </div>
                                     <div class="col-md-6">

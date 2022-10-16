@@ -14,7 +14,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label><strong>{{trans('file.name')}} *</strong> </label>
-                                    <input type="text" name="employee_name" required class="form-control">
+                                    <input type="text" name="employee_name" required class="form-control" placeholder="Enter Employee Name">
                                 </div>
                                 <div class="form-group">
                                     <label>{{trans('file.Department')}} *</label>
@@ -27,21 +27,21 @@
 
                                 <div class="form-group">
                                     <label>{{trans('Present Address')}} *</label>
-                                    <textarea class="form-control" name="address"></textarea>
+                                    <textarea class="form-control" name="address" placeholder="Enter Address"></textarea>
                                     <!--<input type="text" name="address" class="form-control">-->
                                 </div>
                                 <div class="form-group">
                                     <label>{{trans('Joining Date')}}</label>
-                                    <input type="text" name="joining_date" class="datepicker form-control">
+                                    <input type="text" name="joining_date" class="datepicker form-control" placeholder="Enter Joining Date">
                                 </div>
 
                                 <div class="form-group">
                                     <label>{{trans('Present Salary')}}</label>
-                                    <input type="text" name="present_salary" class="form-control">
+                                    <input type="text" placeholder="Enter Present Salary" name="present_salary" class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label>{{trans('Joining Salary')}}</label>
-                                    <input type="text" name="joining_salary" class="form-control">
+                                    <input type="text" name="joining_salary" class="form-control" placeholder="Enter Joining Salary">
                                 </div>
                                 <!--<div class="form-group">-->
                                 <!--    <label>{{trans('file.City')}}</label>-->
@@ -64,7 +64,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Designation</label>
-                                    <input type="text" name="designation" class="form-control">
+                                    <input type="text" name="designation" class="form-control" placeholder="Enter Designation">
                                 </div>
                                 <div class="form-group">
                                     <label>{{trans('Upload CV')}}</label>
@@ -77,11 +77,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label>{{trans('Permanent Address')}} *</label>
-                                    <textarea class="form-control" name="address2"></textarea>
+                                    <textarea class="form-control" name="address2" placeholder="Enter Permanent Address"></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label>{{trans('file.Email')}} </label>
-                                    <input type="email" name="email" placeholder="example@example.com" class="form-control">
+                                    <input type="email" name="email" placeholder="example@example.com" class="form-control" placeholder="Enter Email">
                                     @if($errors->has('email'))
                                    <span>
                                        <strong>{{ $errors->first('email') }}</strong>
@@ -90,11 +90,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label>{{trans('file.Phone Number')}} *</label>
-                                    <input type="text" name="phone_number" required class="form-control">
+                                    <input type="text" name="phone_number" required class="form-control" placeholder="Enter Phone Number">
                                 </div>
                                 <div class="form-group">
                                     <label>{{trans('NID No')}} *</label>
-                                    <input type="text" name="nid_number" required class="form-control">
+                                    <input type="text" name="nid_number" required class="form-control" placeholder="Enter Nid No">
                                 </div>
                             </div>
                         </div>
@@ -102,12 +102,12 @@
                             <div class="col-md-12">
                                 <div class="form-group mt-4">
                                     <label>{{trans('file.Add User')}}</label>
-                                    <input type="checkbox" name="user" checked value="1" />
+                                    <input type="checkbox" name="user" checked value="1"  />
                                 </div>
                                 <div id="user-input" class="mt-4">
                                     <div class="form-group">
                                         <label>{{trans('file.UserName')}} *</label>
-                                        <input type="text" name="name" required class="form-control">
+                                        <input type="text" name="name" required class="form-control" placeholder="Enter UserName">
                                         @if($errors->has('name'))
                                        <span>
                                            <strong>{{ $errors->first('name') }}</strong>
@@ -116,7 +116,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label>{{trans('file.Password')}} *</label>
-                                        <input required type="text" name="password" class="form-control">
+                                        <input required type="text" name="password" placeholder="Enter Password" class="form-control">
                                     </div>
                                     <div class="form-group">
                                         <label>{{trans('file.Role')}} *</label>

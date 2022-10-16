@@ -93,12 +93,12 @@
 
                         <div class="col-md-6 form-group">
                             <label>{{trans('Date')}} *</label>
-                            <input type="text" name="date" class="datepicker form-control" required>
+                            <input type="text" name="date" class="datepicker form-control" placeholder="Enter Date" required>
                         </div>
 
                       <div class="col-md-6 form-group">
                           <label>{{trans('file.Amount')}} *</label>
-                          <input type="number" name="amount" class="form-control" step="any" required>
+                          <input type="number" name="amount" class="form-control" placeholder="Enter Amount"  step="any" required>
                       </div>
                   </div>
                   <div class="form-group">
@@ -141,12 +141,12 @@
                       </div>
                       <div class="col-md-6 form-group">
                         <label>{{trans('Date')}} *</label>
-                        <input type="text" name="date" class="datepicker form-control" required>
+                        <input type="text" name="date" class="datepicker form-control" placeholder="Enter Date" required>
                       </div>
 
                       <div class="col-md-6 form-group">
                           <label>{{trans('file.Amount')}} *</label>
-                          <input type="number" name="amount" class="form-control" step="any" required>
+                          <input type="number" name="amount" class="form-control" placeholder="Enter Amount" step="any" required>
                       </div>
                   </div>
                   <div class="form-group">

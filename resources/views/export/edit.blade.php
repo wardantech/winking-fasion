@@ -19,7 +19,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Invoice No *</label>
-                                            <input type="text" name="invoice_no" class="form-control" value="{{ $export->invoice_no }}" required>
+                                            <input type="text" name="invoice_no" class="form-control" value="{{ $export->invoice_no }}"  placeholder="Enter Invoice No "required>
                                             @if($errors->has('invoice_no'))
                                                 <span class="text-danger">
                                                     {{ $errors->first('invoice_no') }}
@@ -31,7 +31,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Date *</label>
-                                            <input type="text" name="date" class="datepicker form-control" placeholder="Enter date" value="{{ date("d-M-Y", strtotime($export->date)) }}" required>
+                                            <input type="text" name="date" class="datepicker form-control" placeholder="Enter date" placeholder="Enter  Date " value="{{ date("d-M-Y", strtotime($export->date)) }}" required>
                                             @if($errors->has('date'))
                                                 <span class="text-danger">
                                                    {{ $errors->first('date') }}
@@ -43,7 +43,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>LC/Contract No *</label>
-                                            <input type="text" name="lc_number" class="form-control" value="{{ $export->lc_number }}" required>
+                                            <input type="text" name="lc_number" class="form-control" placeholder="Enter LC/Contract No " value="{{ $export->lc_number }}" required>
                                             @if($errors->has('lc_number'))
                                                 <span class="text-danger">
                                                     {{ $errors->first('lc_number') }}
@@ -55,7 +55,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>BL No *</label>
-                                            <input type="text" name="contact_number" class="form-control" value="{{ $export->contact_number }}" required>
+                                            <input type="text" name="contact_number" class="form-control"placeholder="Enter BL No " value="{{ $export->contact_number }}" required>
                                             @if($errors->has('contact_number'))
                                                 <span class="text-danger">
                                                     {{ $errors->first('contact_number') }}
@@ -114,7 +114,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Customer *</label>
-                                            <select name="customer_id" class="selectpicker form-control" data-live-search="true" data-live-search-style="begins" title="Select invoice to...">
+                                            <select name="customer_id" class="selectpicker form-control" data-live-search="true" data-live-search-style="begins" title="Select Customer...">
                                                 @foreach ($lims_customer_all as $customer)
                                                     <option value="{{ $customer->id }}" {{ ($export->customer_id == $customer->id) ? 'selected' : '' }}>{{ $customer->name }}</option>
                                                 @endforeach
@@ -130,7 +130,7 @@
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label>Quantity  (pcs)*</label>
-                                            <input type="number" name="quantity_pcs" class="form-control" value="{{ $export->quantity_pcs }}" required>
+                                            <input type="number" name="quantity_pcs" class="form-control" placeholder="Enter Quantity " value="{{ $export->quantity_pcs }}" required>
                                             @if($errors->has('quantity_pcs'))
                                                 <span class="text-danger">
                                                    {{ $errors->first('quantity_pcs') }}
@@ -142,7 +142,7 @@
                                     <div class="col-md-3">
                                         <div class="form-group">
                                             <label>Quantity  (ctn)*</label>
-                                            <input type="number" name="quantity_crt" class="form-control" value="{{ $export->quantity_crt }}" required>
+                                            <input type="number" name="quantity_crt" class="form-control" placeholder="Enter Quantity  (ctn) " value="{{ $export->quantity_crt }}" required>
                                             @if($errors->has('quantity_crt'))
                                                 <span class="text-danger">
                                                    {{ $errors->first('quantity_crt') }}
@@ -154,7 +154,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Invoice Value *</label>
-                                            <input type="text" name="invoice_value" id="invoice_value" value="{{ $export->invoice_value }}" class="form-control invoice_value">
+                                            <input type="text" name="invoice_value" id="invoice_value" placeholder="Enter Invoice Value " value="{{ $export->invoice_value }}" class="form-control invoice_value">
                                             @if($errors->has('invoice_value'))
                                                 <span class="text-danger">
                                                    {{ $errors->first('invoice_value') }}
@@ -166,7 +166,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Shipper Invoice Value *</label>
-                                            <input type="text" name="shipper_invoice_value" id="shipper_invoice_value" value="{{ $export->shipper_invoice_value }}" class="form-control shipper_invoice_value">
+                                            <input type="text" name="shipper_invoice_value" id="shipper_invoice_value" placeholder="Enter Shipper Invoice Value" value="{{ $export->shipper_invoice_value }}" class="form-control shipper_invoice_value">
                                             @if($errors->has('shipper_invoice_value'))
                                                 <span class="text-danger">
                                                    {{ $errors->first('shipper_invoice_value') }}
@@ -178,7 +178,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>ETD *</label>
-                                            <input type="text" name="etd" class="datepicker form-control" value="{{ date("d-M-Y", strtotime($export->etd)) }}" required>
+                                            <input type="text" name="etd" class="datepicker form-control" placeholder="Enter ETD"  value="{{ date("d-M-Y", strtotime($export->etd)) }}" required>
                                             @if($errors->has('etd'))
                                                 <span class="text-danger">
                                                    {{ $errors->first('etd') }}
@@ -189,7 +189,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>ETA *</label>
-                                            <input type="text" name="eta" class="datepicker form-control" value="{{ date("d-M-Y", strtotime($export->eta)) }}" required>
+                                            <input type="text" name="eta" class="datepicker form-control" value="{{ date("d-M-Y", strtotime($export->eta)) }}" placeholder="Enter ETA" required>
                                             @if($errors->has('eta'))
                                                 <span class="text-danger">
                                                    {{ $errors->first('eta') }}
@@ -201,7 +201,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Payment Due Date *</label>
-                                            <input type="text" name="due_date" class="datepicker form-control" value="{{ date("d-M-Y", strtotime($export->due_date))}}" required>
+                                            <input type="text" name="due_date" class="datepicker form-control" value="{{ date("d-M-Y", strtotime($export->due_date))}}" placeholder="Enter Payment Due Date" required>
                                             @if($errors->has('due_date'))
                                                 <span class="text-danger">
                                                    {{ $errors->first('due_date') }}

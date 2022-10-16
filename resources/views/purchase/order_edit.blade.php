@@ -19,7 +19,9 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>PO Number</label>
-                                            <input type="text" name="po_number" class="form-control" value="{{$lim_order_data->po_number}}">
+                                            <input type="text" name="po_number" class="form-control"
+                                            placeholder="Enter PO Number"
+                                            value="{{$lim_order_data->po_number}}">
                                             @if($errors->has('po_number'))
                                                 <span class="text-danger">
                                                    {{ $errors->first('po_number') }}
@@ -30,7 +32,9 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Last Revised</label>
-                                            <input type="text" name="rivision_no" class="datepicker form-control" value="{{ date('d-M-Y',strtotime($lim_order_data->rivision_no)) }}">
+                                            <input type="text" name="rivision_no" class="datepicker form-control"
+                                            placeholder="Enter Last Revised"
+                                            value="{{ date('d-M-Y',strtotime($lim_order_data->rivision_no)) }}">
                                             @if($errors->has('rivision_no'))
                                                 <span class="text-danger">
                                                    {{ $errors->first('rivision_no') }}
@@ -109,7 +113,9 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Season*</label>
-                                            <input type="text" name="season" class="form-control" value="{{$lim_order_data->season}}" required>
+                                            <input type="text" name="season" class="form-control"
+                                            placeholder="Enter Season"
+                                            value="{{$lim_order_data->season}}" required>
                                             @if($errors->has('season'))
                                                 <span class="text-danger">
                                                    {{ $errors->first('season') }}
@@ -120,7 +126,9 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Order Date*</label>
-                                            <input type="text" name="order_date" class="datepicker form-control" value="{{ date('d-M-Y',strtotime($lim_order_data->order_date)) }}" required>
+                                            <input type="text" name="order_date" class="datepicker form-control"
+                                            placeholder="Enter Order Date"
+                                            value="{{ date('d-M-Y',strtotime($lim_order_data->order_date)) }}" required>
                                             @if($errors->has('order_date'))
                                                 <span class="text-danger">
                                                    {{ $errors->first('order_date') }}
@@ -142,7 +150,8 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>X-Country Date*</label>
-                                            <input type="text" name="ship_exp_date" class="datepicker form-control" value="{{ date('d-M-Y',strtotime($lim_order_data->ship_exp_date)) }}" required>
+                                            <input type="text" name="ship_exp_date" class="datepicker form-control"
+                                            placeholder="Enter X-Country Date"value="{{ date('d-M-Y',strtotime($lim_order_data->ship_exp_date)) }}" required>
                                             @if($errors->has('ship_exp_date'))
                                                 <span class="text-danger">
                                                    {{ $errors->first('ship_exp_date') }}
@@ -153,7 +162,9 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Terms*</label>
-                                            <input type="text" name="ship_terms" class="form-control" value="{{$lim_order_data->ship_terms}}" required>
+                                            <input type="text" name="ship_terms" class="form-control"
+                                            placeholder="Enter Terms"
+                                            value="{{$lim_order_data->ship_terms}}" required>
                                             @if($errors->has('ship_terms'))
                                                 <span class="text-danger">
                                                    {{ $errors->first('ship_terms') }}
@@ -165,7 +176,9 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Payment / Draft at*</label>
-                                            <input type="text" name="payment_terms" class="form-control" value="{{$lim_order_data->payment_terms}}" required>
+                                            <input type="text" name="payment_terms" class="form-control"
+                                            placeholder="Enter Payment / Draft at"
+                                            value="{{$lim_order_data->payment_terms}}" required>
                                             @if($errors->has('payment_terms'))
                                                 <span class="text-danger">
                                                    {{ $errors->first('payment_terms') }}
@@ -176,7 +189,9 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Fabric Ref*</label>
-                                            <input type="text" name="febric_ref" class="form-control" value="{{$lim_order_data->febric_ref}}" required>
+                                            <input type="text" name="febric_ref" class="form-control"
+                                            placeholder="Enter Fabric Ref"
+                                            value="{{$lim_order_data->febric_ref}}" required>
                                             @if($errors->has('febric_ref'))
                                                 <span class="text-danger">
                                                    {{ $errors->first('febric_ref') }}
@@ -187,7 +202,9 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Brand/Label*</label>
-                                            <input type="text" name="brand" class="form-control" value="{{$lim_order_data->brand}}">
+                                            <input type="text" name="brand" class="form-control"
+                                            placeholder="Brand/Label"
+                                             value="{{$lim_order_data->brand}}">
                                             @if($errors->has('brand'))
                                                 <span class="text-danger">
                                                    {{ $errors->first('brand') }}
@@ -198,7 +215,9 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Ship Via*</label>
-                                            <input type="text" name="ship_via" class="form-control" value="{{$lim_order_data->ship_via}}">
+                                            <input type="text" name="ship_via" class="form-control"
+                                            placeholder="Enter Ship Via"
+                                            value="{{$lim_order_data->ship_via}}">
                                             @if($errors->has('ship_via'))
                                                 <span class="text-danger">
                                                    {{ $errors->first('ship_via') }}
@@ -209,7 +228,9 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Style No*</label>
-                                            <input type="text" name="style_no" class="form-control" required value="{{$lim_order_data->style_no}}">
+                                            <input type="text" name="style_no" class="form-control"
+                                            placeholder="Enter Style No"
+                                            required value="{{$lim_order_data->style_no}}">
                                             @if($errors->has('style_no'))
                                                 <span class="text-danger">
                                                    {{ $errors->first('style_no') }}
@@ -220,7 +241,9 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>CA/RN*</label>
-                                            <input type="text" name="ca" class="form-control" value="{{$lim_order_data->ca}}" required>
+                                            <input type="text"
+                                            placeholder="Enter CA/RN"
+                                            name="ca" class="form-control" value="{{$lim_order_data->ca}}" required>
                                             @if($errors->has('ca'))
                                                 <span class="text-danger">
                                                    {{ $errors->first('ca') }}
@@ -231,7 +254,9 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Total Quantity*</label>
-                                            <input type="text" id="total_quantity" name="total_quantity" id="total_quantity" value="{{$lim_order_data->total_quantity}}" class="form-control total_quantity" required readonly>
+                                            <input type="text" id="total_quantity" name="total_quantity" id="total_quantity"
+                                            placeholder="Enter Total Quantity"
+                                            value="{{$lim_order_data->total_quantity}}" class="form-control total_quantity" required readonly>
                                             @if($errors->has('total_quantity'))
                                                 <span class="text-danger">
                                                    {{ $errors->first('total_quantity') }}
@@ -243,7 +268,9 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Total Amount*</label>
-                                            <input type="text" id="total_amount" name="total_amount" value="{{$lim_order_data->total_amount}}" class="form-control total_amount" required readonly>
+                                            <input type="text" id="total_amount" name="total_amount"
+                                            placeholder="Enter Total Amount"
+                                            value="{{$lim_order_data->total_amount}}" class="form-control total_amount" required readonly>
                                             @if($errors->has('amount'))
                                                 <span class="text-danger">
                                                    {{ $errors->first('amount') }}
@@ -255,7 +282,8 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Item Description*</label>
-                                            <input type="text" name="description" class="form-control" id="description" value="{{$lim_order_data->description}}">
+                                            <input type="text" name="description" class="form-control" id="description"
+                                            placeholder="Enter Item Description" value="{{$lim_order_data->description}}">
                                             @if($errors->has('description'))
                                                 <span class="text-danger">
                                                    {{ $errors->first('description') }}
@@ -267,7 +295,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Fabrication*</label>
-                                            <input type="text" name="fabrication" class="form-control" id="description" value="{{$lim_order_data->fabrication}}">
+                                            <input type="text" name="fabrication" class="form-control" id="description"  placeholder="Enter Fabrication"value="{{$lim_order_data->fabrication}}">
                                             @if($errors->has('fabrication'))
                                                 <span class="text-danger">
                                                    {{ $errors->first('fabrication') }}
@@ -309,6 +337,7 @@
 
                             <div class="color_box">
                             @foreach($lim_details as $key => $value)
+                            {{-- {{ dd($value) }} --}}
                                 <div class="row">
                                     <div class="col-md-12" style="margin:30px 0px;">
                                         <table id="colorSection" width="100%">
@@ -327,8 +356,8 @@
                                              </thead>
                                              <tbody>
                                                  <tr>
-                                                     <td><input type="text" name="color[]" class="form-control" value="{{$value->color}}"></td>
-                                                     <td><input type="text" name="color_code[]" class="form-control" value="{{$value->color_code}}"></td>
+                                                     <td><input type="text" name="color[]" class="form-control" value="{{$value->color}}" placeholder="Enter Color Name"></td>
+                                                     <td><input type="text" name="color_code[]" class="form-control" placeholder="Enter Color Code " value="{{$value->color_code}}"></td>
                                                      <td><input type="number" min="0" step="any" name="color_wise_quantity[]" value="{{$value->color_wise_quantity}}" id="color_wise_quantity{{ $key+1 }}" class="form-control color_wise_quantity{{ $key+1 }}" readonly></td>
                                                      <td><input type="number" min="0" step="any" name="color_unit_price[]" id="color_unit_price{{ $key+1 }}" value="{{$value->color_unit_price}}" class="form-control color_unit_price{{ $key+1 }}"></td>
                                                      <td><input type="number" min="0" step="any" name="sub_total[]" id="sub_total{{ $key+1 }}" value="{{$value->sub_total}}" class="form-control sub_total{{ $key+1 }}" readonly></td>
@@ -344,13 +373,34 @@
                                                     <th>Quantity</th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody id="t_body_id_{{ $key }}">
+                                                @for ($i=1; $i<=$sizeCount+1; $i++)
+                                                    <tr class="row-concat{{ $i }}" id="row-concat_{{ $i }}">
+                                                        <td><input type="text" name="size{{ $i }}[]" class="form-control" value="{{$value['size'.$i]}}" placeholder="Enter Size"></td>
+                                                        <td><input type="text" name="prepack{{ $i }}[]" class="form-control" value="{{$value['prepack'.$i]}}" placeholder="Enter prepack"></td>
+                                                        <td><input type="number" min="0" step="any" name="quantity{{ $i }}[]" value="{{$value['quantity'.$i]}}" id="quantity{{ $key+1 }}" class="form-control quantity{{ $key+1 }}" placeholder="Enter quantity"></td>
+                                                        {{-- <td><a id="remove_concat" class="btn btn-danger btn-sm" style="color:white;margin-left:10px;" onclick="removeRow(1, 1)">-</a></td> --}}
+                                                    </tr>
+                                                @endfor
+                                                <?php
+                                                    $rowCount=0;
+                                                    for($j=1; $j<=13; $j++){
+                                                        if($value['size'.$j] != null){
+                                                            $rowCount++;
+                                                        }
+                                                    }
+                                                ?>
                                                 <tr>
-                                                    <td><input type="text" name="size1[]" class="form-control" value="{{$value->size1}}"></td>
-                                                    <td><input type="text" name="prepack1[]" class="form-control" value="{{$value->prepack1}}"></td>
-                                                    <td><input type="number" min="0" step="any" name="quantity1[]" value="{{$value->quantity1}}" id="quantity{{ $key+1 }}" class="form-control quantity{{ $key+1 }}"></td>
+                                                    <button class="btn btn-success btn-sm" id="add_contact_{{ $key }}" style="color: white; " onclick="aFucc()">
+                                                        <i class="fa fa-plus"></i>
+                                                    </button>
                                                 </tr>
-                                                <tr>
+                                                {{-- <tr>
+                                                    <td><input type="text" name="size1[]" class="form-control" value="{{$value->size1}}" placeholder="Enter Size"></td>
+                                                    <td><input type="text" name="prepack1[]" class="form-control" value="{{$value->prepack1}}" placeholder="Enter prepack"></td>
+                                                    <td><input type="number" min="0" step="any" name="quantity1[]" value="{{$value->quantity1}}" id="quantity{{ $key+1 }}" class="form-control quantity{{ $key+1 }}" placeholder="Enter quantity"></td>
+                                                </tr> --}}
+                                                {{-- <tr>
                                                     <td><input type="text" name="size2[]" class="form-control" value="{{$value->size2}}"></td>
                                                     <td><input type="text" name="prepack2[]" class="form-control" value="{{$value->prepack2}}"></td>
                                                     <td><input type="number" min="0" step="any" name="quantity2[]" value="{{$value->quantity2}}" id="quantity{{ $key+1 }}" class="form-control quantity{{ $key+1 }}"></td>
@@ -409,7 +459,7 @@
                                                     <td><input type="text" name="size13[]" class="form-control" value="{{$value->size13}}"></td>
                                                     <td><input type="text" name="prepack13[]" class="form-control" value="{{$value->prepack13}}"></td>
                                                     <td><input type="number" min="0" step="any" name="quantity13[]" value="{{$value->quantity13}}" id="quantity{{ $key+1 }}" class="form-control quantity{{ $key+1 }}"></td>
-                                                </tr>
+                                                </tr> --}}
                                             </tbody>
                                        </table>
                                     </div>
@@ -431,15 +481,39 @@
 </section>
 <script type="text/javascript">
 
+    console.log(85);
+
     $("ul#order-summary").siblings('a').attr('aria-expanded','true');
     $("ul#order-summary").addClass("show");
     $("ul#order-summary #purchase-order-menu-list").addClass("active");
 
+    var y= '<?php $rowCount ?>';
+
+    function aFucc(){
+        console.log(85);
+            // if(y<concatMaxField){
+            //         y++;
+            //         $('#t_body_id_'+p).append('<tr class="row-concat1" id="row-concat_'+y+'"><td><input type="text" name="size'+y+'[]" class="form-control" placeholder="Enter Size"></td><td><input type="text" name="prepack'+y+'[]" class="form-control" placeholder="Enter Prepack"></td><td><input type="number" min="0" step="any" name="quantity'+y+'[]" id="quantity'+y+'" class="form-control quantity1" placeholder="Enter Quantity"></td><td><a id="remove_concat" class="btn btn-danger btn-sm" style="color:white;margin-left:10px;">-</a></td></tr>');
+            //     }
+        }
 
     $(document).ready(function(){
+
+
+        console.log("fsdfdsf");
+        alert("y=0");
         var max_field = 4;
+        // console.log(max_field);
+        var concatMaxField= 13;
         var wrapper = $(".color_box");
         var x = '<?php $lim_details->count() ?>';
+
+
+
+        // $('#add_contact').click(function(){
+
+        //     });
+
         $("#add_size").click(function(){
             if(x < max_field){
                 x++;
@@ -450,6 +524,11 @@
                                              <thead>\
                                                  <tr>\
                                                      <th>Color Name <a id="remove_size" class="btn btn-danger btn-sm" style="color:white;margin-left:10px;">-</a></th>\
+                                                     <th>\
+                                                        <a class="btn btn-success btn-sm" id="add_contact_'+x+'" onclick="addRow('+x+')" style="color: white; ">\
+                                                            <i class="fa fa-plus"></i>\
+                                                        </a>\
+                                                    </th>\
                                                      <th>Code</th>\
                                                      <th>Quantity</th>\
                                                      <th>Unit Price</th>\
@@ -474,72 +553,14 @@
                                                     <th>Quantity</th>\
                                                 </tr>\
                                             </thead>\
-                                            <tbody>\
-                                                <tr>\
+                                            <tbody id="t_body_id_'+x+'">\
+                                                <tr class="row-concat'+x+'" id="row-concat_1">\
                                                     <td><input type="text" name="size1[]" class="form-control"></td>\
                                                     <td><input type="text" name="prepack1[]" class="form-control"></td>\
                                                     <td><input type="number" min="0" step="any" name="quantity1[]" id="quantity'+x+'" class="form-control quantity'+x+'"></td>\
+                                                    <td><a id="remove_concat" class="btn btn-danger btn-sm" style="color:white;margin-left:10px;" onclick="removeRow(1, '+x+')">-</a></td>\
                                                 </tr>\
-                                                <tr>\
-                                                    <td><input type="text" name="size2[]" class="form-control"></td>\
-                                                    <td><input type="text" name="prepack2[]" class="form-control"></td>\
-                                                    <td><input type="number" min="0" step="any" name="quantity2[]" id="quantity'+x+'" class="form-control quantity'+x+'"></td>\
-                                                </tr>\
-                                                <tr>\
-                                                    <td><input type="text" name="size3[]" class="form-control"></td>\
-                                                    <td><input type="text" name="prepack3[]" class="form-control"></td>\
-                                                    <td><input type="number" min="0" step="any" name="quantity3[]" id="quantity'+x+'" class="form-control quantity'+x+'"></td>\
-                                                </tr>\
-                                                <tr>\
-                                                    <td><input type="text" name="size4[]" class="form-control"></td>\
-                                                    <td><input type="text" name="prepack4[]" class="form-control"></td>\
-                                                    <td><input type="number" min="0" step="any" name="quantity4[]" id="quantity'+x+'" class="form-control quantity'+x+'"></td>\
-                                                </tr>\
-                                                <tr>\
-                                                    <td><input type="text" name="size5[]" class="form-control"></td>\
-                                                    <td><input type="text" name="prepack5[]" class="form-control"></td>\
-                                                    <td><input type="number" min="0" step="any" name="quantity5[]" id="quantity'+x+'" class="form-control quantity'+x+'"></td>\
-                                                </tr>\
-                                                <tr>\
-                                                    <td><input type="text" name="size6[]" class="form-control"></td>\
-                                                    <td><input type="text" name="prepack6[]" class="form-control"></td>\
-                                                    <td><input type="number" min="0" step="any" name="quantity6[]" id="quantity'+x+'" class="form-control quantity'+x+'"></td>\
-                                                </tr>\
-                                                <tr>\
-                                                    <td><input type="text" name="size7[]" class="form-control"></td>\
-                                                    <td><input type="text" name="prepack7[]" class="form-control"></td>\
-                                                    <td><input type="number" min="0" step="any" name="quantity7[]" id="quantity'+x+'" class="form-control quantity'+x+'"></td>\
-                                                </tr>\
-                                                <tr>\
-                                                    <td><input type="text" name="size8[]" class="form-control"></td>\
-                                                    <td><input type="text" name="prepack8[]" class="form-control"></td>\
-                                                    <td><input type="number" min="0" step="any" name="quantity8[]" id="quantity'+x+'" class="form-control quantity'+x+'"></td>\
-                                                </tr>\
-                                                <tr>\
-                                                    <td><input type="text" name="size9[]" class="form-control"></td>\
-                                                    <td><input type="text" name="prepack9[]" class="form-control"></td>\
-                                                    <td><input type="number" min="0" step="any" name="quantity9[]" id="quantity'+x+'" class="form-control quantity'+x+'"></td>\
-                                                </tr>\
-                                                <tr>\
-                                                    <td><input type="text" name="size10[]" class="form-control"></td>\
-                                                    <td><input type="text" name="prepack10[]" class="form-control"></td>\
-                                                    <td><input type="number" min="0" step="any" name="quantity10[]" id="quantity'+x+'" class="form-control quantity'+x+'"></td>\
-                                                </tr>\
-                                                <tr>\
-                                                    <td><input type="text" name="size11[]" class="form-control"></td>\
-                                                    <td><input type="text" name="prepack11[]" class="form-control"></td>\
-                                                    <td><input type="number" min="0" step="any" name="quantity11[]" id="quantity'+x+'" class="form-control quantity'+x+'"></td>\
-                                                </tr>\
-                                                <tr>\
-                                                    <td><input type="text" name="size12[]" class="form-control"></td>\
-                                                    <td><input type="text" name="prepack12[]" class="form-control"></td>\
-                                                    <td><input type="number" min="0" step="any" name="quantity12[]" id="quantity'+x+'" class="form-control quantity'+x+'"></td>\
-                                                </tr>\
-                                                <tr>\
-                                                    <td><input type="text" name="size13[]" class="form-control"></td>\
-                                                    <td><input type="text" name="prepack13[]" class="form-control"></td>\
-                                                    <td><input type="number" min="0" step="any" name="quantity13[]" id="quantity'+x+'" class="form-control quantity'+x+'"></td>\
-                                                </tr>\
+
                                             </tbody>\
                                        </table>\
                                     </div>\
@@ -686,6 +707,23 @@
     }
 
     });
+
+    function addRow(x){
+            // console.log($('.dd_'+x).length+2);
+            var counter= $('.row-concat'+x).length+2;
+            // console.log($('.row-concat'+x).length);
+                if(counter-1<13){
+                    // y++;
+                    $('#t_body_id_'+x).append('<tr class="row-concat'+x+'" id="row-concat_'+counter+'"><td><input type="text" name="size'+counter+'[]" class="form-control" placeholder="Enter Size"></td><td><input type="text" name="prepack'+counter+'[]" class="form-control" placeholder="Enter Prepack"></td><td><input type="number" min="0" step="any" name="quantity'+counter+'[]" id="quantity'+counter+'" class="form-control quantity1" placeholder="Enter Quantity"></td><td><a id="remove_concat" class="btn btn-danger btn-sm" style="color:white;margin-left:10px;" onclick="removeRow('+counter+','+x+')">-</a></td></tr>');
+                }else{
+                    alert("Maximum row is 13");
+                }
+            }
+
+        function removeRow(counter, x){
+            // console.log(counter);
+            $('.row-concat'+x+ '#row-concat_'+counter).remove();
+        }
 
     tinymce.init({
       selector: 'textarea',

@@ -110,7 +110,7 @@
                     <div class="col-md-6 form-group">
                         <input type="hidden" name="employee_id" />
                         <label>{{trans('file.name')}} *</label>
-                        <input type="text" name="name" required class="form-control">
+                        <input type="text" name="name" required class="form-control" placeholder="Enter Name">
                     </div>
                     <div class="col-md-6 form-group">
                         <label>{{trans('file.Image')}}</label>
@@ -118,7 +118,7 @@
                     </div>
                     <div class="col-md-6 form-group">
                         <label>Designation</label>
-                        <input type="text" name="designation" class="form-control">
+                        <input type="text" name="designation" class="form-control" placeholder="Enter Designation">
                     </div>
                     <div class="col-md-6 form-group">
                         <label>{{trans('Upload CV')}}</label>
@@ -126,7 +126,7 @@
                     </div>
                     <div class="col-md-6 form-group">
                         <label>{{trans('file.Department')}} *</label>
-                        <select class="form-control selectpicker" name="department_id" required>
+                        <select class="form-control selectpicker" name="department_id" placeholder="Enter Department" required>
                             @foreach($lims_department_list as $department)
                             <option value="{{$department->id}}">{{$department->name}}</option>
                             @endforeach
@@ -134,36 +134,36 @@
                     </div>
                     <div class="col-md-6 form-group">
                         <label>{{trans('file.Email')}} </label>
-                        <input type="email" name="email" class="form-control">
+                        <input type="email" name="email" placeholder="Enter Email" class="form-control">
                     </div>
                     <div class="col-md-6 form-group">
                         <label>{{trans('file.Phone Number')}} *</label>
-                        <input type="text" name="phone_number" required class="form-control">
+                        <input type="text" name="phone_number" required class="form-control" placeholder="Enter Phone Number">
                     </div>
                     <div class="col-md-6 form-group">
                         <label>{{trans('Present Address')}}</label>
-                        <input type="text" name="address" class="form-control">
+                        <input type="text" name="address" placeholder="Enter Address" class="form-control">
                     </div>
                     <div class="col-md-6 form-group">
                         <label>{{trans('NID')}}</label>
-                        <input type="text" name="nid_number" class="form-control">
+                        <input type="text" name="nid_number" class="form-control" placeholder="Enter NID Number">
                     </div>
                     <div class="col-md-6 form-group">
                         <label>{{trans('Prmanent Address')}}</label>
-                        <input type="text" name="address2" class="form-control">
+                        <input type="text" name="address2" placeholder="Enter Address" class="form-control">
                     </div>
                     <div class="col-md-6 form-group">
                         <label>{{trans('Joining Date')}}</label>
-                        <input type="text" name="joining_date" class="datepicker form-control">
+                        <input type="text" name="joining_date" class="datepicker form-control" placeholder="Enter Joining Date">
                     </div>
 
                     <div class="col-md-6 form-group">
                         <label>{{trans('Present Salary')}}</label>
-                        <input type="text" name="present_salary" class="form-control">
+                        <input type="text" name="present_salary" class="form-control" placeholder="Enter Present Salary">
                     </div>
                     <div class="col-md-6 form-group">
                         <label>{{trans('Joining Salary')}}</label>
-                        <input type="text" name="joining_salary" class="form-control">
+                        <input type="text" name="joining_salary" class="form-control" placeholder="Enter Joining Salary">
                     </div>
                     <!--<div class="col-md-6 form-group">-->
                     <!--    <label>{{trans('file.City')}}</label>-->

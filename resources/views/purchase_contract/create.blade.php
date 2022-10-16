@@ -19,7 +19,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Purchase Contract No *</label>
-                                            <input type="text" name="contract_no" class="form-control" required>
+                                            <input type="text" name="contract_no" class="form-control" placeholder="Enter Purchase Contract No" required>
                                             @if($errors->has('contract_no'))
                                                 <span class="text-danger">
                                                     {{ $errors->first('contract_no') }}
@@ -30,7 +30,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Master Purchase Contract No *</label>
-                                            <input type="text" name="master_contract_no" class="form-control" required>
+                                            <input type="text" name="master_contract_no" class="form-control" placeholder="Enter Master Purchase Contract No" required>
                                             @if($errors->has('master_contract_no'))
                                                 <span class="text-danger">
                                                     {{ $errors->first('master_contract_no') }}
@@ -42,7 +42,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Vendor Contract Date *</label>
-                                            <input type="text" name="vendor_date" class="datepicker form-control" required>
+                                            <input type="text" name="vendor_date" class="datepicker form-control" placeholder="Enter Vendor Contract Date" required>
                                             @if($errors->has('vendor_date'))
                                                 <span class="text-danger">
                                                    {{ $errors->first('vendor_date') }}
@@ -54,7 +54,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Master Contract Date *</label>
-                                            <input type="text" name="master_date" class="datepicker form-control" required>
+                                            <input type="text" name="master_date" class="datepicker form-control" placeholder="Enter Master Contract Date" required>
                                             @if($errors->has('master_date'))
                                                 <span class="text-danger">
                                                    {{ $errors->first('master_date') }}
@@ -114,7 +114,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Vendor Delivery Date *</label>
-                                            <input type="text" name="delivery_date" class="datepicker form-control" required>
+                                            <input type="text" name="delivery_date" class="datepicker form-control" placeholder="Enter Vendor Delivery Date" required>
                                             @if($errors->has('delivery_date'))
                                                 <span class="text-danger">
                                                    {{ $errors->first('delivery_date') }}
@@ -149,7 +149,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Master Delivery Date *</label>
-                                            <input type="text" name="delivery_date_master" class="datepicker form-control" required>
+                                            <input type="text" name="delivery_date_master" class="datepicker form-control" placeholder="Enter Master Delivery Date"  required>
                                             @if($errors->has('delivery_date_master'))
                                                 <span class="text-danger">
                                                    {{ $errors->first('delivery_date_master') }}
