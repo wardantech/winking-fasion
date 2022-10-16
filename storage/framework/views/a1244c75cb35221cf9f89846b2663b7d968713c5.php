@@ -1080,19 +1080,19 @@
 
                     <div class="form-group">
                         <label><?php echo e(trans('file.Account No')); ?> *</label>
-                        <input type="text" name="account_no" required class="form-control">
+                        <input type="text" name="account_no" placeholder="Enter Account No" required class="form-control">
                     </div>
                     <div class="form-group">
                         <label><?php echo e(trans('file.name')); ?> *</label>
-                        <input type="text" name="name" required class="form-control">
+                        <input type="text" name="name" placeholder="Enter Name" required class="form-control">
                     </div>
                     <div class="form-group">
                         <label><?php echo e(trans('file.Initial Balance')); ?></label>
-                        <input type="number" name="initial_balance" step="any" class="form-control">
+                        <input type="number" name="initial_balance" placeholder="Enter Initial Balance" step="any" class="form-control">
                     </div>
                     <div class="form-group">
                         <label><?php echo e(trans('file.Note')); ?></label>
-                        <textarea name="note" rows="3" class="form-control"></textarea>
+                        <textarea name="note" rows="3" placeholder="Enter Note" class="form-control"></textarea>
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary"><?php echo e(trans('file.submit')); ?></button>
