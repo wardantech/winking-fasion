@@ -23,7 +23,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>PO Number*</label>
-                                                <input type="text" name="po_number" class="form-control">
+                                                <input type="text" name="po_number" class="form-control" placeholder="Enter PO Number">
                                                 <?php if($errors->has('po_number')): ?>
                                                     <span class="text-danger">
                                                    <?php echo e($errors->first('po_number')); ?>
@@ -35,7 +35,8 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Last Revised</label>
-                                                <input type="text" name="rivision_no" class="datepicker form-control " >
+                                                <input type="text" name="rivision_no" class="datepicker form-control "
+                                                placeholder="Enter Last Revised" >
                                                 <?php if($errors->has('rivision_no')): ?>
                                                     <span class="text-danger">
                                                    <?php echo e($errors->first('rivision_no')); ?>
@@ -118,7 +119,9 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Season*</label>
-                                                <input type="text" name="season" class="form-control" required>
+                                                <input type="text"
+                                                placeholder="Enter Season"
+                                                name="season" class="form-control" required>
                                                 <?php if($errors->has('season')): ?>
                                                     <span class="text-danger">
                                                    <?php echo e($errors->first('season')); ?>
@@ -130,7 +133,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Order date*</label>
-                                                <input type="text" name="order_date" class="datepicker form-control" required>
+                                                <input type="text" name="order_date" class="datepicker form-control" placeholder="Enter Order Date" required>
                                                 <?php if($errors->has('order_date')): ?>
                                                     <span class="text-danger">
                                                    <?php echo e($errors->first('order_date')); ?>
@@ -153,7 +156,8 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>X-Country Date*</label>
-                                                <input type="text" name="ship_exp_date" class="datepicker form-control" required>
+                                                <input type="text" name="ship_exp_date" class="datepicker form-control" placeholder="Enter X-Country Date"
+                                            required>
                                                 <?php if($errors->has('ship_exp_date')): ?>
                                                     <span class="text-danger">
                                                    <?php echo e($errors->first('ship_exp_date')); ?>
@@ -165,7 +169,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Terms*</label>
-                                                <input type="text" name="ship_terms" class="form-control" required>
+                                                <input type="text" name="ship_terms" class="form-control" placeholder="Enter Terms " required>
                                                 <?php if($errors->has('ship_terms')): ?>
                                                     <span class="text-danger">
                                                    <?php echo e($errors->first('ship_terms')); ?>
@@ -177,7 +181,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Payment / Draft at*</label>
-                                                <input type="text" name="payment_terms" class="form-control" required>
+                                                <input type="text" name="payment_terms" class="form-control" placeholder="Enter Payment / Draft at " required>
                                                 <?php if($errors->has('payment_terms')): ?>
                                                     <span class="text-danger">
                                                    <?php echo e($errors->first('payment_terms')); ?>
@@ -189,7 +193,9 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Fabric Ref*</label>
-                                                <input type="text" name="febric_ref" class="form-control" required>
+                                                <input type="text" name="febric_ref" class="form-control"
+                                                placeholder="Enter Fabric Ref"
+                                                 required>
                                                 <?php if($errors->has('febric_ref')): ?>
                                                     <span class="text-danger">
                                                    <?php echo e($errors->first('febric_ref')); ?>
@@ -201,7 +207,7 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Brand/Label*</label>
-                                                <input type="text" name="brand" class="form-control">
+                                                <input type="text" name="brand" class="form-control" placeholder="Enter Brand/Label">
                                                 <?php if($errors->has('brand')): ?>
                                                     <span class="text-danger">
                                                    <?php echo e($errors->first('brand')); ?>
@@ -213,7 +219,7 @@
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Ship Via*</label>
-                                                <input type="text" name="ship_via" class="form-control">
+                                                <input type="text" name="ship_via" class="form-control" placeholder="Enter Ship Via">
                                                 <?php if($errors->has('ship_via')): ?>
                                                     <span class="text-danger">
                                                    <?php echo e($errors->first('ship_via')); ?>
@@ -225,7 +231,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Style No</label>
-                                                <input type="text" name="style_no" class="form-control" required>
+                                                <input type="text" name="style_no" class="form-control" placeholder="Enter Style No" required>
                                                 <?php if($errors->has('style_no')): ?>
                                                     <span class="text-danger">
                                                    <?php echo e($errors->first('style_no')); ?>
@@ -237,7 +243,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>CA/RN*</label>
-                                                <input type="text" name="ca" class="form-control" required>
+                                                <input type="text" name="ca" class="form-control" placeholder="Enter CA/RN" required>
                                                 <?php if($errors->has('ca')): ?>
                                                     <span class="text-danger">
                                                    <?php echo e($errors->first('ca')); ?>
@@ -275,7 +281,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Item Description</label>
-                                                <input type="text" name="description" class="form-control" id="description">
+                                                <input type="text" name="description" class="form-control" id="description" placeholder="Enter Description">
                                                 <?php if($errors->has('description')): ?>
                                                     <span class="text-danger">
                                                    <?php echo e($errors->first('description')); ?>
@@ -288,7 +294,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Fabrication</label>
-                                                <input type="text" name="fabrication" class="form-control" id="description">
+                                                <input type="text" name="fabrication" class="form-control" id="description" placeholder="Enter Febrication">
                                                 <?php if($errors->has('fabrication')): ?>
                                                     <span class="text-danger">
                                                    <?php echo e($errors->first('fabrication')); ?>
@@ -346,10 +352,10 @@
                                                     </thead>
                                                     <tbody>
                                                     <tr>
-                                                        <td><input type="text" name="color[]" class="form-control"></td>
-                                                        <td><input type="text" name="color_code[]" class="form-control"></td>
+                                                        <td><input type="text" name="color[]" class="form-control" placeholder="Enter Color Name"></td>
+                                                        <td><input type="text" name="color_code[]" class="form-control" placeholder="Enter Color Code"></></td>
                                                         <td><input type="number" min="0" step="any" name="color_wise_quantity[]" value="0" id="color_wise_quantity1" class="form-control color_wise_quantity1" readonly></td>
-                                                        <td><input type="number" min="0" step="any" name="color_unit_price[]" id="color_unit_price1" class="form-control color_unit_price1"></td>
+                                                        <td><input type="number" min="0" step="any" name="color_unit_price[]" id="color_unit_price1" class="form-control color_unit_price1" placeholder="Enter Unit Price "></></td>
                                                         <td><input type="number" min="0" step="any" name="sub_total[]" id="sub_total1" value="0.00" class="form-control sub_total1" readonly></td>
                                                     </tr>
                                                     </tbody>
@@ -363,72 +369,20 @@
                                                         <th>Quantity</th>
                                                     </tr>
                                                     </thead>
-                                                    <tbody>
-                                                    <tr>
-                                                        <td><input type="text" name="size1[]" class="form-control"></td>
-                                                        <td><input type="text" name="prepack1[]" class="form-control"></td>
-                                                        <td><input type="number" min="0" step="any" name="quantity1[]" id="quantity1" class="form-control quantity1"></td>
+                                                    <tbody id="t_body_id">
+                                                    <tr class="row-concat1" id="row-concat_1">
+                                                        <td><input type="text" name="size1[]" class="form-control" placeholder="Enter Size"></td>
+                                                        <td><input type="text" name="prepack1[]" class="form-control" placeholder="Enter Prepack"></td>
+                                                        <td><input type="number" min="0" step="any" name="quantity1[]" id="quantity1" class="form-control quantity1" placeholder="Enter Quantity"></td>
+                                                        <td><a id="remove_concat" class="btn btn-danger btn-sm" style="color:white;margin-left:10px;" onclick="removeRow(1, 1)">-</a></td>
                                                     </tr>
+                                                    
                                                     <tr>
-                                                        <td><input type="text" name="size2[]" class="form-control"></td>
-                                                        <td><input type="text" name="prepack2[]" class="form-control"></td>
-                                                        <td><input type="number" min="0" step="any" name="quantity2[]" id="quantity1" class="form-control quantity1"></td>
+                                                        <a class="btn btn-success btn-sm" id="add_contact" style="color: white; ">
+                                                            <i class="fa fa-plus"></i>
+                                                        </a>
                                                     </tr>
-                                                    <tr>
-                                                        <td><input type="text" name="size3[]" class="form-control"></td>
-                                                        <td><input type="text" name="prepack3[]" class="form-control"></td>
-                                                        <td><input type="number" min="0" step="any" name="quantity3[]" id="quantity1" class="form-control quantity1"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><input type="text" name="size4[]" class="form-control"></td>
-                                                        <td><input type="text" name="prepack4[]" class="form-control"></td>
-                                                        <td><input type="number" min="0" step="any" name="quantity4[]" id="quantity1" class="form-control quantity1"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><input type="text" name="size5[]" class="form-control"></td>
-                                                        <td><input type="text" name="prepack5[]" class="form-control"></td>
-                                                        <td><input type="number" min="0" step="any" name="quantity5[]" id="quantity1" class="form-control quantity1"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><input type="text" name="size6[]" class="form-control"></td>
-                                                        <td><input type="text" name="prepack6[]" class="form-control"></td>
-                                                        <td><input type="number" min="0" step="any" name="quantity6[]" id="quantity1" class="form-control quantity1"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><input type="text" name="size7[]" class="form-control"></td>
-                                                        <td><input type="text" name="prepack7[]" class="form-control"></td>
-                                                        <td><input type="number" min="0" step="any" name="quantity7[]" id="quantity1" class="form-control quantity1"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><input type="text" name="size8[]" class="form-control"></td>
-                                                        <td><input type="text" name="prepack8[]" class="form-control"></td>
-                                                        <td><input type="number" min="0" step="any" name="quantity8[]" id="quantity1" class="form-control quantity1"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><input type="text" name="size9[]" class="form-control"></td>
-                                                        <td><input type="text" name="prepack9[]" class="form-control"></td>
-                                                        <td><input type="number" min="0" step="any" name="quantity9[]" id="quantity1" class="form-control quantity1"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><input type="text" name="size10[]" class="form-control"></td>
-                                                        <td><input type="text" name="prepack10[]" class="form-control"></td>
-                                                        <td><input type="number" min="0" step="any" name="quantity10[]" id="quantity1" class="form-control quantity1"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><input type="text" name="size11[]" class="form-control"></td>
-                                                        <td><input type="text" name="prepack11[]" class="form-control"></td>
-                                                        <td><input type="number" min="0" step="any" name="quantity11[]" id="quantity1" class="form-control quantity1"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><input type="text" name="size12[]" class="form-control"></td>
-                                                        <td><input type="text" name="prepack12[]" class="form-control"></td>
-                                                        <td><input type="number" min="0" step="any" name="quantity12[]" id="quantity1" class="form-control quantity1"></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td><input type="text" name="size13[]" class="form-control"></td>
-                                                        <td><input type="text" name="prepack13[]" class="form-control"></td>
-                                                        <td><input type="number" min="0" step="any" name="quantity13[]" id="quantity1" class="form-control quantity1"></td>
-                                                    </tr>
+                                                    
                                                     </tbody>
                                                 </table>
                                             </div>
@@ -455,13 +409,28 @@
         $("ul#order-summary").siblings('a').attr('aria-expanded','true');
         $("ul#order-summary").addClass("show");
         $("ul#order-summary #purchase-order-menu").addClass("active");
+
+        var y= 1;
         $(document).ready(function(){
             var max_field = 7;
+            console.log(max_field);
+            var concatMaxField= 13;
             var wrapper = $(".color_box");
             var x = 1;
+            // var y= 1;
+            $('#add_contact').click(function(){
+                if(y<concatMaxField){
+                    y++;
+                    $('#t_body_id').append('<tr class="row-concat1" id="row-concat_'+y+'"><td><input type="text" name="size'+y+'[]" class="form-control" placeholder="Enter Size"></td><td><input type="text" name="prepack'+y+'[]" class="form-control" placeholder="Enter Prepack"></td><td><input type="number" min="0" step="any" name="quantity'+y+'[]" id="quantity'+y+'" class="form-control quantity1" placeholder="Enter Quantity"></td><td><a id="remove_concat" class="btn btn-danger btn-sm" style="color:white;margin-left:10px;" onclick="removeRow('+y+', 1)">-</a></td></tr>');
+                }
+            });
+
+            // onclick="addRow('+x+','+y+')"
+
             $("#add_size").click(function(){
                 if(x < max_field){
                     x++;
+                    // y=1;
                     $('#color_number').val(x);
                     $(wrapper).append('<div class="row">\
                                     <div class="col-md-12" style="margin: 30px 0px;">\
@@ -469,6 +438,11 @@
                                              <thead>\
                                                  <tr>\
                                                      <th>Color Name <a id="remove_size" class="btn btn-danger btn-sm" style="color:white;margin-left:10px;">-</a></th>\
+                                                     <th>\
+                                                        <a class="btn btn-success btn-sm" id="add_contact_'+x+'" onclick="addRow('+x+')" style="color: white; ">\
+                                                            <i class="fa fa-plus"></i>\
+                                                        </a>\
+                                                    </th>\
                                                      <th>Code</th>\
                                                      <th>Quantity</th>\
                                                      <th>Unit Price</th>\
@@ -493,80 +467,45 @@
                                                     <th>Quantity</th>\
                                                 </tr>\
                                             </thead>\
-                                            <tbody>\
-                                                <tr>\
+                                            <tbody id="t_body_id_'+x+'">\
+                                                <tr class="row-concat'+x+'" id="row-concat_1">\
                                                     <td><input type="text" name="size1[]" class="form-control"></td>\
                                                     <td><input type="text" name="prepack1[]" class="form-control"></td>\
                                                     <td><input type="number" min="0" step="any" name="quantity1[]" id="quantity'+x+'" class="form-control quantity'+x+'"></td>\
-                                                </tr>\
-                                                <tr>\
-                                                    <td><input type="text" name="size2[]" class="form-control"></td>\
-                                                    <td><input type="text" name="prepack2[]" class="form-control"></td>\
-                                                    <td><input type="number" min="0" step="any" name="quantity2[]" id="quantity'+x+'" class="form-control quantity'+x+'"></td>\
-                                                </tr>\
-                                                <tr>\
-                                                    <td><input type="text" name="size3[]" class="form-control"></td>\
-                                                    <td><input type="text" name="prepack3[]" class="form-control"></td>\
-                                                    <td><input type="number" min="0" step="any" name="quantity3[]" id="quantity'+x+'" class="form-control quantity'+x+'"></td>\
-                                                </tr>\
-                                                <tr>\
-                                                    <td><input type="text" name="size4[]" class="form-control"></td>\
-                                                    <td><input type="text" name="prepack4[]" class="form-control"></td>\
-                                                    <td><input type="number" min="0" step="any" name="quantity4[]" id="quantity'+x+'" class="form-control quantity'+x+'"></td>\
-                                                </tr>\
-                                                <tr>\
-                                                    <td><input type="text" name="size5[]" class="form-control"></td>\
-                                                    <td><input type="text" name="prepack5[]" class="form-control"></td>\
-                                                    <td><input type="number" min="0" step="any" name="quantity5[]" id="quantity'+x+'" class="form-control quantity'+x+'"></td>\
-                                                </tr>\
-                                                <tr>\
-                                                    <td><input type="text" name="size6[]" class="form-control"></td>\
-                                                    <td><input type="text" name="prepack6[]" class="form-control"></td>\
-                                                    <td><input type="number" min="0" step="any" name="quantity6[]" id="quantity'+x+'" class="form-control quantity'+x+'"></td>\
-                                                </tr>\
-                                                <tr>\
-                                                    <td><input type="text" name="size7[]" class="form-control"></td>\
-                                                    <td><input type="text" name="prepack7[]" class="form-control"></td>\
-                                                    <td><input type="number" min="0" step="any" name="quantity7[]" id="quantity'+x+'" class="form-control quantity'+x+'"></td>\
-                                                </tr>\
-                                                <tr>\
-                                                    <td><input type="text" name="size8[]" class="form-control"></td>\
-                                                    <td><input type="text" name="prepack8[]" class="form-control"></td>\
-                                                    <td><input type="number" min="0" step="any" name="quantity8[]" id="quantity'+x+'" class="form-control quantity'+x+'"></td>\
-                                                </tr>\
-                                                <tr>\
-                                                    <td><input type="text" name="size9[]" class="form-control"></td>\
-                                                    <td><input type="text" name="prepack9[]" class="form-control"></td>\
-                                                    <td><input type="number" min="0" step="any" name="quantity9[]" id="quantity'+x+'" class="form-control quantity'+x+'"></td>\
-                                                </tr>\
-                                                <tr>\
-                                                    <td><input type="text" name="size10[]" class="form-control"></td>\
-                                                    <td><input type="text" name="prepack10[]" class="form-control"></td>\
-                                                    <td><input type="number" min="0" step="any" name="quantity10[]" id="quantity'+x+'" class="form-control quantity'+x+'"></td>\
-                                                </tr>\
-                                                <tr>\
-                                                    <td><input type="text" name="size11[]" class="form-control"></td>\
-                                                    <td><input type="text" name="prepack11[]" class="form-control"></td>\
-                                                    <td><input type="number" min="0" step="any" name="quantity11[]" id="quantity'+x+'" class="form-control quantity'+x+'"></td>\
-                                                </tr>\
-                                                <tr>\
-                                                    <td><input type="text" name="size12[]" class="form-control"></td>\
-                                                    <td><input type="text" name="prepack12[]" class="form-control"></td>\
-                                                    <td><input type="number" min="0" step="any" name="quantity12[]" id="quantity'+x+'" class="form-control quantity'+x+'"></td>\
-                                                </tr>\
-                                                <tr>\
-                                                    <td><input type="text" name="size13[]" class="form-control"></td>\
-                                                    <td><input type="text" name="prepack13[]" class="form-control"></td>\
-                                                    <td><input type="number" min="0" step="any" name="quantity13[]" id="quantity'+x+'" class="form-control quantity'+x+'"></td>\
+                                                    <td><a id="remove_concat" class="btn btn-danger btn-sm" style="color:white;margin-left:10px;" onclick="removeRow(1, '+x+')">-</a></td>\
                                                 </tr>\
                                             </tbody>\
                                        </table>\
                                     </div>\
                                 </div>');
+
+                                // var concatCount= x-1;
+                                //     $('#add_contact').hide();
+                                //     $('#add_contact_'+concatCount).hide();
+
+                                // function addRow(x){
+                                //     if(y<concatMaxField){
+                                //         y++;
+                                //         $('#t_body_id_'+x).append('<tr><td><input type="text" name="size'+y+'[]" class="form-control" placeholder="Enter Size"></td><td><input type="text" name="prepack'+y+'[]" class="form-control" placeholder="Enter Prepack"></td><td><input type="number" min="0" step="any" name="quantity'+y+'[]" id="quantity'+y+'" class="form-control quantity1" placeholder="Enter Quantity"></td></tr>');
+                                //     }
+                                // }
+
+                                // $('#add_contact_'+x).click(function(){
+                                //     console.log($('#add_contact_'+x));
+                                //     if(y<concatMaxField){
+                                //         y++;
+                                //         $('#t_body_id_'+x).append('<tr><td><input type="text" name="size'+y+'[]" class="form-control" placeholder="Enter Size"></td><td><input type="text" name="prepack'+y+'[]" class="form-control" placeholder="Enter Prepack"></td><td><input type="number" min="0" step="any" name="quantity'+y+'[]" id="quantity'+y+'" class="form-control quantity1" placeholder="Enter Quantity"></td></tr>');
+                                //     }
+                                // });
                 }else{
                     alert('you can not add more than 7 field');
                 }
             });
+
+
+
+
+
             $(wrapper).on("click","#remove_size", function(e){ //user click on remove text
                 e.preventDefault();
                 $(this).parent('th').parent('tr').parent('thead').parent('table').parent('div').parent('div').remove(); x--;
@@ -752,6 +691,24 @@
                 $('.total_amount').val(parseFloat(total_amount).toFixed(2));
             }
         });
+
+        function addRow(x){
+            // console.log($('.dd_'+x).length+2);
+            var counter= $('.row-concat'+x).length+2;
+            // console.log($('.row-concat'+x).length);
+                if(counter-1<13){
+                    // y++;
+                    $('#t_body_id_'+x).append('<tr class="row-concat'+x+'" id="row-concat_'+counter+'"><td><input type="text" name="size'+counter+'[]" class="form-control" placeholder="Enter Size"></td><td><input type="text" name="prepack'+counter+'[]" class="form-control" placeholder="Enter Prepack"></td><td><input type="number" min="0" step="any" name="quantity'+counter+'[]" id="quantity'+counter+'" class="form-control quantity1" placeholder="Enter Quantity"></td><td><a id="remove_concat" class="btn btn-danger btn-sm" style="color:white;margin-left:10px;" onclick="removeRow('+counter+','+x+')">-</a></td></tr>');
+                }else{
+                    alert("Maximum row is 13");
+                }
+            }
+
+        function removeRow(counter, x){
+            // console.log(counter);
+            $('.row-concat'+x+ '#row-concat_'+counter).remove();
+        }
+
         tinymce.init({
             selector: 'textarea',
             height: 150,
@@ -765,4 +722,5 @@
         });
     </script>
 <?php $__env->stopSection(); ?>
+
 <?php echo $__env->make('layout.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\laragon\www\salepro\winking-fasion\resources\views/purchase/order.blade.php ENDPATH**/ ?>

@@ -478,10 +478,9 @@
             </div>
         </div>
     </div>
+
 </section>
 <script type="text/javascript">
-
-    console.log(85);
 
     $("ul#order-summary").siblings('a').attr('aria-expanded','true');
     $("ul#order-summary").addClass("show");
@@ -560,7 +559,6 @@
                                                     <td><input type="number" min="0" step="any" name="quantity1[]" id="quantity'+x+'" class="form-control quantity'+x+'"></td>\
                                                     <td><a id="remove_concat" class="btn btn-danger btn-sm" style="color:white;margin-left:10px;" onclick="removeRow(1, '+x+')">-</a></td>\
                                                 </tr>\
-
                                             </tbody>\
                                        </table>\
                                     </div>\
