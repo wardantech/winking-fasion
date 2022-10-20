@@ -29,7 +29,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Style No *</label>
-                                            <input type="text" name="style_no" class="form-control" required>
+                                            <input type="text" name="style_no" class="form-control" placeholder="Enter Style No" required >
                                             <?php if($errors->has('style_no')): ?>
                                                 <span class="text-danger">
                                                     <?php echo e($errors->first('style_no')); ?>
@@ -58,7 +58,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Season *</label>
-                                            <input type="text" name="season" class="form-control" required>
+                                            <input type="text" name="season" class="form-control" placeholder="Enter Season" required>
                                             <?php if($errors->has('season')): ?>
                                                 <span class="text-danger">
                                                    <?php echo e($errors->first('season')); ?>
@@ -70,7 +70,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Brand/Label *</label>
-                                            <input type="text" name="brand" class="form-control" required>
+                                            <input type="text" name="brand" class="form-control" placeholder="Enter Brand or Label" required>
                                             <?php if($errors->has('brand')): ?>
                                                 <span class="text-danger">
                                                    <?php echo e($errors->first('brand')); ?>
@@ -82,7 +82,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Size Scale *</label>
-                                            <input type="text" name="size_scale" class="form-control" required>
+                                            <input type="text" name="size_scale" class="form-control" placeholder="Enter Size Scale" required>
                                             <?php if($errors->has('size_scale')): ?>
                                                 <span class="text-danger">
                                                    <?php echo e($errors->first('size_scale')); ?>
@@ -94,7 +94,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Item Description *</label>
-                                            <input type="text" name="item_description" class="form-control" required>
+                                            <input type="text" name="item_description" class="form-control" placeholder="Enter Item Description" required>
                                             <?php if($errors->has('item_description')): ?>
                                                 <span class="text-danger">
                                                    <?php echo e($errors->first('item_description')); ?>
@@ -106,7 +106,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Order Quantity *</label>
-                                            <input type="text" name="order_quantity" class="form-control" required>
+                                            <input type="text" name="order_quantity" class="form-control" placeholder="Enter Order Quantity" required>
                                             <?php if($errors->has('order_quantity')): ?>
                                                 <span class="text-danger">
                                                    <?php echo e($errors->first('order_quantity')); ?>
@@ -118,7 +118,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Target Price *</label>
-                                            <input type="text" name="target_price" class="form-control" required>
+                                            <input type="text" name="target_price" class="form-control" placeholder="Enter Target Price" required>
                                             <?php if($errors->has('target_price')): ?>
                                                 <span class="text-danger">
                                                    <?php echo e($errors->first('target_price')); ?>

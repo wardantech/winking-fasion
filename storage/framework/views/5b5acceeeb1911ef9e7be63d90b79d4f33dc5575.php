@@ -138,7 +138,7 @@
                     </div>
                   <div class="form-group">
                       <label><?php echo e(trans('file.Note')); ?></label>
-                      <textarea name="note" rows="3" class="form-control"></textarea>
+                      <textarea name="note" rows="3" placeholder="write note" class="form-control"></textarea>
                   </div>
                   <div class="form-group">
                       <button type="submit" class="btn btn-primary"><?php echo e(trans('file.submit')); ?></button>
@@ -211,7 +211,7 @@
                   </div>
                   <div class="form-group">
                       <label><?php echo e(trans('file.Note')); ?></label>
-                      <textarea name="note" rows="3" class="form-control"></textarea>
+                      <textarea name="note" rows="3" placeholder="write note" class="form-control"></textarea>
                   </div>
                   <div class="form-group">
                       <button type="submit" class="btn btn-primary"><?php echo e(trans('file.submit')); ?></button>
