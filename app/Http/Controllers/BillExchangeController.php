@@ -17,8 +17,10 @@ class BillExchangeController extends Controller
      */
     public function index()
     {
+        $bankNames = Bank::all();
+        $exports= Export::all();
        $bill_exchanges = BillExchange::all(); 
-       return view('bill_exchange.index', compact('bill_exchanges'));
+       return view('bill_exchange.index', compact('bill_exchanges','bankNames','exports'));
     }
 
     /**
@@ -62,7 +64,9 @@ class BillExchangeController extends Controller
      */
     public function show($id)
     {
-        //
+        $bill_exchange = BillExchange::with('bank')->find($id);
+        // dd($bill_exchange);
+        return view('bill_exchange.show', compact('bill_exchange'));
     }
 
     /**
@@ -73,7 +77,7 @@ class BillExchangeController extends Controller
      */
     public function edit($id)
     {
-        //
+       
     }
 
     /**
@@ -85,7 +89,21 @@ class BillExchangeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->validate([
+            'drawn_under'=>'required',
+            'export'=>'required',
+            'export_date'=>'required',
+            'invoice_no'=>'required',
+            'invoice_date'=>'required',
+            'amount'=>'required'
+        ]);
+        $response = BillExchange::find($id);
+        $response->update($data);
+        return response()->json([
+            'status'=>200,
+            'message'=>'succcesfully done',
+            'data'=>$response
+        ]);
     }
 
     /**

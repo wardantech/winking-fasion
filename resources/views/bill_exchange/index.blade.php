@@ -17,7 +17,7 @@
     }
 </style>
 <section>
-    <div class="table-responsive">
+    <div class="table-responsive proTable">
         <table id="expense-table" class="table">
             <thead>
                 <tr>
@@ -48,9 +48,9 @@
                                 <span class="sr-only">Toggle Dropdown</span>
                             </button>
                             <ul class="dropdown-menu edit-options dropdown-menu-right dropdown-default" user="menu">
-                                <li><button type="button" data-id="5" class="open-Editexpense_categoryDialog btn btn-link" data-toggle="modal" data-target="#editModal"><i class="dripicons-document-edit"></i> Edit</button></li>
+                                <li><button type="button"  class="editBill btn btn-link"  data-id="{{$bill_exchange->id}}" data-drawn_under="{{$bill_exchange->drawn_under}}" data-export="{{$bill_exchange->export}}" data-export_date="{{$bill_exchange->export_date}}" data-invoice_no="{{$bill_exchange->invoice_no}}" data-invoice_date="{{$bill_exchange->invoice_date}}" data-amount="{{$bill_exchange->amount}}" data-toggle="modal" data-target="#updateBillExchange"><i class="dripicons-document-edit"></i> Edit</button></li>
                                 <li>
-                                    <button type="submit" class="btn btn-link"><i class="fa fa-eye"></i> View</button>
+                                    <a href="{{route('bill-exchange.show', $bill_exchange->id )}}" class="btn btn-link"><i class="fa fa-eye"></i> View</a>
                                 </li>
                                                           
                                                                 <li class="divider"></li>
@@ -78,5 +78,128 @@
         </table>
     </div>
 </section>
+<!-- Button trigger modal -->
 
+
+<!-- Modal -->
+<div class="modal fade" id="updateBillExchange" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      <div class="card-body">
+                        <p class="italic"><small>{{trans('file.The field labels marked with * are required input fields')}}.</small></p>
+                        <!-- {!! Form::open(['route' => ['bill-exchange.update', $bill_exchange->id], 'method' => 'post', 'class'=>'billEditForm']) !!} -->
+                       <form class="billEditForm" method="post"  action="{{url('bill-exchange', $bill_exchange->id)}}">
+                        @csrf
+                        @method('put')
+                        <input type="hidden" id="up_id" name="id"> 
+                        <div class="row">
+                                <div class="col-md-4 form-group">
+                                    <label>Drawn Under *</label>
+                                    <select name="drawn_under" id="drawn_under" class="form-control">
+                                    @foreach($bankNames as $bankName)
+                                        <option value="{{$bankName->id}}">{{$bankName->name}}</option>
+                                       @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-md-4 form-group">
+                                    <label>Export L/C No *</label>
+                                    <select name="export" id="export" class="form-control">
+                                            <option value="">Select Lc No</option>
+                                            @foreach($exports as $export)
+                                                <option value="{{$export->id}}">{{$export->lc_number}}</option>
+                                            @endforeach
+                                    </select>
+                                </div>
+                                <div class="col-md-4 form-group">
+                                    <label>Export Date *</label>
+                                    <input type="date" name="export_date" id="export_date"  class="form-control">
+                                </div>
+                                <div class="col-md-4 form-group">
+                                    <label>Invoice No *</label>
+                                    <input type="text" name="invoice_no" id="invoice_no" class="form-control">
+                                </div>
+                                <div class="col-md-4 form-group">
+                                    <label>Invoice Date *</label>
+                                    <input type="date" name="invoice_date" id="invoice_date"  class="form-control">
+                                </div>
+                                <div class="col-md-4 form-group">
+                                    <label>Amount</label>
+                                    <input type="number" name="amount" id="amount"  class="form-control">
+                                </div>
+                            </div>
+                        <div class="form-group">
+                            <button type="button" class="btn btn-primary updatechange">{{trans('file.submit')}}</button>
+                        </div>
+                       </form>
+                    </div>
+      </div>
+     
+    </div>
+  </div>
+</div>
+<!-- ====================== -->
+<script>
+    $.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+</script>
+<script>
+    $(document).ready(function(){
+// =================update ================
+  $(document).on('click','.editBill',function(){
+       let id = $(this).data('id')
+       let drawn_under = $(this).data('drawn_under')
+       let exportLc = $(this).data('export')
+       let export_date = $(this).data('export_date')
+       let invoice_no = $(this).data('invoice_no')
+       let invoice_date = $(this).data('invoice_date')
+       let amount = $(this).data('amount')
+      var text = $(this).find('option:selected').text();
+       $('#up_id').val(id)
+       $('#drawn_under').val(drawn_under)
+       $('#export').val(exportLc)
+       $('#export_date').val(export_date)
+       $('#invoice_no').val(invoice_no)
+       $('#invoice_date').val(invoice_date)
+       $('#amount').val(amount)
+   });
+    $(document).on('click','.updatechange',function(){
+        let id = $('#up_id').val()
+        let drawn_under = $('#drawn_under').val()
+        let exportLc = $('#export').val()
+        let export_date = $('#export_date').val()
+        let invoice_no = $('#invoice_no').val()
+        let invoice_date = $('#invoice_date').val()
+        let amount = $('#amount').val()
+    $.ajax({
+        
+        url:"bill-exchange/"+id,
+        method:'put',
+        data:{id:id,drawn_under:drawn_under,export:exportLc,export_date:export_date,invoice_no:invoice_no,invoice_date:invoice_date,amount:amount},
+        success:function (res) {
+           if(res.success = 200){
+            $(".modal").modal('hide')
+            $(".billEditForm")[0].reset()
+            $(".proTable").load(location.href+' .proTable')
+           }
+        },error:function(err){
+            let error = err.responseJSON
+            console.log(error)
+            $.each(error.errors,function(index, value){
+                $('#upmsgcontainer').append("<p style='color:red'>"+value+"</p>");
+            })
+        }
+    })
+  });
+});
+</script>
 @endsection

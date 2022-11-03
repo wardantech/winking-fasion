@@ -17,9 +17,12 @@ class ForwardingLetterController extends Controller
      */
     public function index()
     {
-        //
+        $accounts= Account::all();
+        $exports= Export::all();
+      $forwardLetters = ForwaringLetter::with('account','export')->get();
+    //   dd($forwardLetters);
+       return view('forwarding_letter.index', compact('forwardLetters','accounts','exports'));
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -50,12 +53,11 @@ class ForwardingLetterController extends Controller
     public function store(Request $request)
     {
         $forwardingLetter= new ForwaringLetter();
-
         $forwardingLetter->date = $request->date;
         $forwardingLetter->account_id = $request->account_id;
         $forwardingLetter->export_id = $request->export_id;
-
         $forwardingLetter->save();
+        return redirect('forwarding-letter');
     }
 
     /**
@@ -66,7 +68,8 @@ class ForwardingLetterController extends Controller
      */
     public function show($id)
     {
-        //
+        $forwardLetter = ForwaringLetter::with('account','export')->find($id);
+        return view('forwarding_letter.show', compact('forwardLetter'));
     }
 
     /**
