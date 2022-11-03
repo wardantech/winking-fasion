@@ -709,197 +709,103 @@
         .table td, .table th {
             padding: 0;
         }
+        .table th{
+            text-align: center;
+        }
     </style>
 
 </head>
 <body>
 <!-- Container -->
-<div class="container-fluid invoice-container">
-    <!-- Header -->
-    <header class="top-header"></header>
+    <div class="container-fluid invoice-container">
+        <!-- Header -->
+        <header class="top-header"></header>
 
-    <!-- Main Content -->
-    @if(Session::get('success'))
-    <div class="alert alert-success">
-        <strong>Success!</strong> {{ session::get('success') }}
-    </div>
-    @endif
-    <main class="bg-imge">
-        {{-- <div class="text-center my-5"> --}}
-        <div class="text-center" style="margin-top: 30px;">
-            <h2 class="text-danger">Invoice</h2>
-            <p>(Aviation & Tourism Division)</p>
+        <!-- Main Content -->
+        @if(Session::get('success'))
+        <div class="alert alert-success">
+            <strong>Success!</strong> {{ session::get('success') }}
         </div>
-        <div class="address-bar" style="width:100%;height:100px;" >
-            <div style="float: left; display:block; width:40%; height:100%; background-color: #e0e0e0; color: rgb(78, 78, 78); padding: 5px;" >
-                <address>
-                    <strong>Name</strong> <span style="margin-left: 45px;">:</span> {{ $invoice->client->name ? $invoice->client->name : '' }}<br>
-                    <strong>Contact No.</strong><span style="margin-left: 12px;">:</span> {{  $invoice->client->phone ? $invoice->client->phone : '' }}<br>
-                    <strong>Email</strong><span style="margin-left: 50px;">:</span> {{ $invoice->client->email ? $invoice->client->email : '' }}<br>
-                    <strong>Address</strong><span style="margin-left: 33px;">:</span> {{ $invoice->client->address ? $invoice->client->address : '' }}
-                </address>
-            </div>
-            <div style="float: right; display:block; width:40%;height:100%;background-color: #e0e0e0; color: rgb(78, 78, 78); padding: 5px;">
-                <address>
-                    <strong>Client Type </strong><span style="margin-left: 47px;">:</span> {{ $invoice->client->clientCategory->category_name ? $invoice->client->clientCategory->category_name : '' }}&emsp;&emsp;&emsp;&nbsp;&nbsp;&nbsp;<br/>
-                    <strong>Invoice No </strong><span style="margin-left: 51px;">:</span> {{ $invoice->invoice_no ? $invoice->invoice_no : '' }}&emsp;&emsp;&emsp;&nbsp;<br/>
-                    <strong>Invoice Date </strong><span style="margin-left: 41px;">:</span> {{ $invoice->date ? $invoice->date : '' }}<br>
-                    <strong>Payment Due Date </strong><span style="margin-left: 5px;">:</span> {{ $invoice->due_date ? $invoice->due_date : '' }}
-                </address>
-            </div>
-        </div>
-        <br>
-        <div class="card">
-            <div class="card-body p-0">
-                <div class="table-responsive">
-                    <table class="table mb-0 table-bordered" style="width: 100%">
-                        <thead class="card-header">
-                        <tr>
-                            <th style="text-align: center">Sl. No.</th>
-                            <th style="text-align: center">Service</th>
-                            <th style="text-align: center">Description</th>
-                            <th style="text-align: center">Qty</th>
-                            <th style="text-align: center">Unit Rate</th>
-                            {{-- <th>Discount</th> --}}
-                            {{-- <th>VAT</th> --}}
-                            {{-- <th>TAX</th> --}}
-                            {{-- <th>Extra Fee</th> --}}
-                            <th style="text-align: center">Total (Taka)</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        @php
-                            $subTotal = '0';
-                            $totalDiscountPacent= '0';
-                            $totalDiscount = '0';
-                            $totalTaxParcent= '0';
-                            $totalTax = '0';
-                            $totalVatParcent= '0';
-                            $totalVat = '0';
-                            $totalExtraFee = '0';
-                        @endphp
-                        @foreach($invoiceDetails as $key => $invoiceDetail)
-                            <tr>
-                                <td align="center" width="5%">{{ ++$key }}</td>
-                                <td width="21%">{{ $invoiceDetail->service->name ? $invoiceDetail->service->name : '' }}</td>
-                                <td width="40%">{{ $invoiceDetail->service_description ? $invoiceDetail->service_description : '' }}</td>
-                                <td align="center" width="8%">{{ $invoiceDetail->service_quantity ? $invoiceDetail->service_quantity : '' }}</td>
-                                <td align="right" width="13%">{{ $invoiceDetail->service_fee ? number_format($invoiceDetail->service_fee, 2) : '' }}</td>
-                                {{-- <td>{{ ($invoiceDetail->service_discount*$invoiceDetail->service_fee)/100 }} TK. ({{ $invoiceDetail->service_discount }} %)</td> --}}
-                                {{-- <td>{{ ($invoiceDetail->service_vat*$invoiceDetail->service_fee)/100 }} TK. ({{ $invoiceDetail->service_vat }} %)</td> --}}
-                                {{-- <td>{{ ($invoiceDetail->service_tax*$invoiceDetail->service_fee)/100 }} TK. ({{ $invoiceDetail->service_tax }} %)</td> --}}
-                                {{-- <td>{{ $invoiceDetail->service_extra_fee }} TK.</td> --}}
-                                <td align="right" width="13%">{{ $invoiceDetail->service_total ? number_format($invoiceDetail->service_total, 2) : '' }}</td>
-
-                                @php
-                                    // $totalDiscount+= $invoiceDetail->service_discount;
-                                    $totalDiscountPacent+= $invoiceDetail->service_discount;
-                                    $totalDiscount+= ($invoiceDetail->service_discount*$invoiceDetail->service_fee)/100;
-                                    $totalVatParcent+= $invoiceDetail->service_vat;
-                                    $totalVat+= ($invoiceDetail->service_vat*$invoiceDetail->service_fee)/100;
-                                    // $totalTax+= $invoiceDetail->service_tax;
-                                    $totalTaxParcent+= $invoiceDetail->service_tax;
-                                    $totalTax+= ($invoiceDetail->service_tax*$invoiceDetail->service_fee)/100;
-                                    $totalExtraFee+= $invoiceDetail->service_extra_fee;
-                                    $subTotal += $invoiceDetail->service_fee;
-                                @endphp
-                            </tr>
-                        @endforeach
-                        </tbody>
-                        <tfoot class="card-footer">
-                        {{-- <tr>
-                            <th></th>
-                        </tr> --}}
-                        <tr>
-                            <th colspan="5" class="text-sm-end" align="right"> Total Amount&nbsp;&nbsp;&nbsp;</th>
-                            {{-- <td class="text-end">{{ ($totalDiscount*$subTotal)/100 }} TK.</td> --}}
-                            <td class="text-end" align="right">{{ number_format($subTotal, 2) }}</td>
-                        </tr>
-                        @if($totalExtraFee>0)
-                            <tr>
-                                <th colspan="5" class="text-sm-end" align="right">Extra Fee&nbsp;&nbsp;&nbsp;</th>
-                                {{-- <td class="text-end">{{ $invoice->extra_fee }} TK.</td> --}}
-                                <td class="text-end" align="right">{{ number_format($totalExtraFee, 2) }}</td>
-                            </tr>
-                        @endif
-                        @if($totalDiscount>0)
-                            <tr>
-                                <th colspan="5" class="text-sm-end" align="right">Discount&nbsp;&nbsp;&nbsp;</th>
-                                {{-- <td class="text-end">{{ ($totalDiscount*$subTotal)/100 }} TK.</td> --}}
-                                <td class="text-end" align="right">{{ number_format($totalDiscount, 2) }}</td>
-                            </tr>
-                        @endif
-                        @if($totalVat>0)
-                            <tr>
-                                <th colspan="5" class="text-sm-end" align="right">VAT ({{ $totalVatParcent }}%)&nbsp;&nbsp;&nbsp;</th>
-                                <td class="text-end" align="right">{{ number_format($totalVat, 2) }}</td>
-                            </tr>
-                        @endif
-                        @if($totalTax>0)
-                            <tr>
-                                <th colspan="5" class="text-sm-end" align="right">TAX ({{ $totalTaxParcent }}%)&nbsp;&nbsp;&nbsp;</th>
-                                <td class="text-end" align="right">{{ number_format($totalTax, 2) }}</td>
-                            </tr>
-                        @endif
-                        <tr>
-                            <th colspan="5" class="text-sm-end" align="right">Total Invoice Amount&nbsp;&nbsp;&nbsp;</th>
-                            <td class="text-end" align="right">{{ number_format($invoice->total_order_price, 2) }}</td>
-                        </tr>
-
-                        {{-- <tr>
-                          <td colspan="7" class="text-sm-end"><strong>Sub Total:</strong></td>
-                          <td class="text-end">$2150.00</td>
-                        </tr>
-                        <tr>
-                          <td colspan="" class="text-sm-end"><strong>Tax:</strong></td>
-                          <td class="text-end">$215.00</td>
-                        </tr>
-                        <tr>
-                          <td colspan="4" class="text-sm-end border-bottom-0"><strong>Total:</strong></td>
-                          <td class="text-end border-bottom-0">$2365.00</td>
-                        </tr> --}}
-                        </tfoot>
-                    </table>
-                </div>
-            </div>
-        </div>
-        <p>
-            <b>In Word(In Taka): {{ App\Http\Controllers\Admin\Invoice\InvoiceController::convert_number_to_words($invoice->total_order_price) }}
-                only.</b>
-        </p>
-
-        <p>Please do not heasititate to contact us for any discrespency of this Inovice - accounts@rishonagroup.com /
-            +8809678221612</p>
-
-        @if($invoice->description)
-            <p><strong>Details of Extra Fee: </strong>{{$invoice->description}}</p>
         @endif
-        <p>
-            Note:
-        <ul>
-            <li>Please ask for official receipt when making payment.</li>
-            <li>Discrepancy to be notified within 7 days otherwise it will be treated as correct.</li>
-            <li>Payment by A/C Payee Crossed Cheque favoring <b>"Rishona International Ltd." </b></li>
-        </ul>
-        </p>
-    </main>
-    <!-- Footer -->
-    <footer class="footer text-center mt-4 mb-0">
-        <div class="btn-group btn-group-sm d-print-none">
-            <a href="javascript:window.print()" class="btn btn-info border text-white-50 shadow-none"><i class="fa fa-print"></i>Print</a>
-        </div>
-        <div class="btn-group btn-group-sm d-print-none">
-            <a href="{{ route('invoice.print-mail-view', $invoice->id) }}" class="btn btn-success border text-white-50 shadow-none"><i class="fa fa-print"></i>Generate Mail Attachment PDF</a>
-        </div>
-        <div class="btn-group btn-group-sm d-print-none">
-            <a href="{{ route('invoice.send-mail-to-client', $invoice->id) }}" class="btn btn-primary border text-white-50 shadow-none"><i class="fa fa-print"></i>Send Email</a>
-        </div>
-    </footer>
-    <!-- Footer -->
-    {{-- <footer class="footer text-center mt-4 mb-0">
-        <div class="btn-group btn-group-sm d-print-none"></div>
-    </footer> --}}
-</div>
+        <main class="bg-imge">
+            <div class="text-center">
+                <h2>Wardan Tech Ltd.</h2>
+                <h5> House-23(2A), Road-03/C, Sector-09, Uttara, Dhaka-1230, Bangladesh</h5>
+            </div><br>
+            <div class="float-right">
+                <h6>Date: 25/05/22</h6>
+            </div>
+            <div>
+                <table class="table table-bordered">
+                    <tr>
+                        <th rowspan="2">SL</th>
+                        <th  rowspan="2">Name</th>
+                        <th  rowspan="2">Designation</th>
+                        <th  rowspan="2">Basic Pay</th>
+                        <th  colspan="3">Allowances</th>
+                        <th   rowspan="2">Allowed Leave</th>
+                        <th  rowspan="2">Leave Taken</th>
+                        <th  rowspan="2">Worked Days</th>
+                        <th  rowspan="2">Gross Pay</th>
+                        <th  rowspan="2">Deduction</th>
+                        <th  rowspan="2">Net Pay</th>
+                        <th  rowspan="2">Status</th>
+                    </tr>
+                    <tr>
+                        <td>H.rent</td>
+                        <td>Medical</td>
+                        <td>T.port</td>
+                    </tr>
+                    @foreach ($employees as $key=>$employee)
+                    <tr>
+                        <td>{{ $key+1 }}</td>
+                        <td>{{ $employee->name }}</td>
+                        <td>{{ $employee->designation != NULL ? $employee->designation : '' }}</td>
+                        <?php
+                            $hRent= ($employee->present_salary*$requests['h_rent'])/100;
+                            $medical= ($employee->present_salary*$requests['medical'])/100;
+                            $tPort= ($employee->present_salary*$requests['t_port'])/100;
+                            $basicSalary= $employee->present_salary - ($hRent + $medical + $tPort);
+                        ?>
+                        <td>{{ $basicSalary }}</td>
+                        <td><input type="number" value="{{ $hRent }}" class="form-control" readonly></td>
+                        <td><input type="number" value="{{ $medical }}" class="form-control" readonly></td>
+                        <td><input type="number" value="{{ $tPort }}" class="form-control" readonly></td>
+                        <td>{{ $requests['allowed_leave'] }}</td>
+                        <td>
+                            <?php
+                                $days=0;
+                                if($employee->user){
+                                    $leaves= App\Holiday::where('user_id', $employee->user->id)->get();
+                                    $count= count($leaves);
+                                }
+                            ?>
+                            @foreach($leaves as $leave)
+                                <?php
+                                    $to = \Carbon\Carbon::parse($leave->to_date);
+                                    $from = \Carbon\Carbon::parse($leave->from_date);
+                                    $days += $to->diffInDays($from);
+                                ?>
+                            @endforeach
+                            <span>{{ $days }}</span>
+                        </td>
+                        <td></td>
+                        <td>{{ $employee->present_salary }}</td>
+                        {{-- <td>{{  }}</td>
+                        <td>{{ $employee->present_salary -  }}</td> --}}
+                        <td></td>
+                    </tr>
+                    @endforeach
+                </table>
+            </div>
+        </main>
+        <!-- Footer -->
+        <footer class="footer text-center mt-4 mb-0">
+            <div class="btn-group btn-group-sm d-print-none">
+                <a href="javascript:window.print()" class="btn btn-info border text-white-50 shadow-none"><i class="fa fa-print"></i>Print</a>
+            </div>
+        </footer>
+    </div>
 </body>
 </html>
 

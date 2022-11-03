@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Employee;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class SalarySheetController extends Controller
 {
@@ -12,6 +13,9 @@ class SalarySheetController extends Controller
     }
 
     function salarySheetGenerate(Request $request){
-        return view("salary_sheet.salary_sheet");
+        $employees= Employee::with('user', 'user.holiday')->get();
+        $requests= $request->all();
+        // dd($employees);
+        return view("salary_sheet.salary_sheet", compact('employees', 'requests'));
     }
 }
