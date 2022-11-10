@@ -374,13 +374,15 @@
                                                 </tr>
                                             </thead>
                                             <tbody id="t_body_id_{{ $key }}">
-                                                @for ($i=1; $i<=$sizeCount+1; $i++)
-                                                    <tr class="row-concat{{ $i }}" id="row-concat_{{ $i }}">
+                                                @for ($i=1; $i<=$sizeCount; $i++)
+                                                    @if($value['size'.$i] != null)
+                                                    <tr class="row-concat{{ $key }}" id="row-concat_{{ $i }}">
                                                         <td><input type="text" name="size{{ $i }}[]" class="form-control" value="{{$value['size'.$i]}}" placeholder="Enter Size"></td>
                                                         <td><input type="text" name="prepack{{ $i }}[]" class="form-control" value="{{$value['prepack'.$i]}}" placeholder="Enter prepack"></td>
                                                         <td><input type="number" min="0" step="any" name="quantity{{ $i }}[]" value="{{$value['quantity'.$i]}}" id="quantity{{ $key+1 }}" class="form-control quantity{{ $key+1 }}" placeholder="Enter quantity"></td>
-                                                        {{-- <td><a id="remove_concat" class="btn btn-danger btn-sm" style="color:white;margin-left:10px;" onclick="removeRow(1, 1)">-</a></td> --}}
+                                                        <td><a id="remove_concat" class="btn btn-danger btn-sm" style="color:white;margin-left:10px;" onclick="removeRow({{ $i }}, {{ $key }})">-</a></td>
                                                     </tr>
+                                                    @endif
                                                 @endfor
                                                 <?php
                                                     $rowCount=0;
@@ -391,9 +393,9 @@
                                                     }
                                                 ?>
                                                 <tr>
-                                                    <button class="btn btn-success btn-sm" id="add_contact_{{ $key }}" style="color: white; " onclick="aFucc()">
+                                                    <a class="btn btn-success btn-sm" id="add_contact_{{ $key }}" style="color: white; " onclick="addRow({{ $key }})">
                                                         <i class="fa fa-plus"></i>
-                                                    </button>
+                                                    </a>
                                                 </tr>
                                                 {{-- <tr>
                                                     <td><input type="text" name="size1[]" class="form-control" value="{{$value->size1}}" placeholder="Enter Size"></td>
@@ -497,10 +499,6 @@
         }
 
     $(document).ready(function(){
-
-
-        console.log("fsdfdsf");
-        alert("y=0");
         var max_field = 4;
         // console.log(max_field);
         var concatMaxField= 13;
@@ -707,9 +705,7 @@
     });
 
     function addRow(x){
-            // console.log($('.dd_'+x).length+2);
             var counter= $('.row-concat'+x).length+2;
-            // console.log($('.row-concat'+x).length);
                 if(counter-1<13){
                     // y++;
                     $('#t_body_id_'+x).append('<tr class="row-concat'+x+'" id="row-concat_'+counter+'"><td><input type="text" name="size'+counter+'[]" class="form-control" placeholder="Enter Size"></td><td><input type="text" name="prepack'+counter+'[]" class="form-control" placeholder="Enter Prepack"></td><td><input type="number" min="0" step="any" name="quantity'+counter+'[]" id="quantity'+counter+'" class="form-control quantity1" placeholder="Enter Quantity"></td><td><a id="remove_concat" class="btn btn-danger btn-sm" style="color:white;margin-left:10px;" onclick="removeRow('+counter+','+x+')">-</a></td></tr>');
@@ -718,10 +714,10 @@
                 }
             }
 
-        function removeRow(counter, x){
-            // console.log(counter);
-            $('.row-concat'+x+ '#row-concat_'+counter).remove();
-        }
+    function removeRow(counter, x){
+        // console.log(counter);
+        $('.row-concat'+x+ '#row-concat_'+counter).remove();
+    }
 
     tinymce.init({
       selector: 'textarea',
