@@ -6,45 +6,45 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header d-flex align-items-center">
-                        <h4>Forwarding Letter</h4>
+                        <h4>Bill Exchange</h4>
                     </div>
                     <div class="card-body">
                         <p class="italic"><small>{{trans('file.The field labels marked with * are required input fields')}}.</small></p>
-                        {!! Form::open(['route' => ['forwarding-letter.store'], 'method' => 'post']) !!}
+                        {!! Form::open(['route' => ['bill-exchange.store'], 'method' => 'post']) !!}
                             <div class="row">
                                 <div class="col-md-4 form-group">
-                                    <label>Date *</label>
-                                    <input type="date" name="date" class="form-control">
-                                </div>
-                                <div class="col-md-4 form-group">
-                                    <label>Account *</label>
-                                    <select name="account_id" id="" class="form-control">
+                                    <label>Drawn Under *</label>
+                                    <select name="drawn_under" id="" class="form-control">
                                         <option value="">Select Account</option>
-                                        @foreach ($accounts as $account)
-                                            <option value="{{ $account->id }}">{{ $account->name }}</option>
-                                        @endforeach
+                                        @foreach($bankNames as $bankName)
+                                        <option value="{{$bankName->id}}">{{$bankName->name}}</option>
+                                       @endforeach
                                     </select>
                                 </div>
                                 <div class="col-md-4 form-group">
-                                    <label>Lc No *</label>
-                                    <select name="export_id" id="export-id" class="form-control">
+                                    <label>Export L/C No *</label>
+                                    <select name="export" class="form-control">
                                             <option value="">Select Lc No</option>
-                                        @foreach ($exports as $export)
-                                            <option value="{{ $export->id }}">{{ $export->lc_number }}</option>
-                                        @endforeach
+                                            @foreach($exports as $export)
+                                        <option value="{{$export->id}}">{{$export->lc_number}}</option>
+                                       @endforeach
                                     </select>
                                 </div>
                                 <div class="col-md-4 form-group">
-                                    <label>Invoice amount *</label>
-                                    <input type="number" name="value" id="value" class="form-control" readonly>
+                                    <label>Export Date *</label>
+                                    <input type="date" name="export_date"  class="form-control">
                                 </div>
                                 <div class="col-md-4 form-group">
-                                    <label>Invoice Number *</label>
-                                    <input type="text" name="invoice_no" id="invoice-no" class="form-control" readonly>
+                                    <label>Invoice No *</label>
+                                    <input type="text" name="invoice_no" class="form-control">
                                 </div>
                                 <div class="col-md-4 form-group">
                                     <label>Invoice Date *</label>
-                                    <input type="date" name="invoice_date" id="invoice-date" class="form-control" readonly>
+                                    <input type="date" name="invoice_date"  class="form-control">
+                                </div>
+                                <div class="col-md-4 form-group">
+                                    <label>Amount</label>
+                                    <input type="number" name="amount"  class="form-control">
                                 </div>
                             </div>
                         <div class="form-group">
