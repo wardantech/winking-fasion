@@ -53,7 +53,7 @@
                                 <div class="col-md-4 form-group">
                                     <label> Bank Branch *</label>
                                     <select name="branch_id" id="branch_id" class="form-control selectpicker" required>
-                                        <option value="">Select</option>
+                                        <option value="">Select Branch</option>
                                     </select>
                                     @error('branch_id')
                                         <p style="color: red">{{ $message }}</p>
@@ -63,7 +63,7 @@
                                 <div class="col-md-4 form-group">
                                     <label>Lc No *</label>
                                     <select name="export_id" id="export-id" class="form-control" required>
-                                            <option value="">Select Lc No</option>
+                                        <option value="">Select Lc No</option>
                                         @foreach ($exports as $export)
                                             <option value="{{ $export->id }}">{{ $export->lc_number }}</option>
                                         @endforeach
@@ -132,12 +132,9 @@
                     bank_id: bank_id
                 },
                 success: function(data){
-                 $('#branch_id').append("<option value=''> Select Bank </option>");
-                $.each(data, function(key, val){
-                    $('#branch_id').append($('<option>', {
-                        value: val.id,
-                        text : val.name
-                    }));
+                 $('#branch_id').append("<option value=''> Select Branch </option>");
+                $.each(data, function(key, value){
+                    $('#branch_id').append("<option value="+value.id+">"+value.name+"</option>");
                 });
                 $('.selectpicker').selectpicker('refresh');
             },
