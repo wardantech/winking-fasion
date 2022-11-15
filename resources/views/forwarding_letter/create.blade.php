@@ -52,7 +52,7 @@
 
                                 <div class="col-md-4 form-group">
                                     <label> Bank Branch *</label>
-                                    <select name="branch_id" id="branch_id" class="form-control" required>
+                                    <select name="branch_id" id="branch_id" class="form-control selectpicker" required>
                                         <option value="">Select</option>
                                     </select>
                                     @error('branch_id')
@@ -132,15 +132,14 @@
                     bank_id: bank_id
                 },
                 success: function(data){
-                // $('#branch_id').append("<option value=''> Select Bank </option>");
+                 $('#branch_id').append("<option value=''> Select Bank </option>");
                 $.each(data, function(key, val){
                     $('#branch_id').append($('<option>', {
                         value: val.id,
                         text : val.name
                     }));
                 });
-
-                $('#branch_id').change();
+                $('.selectpicker').selectpicker('refresh');
             },
         });
     });
