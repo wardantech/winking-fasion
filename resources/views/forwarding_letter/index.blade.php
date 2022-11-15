@@ -1,4 +1,9 @@
 @extends('layout.main') @section('content')
+
+@if(session()->has('message'))
+  <div class="alert alert-success alert-dismissible text-center fade show"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>{{ session()->get('message') }}</div>
+@endif
+
 <section>
     <div class="container-fluid">
         <a href="{{route('forwarding-letter.create')}}" class="btn btn-info"><i class="dripicons-plus"></i> Add forwarding-letter</a>
@@ -8,7 +13,7 @@
             <thead>
                 <tr>
                     <th>Date</th>
-                    <th>Account Name</th>
+                    <th>Bank Name</th>
                     <th>LC No</th>
                     <th>Amount</th>
                     <th>Invoice Number</th>
@@ -20,11 +25,11 @@
                 @foreach($forwardLetters as $forwardLetter)
                 <tr>
                     <td>{{$forwardLetter->date}}</td>
-                    <td>{{$forwardLetter->account->name}}</td>
+                    <td>{{$forwardLetter->bank->name}}</td>
                     <td>{{$forwardLetter->export->lc_number}}</td>
                     <td>{{$forwardLetter->export->invoice_value}}</td>
                     <td>{{$forwardLetter->export->invoice_no}}</td>
-                    <td>{{$forwardLetter->export->date}}</td>                  
+                    <td>{{$forwardLetter->export->date}}</td>
                     <td>
                         <div class="btn-group">
                             <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{trans('file.action')}}

@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Export;
-use App\Account;
+use App\Bank;
+use App\BankBranch;
 use App\ForwaringLetter;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -17,11 +18,8 @@ class ForwardingLetterController extends Controller
      */
     public function index()
     {
-        $accounts= Account::all();
-        $exports= Export::all();
-      $forwardLetters = ForwaringLetter::with('account','export')->get();
-    //   dd($forwardLetters);
-       return view('forwarding_letter.index', compact('forwardLetters','accounts','exports'));
+        $forwardLetters = ForwaringLetter::with('bank','account','export')->get();
+       return view('forwarding_letter.index', compact('forwardLetters'));
     }
     /**
      * Show the form for creating a new resource.
@@ -30,19 +28,27 @@ class ForwardingLetterController extends Controller
      */
     public function create()
     {
-        $accounts= Account::all();
+        $banks= Bank::all();
         $exports= Export::all();
-        // dd($accounts);
-        return view('forwarding_letter.create', compact('accounts', 'exports'));
+        return view('forwarding_letter.create', compact('banks', 'exports'));
     }
 
     public function getExport(Request $request){
         $export= Export::find($request->exportId);
-        // dd($export);
-        // $exportId= $request->exportId;
-        // dd($exportId);
         return response()->json($export);
     }
+
+    public function AllBranches(Request $request)
+    {
+        try{
+            $bank_id = $request->bank_id;
+            $loans = BankBranch::where('bank_id', $bank_id)->get();
+            return response()->json($loans);
+        } catch (\Exception $exception) {
+            return redirect()->back()->with('error', $exception->getMessage());
+        }
+    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -52,12 +58,25 @@ class ForwardingLetterController extends Controller
      */
     public function store(Request $request)
     {
+         $request->validate([
+            'date'=>'required',
+            'bank_id'=>'required',
+            'branch_id'=>'required',
+            'export_id'=>'required',
+            'reference_bank'=>'required',
+            'reference_no'=>'required',
+        ]);
+
         $forwardingLetter= new ForwaringLetter();
         $forwardingLetter->date = $request->date;
-        $forwardingLetter->account_id = $request->account_id;
+        $forwardingLetter->bank_id = $request->bank_id;
+        $forwardingLetter->branch_id = $request->branch_id;
         $forwardingLetter->export_id = $request->export_id;
+        $forwardingLetter->reference_bank = $request->reference_bank;
+        $forwardingLetter->reference_no = $request->reference_no;
         $forwardingLetter->save();
-        return redirect('forwarding-letter');
+
+        return redirect('forwarding-letter')->with('message', 'Forwarding Letter Submitted Successfully');
     }
 
     /**
@@ -68,7 +87,7 @@ class ForwardingLetterController extends Controller
      */
     public function show($id)
     {
-        $forwardLetter = ForwaringLetter::with('account','export')->find($id);
+        $forwardLetter = ForwaringLetter::with('bank','account','export')->find($id);
         return view('forwarding_letter.show', compact('forwardLetter'));
     }
 
@@ -80,11 +99,10 @@ class ForwardingLetterController extends Controller
      */
     public function edit($id)
     {
-        $accounts= Account::all();
+        $banks= Bank::all();
         $exports= Export::all();
-      $forwardLetter = ForwaringLetter::with('account','export')->find($id);
-    //   dd($forwardLetter);
-       return view('forwarding_letter.edit', compact('forwardLetter','accounts','exports'));
+        $forwardLetter = ForwaringLetter::with('account','export')->find($id);
+        return view('forwarding_letter.edit', compact('forwardLetter','banks','exports'));
     }
 
     /**
@@ -96,14 +114,24 @@ class ForwardingLetterController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = $request->validate([
+        $request->validate([
             'date'=>'required',
-            'account_id'=>'required',
+            'bank_id'=>'required',
+            'branch_id'=>'required',
             'export_id'=>'required',
+            'reference_bank'=>'required',
+            'reference_no'=>'required',
         ]);
-        $response = ForwaringLetter::find($id);
-        $response->update($data);
-        return redirect('forwarding-letter');
+
+        $forwardingLetter = ForwaringLetter::find($id);
+        $forwardingLetter->date = $request->date;
+        $forwardingLetter->bank_id = $request->bank_id;
+        $forwardingLetter->branch_id = $request->branch_id;
+        $forwardingLetter->export_id = $request->export_id;
+        $forwardingLetter->reference_bank = $request->reference_bank;
+        $forwardingLetter->reference_no = $request->reference_no;
+        $forwardingLetter->update();
+        return redirect('forwarding-letter')->with('message', 'Forwarding Letter Updated Successfully');
     }
 
     /**
