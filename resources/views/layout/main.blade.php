@@ -713,6 +713,12 @@
 
                 ?>
 
+                    <li><a href="#export_documents" aria-expanded="false" data-toggle="collapse"> <i class="dripicons-gear"></i><span>{{trans('file.Export Documents')}}</span></a>
+                        <ul id="export_documents" class="collapse list-unstyled ">
+                            <li><a href=""></a></li>
+                        </ul>
+                    </li>
+
                 @if($interest_permission_active || $user_profile_permission_active || $general_setting_permission_active)
                     <li><a href="#setting" aria-expanded="false" data-toggle="collapse"> <i class="dripicons-gear"></i><span>{{trans('file.settings')}}</span></a>
                         <ul id="setting" class="collapse list-unstyled ">

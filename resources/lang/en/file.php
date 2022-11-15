@@ -21,6 +21,7 @@ return [
 	'submit' => 'Submit',
 	'update' => 'Update',
 	'The field labels marked with * are required input fields' => 'The field labels marked with * are required input fields',
+	'Export Documents' => 'Export Documents',
 	'settings' => 'Settings',
 	'logout' => 'Logout',
 	'return' => 'Return',

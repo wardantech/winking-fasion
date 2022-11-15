@@ -15,6 +15,9 @@ class CreateForwaringLettersTable extends Migration
     {
         Schema::create('forwaring_letters', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->date('date');
+            $table->unsignedInteger('account_id')->index();
+            $table->unsignedInteger('export_id')->index();
             $table->timestamps();
         });
     }

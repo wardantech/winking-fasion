@@ -33,7 +33,7 @@ Route::group(['middleware' => ['auth', 'active']], function() {
 	Route::get('/dashboard-filter/{start_date}/{end_date}', 'HomeController@dashboardFilter');
 
 	Route::get('language_switch/{locale}', 'LanguageController@switchLanguage');
-	
+
 	Route::resource('deposits', 'BankDepositController');
     Route::resource('withdraws', 'WithDrawController');
 
@@ -91,7 +91,7 @@ Route::group(['middleware' => ['auth', 'active']], function() {
 
     Route::resource('payment_term', 'PaymentTermController');
     Route::resource('treams', 'TrimmingController');
-    
+
     Route::get('cost_breakdowns/filter', 'CostBreakdownController@getFiltering');
     Route::post('cost_breakdowns/filter', 'CostBreakdownController@filtering')->name('breakdown.filtering');
     Route::resource('cost_breakdowns', 'CostBreakdownController');
@@ -390,7 +390,7 @@ Route::group(['middleware' => ['auth', 'active']], function() {
     Route::get('export/filter', 'ExportController@getFiltering');
     Route::post('export/filter', 'ExportController@filtering')->name('export.filtering');
     Route::resource('export', 'ExportController');
-    
+
 	Route::post('employees/deletebyselection', 'EmployeeController@deleteBySelection');
 	Route::resource('employees', 'EmployeeController');
 
@@ -434,5 +434,9 @@ Route::group(['middleware' => ['auth', 'active']], function() {
     Route::resource('reminder', 'ReminderController');
     Route::post('interest/deletebyselection','InterestController@deleteBySelection');
     Route::resource('interest', 'InterestController');
+    Route::resource('forwarding-letter', 'ForwardingLetterController');
+    Route::get('get-export', 'ForwardingLetterController@getExport')->name('get-export');
+    Route::get('salary-sheet-create', 'SalarySheetController@salarySheetCreate')->name('salary-sheet-create');
+    Route::post('salary-sheet-generate', 'SalarySheetController@salarySheetGenerate')->name('salary-sheet.generate');
 });
 
