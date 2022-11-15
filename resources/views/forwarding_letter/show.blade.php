@@ -20,11 +20,11 @@
                             </span>
                             <p class="float-right"> Date: {{ date('d-F-Y', strtotime($forwardLetter->date))}}</p>
                             <div class="leter-head">
-                                <p>To</p>
+                                <p>To,</p>
                                 <p>The Manager</p>
                                 <p>{{$forwardLetter->bank->name}}</p>
-                                <p>{{$forwardLetter->bank->branches->name}}</p>
-                                <p>{{$forwardLetter->bank->branches->address}}</p>
+                                <p>{{$forwardLetter->branch->name}}</p>
+                                <p>{{$forwardLetter->branch->address}}</p>
                             </div>
                             <br>
                             <div class="letter-subject">
