@@ -28,7 +28,6 @@ Route::group(['middleware' => 'auth'], function() {
 });
 
 Route::group(['middleware' => ['auth', 'active']], function() {
-
 	Route::get('/', 'HomeController@index');
 	Route::get('/dashboard-filter/{start_date}/{end_date}', 'HomeController@dashboardFilter');
 
@@ -438,5 +437,6 @@ Route::group(['middleware' => ['auth', 'active']], function() {
     Route::get('get-export', 'ForwardingLetterController@getExport')->name('get-export');
     Route::get('salary-sheet-create', 'SalarySheetController@salarySheetCreate')->name('salary-sheet-create');
     Route::post('salary-sheet-generate', 'SalarySheetController@salarySheetGenerate')->name('salary-sheet.generate');
+	Route::resource('bill-exchange','BillExchangeController');
 });
 

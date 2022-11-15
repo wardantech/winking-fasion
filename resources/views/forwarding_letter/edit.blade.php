@@ -6,22 +6,25 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header d-flex align-items-center">
-                        <h4>Forwarding Letter</h4>
+                        <h4>Forwarding Letter Edit</h4>
                     </div>
                     <div class="card-body">
                         <p class="italic"><small>{{trans('file.The field labels marked with * are required input fields')}}.</small></p>
-                        {!! Form::open(['route' => ['forwarding-letter.store'], 'method' => 'post']) !!}
-                            <div class="row">
+                        {!! Form::open(['route' => ['forwarding-letter.update',$forwardLetter->id ], 'method' => 'post']) !!}
+                        @csrf
+                        @method('put')
+                        <input type="hidden" id="up_id" name="id">      
+                        <div class="row">
                                 <div class="col-md-4 form-group">
                                     <label>Date *</label>
-                                    <input type="date" name="date" class="form-control">
+                                    <input type="date" value="{{$forwardLetter->date}}" name="date" class="form-control">
                                 </div>
                                 <div class="col-md-4 form-group">
                                     <label>Account *</label>
                                     <select name="account_id" id="" class="form-control">
                                         <option value="">Select Account</option>
                                         @foreach ($accounts as $account)
-                                            <option value="{{ $account->id }}">{{ $account->name }}</option>
+                                            <option @if($forwardLetter->account_id == $account->id ) selected @endif value="{{ $account->id }}">{{ $account->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -30,21 +33,21 @@
                                     <select name="export_id" id="export-id" class="form-control">
                                             <option value="">Select Lc No</option>
                                         @foreach ($exports as $export)
-                                            <option value="{{ $export->id }}">{{ $export->lc_number }}</option>
+                                            <option  @if($forwardLetter->export_id == $export->id ) selected @endif value="{{ $export->id }}">{{ $export->lc_number }}</option>
                                         @endforeach
                                     </select>
                                 </div>
                                 <div class="col-md-4 form-group">
                                     <label>Invoice amount *</label>
-                                    <input type="number" name="value" id="value" class="form-control" readonly>
+                                    <input type="number" name="value" id="value" value="{{$forwardLetter->export->invoice_value}}" class="form-control" readonly>
                                 </div>
                                 <div class="col-md-4 form-group">
                                     <label>Invoice Number *</label>
-                                    <input type="text" name="invoice_no" id="invoice-no" class="form-control" readonly>
+                                    <input type="text" value="{{$forwardLetter->export->invoice_no}}" name="invoice_no" id="invoice-no" class="form-control" readonly>
                                 </div>
                                 <div class="col-md-4 form-group">
                                     <label>Invoice Date *</label>
-                                    <input type="date" name="invoice_date" id="invoice-date" class="form-control" readonly>
+                                    <input type="date" name="invoice_date" value="{{$forwardLetter->export->date}}" id="invoice-date" class="form-control" readonly>
                                 </div>
                             </div>
                         <div class="form-group">
