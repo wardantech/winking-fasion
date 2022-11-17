@@ -34,7 +34,16 @@ class ForwardingLetterController extends Controller
     }
 
     public function getExport(Request $request){
-        $export= Export::find($request->exportId);
+        $export = Export::find($request->exportId);
+
+        return response()->json([
+                    'invoiceAmount'    => $export->invoice_value,
+                    'invoiceNumber'    => $export->invoice_no,
+                    'invoiceDate'      => $export->date,
+                    'shipperToId'      => $export->shipper->name,
+                    'lcNumber'         => $export->lc_number,
+
+        ]);
         return response()->json($export);
     }
 

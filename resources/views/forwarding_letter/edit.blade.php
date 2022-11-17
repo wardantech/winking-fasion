@@ -144,10 +144,9 @@
                         exportId: exportId
                     },
                     success: function(data){
-                        console.log(data);
-                        $('#value').val(data.invoice_value);
-                        $('#invoice-no').val(data.invoice_no);
-                        $('#invoice-date').val(data.date);
+                        $('#value').val(data.invoiceAmount);
+                        $('#invoice-no').val(data.invoiceNumber);
+                        $('#invoice-date').val(data.invoiceDate);
                     }
 
                 });
