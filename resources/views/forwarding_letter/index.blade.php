@@ -31,24 +31,22 @@
                     <td>{{$forwardLetter->export->invoice_no}}</td>
                     <td>{{$forwardLetter->export->date}}</td>
                     <td>
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{trans('file.action')}}
-                                <span class="caret"></span>
-                                <span class="sr-only">Toggle Dropdown</span>
-                            </button>
-                            <ul class="dropdown-menu edit-options dropdown-menu-right dropdown-default" user="menu">
-                                <li>
-                                    <a href="{{route('forwarding-letter.show',$forwardLetter->id)}}" class="btn btn-link"><i class="fa fa-eye"></i> View</a>
-                                </li>
-                                <li><a  class=" btn btn-link"  href="{{route('forwarding-letter.edit',$forwardLetter->id)}}"><i class="dripicons-document-edit"></i> Edit</a></li>
-                                <li class="divider"></li>
-                                {{ Form::open(['route' => ['forwarding-letter.destroy', $forwardLetter->id], 'method' => 'DELETE'] ) }}
-                                <li>
-                                    <button type="submit" class="btn btn-link" onclick="return confirmDelete()"><i class="dripicons-trash"></i> {{trans('file.delete')}}</button>
-                                </li>
-                                {{ Form::close() }}
-                            </ul>
-                        </div>
+                        <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{trans('file.action')}}
+                            <span class="caret"></span>
+                            <span class="sr-only">Toggle Dropdown</span>
+                        </button>
+                        <ul class="dropdown-menu edit-options dropdown-menu-right dropdown-default" user="menu">
+                            <li>
+                                <a href="{{route('forwarding-letter.show',$forwardLetter->id)}}" class="btn btn-link"><i class="fa fa-eye"></i> View</a>
+                            </li>
+                            <li><a  class=" btn btn-link"  href="{{route('forwarding-letter.edit',$forwardLetter->id)}}"><i class="dripicons-document-edit"></i> Edit</a></li>
+                            <li class="divider"></li>
+                            {{ Form::open(['route' => ['forwarding-letter.destroy', $forwardLetter->id], 'method' => 'DELETE'] ) }}
+                            <li>
+                                <button type="submit" class="btn btn-link" onclick="return confirmDelete()"><i class="dripicons-trash"></i> {{trans('file.delete')}}</button>
+                            </li>
+                            {{ Form::close() }}
+                        </ul>
                     </td>
                 </tr>
                 @endforeach
