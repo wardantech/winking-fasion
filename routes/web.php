@@ -435,6 +435,7 @@ Route::group(['middleware' => ['auth', 'active']], function() {
     Route::resource('interest', 'InterestController');
     Route::resource('forwarding-letter', 'ForwardingLetterController');
     Route::get('get-export', 'ForwardingLetterController@getExport')->name('get-export');
+    Route::get('salary-sheet', 'SalarySheetController@index')->name('salary-sheet-index');
     Route::get('salary-sheet-create', 'SalarySheetController@salarySheetCreate')->name('salary-sheet-create');
     Route::post('salary-sheet-generate', 'SalarySheetController@salarySheetGenerate')->name('salary-sheet.generate');
 	Route::resource('bill-exchange','BillExchangeController');

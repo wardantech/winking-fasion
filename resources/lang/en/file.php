@@ -589,5 +589,9 @@ return [
 	"This product has different price for different warehouse" => "This product has different price for different warehouse",
 	"Backup Database" => "Backup Database",
 	"Invoice Format" => "Invoice Format",
+	"H. Rent" => "H. Rent",
+	"Medical" => "Medical",
+	"T.Port" => "T.Port",
+	"Allowed Leave" => "Allowed Leave",
 ];
 ?>

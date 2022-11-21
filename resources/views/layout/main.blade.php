@@ -471,6 +471,7 @@
                                 @if($payroll_active)
                                     <li id="payroll-menu"><a href="{{route('payroll.index')}}">{{trans('file.Payroll')}}</a></li>
                                 @endif
+                                <li id="salary-sheet"><a href="{{route('salary-sheet-index')}}">{{trans('file.Salary Sheet')}}</a></li>
 
                             </ul>
                         </li>

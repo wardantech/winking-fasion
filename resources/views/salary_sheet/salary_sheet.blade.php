@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="images/favicon.png" rel="icon"/>
-    <title>Invoice - Rishona</title>
+    <title>Salary Sheet</title>
     <meta name="author" content="harnishdesign.net">
 
     <!-- Web Fonts
@@ -729,11 +729,16 @@
         @endif
         <main class="bg-imge">
             <div class="text-center">
-                <h2>Wardan Tech Ltd.</h2>
-                <h5> House-23(2A), Road-03/C, Sector-09, Uttara, Dhaka-1230, Bangladesh</h5>
+                <h2>WINKING FASHION</h2>
+                <h5> HOUSE#128, ROAD#01, BARIDHARA DOHS, DHAKA-1206, BANGLADESH</h5>
             </div><br>
-            <div class="float-right">
-                <h6>Date: 25/05/22</h6>
+            <div>
+                <div>
+                    <h6>Salary Sheet: {{ $requests['month'].' '.$requests['year'] }}</h6>
+                </div>
+                <div class="float-right">
+                    <h6>Date: {{ now()->toDateString() }}</h6>
+                </div>
             </div>
             <div>
                 <table class="table table-bordered">
@@ -743,12 +748,12 @@
                         <th  rowspan="2">Designation</th>
                         <th  rowspan="2">Basic Pay</th>
                         <th  colspan="3">Allowances</th>
-                        <th   rowspan="2">Allowed Leave</th>
-                        <th  rowspan="2">Leave Taken</th>
-                        <th  rowspan="2">Worked Days</th>
-                        <th  rowspan="2">Gross Pay</th>
-                        <th  rowspan="2">Deduction</th>
+                        {{-- <th   rowspan="2">Allowed Leave</th> --}}
+                        {{-- <th  rowspan="2">Leave Taken</th> --}}
+                        {{-- <th  rowspan="2">Worked Days</th> --}}
                         <th  rowspan="2">Net Pay</th>
+                        {{-- <th  rowspan="2">Deduction</th>
+                        <th  rowspan="2">Net Pay</th> --}}
                         <th  rowspan="2">Status</th>
                     </tr>
                     <tr>
@@ -771,29 +776,34 @@
                         <td><input type="number" value="{{ $hRent }}" class="form-control" readonly></td>
                         <td><input type="number" value="{{ $medical }}" class="form-control" readonly></td>
                         <td><input type="number" value="{{ $tPort }}" class="form-control" readonly></td>
-                        <td>{{ $requests['allowed_leave'] }}</td>
-                        <td>
+                        {{-- <td>{{ $requests['allowed_leave'] }}</td>
+                        <td> --}}
                             <?php
-                                $days=0;
-                                if($employee->user){
-                                    $leaves= App\Holiday::where('user_id', $employee->user->id)->get();
-                                    $count= count($leaves);
-                                }
+                                // $days=0;
+                                // if($employee->user){
+                                //     $leaves= App\Holiday::where('user_id', $employee->user->id)->get();
+                                //     $count= count($leaves);
+                                // }
                             ?>
-                            @foreach($leaves as $leave)
+                            {{-- @foreach($leaves as $leave) --}}
                                 <?php
-                                    $to = \Carbon\Carbon::parse($leave->to_date);
-                                    $from = \Carbon\Carbon::parse($leave->from_date);
-                                    $days += $to->diffInDays($from);
+                                    // $to = \Carbon\Carbon::parse($leave->to_date);
+                                    // $from = \Carbon\Carbon::parse($leave->from_date);
+                                    // $days += $to->diffInDays($from);
                                 ?>
-                            @endforeach
+                            {{-- @endforeach
                             <span>{{ $days }}</span>
-                        </td>
-                        <td></td>
+                        </td> --}}
                         <td>{{ $employee->present_salary }}</td>
-                        {{-- <td>{{  }}</td>
-                        <td>{{ $employee->present_salary -  }}</td> --}}
-                        <td></td>
+                        {{-- <td>{{ $requests['deduction'] }}</td> --}}
+                        {{-- <td>{{ $employee->present_salary - $requests['deduction']}}</td> --}}
+                        <td>
+                            @if ($requests['status']==1)
+                                Cash Paid
+                            @elseif ($requests['status']==2)
+                                Bank Paid
+                            @endif
+                        </td>
                     </tr>
                     @endforeach
                 </table>
