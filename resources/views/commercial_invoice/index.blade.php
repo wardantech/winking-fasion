@@ -6,14 +6,14 @@
 
 <section>
     <div class="container-fluid">
-        <a href="{{route('forwarding-letter.create')}}" class="btn btn-info"><i class="dripicons-plus"></i> Add forwarding-letter</a>
+        <a href="{{route('commercial-invoice.create')}}" class="btn btn-info"><i class="dripicons-plus"></i> Add Commercial-Invoice</a>
     </div>
     <div class="table-responsive proTable">
         <table id="employee-table" class="table">
             <thead>
                 <tr>
+                    <th>SN</th>
                     <th>Date</th>
-                    <th>Bank Name</th>
                     <th>LC No</th>
                     <th>Amount</th>
                     <th>Invoice Number</th>
@@ -22,14 +22,14 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($forwardLetters as $forwardLetter)
+                @foreach($data as $key => $value)
                 <tr>
-                    <td>{{$forwardLetter->date}}</td>
-                    <td>{{$forwardLetter->bank->name}}</td>
-                    <td>{{$forwardLetter->export->lc_number}}</td>
-                    <td>{{$forwardLetter->export->invoice_value}}</td>
-                    <td>{{$forwardLetter->export->invoice_no}}</td>
-                    <td>{{$forwardLetter->export->date}}</td>
+                    <td>{{$key+1}}</td>
+                    <td>{{$value->date}}</td>
+                    <td>{{$value->export->lc_number}}</td>
+                    <td>{{$value->export->invoice_value}}</td>
+                    <td>{{$value->export->invoice_no}}</td>
+                    <td>{{$value->export->date}}</td>
                     <td>
                         <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{trans('file.action')}}
                             <span class="caret"></span>
@@ -37,11 +37,14 @@
                         </button>
                         <ul class="dropdown-menu edit-options dropdown-menu-right dropdown-default" user="menu">
                             <li>
-                                <a href="{{route('forwarding-letter.show',$forwardLetter->id)}}" class="btn btn-link"><i class="fa fa-eye"></i> View</a>
+                                <a href="{{route('commercial-invoice.show', $value->id)}}" class="btn btn-link"><i class="fa fa-eye"></i> View</a>
                             </li>
-                            <li><a  class=" btn btn-link"  href="{{route('forwarding-letter.edit',$forwardLetter->id)}}"><i class="dripicons-document-edit"></i> Edit</a></li>
-                            <li class="divider"></li>
-                            {{ Form::open(['route' => ['forwarding-letter.destroy', $forwardLetter->id], 'method' => 'DELETE'] ) }}
+
+                            <li>
+                                <a  class=" btn btn-link"  href="{{route('commercial-invoice.edit', $value->id)}}"><i class="dripicons-document-edit"></i> Edit</a>
+                            </li>
+
+                            {{ Form::open(['route' => ['commercial-invoice.destroy', $value->id], 'method' => 'DELETE'] ) }}
                             <li>
                                 <button type="submit" class="btn btn-link" onclick="return confirmDelete()"><i class="dripicons-trash"></i> {{trans('file.delete')}}</button>
                             </li>

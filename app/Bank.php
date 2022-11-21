@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\BankBranch;
 use Illuminate\Database\Eloquent\Model;
 
 class Bank extends Model
@@ -12,7 +13,6 @@ class Bank extends Model
 
     public function branches()
     {
-    	return $this->hasMany('App/BankBranch');
-
+    	return $this->hasMany(BankBranch::class, 'bank_id', 'id');
     }
 }

@@ -691,6 +691,13 @@
 
                 ?>
 
+                    <li><a href="#export_documents" aria-expanded="false" data-toggle="collapse"> <i class="dripicons-gear"></i><span><?php echo e(trans('file.Export Documents')); ?></span></a>
+                        <ul id="export_documents" class="collapse list-unstyled ">
+                            <li><a href="<?php echo e(url('forwarding-letter')); ?>">Forwarding-letter</a></li>
+                            <li><a href="<?php echo e(url('bill-exchange')); ?>">Bill-exchange</a></li>
+                        </ul>
+                    </li>
+
                 <?php if($interest_permission_active || $user_profile_permission_active || $general_setting_permission_active): ?>
                     <li><a href="#setting" aria-expanded="false" data-toggle="collapse"> <i class="dripicons-gear"></i><span><?php echo e(trans('file.settings')); ?></span></a>
                         <ul id="setting" class="collapse list-unstyled ">
