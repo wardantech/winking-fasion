@@ -10,17 +10,37 @@
             width: 100%;
             border-collapse: collapse;
         }
+        .print{
+            width: 100px;
+            background: rgb(230, 11, 11);
+            padding: 10px;
+            color:#fff;
+            border-radius: 7px;
+            margin-top: 20px;
+            margin-right:20px;
+        }
         table td{
             padding:10px;
+        }
+        @media print {
+        #printButton {
+            display: none;
+        }
         }
     </style>
 </head>
 <body>
+    <div style="text-align:right;  padding-top: 20px;">
+        <a class="btn print btn-sm btn-secondary float-right mr-1 d-print-none" href="#" onclick="javascript:window.print();" data-abc="true" id="printButton">
+            <i class="fa fa-print"></i> Print</a>
+    </div>
+
     <div style="text-align: center;" class="heading">
         <h2>Winking Fashion</h2>
         <p>HOUSE # 128. ROAD # 01. BARIDHARA DOHS. DHAKA-1206. BANGLADESH</p>
         <p>PHONE: +88 02 841 9355</p>
     </div>
+
     <hr>
     <h1>COMMERCIAL INVOICE PPER</h1>
     <table border="1">
@@ -44,36 +64,35 @@
        </tr>
        <tr>
         <td>EXP NO</td>
-        <td>0000093-23467-2022</td>
+        <td>{{ $data->exp_no }}</td>
         <td>Date</td>
         <td>23-06-2022</td>
        </tr>
        <tr>
         <td>SHIPMENT TERMS:</td>
-        <td>FOB ANY PORT IN BANGLADESH </td>
-        <td></td>
+        <td colspan="2">{{ $data->shipment_terms }}</td>
         <td></td>
        </tr>
        <tr>
         <td>PAYMENT TERMS:</td>
-        <td>60 DAYS AFTER BL DATE</td>
+        <td>{{ $data->payment_terms }}</td>
         <td></td>
         <td></td>
        </tr>
        <tr>
         <td rowspan="6">
             <p><strong>BENEFICIARY NAME & ADDRESS :</strong></p>
-            <p><strong>VINKING FASHION</strong></p>
+            <p><strong>WINKING FASHION</strong></p>
             <p>HOUSE # 128, ROAD # 01, BARIDHARA DOHS, DHAKA-1209, BANGLADESH</p>
         </td>
         <td>Port of loading</td>
-        <td>Chattogram Bangladesh</td>
+        <td>{{ $data->port_loading }}</td>
         <td></td>
         <td></td>
        </tr>
        <tr>
         <td>Port of destination</td>
-        <td>Montreal CANADA</td>
+        <td>{{ $data->port_destination }}</td>
         <td></td>
         <td></td>
        </tr>
@@ -104,12 +123,12 @@
        <tr>
         <td>
             <p><strong>NOTIFY PARTY</strong></p>
-            <p><strong>JEANIOLOGIE INC.</strong></p>
-            <p>1951, BLVD. DE LA COTE-VERTU O. 5T-LAURENT, QC H4S 1E1, CANADA</p>
+            <p><strong>{{ $data->notify->name }}</strong></p>
+            <p>{{ $data->notify->address }}</p>
         </td>
         <td colspan="4">
             <p><strong>BENEFICIARY BANK NAME & ADDRESS:</strong></p>
-            <p><strong>BRAC BANK LIMITED</strong></p>
+            <p><strong>{{ $data->bank->name }}</strong></p>
             <p>TRADE OPERATIONS DEPARTMENT.</p>
             <p>HEAD OFFICE. 220/B. ANIK TOWER, LEVEL-11. TEJGAON </p>
             <p>SWIFT CODE BRAKBDDH</p>
@@ -128,55 +147,69 @@
         </tr>
         <tr>
             <td rowspan="3">
-                <p><strong>JEANIOLOGIE INC.</strong></p>
-                <p>Consignee: Jeaniologie Inc.</p>
+                <p><strong>{{ $data->notify->name }}</strong></p>
+            <p>{{ $data->notify->address }}</p>
             </td>
             <td>Readymate Garments</td>
             <td colspan="4">POB CHITAGONJ BANGLADESH</td>
         </tr>
+
+
+            @php
+                $description_good = json_decode($data->description_good, true);
+                $ctn_qty = json_decode($data->ctn_qty, true);
+                $quantity_pcs = json_decode($data->quantity_pcs, true);
+                $unit_price = json_decode($data->unit_price, true);
+                $total_price = json_decode($data->total_price, true);
+
+                $totalPrice = 0; $totalCTN = 0; $totalPCS = 0;
+            @endphp
+
+            @foreach( $description_good as $key => $value )
+            <tr>
+                <td>
+                    <p>{{$description_good[$key]}}</p>
+                </td>
+                <td>{{$ctn_qty[$key]}} CTNS</td>
+                <td>{{$quantity_pcs[$key]}} PCS</td>
+                <td>${{ number_format($unit_price[$key], 2)}} </td>
+                <td>${{ number_format($total_price[$key], 2)}}</td>
+            </tr>
+
+            @php
+                $totalPCS   += $ctn_qty[$key];
+                $totalCTN   += $quantity_pcs[$key];
+                $totalPrice += $total_price[$key];
+
+                $result = new \NumberFormatter(locale_get_default(), NumberFormatter::SPELLOUT );
+                $ConvertWord = $result->format($totalPrice);
+
+            @endphp
+
+            @endforeach
+
         <tr>
-            <td>
-                <p>MENS PULL -ON SLM CUT CARGO CHINO</p>
-                <P>STYLE:NO SL-DEAN-FST</P>
-                <P>VPO NO. 1005225</P>
-            </td>
-            <td>160 CTNS</td>
-            <td>4,800 CTNS</td>
-            <td>$8.05</td>
-            <td>$38,000650.00</td>
-        </tr>
-        <tr>
-            <td>
-                <p>MENS PULL -ON SLM CUT CARGO CHINO</p>
-                <P>STYLE:NO SL-DEAN-FST</P>
-                <P>VPO NO. 1005225</P>
-            </td>
-            <td>160 CTNS</td>
-            <td>4,800 CTNS</td>
-            <td>$8.05</td>
-            <td>$38,000650.00</td>
-        </tr>
-        <tr>
-            <td colspan="2">Total</td>
-            <td>236 CTNS</td>
-            <td>8400 PCS</td>
+            <td colspan="2">Total = </td>
+            <td>{{$totalCTN }} CTNS</td>
+            <td>{{ $totalPCS }} PCS</td>
             <td></td>
-            <td>$67,620</td>
+            <td>${{ number_format($totalPrice, 2)}}</td>
         </tr>
         <tr>
             <td colspan="5"></td>
             <td></td>
         </tr>
     </table>
-    <p>US DOLLAR SIXTY SEVEN THOUSAND TAKA  AND SENT ZERO ONLY</p>
+
+    <p>{{ $ConvertWord }}</p>
     <table>
         <tr>
             <td>TOTAL QTY</td>
-            <td>:8,400 PCS</td>
+            <td><b>:</b> {{ $totalPCS }} PCS</td>
         </tr>
         <tr>
             <td>TOTAL CTN</td>
-            <td>263 PCS</td>
+            <td><b>:</b> {{$totalCTN }} PCS</td>
         </tr>
         <tr>
             <td>TTL NET WEIGHT</td>
@@ -188,7 +221,7 @@
         </tr>
         <tr>
             <td>TOTAL CBM</td>
-            <td>: 13.78 CBM</td>
+            <td><b>:</b> 13.78 CBM</td>
         </tr>
 
         <tr>
