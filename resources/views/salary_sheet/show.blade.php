@@ -736,10 +736,10 @@
                 @csrf
             <div>
                 <div>
-                    <h6>Salary Sheet: {{ $requests['month'].' '.$requests['year'] }}</h6>
+                    <h6>Salary Sheet: {{ $salarySheet->month.' '.$salarySheet->year }}</h6>
                 </div>
                 <div class="float-right">
-                    <h6>Date: <input type="date" name="date" value="{{ $requests['date'] }}" class="form-control" readonly></h6>
+                    <h6>Date: <input type="date" name="date" value="{{ $salarySheet->date }}" class="form-control" readonly></h6>
                 </div>
             </div>
             <div>
@@ -763,36 +763,38 @@
                         <td>Medical</td>
                         <td>T.port</td>
                     </tr>
-                    <input type="hidden" name="h_rent_percent" value="{{ $requests['h_rent'] }}" class="form-control">
+                    {{-- <input type="hidden" name="h_rent_percent" value="{{ $requests['h_rent'] }}" class="form-control">
                     <input type="hidden" name="medical_percent" value="{{ $requests['medical'] }}" class="form-control">
                     <input type="hidden" name="t_port_percent" value="{{ $requests['t_port'] }}" class="form-control">
                     <input type="hidden" name= "allowed_leave" value="{{ $requests['allowed_leave'] }}">
                     <input type="hidden" name="status" value="{{ $requests['status'] }}">
                     <input type="hidden" name="year" value="{{ $requests['year'] }}">
-                    <input type="hidden" name="month" value="{{ $requests['month'] }}">
-                    @foreach ($employees as $key=>$employee)
+                    <input type="hidden" name="month" value="{{ $requests['month'] }}"> --}}
+                    @foreach ($salarySheetDetails as $key=>$salarySheetDetail)
                     <tr>
                         <td>{{ $key+1 }}</td>
                         <td>
-                            {{ $employee->name }}
-                            <input type="hidden" name="employee_id[]" value="{{ $employee->id }}">
+                            {{ $salarySheetDetail->employee->name }}
+                            {{-- <input type="hidden" name="employee_id[]" value="{{ $employee->id }}"> --}}
                         </td>
-                        <td>{{ $employee->designation != NULL ? $employee->designation : '' }}</td>
+                        <td>
+                            {{-- {{ $employee->designation != NULL ? $employee->designation : '' }} --}}
+                        </td>
                         <?php
-                            $hRent= ($employee->present_salary*$requests['h_rent'])/100;
-                            $medical= ($employee->present_salary*$requests['medical'])/100;
-                            $tPort= ($employee->present_salary*$requests['t_port'])/100;
-                            $basicSalary= $employee->present_salary - ($hRent + $medical + $tPort);
+                            // $hRent= ($employee->present_salary*$requests['h_rent'])/100;
+                            // $medical= ($employee->present_salary*$requests['medical'])/100;
+                            // $tPort= ($employee->present_salary*$requests['t_port'])/100;
+                            // $basicSalary= $employee->present_salary - ($hRent + $medical + $tPort);
                         ?>
-                        <td><input type="number" name="basic_pay[]" value="{{ $basicSalary }}" class="form-control" readonly></td>
+                        <td><input type="number" name="basic_pay[]" value="{{ $salarySheetDetail->basic_pay }}" class="form-control" readonly></td>
                         <td>
-                            <input type="number" name="h_rent[]" value="{{ $hRent }}" class="form-control" readonly>
+                            <input type="number" name="h_rent[]" value="{{ $salarySheetDetail->h_rent }}" class="form-control" readonly>
                         </td>
                         <td>
-                            <input type="number" name="medical[]" value="{{ $medical }}" class="form-control" readonly>
+                            <input type="number" name="medical[]" value="{{ $salarySheetDetail->medical }}" class="form-control" readonly>
                         </td>
                         <td>
-                            <input type="number" name="t_port[]" value="{{ $tPort }}" class="form-control" readonly>
+                            <input type="number" name="t_port[]" value="{{ $salarySheetDetail->t_port }}" class="form-control" readonly>
                         </td>
                         {{-- <td>{{ $requests['allowed_leave'] }}</td>
                         <td> --}}
@@ -812,21 +814,21 @@
                             {{-- @endforeach
                             <span>{{ $days }}</span>
                         </td> --}}
-                        <td><input type="number" name="net_pay[]" value="{{ $employee->present_salary }}" class="form-control"></td>
+                        <td><input type="number" name="net_pay[]" value="{{ $salarySheetDetail->net_pay }}" class="form-control"></td>
                         {{-- <td>{{ $requests['deduction'] }}</td> --}}
                         {{-- <td>{{ $employee->present_salary - $requests['deduction']}}</td> --}}
                         <td>
-                            @if ($requests['status']==1)
+                            @if ($salarySheet->status==1)
                                 {{-- <input type="hidden" value="1" name="status"> --}}
                                 Cash Paid
-                            @elseif ($requests['status']==2)
+                            @elseif ($salarySheet->status==2)
                                 {{-- <input type="hidden" value="2" name="status"> --}}
                                 Bank Paid
                             @endif
                         </td>
                     </tr>
                     @endforeach
-                    <input type="submit" value="Confirm Salary Sheet" class="btn btn-primary">
+                    {{-- <input type="submit" value="Confirm Salary Sheet" class="btn btn-primary"> --}}
                 </form>
                 </table>
             </div>

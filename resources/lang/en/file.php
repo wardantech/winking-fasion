@@ -593,5 +593,12 @@ return [
 	"Medical" => "Medical",
 	"T.Port" => "T.Port",
 	"Allowed Leave" => "Allowed Leave",
+	"Year" => "Year",
+	"Month" => "Month",
+	"Salary Sheet" => "Salary Sheet",
+	"House Rent(%)" => "House Rent(%)",
+	"Medical(%)" => "Medical(%)",
+	"T. Port(%)" => "T. Port(%)",
+	"Create Salary Sheet" => "Create Salary Sheet",
 ];
 ?>

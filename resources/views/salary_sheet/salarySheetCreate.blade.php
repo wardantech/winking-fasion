@@ -12,6 +12,10 @@
                         {!! Form::open(['route' => ['salary-sheet.generate'], 'method' => 'post']) !!}
                             <div class="row">
                                 <div class="col-md-4 form-group">
+                                    <label>{{trans('file.Date')}} *</label>
+                                    <input type="date" name="date" id="" class="form-control" value="{{ now()->toDateString() }}">
+                                </div>
+                                <div class="col-md-4 form-group">
                                     <label>{{trans('file.Year')}} *</label>
                                     <select name="year" id="" class="form-control">
                                         @foreach ($years as $year)
@@ -28,15 +32,15 @@
                                     </select>
                                 </div>
                                 <div class="col-md-4 form-group">
-                                    <label>{{trans('file.H. Rent')}} *</label>
+                                    <label>{{trans('file.House Rent(%)')}} *</label>
                                     <input type="number" name="h_rent" step="any" required class="form-control">
                                 </div>
                                 <div class="col-md-4 form-group">
-                                    <label>{{trans('file.Medical')}} *</label>
+                                    <label>{{trans('file.Medical(%)')}} *</label>
                                     <input type="number" name="medical" step="any" required class="form-control">
                                 </div>
                                 <div class="col-md-4 form-group">
-                                    <label>{{trans('file.T.Port')}} *</label>
+                                    <label>{{trans('file.T. Port(%)')}} *</label>
                                     <input type="number" name="t_port" step="any" required class="form-control">
                                 </div>
                                 <div class="col-md-4 form-group">

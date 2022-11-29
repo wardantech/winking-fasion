@@ -84,7 +84,7 @@ class PurchaseOrderController extends Controller
             'payment_terms'=>'string|max:200',
             'febric_ref'=>'string|max:200',
             'brand'=>'string|max:100',
-            'style_no'=>'string|max:20',
+            'style_no'=>'string|required|max:20',
             'ca'=>'string|max:20',
             'total_quantity'=>'required|integer',
             'total_amount'=>'required|numeric',
