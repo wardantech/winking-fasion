@@ -26,6 +26,40 @@
         #printButton {
             display: none;
         }
+        p{
+            margin: 0px;
+        }
+        h1{
+                margin:0px;
+            }
+            h2{
+                margin:0px;
+            }
+            table td{
+                padding: 5px 2px;
+                font-size: 10px;
+                text-transform: uppercase;
+            }
+            .fontsmal{
+                font-size: 10px;
+                font-weight: bold;
+            }
+            .shipex{
+                vertical-align: top;
+            }
+            .shipex p{
+                margin: 0px;
+            }
+            .shipex h4{
+                margin: 0px;
+            }
+            .totaltable td{
+                font-weight: bold;
+            }
+            hr{
+                margin-bottom: 0px;
+            }
+            
         }
     </style>
 </head>
@@ -36,17 +70,17 @@
     </div>
 
     <div style="text-align: center;" class="heading">
-        <h2>Winking Fashion</h2>
+        <h2><i>Winking Fashion</i></h2>
         <p>HOUSE # 128. ROAD # 01. BARIDHARA DOHS. DHAKA-1206. BANGLADESH</p>
         <p>PHONE: +88 02 841 9355</p>
     </div>
 
     <hr>
-    <h1>COMMERCIAL INVOICE PPER</h1>
+    <h2 style="text-align: center;margin-bottom:4px;margin-top:2px;"><u>COMMERCIAL INVOICE</u> </h2>
     <table border="1">
        <tr>
-        <td rowspan="5">
-            <P><strong>SHIPPER/EXPORTER</strong></P>
+        <td class="shipex" rowspan="5">
+            <P><strong><u><i>SHIPPER/EXPORTER</i></u></strong></P>
             <h4>{{ $data->export->shipper->name }}</h4>
             <P>{{ $data->export->shipper->address }} </P>
             <p></p>
@@ -57,7 +91,7 @@
         <td>{{ $data->date }}</td>
        </tr>
        <tr>
-        <td>LC No</td>
+        <td>LC No.</td>
         <td>{{ $data->export->lc_number }}</td>
         <td>Date</td>
         <td>23-06-2022</td>
@@ -80,8 +114,8 @@
         <td></td>
        </tr>
        <tr>
-        <td rowspan="6">
-            <p><strong>BENEFICIARY NAME & ADDRESS :</strong></p>
+        <td  class="shipex"  rowspan="6">
+            <p><strong><u>BENEFICIARY NAME & ADDRESS :</u></strong></p>
             <p><strong>WINKING FASHION</strong></p>
             <p>HOUSE # 128, ROAD # 01, BARIDHARA DOHS, DHAKA-1209, BANGLADESH</p>
         </td>
@@ -121,37 +155,37 @@
         <td></td>
        </tr>
        <tr>
-        <td>
-            <p><strong>NOTIFY PARTY</strong></p>
+        <td class="shipex">
+            <p><strong><u>NOTIFY PARTY:</u></strong></p>
             <p><strong>{{ $data->notify->name }}</strong></p>
             <p>{{ $data->notify->address }}</p>
         </td>
         <td colspan="4">
-            <p><strong>BENEFICIARY BANK NAME & ADDRESS:</strong></p>
+            <p><strong><u>BENEFICIARY BANK NAME & ADDRESS:</u></strong></p>
             <p><strong>{{ $data->bank->name }}</strong></p>
             <p>TRADE OPERATIONS DEPARTMENT.</p>
             <p>HEAD OFFICE. 220/B. ANIK TOWER, LEVEL-11. TEJGAON </p>
-            <p>SWIFT CODE BRAKBDDH</p>
-            <p>AIC NO. 1534204780312001</p>
+            <p>SWIFT CODE: BRAKBDDH</p>
+            <p>A/C NO.: 1534204780312001</p>
         </td>
        </tr>
     </table>
     <table border="1">
         <tr>
-            <td>SHIPING MARK</td>
-            <td>DESCRIPTION OF GOODS</td>
-            <td>CTN QTY</td>
-            <td>QUANTITY IN PCS</td>
-            <td>UNIT PRICE IN US $</td>
-            <td>TOTAL PRICE IN US $</td>
+            <td class="fontsmal">SHIPING MARK</td>
+            <td class="fontsmal">DESCRIPTION OF GOODS</td>
+            <td class="fontsmal">CTN QTY</td>
+            <td class="fontsmal">QUANTITY IN PCS</td>
+            <td class="fontsmal">UNIT PRICE IN US $</td>
+            <td class="fontsmal">TOTAL PRICE IN US $</td>
         </tr>
         <tr>
             <td rowspan="3">
                 <p><strong>{{ $data->notify->name }}</strong></p>
             <p>{{ $data->notify->address }}</p>
             </td>
-            <td>Readymate Garments</td>
-            <td colspan="4">POB CHITAGONJ BANGLADESH</td>
+            <td  style="text-align: center"><strong><u>Readymade Garments</u></strong></td>
+            <td style="text-align: right" colspan="4"><strong>FOB CHITAGONJ, BANGLADESH</strong></td>
         </tr>
 
 
@@ -170,10 +204,10 @@
                 <td>
                     <p>{{$description_good[$key]}}</p>
                 </td>
-                <td>{{$ctn_qty[$key]}} CTNS</td>
-                <td>{{$quantity_pcs[$key]}} PCS</td>
-                <td>${{ number_format($unit_price[$key], 2)}} </td>
-                <td>${{ number_format($total_price[$key], 2)}}</td>
+                <td style="text-align: center">{{$ctn_qty[$key]}} CTNS</td>
+                <td style="text-align: center">{{$quantity_pcs[$key]}} PCS</td>
+                <td style="text-align: center">${{ number_format($unit_price[$key], 2)}} </td>
+                <td style="text-align: right">${{ number_format($total_price[$key], 2)}}</td>
             </tr>
 
             @php
@@ -189,11 +223,11 @@
             @endforeach
 
         <tr>
-            <td colspan="2">Total = </td>
-            <td>{{$totalCTN }} CTNS</td>
-            <td>{{ $totalPCS }} PCS</td>
+            <td style="text-align: center" colspan="2"><strong>Total = </strong></td>
+            <td  style="text-align: center" ><strong>{{$totalCTN }} CTNS</strong></td>
+            <td  style="text-align: center" ><strong>{{ $totalPCS }} PCS</strong></td>
             <td></td>
-            <td>${{ number_format($totalPrice, 2)}}</td>
+            <td  style="text-align: center" ><strong>${{ number_format($totalPrice, 2)}}</strong></td>
         </tr>
         <tr>
             <td colspan="5"></td>
@@ -201,8 +235,8 @@
         </tr>
     </table>
 
-    <p>{{ $ConvertWord }}</p>
-    <table>
+    <p style="font-size: 11px;"><strong>(US DOLLAR <span style="text-transform: uppercase">{{ $ConvertWord }}</span> ONLY.)</strong></p>
+    <table class="totaltable">
         <tr>
             <td>TOTAL QTY</td>
             <td><b>:</b> {{ $totalPCS }} PCS</td>
@@ -233,7 +267,7 @@
             <td>BRAC BANK LIMITED  <br>TRADE OPERATIONS DEPARTMENT. <br>HEAD OFFICE. 220/B. ANIK TOWER, LEVEL-11. TEJGAON</td>
         </tr>
         <tr>
-            <td>ACCOUNT NO:</td>
+            <td>ACCOUNT NO.:</td>
             <td>12253674890</td>
         </tr>
         <tr>
