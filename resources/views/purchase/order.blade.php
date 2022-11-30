@@ -216,7 +216,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>Style No</label>
+                                                <label>Style No<span class="text-red">*</span></label>
                                                 <input type="text" name="style_no" class="form-control" placeholder="Enter Style No" required>
                                                 @if($errors->has('style_no'))
                                                     <span class="text-danger">

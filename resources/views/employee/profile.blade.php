@@ -14,7 +14,21 @@
                       <img class="card-img-top" src="{{url('public/images/employee',$employee->image)}}" alt="Card image cap" width="180px !importent;">
                       <div class="card-body">
                         <h5 class="card-title">{{$employee->name}}</h5></h5>
+                        @if($employee->leave_job == 0)
+                        <form action="{{ route('employees.leave-job',$employee->id) }}" method="post">
+                            @csrf
+                            <input type="submit" class="btn btn-primary" value="Leave Job">
+                        </form>
+                        @elseif($employee->leave_job == 1)
+                        <form action="{{ route('employees.cancel-leave-job',$employee->id) }}" method="post">
+                            @csrf
+                            <input type="submit" class="btn btn-primary" value="Cancel Leave Job">
+                        </form>
+                        @endif
                       </div>
+                      {{-- <div class="card-body">
+
+                      </div> --}}
                 </div>
            </div>
 
@@ -68,6 +82,12 @@
                                     <td>Present Salary</td>
                                     <td>{{ $employee->present_salary}} BDT</td>
                                 </tr>
+                                @if ($employee->leave_job_date != null)
+                                <tr>
+                                    <td>Job Left Date</td>
+                                    <td>{{ $employee->leave_job_date}}</td>
+                                </tr>
+                                @endif
 
                             </tbody>
                        </table>

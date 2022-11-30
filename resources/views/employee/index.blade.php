@@ -34,6 +34,7 @@
                     <th>{{trans('file.Phone Number')}}</th>
                     <th>{{trans('file.Department')}}</th>
                     <th>{{trans('file.Address')}}</th>
+                    <th>{{trans('status')}}</th>
                     <th>{{trans('Download CV')}}</th>
                     <th class="not-exported">{{trans('file.action')}}</th>
                 </tr>
@@ -58,6 +59,19 @@
                             @if($employee->state){{ ', '.$employee->state}}@endif
                             @if($employee->postal_code){{ ', '.$employee->postal_code}}@endif
                             @if($employee->country){{ ', '.$employee->country}}@endif</td>
+                    <td>
+                        @if($employee->status == 0)
+                        <form action="{{ route('employees.change-status',$employee->id) }}" method="post">
+                            @csrf
+                            <input type="submit" class="btn btn-danger btn-sm" value="Inactive">
+                        </form>
+                        @elseif($employee->status == 1)
+                        <form action="{{ route('employees.change-status',$employee->id) }}" method="post">
+                            @csrf
+                            <input type="submit" class="btn btn-primary btn-sm" value="Active">
+                        </form>
+                        @endif
+                    </td>
                     <td>
                         @if(isset($employee->image_cv))
                             <a href="public/images/employee/cv/{{ $employee->image_cv }}" class="btn btn-link" style="font-size:12px;">  <i class="dripicons-download"></i> {{trans('Download CV')}}</a>

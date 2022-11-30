@@ -391,6 +391,9 @@ Route::group(['middleware' => ['auth', 'active']], function() {
     Route::resource('export', 'ExportController');
 
 	Route::post('employees/deletebyselection', 'EmployeeController@deleteBySelection');
+	Route::post('employees/leave-job/{id}', 'EmployeeController@leaveJob')->name('employees.leave-job');
+	Route::post('employees/cancel-leave-job/{id}', 'EmployeeController@cancelLeaveJob')->name('employees.cancel-leave-job');
+	Route::post('employees/employees.change-status/{id}', 'EmployeeController@changeStatus')->name('employees.change-status');
 	Route::resource('employees', 'EmployeeController');
 
 	Route::get('payroll/filter', 'PayrollController@payrollFilterGet');
@@ -435,8 +438,11 @@ Route::group(['middleware' => ['auth', 'active']], function() {
     Route::resource('interest', 'InterestController');
     Route::resource('forwarding-letter', 'ForwardingLetterController');
     Route::get('get-export', 'ForwardingLetterController@getExport')->name('get-export');
+    Route::get('salary-sheet', 'SalarySheetController@index')->name('salary-sheet-index');
     Route::get('salary-sheet-create', 'SalarySheetController@salarySheetCreate')->name('salary-sheet-create');
     Route::post('salary-sheet-generate', 'SalarySheetController@salarySheetGenerate')->name('salary-sheet.generate');
+    Route::post('salary-sheet-confirm', 'SalarySheetController@salarySheetConfirm')->name('salary-sheet.confirm');
+    Route::get('salary-sheet/show/{id}', 'SalarySheetController@show')->name('salary-sheet-show');
 	Route::resource('bill-exchange','BillExchangeController');
     Route::get('all.bank.branches', 'ForwardingLetterController@AllBranches')->name('all.bank.branches');
 	Route::resource('commercial-invoice','CommercialInvoiceController');
