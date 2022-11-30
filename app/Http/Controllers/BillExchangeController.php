@@ -45,13 +45,12 @@ class BillExchangeController extends Controller
     {
         $data = $request->validate([
             'drawn_under'=>'required',
-            'export'=>'required',
+            'export_id'=>'required',
             'export_date'=>'required',
             'invoice_no'=>'required',
             'invoice_date'=>'required',
             'amount'=>'required'
         ]);
-        // dd($data);
         BillExchange::create($data);
         return redirect('bill-exchange');
     }
@@ -77,7 +76,10 @@ class BillExchangeController extends Controller
      */
     public function edit($id)
     {
-       
+        $bill = BillExchange::find($id);
+        $bankNames = Bank::all();
+        $exports= Export::all();
+       return view('bill_exchange.edit', compact('bankNames','exports','bill'));
     }
 
     /**
@@ -91,7 +93,7 @@ class BillExchangeController extends Controller
     {
         $data = $request->validate([
             'drawn_under'=>'required',
-            'export'=>'required',
+            'export_id'=>'required',
             'export_date'=>'required',
             'invoice_no'=>'required',
             'invoice_date'=>'required',
@@ -99,11 +101,7 @@ class BillExchangeController extends Controller
         ]);
         $response = BillExchange::find($id);
         $response->update($data);
-        return response()->json([
-            'status'=>200,
-            'message'=>'succcesfully done',
-            'data'=>$response
-        ]);
+       return redirect()->route('bill-exchange.index')->with('successfully updated');
     }
 
     /**
@@ -114,6 +112,8 @@ class BillExchangeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = BillExchange::find($id);
+        $data->delete();
+        return redirect()->route('bill-exchange.index')->with('successfully deleted');  
     }
 }

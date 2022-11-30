@@ -10,14 +10,16 @@
                     </div>
                     <div class="card-body">
                         <p class="italic"><small>{{trans('file.The field labels marked with * are required input fields')}}.</small></p>
-                        {!! Form::open(['route' => ['bill-exchange.store'], 'method' => 'post']) !!}
+                        <form action="{{ route('bill-exchange.update', $bill->id )}}" enctype="multipart/form-data" method="POST">
+                        @csrf
+                        @method('PUT')
                             <div class="row">
                                 <div class="col-md-4 form-group">
                                     <label>Drawn Under *</label>
                                     <select name="drawn_under" id="" class="form-control">
                                         <option value="">Select Account</option>
                                         @foreach($bankNames as $bankName)
-                                        <option value="{{$bankName->id}}">{{$bankName->name}}</option>
+                                        <option @if ($bill->drawn_under == $bankName->id) selected @endif value="{{$bankName->id}}">{{$bankName->name}}</option>
                                        @endforeach
                                     </select>
                                 </div>
@@ -26,25 +28,25 @@
                                     <select name="export_id" class="form-control">
                                             <option value="">Select Lc No</option>
                                             @foreach($exports as $export)
-                                        <option value="{{$export->id}}">{{$export->lc_number}}</option>
+                                        <option @if ($bill->export_id == $export->id) selected @endif value="{{$export->id}}">{{$export->lc_number}}</option>
                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="col-md-4 form-group">
                                     <label>Export Date *</label>
-                                    <input type="date" name="export_date"  class="form-control">
+                                    <input type="date" value="{{$bill->export_date}}" name="export_date"  class="form-control">
                                 </div>
                                 <div class="col-md-4 form-group">
                                     <label>Invoice No *</label>
-                                    <input type="text" name="invoice_no" class="form-control">
+                                    <input type="text" value="{{$bill->invoice_no}}" name="invoice_no" class="form-control">
                                 </div>
                                 <div class="col-md-4 form-group">
                                     <label>Invoice Date *</label>
-                                    <input type="date" name="invoice_date"  class="form-control">
+                                    <input type="date" value="{{$bill->invoice_date}}" name="invoice_date"  class="form-control">
                                 </div>
                                 <div class="col-md-4 form-group">
                                     <label>Amount</label>
-                                    <input type="number" name="amount"  class="form-control">
+                                    <input type="number"  value="{{$bill->amount}}"  name="amount"  class="form-control">
                                 </div>
                             </div>
                         <div class="form-group">
