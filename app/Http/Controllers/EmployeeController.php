@@ -211,4 +211,35 @@ class EmployeeController extends Controller
         $lims_employee_data->save();
         return redirect('employees')->with('not_permitted', 'Employee deleted successfully');
     }
+
+    public function leaveJob($id){
+        $employee= Employee::find($id);
+        $employee->leave_job = 1;
+        $employee->leave_job_date = date("Y-m-d");
+        $employee->save();
+
+        return redirect('employees')->with('message', 'Left job successfully');
+    }
+    public function cancelLeaveJob($id){
+        $employee= Employee::find($id);
+        $employee->leave_job = 0;
+        $employee->leave_job_date = null;
+        $employee->save();
+
+        return redirect('employees')->with('message', 'Job left cancel successfully');
+    }
+
+    public function changeStatus($id){
+        $employee= Employee::find($id);
+        if($employee->status== 0){
+            $employee->status= 1;
+            $employee->save();
+        }
+        elseif($employee->status== 1){
+            $employee->status= 0;
+            $employee->save();
+        }
+
+        return redirect('employees')->with('message', 'Status changed successfully');
+    }
 }

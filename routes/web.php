@@ -391,6 +391,9 @@ Route::group(['middleware' => ['auth', 'active']], function() {
     Route::resource('export', 'ExportController');
 
 	Route::post('employees/deletebyselection', 'EmployeeController@deleteBySelection');
+	Route::post('employees/leave-job/{id}', 'EmployeeController@leaveJob')->name('employees.leave-job');
+	Route::post('employees/cancel-leave-job/{id}', 'EmployeeController@cancelLeaveJob')->name('employees.cancel-leave-job');
+	Route::post('employees/employees.change-status/{id}', 'EmployeeController@changeStatus')->name('employees.change-status');
 	Route::resource('employees', 'EmployeeController');
 
 	Route::get('payroll/filter', 'PayrollController@payrollFilterGet');
