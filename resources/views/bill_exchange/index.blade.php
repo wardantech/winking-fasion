@@ -17,6 +17,9 @@
     }
 </style>
 <section>
+    <div class="container-fluid">
+        <a href="{{route('bill-exchange.create')}}" class="btn btn-info"><i class="dripicons-plus"></i> Add Commercial-Invoice</a>
+    </div>
     <div class="table-responsive proTable">
         <table id="expense-table" class="table">
             <thead>
@@ -48,14 +51,19 @@
                                 <span class="sr-only">Toggle Dropdown</span>
                             </button>
                             <ul class="dropdown-menu edit-options dropdown-menu-right dropdown-default" user="menu">
-                                <li><button type="button"  class="editBill btn btn-link"  data-id="{{$bill_exchange->id}}" data-drawn_under="{{$bill_exchange->drawn_under}}" data-export="{{$bill_exchange->export}}" data-export_date="{{$bill_exchange->export_date}}" data-invoice_no="{{$bill_exchange->invoice_no}}" data-invoice_date="{{$bill_exchange->invoice_date}}" data-amount="{{$bill_exchange->amount}}" data-toggle="modal" data-target="#updateBillExchange"><i class="dripicons-document-edit"></i> Edit</button></li>
+                                <li>
+                                    <a href="{{route('bill-exchange.edit', $bill_exchange->id )}}" class="btn btn-link"><i class="fa fa-edit"></i> Edit</a>
+                                   
                                 <li>
                                     <a href="{{route('bill-exchange.show', $bill_exchange->id )}}" class="btn btn-link"><i class="fa fa-eye"></i> View</a>
                                 </li>
                                                           
                                                                 <li class="divider"></li>
-                                <form method="POST" action="#" accept-charset="UTF-8"><input name="_method" type="hidden" value="DELETE"><input name="_token" type="hidden" value="SWo30cvOeDRtEMvOgNXUIaMbxVAubeQRDg8Z3GRI">
+                               
                                 <li>
+                                    <form action="{{ route('bill-exchange.destroy', $bill_exchange->id )}}" enctype="multipart/form-data" method="POST">
+                                        @csrf
+                                        @method('delete')
                                     <button type="submit" class="btn btn-link" onclick="return confirmDelete()"><i class="dripicons-trash"></i> Delete</button>
                                 </li>
                                 </form>
@@ -82,68 +90,7 @@
 
 
 <!-- Modal -->
-<div class="modal fade" id="updateBillExchange" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-      <div class="card-body">
-                        <p class="italic"><small>{{trans('file.The field labels marked with * are required input fields')}}.</small></p>
-                        <!-- {!! Form::open(['route' => ['bill-exchange.update', $bill_exchange->id], 'method' => 'post', 'class'=>'billEditForm']) !!} -->
-                       <form class="billEditForm" method="post"  action="{{url('bill-exchange', $bill_exchange->id)}}">
-                        @csrf
-                        @method('put')
-                        <input type="hidden" id="up_id" name="id"> 
-                        <div class="row">
-                                <div class="col-md-4 form-group">
-                                    <label>Drawn Under *</label>
-                                    <select name="drawn_under" id="drawn_under" class="form-control">
-                                    @foreach($bankNames as $bankName)
-                                        <option value="{{$bankName->id}}">{{$bankName->name}}</option>
-                                       @endforeach
-                                    </select>
-                                </div>
-                                <div class="col-md-4 form-group">
-                                    <label>Export L/C No *</label>
-                                    <select name="export" id="export" class="form-control">
-                                            <option value="">Select Lc No</option>
-                                            @foreach($exports as $export)
-                                                <option value="{{$export->id}}">{{$export->lc_number}}</option>
-                                            @endforeach
-                                    </select>
-                                </div>
-                                <div class="col-md-4 form-group">
-                                    <label>Export Date *</label>
-                                    <input type="date" name="export_date" id="export_date"  class="form-control">
-                                </div>
-                                <div class="col-md-4 form-group">
-                                    <label>Invoice No *</label>
-                                    <input type="text" name="invoice_no" id="invoice_no" class="form-control">
-                                </div>
-                                <div class="col-md-4 form-group">
-                                    <label>Invoice Date *</label>
-                                    <input type="date" name="invoice_date" id="invoice_date"  class="form-control">
-                                </div>
-                                <div class="col-md-4 form-group">
-                                    <label>Amount</label>
-                                    <input type="number" name="amount" id="amount"  class="form-control">
-                                </div>
-                            </div>
-                        <div class="form-group">
-                            <button type="button" class="btn btn-primary updatechange">{{trans('file.submit')}}</button>
-                        </div>
-                       </form>
-                    </div>
-      </div>
-     
-    </div>
-  </div>
-</div>
+
 <!-- ====================== -->
 <script>
     $.ajaxSetup({
