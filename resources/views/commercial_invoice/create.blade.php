@@ -121,7 +121,7 @@
                                     <div class="col-sm-3">
                                         <div class="form-group">
                                             <label for="description_good">Description Of Goods *</label>
-                                            <textarea name="description_good[]" id="description_good" rows="2"></textarea>
+                                            <textarea name="description_good[]" id="description_good" class="form-control" rows="2"></textarea>
                                             @error('description_good')
                                              <p style="color: red">{{ $message }}</p>
                                             @enderror
@@ -243,7 +243,7 @@
     <div class="col-sm-3">\
         <div class="form-group">\
             <label for="description_good">Description Of Goods *</label>\
-            <textarea name="description_good[]" id="description_good" rows="2"></textarea>\
+            <textarea name="description_good[]" id="description_good" class="form-control" rows="2"></textarea>\
             @error('description_good')\
              <p style="color: red">{{ $message }}</p>\
             @enderror\
