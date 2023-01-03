@@ -1,153 +1,116 @@
 @extends('layout.main') @section('content')
+@if($errors->has('name'))
+<div class="alert alert-danger alert-dismissible text-center">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>{{ $errors->first('name') }}</div>
+@endif
+@if($errors->has('image'))
+<div class="alert alert-danger alert-dismissible text-center">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>{{ $errors->first('image') }}</div>
+@endif
+@if($errors->has('email'))
+<div class="alert alert-danger alert-dismissible text-center">
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>{{ $errors->first('email') }}</div>
+@endif
 @if(session()->has('message'))
-  <div class="alert alert-success alert-dismissible text-center"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>{{ session()->get('message') }}</div>
+  <div class="alert alert-success alert-dismissible text-center"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>{!! session()->get('message') !!}</div>
 @endif
 @if(session()->has('not_permitted'))
   <div class="alert alert-danger alert-dismissible text-center"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>{{ session()->get('not_permitted') }}</div>
 @endif
-<style>
-    .table,th{
-        vertical-align: text-top !important;
-    }
-    .table,td{
-        vertical-align: text-top !important;
-    }
-    .daterangepicker.opened{
-        display: block !important;
-    }
-</style>
 <section>
+
     <div class="container-fluid">
-        <a href="{{route('bill-exchange.create')}}" class="btn btn-info"><i class="dripicons-plus"></i> Add Commercial-Invoice</a>
+        <a href="{{route('salary-sheet-create')}}" class="btn btn-info"><i class="dripicons-plus"></i> {{trans('file.Create Salary Sheet')}}</a>
     </div>
-    <div class="table-responsive proTable">
-        <table id="bill-exchange-table" class="table">
+
+    <div class="table-responsive">
+        <table id="employee-table" class="table">
             <thead>
                 <tr>
-                    <th class="not-exported">Sl</th>
-                    <th style="min-width: 65px !important;"> Drwan Under</th>
-                    <th style="min-width: 65px !important;">Export L/C</th>
-                    <th style="min-width: 65px !important;">Export Date</th>
-                    <th >Invoice No</th>
-                    <th>Invoice Date</th>
-                    <th>Amount</th>
+                    <th class="not-exported"></th>
+                    <th>{{trans('file.Date')}}</th>
+                    <th>{{trans('file.House Rent(%)')}}</th>
+                    <th>{{trans('file.Medical(%)')}}</th>
+                    <th>{{trans('file.T. Port(%)')}}</th>
+                    <th>{{trans('file.Allowed Leave')}}</th>
+                    <th>{{trans('file.Year')}}</th>
+                    <th>{{trans('file.Month')}}</th>
+                    <th>{{trans('file.Status')}}</th>
                     <th class="not-exported">{{trans('file.action')}}</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach($bill_exchanges as $bill_exchange)
-                <tr>
-                    <td>{{$loop->iteration}}</td>
-                    <td>{{$bill_exchange->drawn_under}}</td>
-                    <td>{{$bill_exchange->export}}</td>
-                    <td>{{$bill_exchange->export_date}}</td>
-                    <td>{{$bill_exchange->invoice_no}}</td>
-                    <td>{{$bill_exchange->invoice_date}}</td>
-                    <td>{{$bill_exchange->amount}}</td>
-                    <td>
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action
-                                <span class="caret"></span>
-                                <span class="sr-only">Toggle Dropdown</span>
-                            </button>
-                            <ul class="dropdown-menu edit-options dropdown-menu-right dropdown-default" user="menu">
-                                <li>
-                                    <a href="{{route('bill-exchange.edit', $bill_exchange->id )}}" class="btn btn-link"><i class="fa fa-edit"></i> Edit</a>
-
-                                <li>
-                                    <a href="{{route('bill-exchange.show', $bill_exchange->id )}}" class="btn btn-link"><i class="fa fa-eye"></i> View</a>
-                                </li>
-
-                                                                <li class="divider"></li>
-
-                                <li>
-                                    <form action="{{ route('bill-exchange.destroy', $bill_exchange->id )}}" enctype="multipart/form-data" method="POST">
-                                        @csrf
-                                        @method('delete')
-                                    <button type="submit" class="btn btn-link" onclick="return confirmDelete()"><i class="dripicons-trash"></i> Delete</button>
-                                </li>
-                                </form>
-                             </ul>
-                        </div>
-                    </td>
-                </tr>
+                @foreach ($salarySheets as $salarySheet)
+                    <tr>
+                        <td></td>
+                        <td>{{ $salarySheet->date }}</td>
+                        <td>{{ $salarySheet->h_rent }}</td>
+                        <td>{{ $salarySheet->medical }}</td>
+                        <td>{{ $salarySheet->t_port }}</td>
+                        <td>{{ $salarySheet->allowed_leave }}</td>
+                        <td>{{ $salarySheet->year }}</td>
+                        <td>{{ $salarySheet->month }}</td>
+                        <td>
+                            @if($salarySheet->status == 1)
+                                Cash Paid
+                            @elseif($salarySheet->status == 2)
+                                Bank Paid
+                            @endif
+                        </td>
+                        <td><a href="{{ route('salary-sheet-show', $salarySheet->id) }}" class="btn btn-link"><i class="fa fa-eye"></i></a></td>
+                    </tr>
                 @endforeach
             </tbody>
-            <tfoot class="tfoot active">
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-                <th></th>
-            </tfoot>
         </table>
     </div>
 </section>
-<!-- Button trigger modal -->
 
 
-<!-- Modal -->
 
-<!-- ====================== -->
-<script>
+<script type="text/javascript">
+
+    $("ul#hrm").siblings('a').attr('aria-expanded','true');
+    $("ul#hrm").addClass("show");
+    $("ul#hrm #employee-menu").addClass("active");
+
+    var employee_id = [];
+    var user_verified = <?php echo json_encode(env('USER_VERIFIED')) ?>;
+
     $.ajaxSetup({
-    headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    }
-});
-</script>
-<script>
-    $(document).ready(function(){
-// =================update ================
-  $(document).on('click','.editBill',function(){
-       let id = $(this).data('id')
-       let drawn_under = $(this).data('drawn_under')
-       let exportLc = $(this).data('export')
-       let export_date = $(this).data('export_date')
-       let invoice_no = $(this).data('invoice_no')
-       let invoice_date = $(this).data('invoice_date')
-       let amount = $(this).data('amount')
-      var text = $(this).find('option:selected').text();
-       $('#up_id').val(id)
-       $('#drawn_under').val(drawn_under)
-       $('#export').val(exportLc)
-       $('#export_date').val(export_date)
-       $('#invoice_no').val(invoice_no)
-       $('#invoice_date').val(invoice_date)
-       $('#amount').val(amount)
-   });
-    $(document).on('click','.updatechange',function(){
-        let id = $('#up_id').val()
-        let drawn_under = $('#drawn_under').val()
-        let exportLc = $('#export').val()
-        let export_date = $('#export_date').val()
-        let invoice_no = $('#invoice_no').val()
-        let invoice_date = $('#invoice_date').val()
-        let amount = $('#amount').val()
-    $.ajax({
-
-        url:"bill-exchange/"+id,
-        method:'put',
-        data:{id:id,drawn_under:drawn_under,export:exportLc,export_date:export_date,invoice_no:invoice_no,invoice_date:invoice_date,amount:amount},
-        success:function (res) {
-           if(res.success = 200){
-            $(".modal").modal('hide')
-            $(".billEditForm")[0].reset()
-            $(".proTable").load(location.href+' .proTable')
-           }
-        },error:function(err){
-            let error = err.responseJSON
-            console.log(error)
-            $.each(error.errors,function(index, value){
-                $('#upmsgcontainer').append("<p style='color:red'>"+value+"</p>");
-            })
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
-    })
-  });
-  $('#bill-exchange-table').DataTable( {
+    });
+
+    function confirmDelete() {
+        if (confirm("Are you sure want to delete?")) {
+            return true;
+        }
+        return false;
+    }
+
+    $('.edit-btn').on('click', function() {
+        $("#editModal input[name='employee_id']").val( $(this).data('id') );
+        $("#editModal input[name='name']").val( $(this).data('name') );
+        $("#editModal select[name='department_id']").val( $(this).data('department_id') );
+        $("#editModal input[name='email']").val( $(this).data('email') );
+        $("#editModal input[name='phone_number']").val( $(this).data('phone_number') );
+        $("#editModal input[name='address']").val( $(this).data('address') );
+        $("#editModal input[name='designation']").val( $(this).data('designation') );
+        $("#editModal input[name='nid_number']").val( $(this).data('nid_number') );
+        //$("#editModal input[name='joining_date']").val( $(this).data('joining_date') );
+        let date = $(this).data('joining_date');
+        $("#editModal input[name='joining_date']").val( moment( date ).format('D - MMM - YYYY'));
+
+        $("#editModal input[name='present_salary']").val( $(this).data('present_salary') );
+        $("#editModal input[name='joining_salary']").val( $(this).data('joining_salary') );
+        $("#editModal input[name='address2']").val( $(this).data('address2') );
+        $("#editModal input[name='city']").val( $(this).data('city') );
+        $("#editModal input[name='country']").val( $(this).data('country') );
+        $('.selectpicker').selectpicker('refresh');
+    });
+
+    $('#employee-table').DataTable( {
         "order": [],
         'language': {
             'lengthMenu': '_MENU_ {{trans("file.records per page")}}',
@@ -286,6 +249,5 @@
             },
         ],
     } );
-});
 </script>
 @endsection

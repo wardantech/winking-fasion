@@ -84,7 +84,7 @@ class PurchaseOrderController extends Controller
             'payment_terms'=>'string|max:200',
             'febric_ref'=>'string|max:200',
             'brand'=>'string|max:100',
-            'style_no'=>'string|max:20',
+            'style_no'=>'string|required|max:20',
             'ca'=>'string|max:20',
             'total_quantity'=>'required|integer',
             'total_amount'=>'required|numeric',
@@ -114,32 +114,32 @@ class PurchaseOrderController extends Controller
                 $breakdown['color_wise_quantity'] = $data['color_wise_quantity'][$key];
                 $breakdown['color_unit_price'] = $data['color_unit_price'][$key];
                 $breakdown['sub_total'] = $data['sub_total'][$key];
-                $breakdown['size1'] = isset($data['size1'][$key]) ? $data['size1'][$key] : '';
-                $breakdown['size2'] = isset($data['size2'][$key]) ? $data['size2'][$key] : '';
-                $breakdown['size3'] = isset($data['size3'][$key]) ? $data['size3'][$key] : '';
-                $breakdown['size4'] = isset($data['size4'][$key]) ? $data['size4'][$key] : '';
-                $breakdown['size5'] = isset($data['size5'][$key]) ? $data['size5'][$key] : '';
-                $breakdown['size6'] = isset($data['size6'][$key]) ? $data['size6'][$key] : '';
-                $breakdown['size7'] = isset($data['size7'][$key]) ? $data['size7'][$key] : '';
-                $breakdown['size8'] = isset($data['size8'][$key]) ? $data['size8'][$key] : '';
-                $breakdown['size9'] = isset($data['size9'][$key]) ? $data['size9'][$key] : '';
-                $breakdown['size10'] = isset($data['size10'][$key]) ? $data['size10'][$key] : '';
-                $breakdown['size11'] = isset($data['size11'][$key]) ? $data['size11'][$key] : '';
-                $breakdown['size12'] = isset($data['size12'][$key]) ? $data['size12'][$key] : '';
-                $breakdown['size13'] = isset($data['size13'][$key]) ? $data['size13'][$key] : '';
-                $breakdown['prepack1'] = isset($data['prepack1'][$key]) ? $data['prepack1'][$key] : '';
-                $breakdown['prepack2'] = isset($data['prepack2'][$key]) ? $data['prepack2'][$key] : '';
-                $breakdown['prepack3'] = isset($data['prepack3'][$key]) ? $data['prepack3'][$key] : '';
-                $breakdown['prepack4'] = isset($data['prepack4'][$key]) ? $data['prepack4'][$key] : '';
-                $breakdown['prepack5'] = isset($data['prepack5'][$key]) ? $data['prepack5'][$key] : '';
-                $breakdown['prepack6'] = isset($data['prepack6'][$key]) ? $data['prepack6'][$key] : '';
-                $breakdown['prepack7'] = isset($data['prepack7'][$key]) ? $data['prepack7'][$key] : '';
-                $breakdown['prepack8'] = isset($data['prepack8'][$key]) ? $data['prepack8'][$key] : '';
-                $breakdown['prepack9'] = isset($data['prepack9'][$key]) ? $data['prepack9'][$key] : '';
-                $breakdown['prepack10'] = isset($data['prepack10'][$key]) ? $data['prepack10'][$key] : '';
-                $breakdown['prepack11'] = isset($data['prepack11'][$key]) ? $data['prepack11'][$key] : '';
-                $breakdown['prepack12'] = isset($data['prepack12'][$key]) ? $data['prepack12'][$key] : '';
-                $breakdown['prepack13'] = isset($data['prepack13'][$key]) ? $data['prepack13'][$key] : '';
+                $breakdown['size1'] = isset($data['size1'][$key]) ? $data['size1'][$key] : null;
+                $breakdown['size2'] = isset($data['size2'][$key]) ? $data['size2'][$key] : null;
+                $breakdown['size3'] = isset($data['size3'][$key]) ? $data['size3'][$key] : null;
+                $breakdown['size4'] = isset($data['size4'][$key]) ? $data['size4'][$key] : null;
+                $breakdown['size5'] = isset($data['size5'][$key]) ? $data['size5'][$key] : null;
+                $breakdown['size6'] = isset($data['size6'][$key]) ? $data['size6'][$key] : null;
+                $breakdown['size7'] = isset($data['size7'][$key]) ? $data['size7'][$key] : null;
+                $breakdown['size8'] = isset($data['size8'][$key]) ? $data['size8'][$key] : null;
+                $breakdown['size9'] = isset($data['size9'][$key]) ? $data['size9'][$key] : null;
+                $breakdown['size10'] = isset($data['size10'][$key]) ? $data['size10'][$key] : null;
+                $breakdown['size11'] = isset($data['size11'][$key]) ? $data['size11'][$key] : null;
+                $breakdown['size12'] = isset($data['size12'][$key]) ? $data['size12'][$key] : null;
+                $breakdown['size13'] = isset($data['size13'][$key]) ? $data['size13'][$key] : null;
+                $breakdown['prepack1'] = isset($data['prepack1'][$key]) ? $data['prepack1'][$key] : null;
+                $breakdown['prepack2'] = isset($data['prepack2'][$key]) ? $data['prepack2'][$key] : null;
+                $breakdown['prepack3'] = isset($data['prepack3'][$key]) ? $data['prepack3'][$key] : null;
+                $breakdown['prepack4'] = isset($data['prepack4'][$key]) ? $data['prepack4'][$key] : null;
+                $breakdown['prepack5'] = isset($data['prepack5'][$key]) ? $data['prepack5'][$key] : null;
+                $breakdown['prepack6'] = isset($data['prepack6'][$key]) ? $data['prepack6'][$key] : null;
+                $breakdown['prepack7'] = isset($data['prepack7'][$key]) ? $data['prepack7'][$key] : null;
+                $breakdown['prepack8'] = isset($data['prepack8'][$key]) ? $data['prepack8'][$key] : null;
+                $breakdown['prepack9'] = isset($data['prepack9'][$key]) ? $data['prepack9'][$key] : null;
+                $breakdown['prepack10'] = isset($data['prepack10'][$key]) ? $data['prepack10'][$key] : null;
+                $breakdown['prepack11'] = isset($data['prepack11'][$key]) ? $data['prepack11'][$key] : null;
+                $breakdown['prepack12'] = isset($data['prepack12'][$key]) ? $data['prepack12'][$key] : null;
+                $breakdown['prepack13'] = isset($data['prepack13'][$key]) ? $data['prepack13'][$key] : null;
                 $breakdown['quantity1'] = isset($data['quantity1'][$key]) ? $data['quantity1'][$key] : 0;
                 $breakdown['quantity2'] = isset($data['quantity2'][$key]) ? $data['quantity2'][$key] : 0;
                 $breakdown['quantity3'] = isset($data['quantity3'][$key]) ? $data['quantity3'][$key] : 0;
@@ -207,15 +207,15 @@ class PurchaseOrderController extends Controller
         $lim_order_data = PurchaseOrder::find($id);
         $lim_details = QuotationBreakdown::where('purchase_id',$id)->get();
 
-        $sizeCount = 0;
+        $sizeCount = 13;
         $lim_sizes = QuotationBreakdown::select('size1','size2','size3','size4','size5','size6','size7','size8','size9','size10','size11','size12','size13')
                     ->where('purchase_id',$id)->first();
-        // dd(sizeof($lim_sizes->toArray()));
-        foreach($lim_sizes->toArray() as $lim_size){
-            if($lim_size){
-                $sizeCount++;
-            }
-        }
+
+        // foreach($lim_sizes->toArray() as $lim_size){
+        //     if($lim_size){
+        //         $sizeCount++;
+        //     }
+        // }
         return view('purchase.order_edit',compact('lims_vendor_all','lims_ship_to_all','lims_invoice_to_all','lim_order_data','lim_details','lims_customer_all', 'sizeCount'));
     }
 
@@ -283,45 +283,85 @@ class PurchaseOrderController extends Controller
                 $breakdown['color_wise_quantity'] = $data['color_wise_quantity'][$key];
                 $breakdown['color_unit_price'] = $data['color_unit_price'][$key];
                 $breakdown['sub_total'] = $data['sub_total'][$key];
-                $breakdown['size1'] = $data['size1'][$key];
-                $breakdown['size2'] = $data['size2'][$key];
-                $breakdown['size3'] = $data['size3'][$key];
-                $breakdown['size4'] = $data['size4'][$key];
-                $breakdown['size5'] = $data['size5'][$key];
-                $breakdown['size6'] = $data['size6'][$key];
-                $breakdown['size7'] = $data['size7'][$key];
-                $breakdown['size8'] = $data['size8'][$key];
-                $breakdown['size9'] = $data['size9'][$key];
-                $breakdown['size10'] = $data['size10'][$key];
-                $breakdown['size11'] = $data['size11'][$key];
-                $breakdown['size12'] = $data['size12'][$key];
-                $breakdown['size13'] = $data['size13'][$key];
-                $breakdown['prepack1'] = $data['prepack1'][$key];
-                $breakdown['prepack2'] = $data['prepack2'][$key];
-                $breakdown['prepack3'] = $data['prepack3'][$key];
-                $breakdown['prepack4'] = $data['prepack4'][$key];
-                $breakdown['prepack5'] = $data['prepack5'][$key];
-                $breakdown['prepack6'] = $data['prepack6'][$key];
-                $breakdown['prepack7'] = $data['prepack7'][$key];
-                $breakdown['prepack8'] = $data['prepack8'][$key];
-                $breakdown['prepack9'] = $data['prepack9'][$key];
-                $breakdown['prepack10'] = $data['prepack10'][$key];
-                $breakdown['prepack11'] = $data['prepack11'][$key];
-                $breakdown['prepack12'] = $data['prepack12'][$key];
-                $breakdown['prepack13'] = $data['prepack13'][$key];
-                $breakdown['quantity1'] = $data['quantity1'][$key];
-                $breakdown['quantity2'] = $data['quantity2'][$key];
-                $breakdown['quantity3'] = $data['quantity3'][$key];
-                $breakdown['quantity4'] = $data['quantity4'][$key];
-                $breakdown['quantity5'] = $data['quantity5'][$key];
-                $breakdown['quantity6'] = $data['quantity6'][$key];
-                $breakdown['quantity7'] = $data['quantity7'][$key];
-                $breakdown['quantity8'] = $data['quantity8'][$key];
-                $breakdown['quantity9'] = $data['quantity9'][$key];
-                $breakdown['quantity10'] = $data['quantity10'][$key];
-                $breakdown['quantity11'] = $data['quantity11'][$key];
-                $breakdown['quantity12'] = $data['quantity12'][$key];
-                $breakdown['quantity13'] = $data['quantity13'][$key];
+                $breakdown['size1'] = isset($data['size1'][$key]) ? $data['size1'][$key] : null;
+                $breakdown['size2'] = isset($data['size2'][$key]) ? $data['size2'][$key] : null;
+                $breakdown['size3'] = isset($data['size3'][$key]) ? $data['size3'][$key] : null;
+                $breakdown['size4'] = isset($data['size4'][$key]) ? $data['size4'][$key] : null;
+                $breakdown['size5'] = isset($data['size5'][$key]) ? $data['size5'][$key] : null;
+                $breakdown['size6'] = isset($data['size6'][$key]) ? $data['size6'][$key] : null;
+                $breakdown['size7'] = isset($data['size7'][$key]) ? $data['size7'][$key] : null;
+                $breakdown['size8'] = isset($data['size8'][$key]) ? $data['size8'][$key] : null;
+                $breakdown['size9'] = isset($data['size9'][$key]) ? $data['size9'][$key] : null;
+                $breakdown['size10'] = isset($data['size10'][$key]) ? $data['size10'][$key] : null;
+                $breakdown['size11'] = isset($data['size11'][$key]) ? $data['size11'][$key] : null;
+                $breakdown['size12'] = isset($data['size12'][$key]) ? $data['size12'][$key] : null;
+                $breakdown['size13'] = isset($data['size13'][$key]) ? $data['size13'][$key] : null;
+                $breakdown['prepack1'] = isset($data['prepack1'][$key]) ? $data['prepack1'][$key] : null;
+                $breakdown['prepack2'] = isset($data['prepack2'][$key]) ? $data['prepack2'][$key] : null;
+                $breakdown['prepack3'] = isset($data['prepack3'][$key]) ? $data['prepack3'][$key] : null;
+                $breakdown['prepack4'] = isset($data['prepack4'][$key]) ? $data['prepack4'][$key] : null;
+                $breakdown['prepack5'] = isset($data['prepack5'][$key]) ? $data['prepack5'][$key] : null;
+                $breakdown['prepack6'] = isset($data['prepack6'][$key]) ? $data['prepack6'][$key] : null;
+                $breakdown['prepack7'] = isset($data['prepack7'][$key]) ? $data['prepack7'][$key] : null;
+                $breakdown['prepack8'] = isset($data['prepack8'][$key]) ? $data['prepack8'][$key] : null;
+                $breakdown['prepack9'] = isset($data['prepack9'][$key]) ? $data['prepack9'][$key] : null;
+                $breakdown['prepack10'] = isset($data['prepack10'][$key]) ? $data['prepack10'][$key] : null;
+                $breakdown['prepack11'] = isset($data['prepack11'][$key]) ? $data['prepack11'][$key] : null;
+                $breakdown['prepack12'] = isset($data['prepack12'][$key]) ? $data['prepack12'][$key] : null;
+                $breakdown['prepack13'] = isset($data['prepack13'][$key]) ? $data['prepack13'][$key] : null;
+                $breakdown['quantity1'] = isset($data['quantity1'][$key]) ? $data['quantity1'][$key] : 0;
+                $breakdown['quantity2'] = isset($data['quantity2'][$key]) ? $data['quantity2'][$key] : 0;
+                $breakdown['quantity3'] = isset($data['quantity3'][$key]) ? $data['quantity3'][$key] : 0;
+                $breakdown['quantity4'] = isset($data['quantity4'][$key]) ? $data['quantity4'][$key] : 0;
+                $breakdown['quantity5'] = isset($data['quantity5'][$key]) ? $data['quantity5'][$key] : 0;
+                $breakdown['quantity6'] = isset($data['quantity6'][$key]) ? $data['quantity6'][$key] : 0;
+                $breakdown['quantity7'] = isset($data['quantity7'][$key]) ? $data['quantity7'][$key] : 0;
+                $breakdown['quantity8'] = isset($data['quantity8'][$key]) ? $data['quantity8'][$key] : 0;
+                $breakdown['quantity9'] = isset($data['quantity9'][$key]) ? $data['quantity9'][$key] : 0;
+                $breakdown['quantity10'] = isset($data['quantity10'][$key]) ? $data['quantity10'][$key] : 0;
+                $breakdown['quantity11'] = isset($data['quantity11'][$key]) ? $data['quantity11'][$key] : 0;
+                $breakdown['quantity12'] = isset($data['quantity12'][$key]) ? $data['quantity12'][$key] : 0;
+                $breakdown['quantity13'] = isset($data['quantity13'][$key]) ? $data['quantity13'][$key] : 0;
+
+                // $breakdown['size1'] = $data['size1'][$key];
+                // $breakdown['size2'] = $data['size2'][$key];
+                // $breakdown['size3'] = $data['size3'][$key];
+                // $breakdown['size4'] = $data['size4'][$key];
+                // $breakdown['size5'] = $data['size5'][$key];
+                // $breakdown['size6'] = $data['size6'][$key];
+                // $breakdown['size7'] = $data['size7'][$key];
+                // $breakdown['size8'] = $data['size8'][$key];
+                // $breakdown['size9'] = $data['size9'][$key];
+                // $breakdown['size10'] = $data['size10'][$key];
+                // $breakdown['size11'] = $data['size11'][$key];
+                // $breakdown['size12'] = $data['size12'][$key];
+                // $breakdown['size13'] = $data['size13'][$key];
+                // $breakdown['prepack1'] = $data['prepack1'][$key];
+                // $breakdown['prepack2'] = $data['prepack2'][$key];
+                // $breakdown['prepack3'] = $data['prepack3'][$key];
+                // $breakdown['prepack4'] = $data['prepack4'][$key];
+                // $breakdown['prepack5'] = $data['prepack5'][$key];
+                // $breakdown['prepack6'] = $data['prepack6'][$key];
+                // $breakdown['prepack7'] = $data['prepack7'][$key];
+                // $breakdown['prepack8'] = $data['prepack8'][$key];
+                // $breakdown['prepack9'] = $data['prepack9'][$key];
+                // $breakdown['prepack10'] = $data['prepack10'][$key];
+                // $breakdown['prepack11'] = $data['prepack11'][$key];
+                // $breakdown['prepack12'] = $data['prepack12'][$key];
+                // $breakdown['prepack13'] = $data['prepack13'][$key];
+                // $breakdown['quantity1'] = $data['quantity1'][$key];
+                // $breakdown['quantity2'] = $data['quantity2'][$key];
+                // $breakdown['quantity3'] = $data['quantity3'][$key];
+                // $breakdown['quantity4'] = $data['quantity4'][$key];
+                // $breakdown['quantity5'] = $data['quantity5'][$key];
+                // $breakdown['quantity6'] = $data['quantity6'][$key];
+                // $breakdown['quantity7'] = $data['quantity7'][$key];
+                // $breakdown['quantity8'] = $data['quantity8'][$key];
+                // $breakdown['quantity9'] = $data['quantity9'][$key];
+                // $breakdown['quantity10'] = $data['quantity10'][$key];
+                // $breakdown['quantity11'] = $data['quantity11'][$key];
+                // $breakdown['quantity12'] = $data['quantity12'][$key];
+                // $breakdown['quantity13'] = $data['quantity13'][$key];
                 $breakdown['is_active'] = true;
 
                 if(in_array($color,$old_color)){

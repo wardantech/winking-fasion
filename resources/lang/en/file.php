@@ -589,5 +589,16 @@ return [
 	"This product has different price for different warehouse" => "This product has different price for different warehouse",
 	"Backup Database" => "Backup Database",
 	"Invoice Format" => "Invoice Format",
+	"H. Rent" => "H. Rent",
+	"Medical" => "Medical",
+	"T.Port" => "T.Port",
+	"Allowed Leave" => "Allowed Leave",
+	"Year" => "Year",
+	"Month" => "Month",
+	"Salary Sheet" => "Salary Sheet",
+	"House Rent(%)" => "House Rent(%)",
+	"Medical(%)" => "Medical(%)",
+	"T. Port(%)" => "T. Port(%)",
+	"Create Salary Sheet" => "Create Salary Sheet",
 ];
 ?>

@@ -75,7 +75,9 @@
         text-transform: uppercase;
         font-size: 12px;
     }
-
+.ptop{
+    vertical-align: top;
+}
 </style>
 <section>
     <div class="container-fluid">
@@ -125,7 +127,7 @@
                                         </th>
                                     </thead>
                                     <tbody>
-                                        <td>
+                                        <td class="ptop">
                                             <div class="vendor">
                                                 <p><b>{{ $order->vendorInfo->name }}</b></p>
                                                 <p>{{ $order->vendorInfo->address }}, {{ $order->vendorInfo->city }}-{{ $order->vendorInfo->state }}. {{ $order->vendorInfo->country }}  </p>
@@ -137,7 +139,7 @@
                                                 {{ $order->vendorInfo->mobile }} </p>
                                             </div>
                                         </td>
-                                        <td>
+                                        <td  class="ptop">
                                             <div class="vendor">
                                                 <p><b>{{ $order->shipTo->name }}</b></p>
                                                 <p>{{ $order->shipTo->address }}, {{ $order->shipTo->city }}, {{ $order->shipTo->state }}, {{ $order->shipTo->zip }}, {{ $order->shipTo->country }}  </p>
@@ -150,7 +152,7 @@
                                                 </p>
                                             </div>
                                         </td>
-                                        <td>
+                                        <td  class="ptop">
                                             <div class="vendor">
                                                 <p><b>{{ $order->invoiceTo->name }}</b></p>
                                                 <p>{{ $order->invoiceTo->address }}, {{ $order->invoiceTo->city }}-{{$order->invoiceTo->state}}, {{ $order->invoiceTo->country }}  </p>
@@ -163,7 +165,7 @@
                                                 </p>
                                             </div>
                                         </td>
-                                        <td>
+                                        <td  class="ptop">
                                             <div class="vendor">
                                                 <p><b>{{ $order->customer->name }}</b></p>
                                                 <p>{{ $order->customer->address }}, {{ $order->customer->city }}, {{ $order->customer->state }}, {{ $order->customer->postal_code }}, {{ $order->customer->country }}  </p>

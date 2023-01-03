@@ -7,24 +7,39 @@
     .leter-head p{
         margin:0px;
     }
+    #printButton{
+        position: absolute;
+    text-align: right;
+    right: 21px;
+    top: 7px;
+    background: #673ab7;
+    }
+    @media print{
+        #printButton{
+            display: none;
+        }  
+    }
 </style>
 <section class="forms">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-                <div class="card">
+               
+                <div id="printThisDiv" class="card">
                     <div class="card-body">
                         <header class="header">
                             <span>
                                 <p class="float-left"><strong> Ref : DBL/CL/07839 </strong></p>
                             </span>
+                            <a class="btn print btn-sm btn-secondary float-right mr-1 d-print-noneb" href="#"  data-abc="true" id="printButton">
+                                <i class="fa fa-print"></i> Print</a>
                             <p class="float-right"> Date: {{ date('d-F-Y', strtotime($forwardLetter->date))}}</p>
                             <div class="leter-head">
-                                <p>To</p>
+                                <p>To,</p>
                                 <p>The Manager</p>
                                 <p>{{$forwardLetter->bank->name}}</p>
-                                <p>{{$forwardLetter->bank->branches->name}}</p>
-                                <p>{{$forwardLetter->bank->branches->address}}</p>
+                                <p>{{$forwardLetter->branch->name}}</p>
+                                <p>{{$forwardLetter->branch->address}}</p>
                             </div>
                             <br>
                             <div class="letter-subject">
@@ -61,4 +76,18 @@
         </div>
     </div>
 </section>
+<script>
+    function printData()
+{
+   var divToPrint=document.getElementById("printThisDiv");
+   newWin= window.open("");
+   newWin.document.write(divToPrint.outerHTML);
+   newWin.print();
+   newWin.close();
+}
+
+$('#printButton').on('click',function(){
+printData();
+})
+</script>
 @endsection

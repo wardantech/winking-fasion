@@ -34,7 +34,16 @@ class ForwardingLetterController extends Controller
     }
 
     public function getExport(Request $request){
-        $export= Export::find($request->exportId);
+        $export = Export::find($request->exportId);
+
+        return response()->json([
+                    'invoiceAmount'    => $export->invoice_value,
+                    'invoiceNumber'    => $export->invoice_no,
+                    'invoiceDate'      => $export->date,
+                    'shipperToId'      => $export->shipper->name,
+                    'lcNumber'         => $export->lc_number,
+
+        ]);
         return response()->json($export);
     }
 
@@ -42,8 +51,8 @@ class ForwardingLetterController extends Controller
     {
         try{
             $bank_id = $request->bank_id;
-            $loans = BankBranch::where('bank_id', $bank_id)->get();
-            return response()->json($loans);
+            $branches = BankBranch::where('bank_id', $bank_id)->get();
+            return response()->json($branches);
         } catch (\Exception $exception) {
             return redirect()->back()->with('error', $exception->getMessage());
         }
@@ -87,7 +96,7 @@ class ForwardingLetterController extends Controller
      */
     public function show($id)
     {
-        $forwardLetter = ForwaringLetter::with('bank','account','export')->find($id);
+        $forwardLetter = ForwaringLetter::with('bank','branch','account','export')->find($id);
         return view('forwarding_letter.show', compact('forwardLetter'));
     }
 
@@ -102,7 +111,8 @@ class ForwardingLetterController extends Controller
         $banks= Bank::all();
         $exports= Export::all();
         $forwardLetter = ForwaringLetter::with('account','export')->find($id);
-        return view('forwarding_letter.edit', compact('forwardLetter','banks','exports'));
+        $branches = BankBranch::where('bank_id',$forwardLetter->bank_id)->get();
+        return view('forwarding_letter.edit', compact('forwardLetter','banks','exports','branches'));
     }
 
     /**

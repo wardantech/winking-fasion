@@ -471,6 +471,7 @@
                                 @if($payroll_active)
                                     <li id="payroll-menu"><a href="{{route('payroll.index')}}">{{trans('file.Payroll')}}</a></li>
                                 @endif
+                                <li id="salary-sheet"><a href="{{route('salary-sheet-index')}}">{{trans('file.Salary Sheet')}}</a></li>
 
                             </ul>
                         </li>
@@ -716,6 +717,7 @@
                     <li><a href="#export_documents" aria-expanded="false" data-toggle="collapse"> <i class="dripicons-gear"></i><span>{{trans('file.Export Documents')}}</span></a>
                         <ul id="export_documents" class="collapse list-unstyled ">
                             <li><a href="{{url('forwarding-letter')}}">Forwarding-letter</a></li>
+                            <li><a href="{{url('commercial-invoice')}}">Commercial-Invoice</a></li>
                             <li><a href="{{url('bill-exchange')}}">Bill-exchange</a></li>
                         </ul>
                     </li>
