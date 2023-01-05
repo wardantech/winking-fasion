@@ -251,9 +251,14 @@
                                         </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
+
                                                 <label>Style No</label>
                                                 <input type="text" name="style_no" class="form-control"
                                                        placeholder="Enter Style No" required>
+
+                                                <label>Style No<span class="text-red">*</span></label>
+                                                <input type="text" name="style_no" class="form-control" placeholder="Enter Style No" required>
+
                                                 <?php if($errors->has('style_no')): ?>
                                                     <span class="text-danger">
                                                    <?php echo e($errors->first('style_no')); ?>
@@ -392,7 +397,7 @@
                                                         <td><input type="number" min="0" step="any"
                                                                    name="color_wise_quantity[]" value="0"
                                                                    id="color_wise_quantity1"
-                                                                   class="form-control color_wise_quantity1" readonly>
+                                                                   class="form-control color_wise_quantity1 color_wise_quantity" readonly>
                                                         </td>
                                                         <td><input type="number" min="0" step="any"
                                                                    name="color_unit_price[]" id="color_unit_price1"
@@ -416,16 +421,10 @@
                                                     </thead>
                                                     <tbody id="t_body_id">
                                                     <tr class="row-concat1" id="row-concat_1">
-                                                        <td><input type="text" name="size1[]" class="form-control"
-                                                                   placeholder="Enter Size"></td>
-                                                        <td><input type="text" name="prepack1[]" class="form-control"
-                                                                   placeholder="Enter Prepack"></td>
-                                                        <td><input type="number" min="0" step="any" name="quantity1[]"
-                                                                   id="quantity1" class="form-control quantity1"
-                                                                   placeholder="Enter Quantity"></td>
-                                                        <td><a id="remove_concat" class="btn btn-danger btn-sm"
-                                                               style="color:white;margin-left:10px;"
-                                                               onclick="removeRow(1, 1)">-</a></td>
+                                                        <td><input type="text" name="size1[]" class="form-control" placeholder="Enter Size"></td>
+                                                        <td><input type="text" name="prepack1[]" class="form-control" placeholder="Enter Prepack"></td>
+                                                        <td><input type="number" min="0" step="any" name="quantity1[]" id="quantity1" class="form-control quantity1" oninput="calculateQuantity(1, 1)" placeholder="Enter Quantity"></td>
+                                                        <td><a id="remove_concat" class="btn btn-danger btn-sm" style="color:white;margin-left:10px;" onclick="removeRow(1, 1)">-</a></td>
                                                     </tr>
                                                     
                                                     <tr>
@@ -474,7 +473,7 @@
             $('#add_contact').click(function () {
                 if (y < concatMaxField) {
                     y++;
-                    $('#t_body_id').append('<tr class="row-concat1" id="row-concat_' + y + '"><td><input type="text" name="size' + y + '[]" class="form-control" placeholder="Enter Size"></td><td><input type="text" name="prepack' + y + '[]" class="form-control" placeholder="Enter Prepack"></td><td><input type="number" min="0" step="any" name="quantity' + y + '[]" id="quantity' + y + '" class="form-control quantity1" placeholder="Enter Quantity"></td><td><a id="remove_concat" class="btn btn-danger btn-sm" style="color:white;margin-left:10px;" onclick="removeRow(' + y + ', 1)">-</a></td></tr>');
+                    $('#t_body_id').append('<tr class="row-concat1" id="row-concat_' + y + '"><td><input type="text" name="size' + y + '[]" class="form-control" placeholder="Enter Size"></td><td><input type="text" name="prepack' + y + '[]" class="form-control" placeholder="Enter Prepack"></td><td><input type="number" min="0" step="any" name="quantity' + y + '[]" id="quantity' + y + '" class="form-control quantity1" oninput="calculateQuantity(1,'+y+' )" placeholder="Enter Quantity"></td><td><a id="remove_concat" class="btn btn-danger btn-sm" style="color:white;margin-left:10px;" onclick="removeRow(' + y + ', 1)">-</a></td></tr>');
                 }
             });
 
@@ -506,7 +505,7 @@
                                                  <tr>\
                                                      <td><input type="text" name="color[]" class="form-control"></td>\
                                                      <td><input type="text" name="color_code[]" class="form-control"></td>\
-                                                     <td><input type="number" min="0" step="any" name="color_wise_quantity[]" value="0" id="color_wise_quantity' + x + '" class="form-control color_wise_quantity' + x + '" readonly></td>\
+                                                     <td><input type="number" min="0" step="any" name="color_wise_quantity[]" value="0" id="color_wise_quantity' + x + '" class="form-control color_wise_quantity' + x + ' color_wise_quantity" readonly></td>\
                                                      <td><input type="number" min="0" step="any" name="color_unit_price[]" id="color_unit_price' + x + '" class="form-control color_unit_price' + x + '"></td>\
                                                      <td><input type="number" min="0" step="any" name="sub_total[]" id="sub_total' + x + '" value="0.00" class="form-control sub_total' + x + '" readonly></td>\
                                                  </tr>\
@@ -524,7 +523,7 @@
                                                 <tr class="row-concat' + x + '" id="row-concat_1">\
                                                     <td><input type="text" name="size1[]" class="form-control"></td>\
                                                     <td><input type="text" name="prepack1[]" class="form-control"></td>\
-                                                    <td><input type="number" onkeyup="quantityCalc('+this.value + x+')" min="0" step="any" name="quantity1[]" id="quantity' + x + '" class="form-control quantity' + x + '"></td>\
+                                                    <td><input type="number" oninput="calculateQuantity('+x+','+x+')" min="0" step="any" name="quantity1[]" id="quantity' + x + '" class="form-control quantity' + x + '"></td>\
                                                     <td><a id="remove_concat" class="btn btn-danger btn-sm" style="color:white;margin-left:10px;" onclick="removeRow(1, ' + x + ')">-</a></td>\
                                                 </tr>\
                                             </tbody>\
@@ -562,19 +561,22 @@
                 calculate_total_quantity();
                 calculate_total_amount();
             });
-            $(document).on('keyup change', '#quantity1', function () {
-                var sum = 0;
-                $(".quantity1").each(function () {
-                    sum += +$(this).val();
-                });
-                $('.color_wise_quantity1').val(sum);
-                var quantity = $('.color_wise_quantity1').val();
-                var unitprice = $('.color_unit_price1').val();
-                var total_price = parseFloat(quantity * unitprice).toFixed(2);
-                $('.sub_total1').val(total_price);
-                calculate_total_quantity();
-                calculate_total_amount();
-            });
+
+
+
+            // $(document).on('keyup change', '#quantity1', function () {
+            //     var sum = 0;
+            //     $(".quantity1").each(function () {
+            //         sum += +$(this).val();
+            //     });
+            //     $('.color_wise_quantity1').val(sum);
+            //     var quantity = $('.color_wise_quantity1').val();
+            //     var unitprice = $('.color_unit_price1').val();
+            //     var total_price = parseFloat(quantity * unitprice).toFixed(2);
+            //     $('.sub_total1').val(total_price);
+            //     calculate_total_quantity();
+            //     calculate_total_amount();
+            // });
             $(document).on('keyup change', '#quantity2', function () {
                 var sum = 0;
                 $(".quantity2").each(function () {
@@ -744,13 +746,29 @@
             }
         });
 
+        function calculateQuantity(rowNo, qty){
+            // alert(qty);
+                var count= 0;
+                var totalCount= 0;
+                $('.row-concat'+rowNo+' .quantity'+rowNo).each(function(){
+                    count += parseInt($(this).val());
+                    // console.log($('.row-concat_'+rowNo+'.quantity'+qty));
+                });
+                console.log(count);
+                $('#color_wise_quantity'+rowNo).val(count);
+                $('.color_wise_quantity').each(function(){
+                    totalCount += parseInt($('#color_wise_quantity'+rowNo).val());
+                });
+                $('#total_quantity').val(totalCount);
+            }
+
         function addRow(x) {
             // console.log($('.dd_'+x).length+2);
             var counter = $('.row-concat' + x).length + 2;
             // console.log($('.row-concat'+x).length);
             if (counter - 1 < 13) {
                 // y++;
-                $('#t_body_id_' + x).append('<tr class="row-concat' + x + '" id="row-concat_' + counter + '"><td><input type="text" name="size' + counter + '[]" class="form-control" placeholder="Enter Size"></td><td><input type="text" name="prepack' + counter + '[]" class="form-control" placeholder="Enter Prepack"></td><td><input type="number" min="0" step="any" name="quantity' + counter + '[]" id="quantity' + counter + '" onkeyup="quantityCalc('+x+')" class="form-control quantity1" placeholder="Enter Quantity"></td><td><a id="remove_concat" class="btn btn-danger btn-sm" style="color:white;margin-left:10px;" onclick="removeRow(' + counter + ',' + x + ')">-</a></td></tr>');
+                $('#t_body_id_' + x).append('<tr class="row-concat' + x + '" id="row-concat_' + counter + '"><td><input type="text" name="size' + counter + '[]" class="form-control" placeholder="Enter Size"></td><td><input type="text" name="prepack' + counter + '[]" class="form-control" placeholder="Enter Prepack"></td><td><input type="number" min="0" step="any" name="quantity' + counter + '[]" id="quantity' + counter + '" oninput="calculateQuantity('+x+','+x+')" class="form-control quantity'+x+'" placeholder="Enter Quantity"></td><td><a id="remove_concat" class="btn btn-danger btn-sm" style="color:white;margin-left:10px;" onclick="removeRow(' + counter + ',' + x + ')">-</a></td></tr>');
             } else {
                 alert("Maximum row is 13");
             }
