@@ -508,15 +508,6 @@
             var concatMaxField = 13;
             var wrapper = $(".color_box");
             var x = 1;
-            // var y= 1;
-            // $('#add_contact').click(function () {
-            //     if (y < concatMaxField) {
-            //         y++;
-            //         $('#t_body_id_1').append('<tr class="row-concat1" id="row-concat_' + y + '"><td><input type="text" name="size' + y + '[]" class="form-control" placeholder="Enter Size"></td><td><input type="text" name="prepack' + y + '[]" class="form-control" placeholder="Enter Prepack"></td><td><input type="number" min="0" step="any" name="quantity' + y + '[]" id="quantity' + y + '" class="form-control quantity1" oninput="calculateQuantity(1, '+y+')" placeholder="Enter Quantity"></td><td><a id="remove_concat" class="btn btn-danger btn-sm" style="color:white;margin-left:10px;" onclick="removeRow(' + y + ', 1)">-</a></td></tr>');
-            //     }
-            // });
-
-            // onclick="addRow('+x+','+y+')"
 
             $("#add_size").click(function () {
                 if (x < max_field) {
@@ -593,14 +584,6 @@
                 }
             });
 
-            $(wrapper).on("click", "#remove_size", function (e) { //user click on remove text
-                e.preventDefault();
-                $(this).parent('th').parent('tr').parent('thead').parent('table').parent('div').parent('div').remove();
-                x--;
-                calculate_total_quantity();
-                calculate_total_amount();
-            });
-
 
 
             // $(document).on('keyup change', '#quantity1', function () {
@@ -616,84 +599,7 @@
             //     calculate_total_quantity();
             //     calculate_total_amount();
             // });
-            $(document).on('keyup change', '#quantity2', function () {
-                var sum = 0;
-                $(".quantity2").each(function () {
-                    sum += +$(this).val();
-                });
-                $('.color_wise_quantity2').val(sum);
-                var quantity = $('.color_wise_quantity2').val();
-                var unitprice = $('.color_unit_price2').val();
-                var total_price = parseFloat(quantity * unitprice).toFixed(2);
-                $('.sub_total2').val(total_price);
-                calculate_total_quantity();
-                calculate_total_amount();
-            });
-            $(document).on('keyup change', '#quantity3', function () {
-                var sum = 0;
-                $(".quantity3").each(function () {
-                    sum += +$(this).val();
-                });
-                $('.color_wise_quantity3').val(sum);
-                var quantity = $('.color_wise_quantity3').val();
-                var unitprice = $('.color_unit_price3').val();
-                var total_price = parseFloat(quantity * unitprice).toFixed(2);
-                $('.sub_total3').val(total_price);
-                calculate_total_quantity();
-                calculate_total_amount();
-            });
-            $(document).on('keyup change', '#quantity4', function () {
-                var sum = 0;
-                $(".quantity4").each(function () {
-                    sum += +$(this).val();
-                });
-                $('.color_wise_quantity4').val(sum);
-                var quantity = $('.color_wise_quantity4').val();
-                var unitprice = $('.color_unit_price4').val();
-                var total_price = parseFloat(quantity * unitprice).toFixed(2);
-                $('.sub_total4').val(total_price);
-                calculate_total_quantity();
-                calculate_total_amount();
-            });
-            $(document).on('keyup change', '#quantity5', function () {
-                var sum = 0;
-                $(".quantity5").each(function () {
-                    sum += +$(this).val();
-                });
-                $('.color_wise_quantity5').val(sum);
-                var quantity = $('.color_wise_quantity5').val();
-                var unitprice = $('.color_unit_price5').val();
-                var total_price = parseFloat(quantity * unitprice).toFixed(2);
-                $('.sub_total5').val(total_price);
-                calculate_total_quantity();
-                calculate_total_amount();
-            });
-            $(document).on('keyup change', '#quantity6', function () {
-                var sum = 0;
-                $(".quantity6").each(function () {
-                    sum += +$(this).val();
-                });
-                $('.color_wise_quantity6').val(sum);
-                var quantity = $('.color_wise_quantity6').val();
-                var unitprice = $('.color_unit_price6').val();
-                var total_price = parseFloat(quantity * unitprice).toFixed(2);
-                $('.sub_total6').val(total_price);
-                calculate_total_quantity();
-                calculate_total_amount();
-            });
-            $(document).on('keyup change', '#quantity7', function () {
-                var sum = 0;
-                $(".quantity7").each(function () {
-                    sum += +$(this).val();
-                });
-                $('.color_wise_quantity7').val(sum);
-                var quantity = $('.color_wise_quantity7').val();
-                var unitprice = $('.color_unit_price7').val();
-                var total_price = parseFloat(quantity * unitprice).toFixed(2);
-                $('.sub_total7').val(total_price);
-                calculate_total_quantity();
-                calculate_total_amount();
-            });
+
             $(document).on('keyup change', '#color_unit_price1', function () {
                 var quantity = $('.color_wise_quantity1').val();
                 var unitprice = $('.color_unit_price1').val();
@@ -744,25 +650,7 @@
                 calculate_total_amount();
             });
 
-            function calculate_total_quantity() {
-                var quantity1 = $('.color_wise_quantity1').val();
-                if (isNaN(quantity1)) quantity1 = 0;
-                var quantity2 = $('.color_wise_quantity2').val();
-                if (isNaN(quantity2)) quantity2 = 0;
-                var quantity3 = $('.color_wise_quantity3').val();
-                if (isNaN(quantity3)) quantity3 = 0;
-                var quantity4 = $('.color_wise_quantity4').val();
-                if (isNaN(quantity4)) quantity4 = 0;
-                var quantity5 = $('.color_wise_quantity5').val();
-                if (isNaN(quantity5)) quantity5 = 0;
-                var quantity6 = $('.color_wise_quantity6').val();
-                if (isNaN(quantity6)) quantity6 = 0;
-                var quantity7 = $('.color_wise_quantity7').val();
-                if (isNaN(quantity7)) quantity7 = 0;
-                var total = parseInt(quantity1) + parseInt(quantity2) + parseInt(quantity3) + parseInt(quantity4) + parseInt(quantity5) + parseInt(quantity6) + parseInt(quantity7);
-                if (isNaN(total)) total = 0;
-                $('.total_quantity').val(total);
-            }
+
 
             function calculate_total_amount() {
                 var sub1 = $('.sub_total1').val();
@@ -788,7 +676,7 @@
         function calculateQuantity(rowNo, qty){
             // alert($(this).val());
                 var count= 0;
-                // var totalCount= 0;
+                var totalCount= 0;
                 $('.row-concat'+rowNo+ ' .quantity'+rowNo).each(function(){
                     count += parseInt($(this).val());
                     // console.log($('.row-concat_'+rowNo+'.quantity'+qty));
