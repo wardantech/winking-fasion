@@ -378,12 +378,13 @@
                                                         </td>
                                                         <td><input type="number" min="0" step="any"
                                                                    name="color_unit_price[]" id="color_unit_price1"
-                                                                   class="form-control color_unit_price1"
+                                                                   class="form-control color_unit_price color_unit_price1"
+                                                                   oninput="getAmount(1)"
                                                                    placeholder="Enter Unit Price "></
                                                         ></td>
                                                         <td><input type="number" min="0" step="any" name="sub_total[]"
                                                                    id="sub_total1" value="0.00"
-                                                                   class="form-control sub_total1" readonly></td>
+                                                                   class="form-control sub_total1 sub_total" readonly></td>
                                                     </tr>
                                                     </tbody>
                                                 </table>
@@ -400,7 +401,7 @@
                                                     <tr class="row-concat1" id="row-concat_1">
                                                         <td><input type="text" name="size1[]" class="form-control" placeholder="Enter Size"></td>
                                                         <td><input type="text" name="prepack1[]" class="form-control" placeholder="Enter Prepack"></td>
-                                                        <td><input type="number" min="0" step="any" name="quantity1[]" id="quantity1 color_wise_quantity1_qty_1" class="form-control quantity1 color_wise_quantity1_qty_1" oninput="calculateQuantity('1')" placeholder="Enter Quantity"></td>
+                                                        <td><input type="number" min="0" step="any" name="quantity1[]" id="quantity1 color_wise_quantity1_qty_1" class="form-control quantity1 color_wise_quantity1_qty_1" oninput="calculateQuantity('1'), getAmount('1')" placeholder="Enter Quantity"></td>
                                                         <td><a id="remove_concat" class="btn btn-danger btn-sm" style="color:white;margin-left:10px;" onclick="removeRow(1, 1)">-</a></td>
                                                     </tr>
                                                     {{-- <tr>
@@ -536,8 +537,8 @@
                                                      <td><input type="text" name="color[]" class="form-control"></td>\
                                                      <td><input type="text" name="color_code[]" class="form-control"></td>\
                                                      <td><input type="number" min="0" step="any" name="color_wise_quantity[]" value="0" id="color_wise_quantity' + x + '" class="form-control color_wise_quantity' + x + ' color_wise_quantity" readonly></td>\
-                                                     <td><input type="number" min="0" step="any" name="color_unit_price[]" id="color_unit_price' + x + '" class="form-control color_unit_price' + x + '"></td>\
-                                                     <td><input type="number" min="0" step="any" name="sub_total[]" id="sub_total' + x + '" value="0.00" class="form-control sub_total' + x + '" readonly></td>\
+                                                     <td><input type="number" min="0" step="any" name="color_unit_price[]" id="color_unit_price' + x + '" class="form-control color_unit_price color_unit_price' + x + '" oninput="getAmount('+x+')"></td>\
+                                                     <td><input type="number" min="0" step="any" name="sub_total[]" id="sub_total' + x + '" value="0.00" class="form-control sub_total' + x + ' sub_total" readonly></td>\
                                                  </tr>\
                                              </tbody>\
                                         </table>\
@@ -553,7 +554,7 @@
                                                 <tr class="row-concat' + x + '" id="row-concat_1">\
                                                     <td><input type="text" name="size1[]" class="form-control"></td>\
                                                     <td><input type="text" name="prepack1[]" class="form-control"></td>\
-                                                    <td><input type="number" oninput="calculateQuantity('+x+', 1)" min="0" step="any" name="quantity1[]" id="quantity1 color_wise_quantity'+x+'_qty_'+x+'" class="color_wise_quantity1_qty_'+x+' form-control quantity' + x + '"></td>\
+                                                    <td><input type="number" oninput="calculateQuantity('+x+', 1), getAmount('+x+')" min="0" step="any" name="quantity1[]" id="quantity1 color_wise_quantity'+x+'_qty_'+x+'" class="color_wise_quantity1_qty_'+x+' form-control quantity' + x + '"></td>\
                                                     <td><a id="remove_concat" class="btn btn-danger btn-sm" style="color:white;margin-left:10px;" onclick="removeRow(1, ' + x + ')">-</a></td>\
                                                 </tr>\
                                             </tbody>\
@@ -584,94 +585,31 @@
                 }
             });
 
-
-
-            // $(document).on('keyup change', '#quantity1', function () {
-            //     var sum = 0;
-            //     $(".quantity1").each(function () {
-            //         sum += +$(this).val();
-            //     });
-            //     $('.color_wise_quantity1').val(sum);
-            //     var quantity = $('.color_wise_quantity1').val();
-            //     var unitprice = $('.color_unit_price1').val();
-            //     var total_price = parseFloat(quantity * unitprice).toFixed(2);
-            //     $('.sub_total1').val(total_price);
-            //     calculate_total_quantity();
-            //     calculate_total_amount();
-            // });
-
-            $(document).on('keyup change', '#color_unit_price1', function () {
-                var quantity = $('.color_wise_quantity1').val();
-                var unitprice = $('.color_unit_price1').val();
-                var total_price = parseFloat(quantity * unitprice).toFixed(2);
-                $('.sub_total1').val(total_price);
-                calculate_total_amount();
-            });
-            $(document).on('keyup change', '#color_unit_price2', function () {
-                var quantity = $('.color_wise_quantity2').val();
-                var unitprice = $('.color_unit_price2').val();
-                var total_price = parseFloat(quantity * unitprice).toFixed(2);
-                $('.sub_total2').val(total_price);
-                calculate_total_amount();
-            });
-            $(document).on('keyup change', '#color_unit_price3', function () {
-                var quantity = $('.color_wise_quantity3').val();
-                var unitprice = $('.color_unit_price3').val();
-                var total_price = parseFloat(quantity * unitprice).toFixed(2);
-                $('.sub_total3').val(total_price);
-                calculate_total_amount();
-            });
-            $(document).on('keyup change', '#color_unit_price4', function () {
-                var quantity = $('.color_wise_quantity4').val();
-                var unitprice = $('.color_unit_price4').val();
-                var total_price = parseFloat(quantity * unitprice).toFixed(2);
-                $('.sub_total4').val(total_price);
-                calculate_total_amount();
-            });
-            $(document).on('keyup change', '#color_unit_price5', function () {
-                var quantity = $('.color_wise_quantity5').val();
-                var unitprice = $('.color_unit_price5').val();
-                var total_price = parseFloat(quantity * unitprice).toFixed(2);
-                $('.sub_total5').val(total_price);
-                calculate_total_amount();
-            });
-            $(document).on('keyup change', '#color_unit_price6', function () {
-                var quantity = $('.color_wise_quantity6').val();
-                var unitprice = $('.color_unit_price6').val();
-                var total_price = parseFloat(quantity * unitprice).toFixed(2);
-                $('.sub_total6').val(total_price);
-                calculate_total_amount();
-            });
-            $(document).on('keyup change', '#color_unit_price7', function () {
-                var quantity = $('.color_wise_quantity7').val();
-                var unitprice = $('.color_unit_price7').val();
-                var total_price = parseFloat(quantity * unitprice).toFixed(2);
-                $('.sub_total7').val(total_price);
-                calculate_total_amount();
-            });
-
-
-
-            function calculate_total_amount() {
-                var sub1 = $('.sub_total1').val();
-                if (isNaN(sub1)) sub1 = 0;
-                var sub2 = $('.sub_total2').val();
-                if (isNaN(sub2)) sub2 = 0;
-                var sub3 = $('.sub_total3').val();
-                if (isNaN(sub3)) sub3 = 0;
-                var sub4 = $('.sub_total4').val();
-                if (isNaN(sub4)) sub4 = 0;
-                var sub5 = $('.sub_total5').val();
-                if (isNaN(sub5)) sub5 = 0;
-                var sub6 = $('.sub_total6').val();
-                if (isNaN(sub6)) sub6 = 0;
-                var sub7 = $('.sub_total7').val();
-                if (isNaN(sub7)) sub7 = 0;
-                var total_amount = parseFloat(sub1) + parseFloat(sub2) + parseFloat(sub3) + parseFloat(sub4) + parseFloat(sub5) + parseFloat(sub6) + parseFloat(sub7);
-                if (isNaN(total_amount)) total_amount = 0;
-                $('.total_amount').val(parseFloat(total_amount).toFixed(2));
-            }
         });
+
+
+
+        function getAmount(x){
+            var subTotalAmount= 0;
+            var totalAmount= 0;
+            var qty=0;
+            var price=0;
+
+            qty = parseFloat($('#color_wise_quantity'+x).val());
+            price = parseFloat($('#color_unit_price'+x).val());
+
+            subTotalAmount= parseFloat(qty*price);
+
+
+            $('#sub_total'+x).val(subTotalAmount);
+
+            $('.sub_total').each(function(){
+                totalAmount += parseFloat($(this).val());
+            });
+
+            $('#total_amount').val(totalAmount);
+        }
+
         function calculateQuantity(id){
             var abc= 0;
             var def= 0;
@@ -719,7 +657,7 @@
             var counter = $('.row-concat' + x).length+x;
             // if (counter - 2 < 13) {
                 // y++;
-                $('#t_body_id_' + x).append('<tr class="row-concat' + x + '" id="row-concat_' + counter + '"><td><input type="text" name="size' + counter + '[]" class="form-control" placeholder="Enter Size"></td><td><input type="text" name="prepack' + counter + '[]" class="form-control" placeholder="Enter Prepack"></td><td><input type="number" min="0" step="any" name="quantity' + counter + '[]" id="color_wise_quantity'+x+'_qty_'+ counter + '" oninput="calculateQuantity('+x+')" class="form-control color_wise_quantity1_qty_'+x+' quantity'+x+'" placeholder="Enter Quantity"></td><td><a id="remove_concat" class="btn btn-danger btn-sm" style="color:white;margin-left:10px;" onclick="removeRow('+x+','+counter+')">-</a></td></tr>');
+                $('#t_body_id_' + x).append('<tr class="row-concat' + x + '" id="row-concat_' + counter + '"><td><input type="text" name="size' + counter + '[]" class="form-control" placeholder="Enter Size"></td><td><input type="text" name="prepack' + counter + '[]" class="form-control" placeholder="Enter Prepack"></td><td><input type="number" min="0" step="any" name="quantity' + counter + '[]" id="color_wise_quantity'+x+'_qty_'+ counter + '" oninput="calculateQuantity('+x+'), getAmount('+x+')" class="form-control color_wise_quantity1_qty_'+x+' quantity'+x+'" placeholder="Enter Quantity"></td><td><a id="remove_concat" class="btn btn-danger btn-sm" style="color:white;margin-left:10px;" onclick="removeRow('+x+','+counter+')">-</a></td></tr>');
             // } else {
             //     alert("Maximum row is 13");
             // }
