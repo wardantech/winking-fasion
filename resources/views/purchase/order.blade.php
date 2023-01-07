@@ -400,7 +400,7 @@
                                                     <tr class="row-concat1" id="row-concat_1">
                                                         <td><input type="text" name="size1[]" class="form-control" placeholder="Enter Size"></td>
                                                         <td><input type="text" name="prepack1[]" class="form-control" placeholder="Enter Prepack"></td>
-                                                        <td><input type="number" min="0" step="any" name="quantity1[]" id="quantity1" class="form-control quantity1" oninput="calculateQuantity(1, 1)" placeholder="Enter Quantity"></td>
+                                                        <td><input type="number" min="0" step="any" name="quantity1[]" id="quantity1 color_wise_quantity1_qty_1" class="form-control quantity1 color_wise_quantity1_qty_1" oninput="calculateQuantity('1')" placeholder="Enter Quantity"></td>
                                                         <td><a id="remove_concat" class="btn btn-danger btn-sm" style="color:white;margin-left:10px;" onclick="removeRow(1, 1)">-</a></td>
                                                     </tr>
                                                     {{-- <tr>
@@ -519,7 +519,7 @@
                                         <table id="colorSection">\
                                              <thead>\
                                                  <tr>\
-                                                     <th>Color Name <a id="remove_size" class="btn btn-danger btn-sm" style="color:white;margin-left:10px;">-</a></th>\
+                                                     <th>Color Name <a id="" onclick="remove_size('+x+')" class="btn btn-danger btn-sm" style="color:white;margin-left:10px;">-</a></th>\
                                                      <th>Code</th>\
                                                      <th>Quantity</th>\
                                                      <th>Unit Price</th>\
@@ -553,7 +553,7 @@
                                                 <tr class="row-concat' + x + '" id="row-concat_1">\
                                                     <td><input type="text" name="size1[]" class="form-control"></td>\
                                                     <td><input type="text" name="prepack1[]" class="form-control"></td>\
-                                                    <td><input type="number" oninput="calculateQuantity('+x+', 1)" min="0" step="any" name="quantity1[]" id="quantity1" class="form-control quantity' + x + '"></td>\
+                                                    <td><input type="number" oninput="calculateQuantity('+x+', 1)" min="0" step="any" name="quantity1[]" id="quantity1 color_wise_quantity'+x+'_qty_'+x+'" class="color_wise_quantity1_qty_'+x+' form-control quantity' + x + '"></td>\
                                                     <td><a id="remove_concat" class="btn btn-danger btn-sm" style="color:white;margin-left:10px;" onclick="removeRow(1, ' + x + ')">-</a></td>\
                                                 </tr>\
                                             </tbody>\
@@ -672,39 +672,64 @@
                 $('.total_amount').val(parseFloat(total_amount).toFixed(2));
             }
         });
+        function calculateQuantity(id){
+            var abc= 0;
+            var def= 0;
+            $('.color_wise_quantity1_qty_'+id).each(function(){
+                abc += parseFloat($(this).val());
+            })
+            $('.color_wise_quantity'+id).val(abc);
 
-        function calculateQuantity(rowNo, qty){
-            // alert($(this).val());
-                var count= 0;
-                var totalCount= 0;
-                $('.row-concat'+rowNo+ ' .quantity'+rowNo).each(function(){
-                    count += parseInt($(this).val());
-                    // console.log($('.row-concat_'+rowNo+'.quantity'+qty));
-                });
-                // console.log(count);
-                $('#color_wise_quantity'+rowNo).val(count);
-                $('.color_wise_quantity').each(function(){
-                    totalCount += parseInt($('#color_wise_quantity'+rowNo).val());
-                });
-                $('#total_quantity').val(totalCount);
-            }
+            $('.color_wise_quantity').each(function(){
+                def += parseFloat($(this).val());
+            })
+            $('#total_quantity').val(def);
 
+        }
+
+        function removeRow(x, counter){
+            console.log(event);
+            //$(this).parent().remove();
+            $('#color_wise_quantity'+x+'_qty_'+counter).parent().parent().remove();
+            this.calculateQuantity(x);
+        }
+
+        function remove_size(x){
+
+        }
+        // function calculateQuantity(rowNo, qty){
+        //     // alert($(this).val());
+        //         var count= 0;
+        //         var totalCount= 0;
+        //         $('.row-concat'+rowNo+ ' .quantity'+rowNo).each(function(){
+        //             count += parseInt($(this).val());
+        //             // console.log($('.row-concat_'+rowNo+'.quantity'+qty));
+        //         });
+        //         // console.log(count);
+        //         $('#color_wise_quantity'+rowNo).val(count);
+        //         $('.color_wise_quantity').each(function(){
+        //             totalCount += parseInt($('#color_wise_quantity'+rowNo).val());
+        //         });
+        //         $('#total_quantity').val(totalCount);
+        //     }
+        var y = 1;
         function addRow(x) {
             // console.log($('.dd_'+x).length+2);
+            y++;
             var counter = $('.row-concat' + x).length+x;
             // if (counter - 2 < 13) {
                 // y++;
-                $('#t_body_id_' + x).append('<tr class="row-concat' + x + '" id="row-concat_' + counter + '"><td><input type="text" name="size' + counter + '[]" class="form-control" placeholder="Enter Size"></td><td><input type="text" name="prepack' + counter + '[]" class="form-control" placeholder="Enter Prepack"></td><td><input type="number" min="0" step="any" name="quantity' + counter + '[]" id="quantity' + counter + '" oninput="calculateQuantity('+x+','+counter+')" class="form-control quantity'+x+'" placeholder="Enter Quantity"></td><td><a id="remove_concat" class="btn btn-danger btn-sm" style="color:white;margin-left:10px;" onclick="removeRow(' + counter + ',' + x + ')">-</a></td></tr>');
+                $('#t_body_id_' + x).append('<tr class="row-concat' + x + '" id="row-concat_' + counter + '"><td><input type="text" name="size' + counter + '[]" class="form-control" placeholder="Enter Size"></td><td><input type="text" name="prepack' + counter + '[]" class="form-control" placeholder="Enter Prepack"></td><td><input type="number" min="0" step="any" name="quantity' + counter + '[]" id="color_wise_quantity'+x+'_qty_'+ counter + '" oninput="calculateQuantity('+x+')" class="form-control color_wise_quantity1_qty_'+x+' quantity'+x+'" placeholder="Enter Quantity"></td><td><a id="remove_concat" class="btn btn-danger btn-sm" style="color:white;margin-left:10px;" onclick="removeRow('+x+','+counter+')">-</a></td></tr>');
             // } else {
             //     alert("Maximum row is 13");
             // }
         }
 
-        function removeRow(counter, x) {
-            // console.log(counter);
-            $('.row-concat' + x + '#row-concat_' + counter).remove();
-            this.calculateQuantity(x, counter);
-        }
+        // function removeRow(counter, x) {
+        //     // console.log(counter);
+        //     $('.row-concat' + x + '#row-concat_' + counter).remove();
+        //     this.calculateQuantity(x, counter);
+        // }
 
         tinymce.init({
             selector: 'textarea',
@@ -722,17 +747,6 @@
 
         function quantityCalc(pram){
             console.log(this.value)
-            // let sum = 0;
-            // console.log('.quantity'+pram);
-            //
-            // $('.quantity'+pram).each(function(){
-            //     console.log($(this).val());
-            //     //sum += parseFloat($(this).text());
-            // });
-            //console.log('sum=' + sum);
-
-            //$('#color_wise_quantity2').val(sum);
-            //('#color_wise_quantity'+pram).val(sum);
         }
 
 
