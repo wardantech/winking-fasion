@@ -627,6 +627,7 @@
             //$(this).parent().remove();
             $('#color_wise_quantity'+x+'_qty_'+counter).parent().parent().remove();
             this.calculateQuantity(x);
+            this.getAmount(x);
         }
 
         function remove_size(x){
