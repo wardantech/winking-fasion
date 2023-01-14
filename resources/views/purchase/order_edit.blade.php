@@ -524,15 +524,15 @@
                                                 -
                                             </a>
                                         </th>
+                                         <th>Code</th>
+                                         <th>Quantity</th>
+                                         <th>Unit Price</th>
+                                         <th>Total Price</th>
                                          <th>
                                             <a class="btn btn-success btn-sm" id="add_contact_${x}" onclick="addRow(1,${x})" style="color: white; ">
                                                 <i class="fa fa-plus"></i>
                                             </a>
                                         </th>
-                                         <th>Code</th>
-                                         <th>Quantity</th>
-                                         <th>Unit Price</th>
-                                         <th>Total Price</th>
                                      </tr>
                                  </thead>
                                  <tbody class="rowcount">
