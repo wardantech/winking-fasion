@@ -433,16 +433,16 @@
                                                             @if($value['size'.$i] != null)
                                                                 <tr class="row-concat{{ $key }}"
                                                                     id="row-concat_{{ $i }}">
-                                                                    <td><input type="text" name="size{{ $i }}[]"
-                                                                               class="form-control"
+                                                                    <td><input type="text" name="color_{{$key+1}}_size{{ $i }}"
+                                                                               class="form-control size{{$key+1}}"
                                                                                value="{{$value['size'.$i]}}"
                                                                                placeholder="Enter Size"></td>
-                                                                    <td><input type="text" name="prepack{{ $i }}[]"
+                                                                    <td><input type="text" name="color_{{$key+1}}_prepack{{ $i }}"
                                                                                class="form-control"
                                                                                value="{{$value['prepack'.$i]}}"
                                                                                placeholder="Enter prepack"></td>
                                                                     <td><input type="number" min="0" step="any"
-                                                                               name="quantity{{ $i }}[]"
+                                                                               name="color_{{$key+1}}_quantity{{ $i }}"
                                                                                value="{{$value['quantity'.$i]}}"
                                                                                id="color_wise_quantity{{ $key+1 }}_qty_{{ $i }}"
                                                                                class="form-control quantity{{ $key+1 }} color_wise_quantity1_qty_{{ $key+1  }}"
@@ -573,23 +573,25 @@
 
         function addRow(val, x) {
             console.log(val, x)
+            var c = x+1;
             var item;
             val == 0 ? item = x+1: item = x;
             y++;
             var counter = $('.row-concat' + x).length + x;
-            console.log(item);
-
+            //console.log(counter);
+            var cl = $('.size'+c).length + 1;
+            console.log(cl);
             $('#t_body_id_' + x).append(`
                 <tr class="row-concat${item}" id="row-concat_${counter}">
                     <td>
-                        <input type="text" name="size${counter}[]" class="form-control" placeholder="Enter Size">
+                        <input type="text" name="color_${item}_size${cl}" class="form-control size${c}" placeholder="Enter Size">
                     </td>
                     <td>
-                        <input type="text" name="prepack${counter}[]" class="form-control" placeholder="Enter Prepack">
+                        <input type="text" name="color_${item}_prepack${cl}" class="form-control" placeholder="Enter Prepack">
                     </td>
                     <td>
                         <input type="number" min="0" step="any"
-                                name="quantity${counter}[]"
+                                name="color_${item}_quantity${cl}"
                                 id="color_wise_quantity${item}_qty_${counter}"
                                 oninput="calculateQuantity(${item}),
                                 getAmount(${item})"

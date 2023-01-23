@@ -456,16 +456,16 @@
                                                             <?php if($value['size'.$i] != null): ?>
                                                                 <tr class="row-concat<?php echo e($key); ?>"
                                                                     id="row-concat_<?php echo e($i); ?>">
-                                                                    <td><input type="text" name="size<?php echo e($i); ?>[]"
-                                                                               class="form-control"
+                                                                    <td><input type="text" name="color_<?php echo e($key+1); ?>_size<?php echo e($i); ?>"
+                                                                               class="form-control size<?php echo e($key+1); ?>"
                                                                                value="<?php echo e($value['size'.$i]); ?>"
                                                                                placeholder="Enter Size"></td>
-                                                                    <td><input type="text" name="prepack<?php echo e($i); ?>[]"
+                                                                    <td><input type="text" name="color_<?php echo e($key+1); ?>_prepack<?php echo e($i); ?>"
                                                                                class="form-control"
                                                                                value="<?php echo e($value['prepack'.$i]); ?>"
                                                                                placeholder="Enter prepack"></td>
                                                                     <td><input type="number" min="0" step="any"
-                                                                               name="quantity<?php echo e($i); ?>[]"
+                                                                               name="color_<?php echo e($key+1); ?>_quantity<?php echo e($i); ?>"
                                                                                value="<?php echo e($value['quantity'.$i]); ?>"
                                                                                id="color_wise_quantity<?php echo e($key+1); ?>_qty_<?php echo e($i); ?>"
                                                                                class="form-control quantity<?php echo e($key+1); ?> color_wise_quantity1_qty_<?php echo e($key+1); ?>"
@@ -548,15 +548,15 @@
                                                 -
                                             </a>
                                         </th>
+                                         <th>Code</th>
+                                         <th>Quantity</th>
+                                         <th>Unit Price</th>
+                                         <th>Total Price</th>
                                          <th>
                                             <a class="btn btn-success btn-sm" id="add_contact_${x}" onclick="addRow(1,${x})" style="color: white; ">
                                                 <i class="fa fa-plus"></i>
                                             </a>
                                         </th>
-                                         <th>Code</th>
-                                         <th>Quantity</th>
-                                         <th>Unit Price</th>
-                                         <th>Total Price</th>
                                      </tr>
                                  </thead>
                                  <tbody class="rowcount">
@@ -597,23 +597,25 @@
 
         function addRow(val, x) {
             console.log(val, x)
+            var c = x+1;
             var item;
             val == 0 ? item = x+1: item = x;
             y++;
             var counter = $('.row-concat' + x).length + x;
-            console.log(item);
-
+            //console.log(counter);
+            var cl = $('.size'+c).length + 1;
+            console.log(cl);
             $('#t_body_id_' + x).append(`
                 <tr class="row-concat${item}" id="row-concat_${counter}">
                     <td>
-                        <input type="text" name="size${counter}[]" class="form-control" placeholder="Enter Size">
+                        <input type="text" name="color_${item}_size${cl}" class="form-control size${c}" placeholder="Enter Size">
                     </td>
                     <td>
-                        <input type="text" name="prepack${counter}[]" class="form-control" placeholder="Enter Prepack">
+                        <input type="text" name="color_${item}_prepack${cl}" class="form-control" placeholder="Enter Prepack">
                     </td>
                     <td>
                         <input type="number" min="0" step="any"
-                                name="quantity${counter}[]"
+                                name="color_${item}_quantity${cl}"
                                 id="color_wise_quantity${item}_qty_${counter}"
                                 oninput="calculateQuantity(${item}),
                                 getAmount(${item})"
