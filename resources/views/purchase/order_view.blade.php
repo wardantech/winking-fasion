@@ -241,9 +241,9 @@
                             <table class="custom_table details table table-responsive" width="100%">
                                 <thead>
                                     <tr>
-                                        <th width="10%">Color</th>
-                                        <th width="10%">Code</th>
-                                        <th width="10%">PRE PACK</th>
+                                        <th width="15%">Color</th>
+                                        <th width="15%">Code</th>
+                                        <th width="15%">PRE PACK</th>
                                         @if($lim_sizes->size1)
                                         <th style="text-align:center;">{{$lim_sizes->size1 }}</th>
                                         @endif
@@ -284,8 +284,8 @@
                                         <th style="text-align:center;">{{$lim_sizes->size13 }}</th>
                                         @endif
                                         <th style="text-align:center;" width="10%">Total Units</th>
-                                        <th style="text-align:center;" width="12%">Unit Price</th>
-                                        <th style="text-align:center;" width="13%">Total Amount</th>
+                                        <th style="text-align:center;" width="15%">Unit Price</th>
+                                        <th style="text-align:center;" width="15%">Total Amount</th>
                                     </tr>
                                 </thead>
                                     <tbody>

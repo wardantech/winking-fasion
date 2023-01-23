@@ -368,7 +368,7 @@
                                     <div class="color_box">
                                         @foreach($lim_details as $key => $value)
                                             {{-- {{ dd($value) }} --}}
-                                            <div class="row">
+                                            <div class="row rmv{{$key+1}}">
                                                 <div class="col-md-12" style="margin:30px 0px;">
                                                     <table id="colorSection" width="100%">
                                                         <thead>
@@ -380,6 +380,7 @@
                                                                 </th>
                                                             @else
                                                                 <th>Color Name <a id="remove_size"
+                                                                                  onclick="remove_size({{$key+1}})"
                                                                                   class="btn btn-danger btn-sm"
                                                                                   style="color:white;margin-left:10px;">-</a>
                                                                 </th>
@@ -433,16 +434,18 @@
                                                             @if($value['size'.$i] != null)
                                                                 <tr class="row-concat{{ $key }}"
                                                                     id="row-concat_{{ $i }}">
-                                                                    <td><input type="text" name="size{{ $i }}[]"
-                                                                               class="form-control"
+                                                                    <td><input type="text"
+                                                                               name="color_{{$key+1}}_size{{ $i }}"
+                                                                               class="form-control size{{$key+1}}"
                                                                                value="{{$value['size'.$i]}}"
                                                                                placeholder="Enter Size"></td>
-                                                                    <td><input type="text" name="prepack{{ $i }}[]"
+                                                                    <td><input type="text"
+                                                                               name="color_{{$key+1}}_prepack{{ $i }}"
                                                                                class="form-control"
                                                                                value="{{$value['prepack'.$i]}}"
                                                                                placeholder="Enter prepack"></td>
                                                                     <td><input type="number" min="0" step="any"
-                                                                               name="quantity{{ $i }}[]"
+                                                                               name="color_{{$key+1}}_quantity{{ $i }}"
                                                                                value="{{$value['quantity'.$i]}}"
                                                                                id="color_wise_quantity{{ $key+1 }}_qty_{{ $i }}"
                                                                                class="form-control quantity{{ $key+1 }} color_wise_quantity1_qty_{{ $key+1  }}"
@@ -513,14 +516,14 @@
                     x++;
                     $('#color_number').val(x);
                     $(wrapper).append(`
-                    <div class="row">
+                    <div class="row rmv${x}">
                         <div class="col-md-12" style="margin: 30px 0px;">
                             <table id="colorSection">
                                  <thead>
                                      <tr>
                                          <th>
                                             Color Name
-                                            <a id="remove_size" class="btn btn-danger btn-sm" style="color:white;margin-left:10px;">
+                                            <a id="" onclick="remove_size(${x})" class="btn btn-danger btn-sm" style="color:white;margin-left:10px;">
                                                 -
                                             </a>
                                         </th>
@@ -573,23 +576,25 @@
 
         function addRow(val, x) {
             console.log(val, x)
+            var c = x + 1;
             var item;
-            val == 0 ? item = x+1: item = x;
+            val == 0 ? item = x + 1 : item = x;
             y++;
             var counter = $('.row-concat' + x).length + x;
-            console.log(item);
-
+            //console.log(counter);
+            var cl = $('.size' + c).length + 1;
+            console.log(cl);
             $('#t_body_id_' + x).append(`
                 <tr class="row-concat${item}" id="row-concat_${counter}">
                     <td>
-                        <input type="text" name="size${counter}[]" class="form-control" placeholder="Enter Size">
+                        <input type="text" name="color_${item}_size${cl}" class="form-control size${c}" placeholder="Enter Size">
                     </td>
                     <td>
-                        <input type="text" name="prepack${counter}[]" class="form-control" placeholder="Enter Prepack">
+                        <input type="text" name="color_${item}_prepack${cl}" class="form-control" placeholder="Enter Prepack">
                     </td>
                     <td>
                         <input type="number" min="0" step="any"
-                                name="quantity${counter}[]"
+                                name="color_${item}_quantity${cl}"
                                 id="color_wise_quantity${item}_qty_${counter}"
                                 oninput="calculateQuantity(${item}),
                                 getAmount(${item})"
@@ -662,8 +667,16 @@
             this.getAmount(x);
         }
 
-        function removeRowStatic(x, counter){
+        function removeRowStatic(x, counter) {
             $('#color_wise_quantity' + x + '_qty_' + counter).parent().parent().remove();
+            this.calculateQuantity(x);
+            this.getAmount(x);
+        }
+
+        function remove_size(x) {
+            console.log(x);
+            $('.rmv' + x).remove();
+            //$('.row-concat' + x + '#row-concat_' + counter).remove();
             this.calculateQuantity(x);
             this.getAmount(x);
         }

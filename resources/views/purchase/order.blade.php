@@ -396,9 +396,9 @@
                                                     </thead>
                                                     <tbody id="t_body_id_1">
                                                     <tr class="row-concat1" id="row-concat_1">
-                                                        <td><input type="text" name="size1[]" class="form-control" placeholder="Enter Size"></td>
-                                                        <td><input type="text" name="prepack1[]" class="form-control" placeholder="Enter Prepack"></td>
-                                                        <td><input type="number" min="0" step="any" name="quantity1[]" id="quantity1 color_wise_quantity1_qty_1" class="form-control quantity1 color_wise_quantity1_qty_1" oninput="calculateQuantity('1'), getAmount('1')" placeholder="Enter Quantity"></td>
+                                                        <td><input type="text" name="color_1_size1" class="form-control" placeholder="Enter Size"></td>
+                                                        <td><input type="text" name="color_1_prepack1" class="form-control" placeholder="Enter Prepack"></td>
+                                                        <td><input type="number" min="0" step="any" name="color_1_quantity1" id="quantity1 color_wise_quantity1_qty_1" class="form-control quantity1 color_wise_quantity1_qty_1" oninput="calculateQuantity('1'), getAmount('1')" placeholder="Enter Quantity"></td>
                                                         <td><a id="remove_concat" class="btn btn-danger btn-sm" style="color:white;margin-left:10px;" onclick="removeRow(1, 1)">-</a></td>
                                                     </tr>
                                                     {{-- <tr>
@@ -462,7 +462,7 @@
                                                         <td><input type="number" min="0" step="any" name="quantity13[]" id="quantity1" class="form-control quantity1"></td>
                                                     </tr> --}}
                                                     <tr>
-                                                        <a class="btn btn-success btn-sm" id="add_contact_1" onclick="addRow(1)"
+                                                        <a class="btn btn-success btn-sm" id="add_contact_1" onclick="addRow(1,1)"
                                                            style="color: white; ">
                                                             <i class="fa fa-plus"></i>
                                                         </a>
@@ -512,7 +512,7 @@
                     x++;
                     // y=1;
                     $('#color_number').val(x);
-                    $(wrapper).append('<div class="row">\
+                    $(wrapper).append('<div class="row rmv'+x+'">\
                                     <div class="col-md-12" style="margin: 30px 0px;">\
                                         <table id="colorSection">\
                                              <thead>\
@@ -523,7 +523,7 @@
                                                      <th>Unit Price</th>\
                                                      <th>Total Price</th>\
                                                      <th>\
-                                                        <a class="btn btn-success btn-sm" id="add_contact_' + x + '" onclick="addRow(' + x + ')" style="color: white; ">\
+                                                        <a class="btn btn-success btn-sm" id="add_contact_' + x + '" onclick="addRow(0,' + x + ')" style="color: white; ">\
                                                             <i class="fa fa-plus"></i>\
                                                         </a>\
                                                     </th>\
@@ -549,9 +549,9 @@
                                             </thead>\
                                             <tbody id="t_body_id_' + x + '">\
                                                 <tr class="row-concat' + x + '" id="row-concat_1">\
-                                                    <td><input type="text" name="size1[]" class="form-control"></td>\
-                                                    <td><input type="text" name="prepack1[]" class="form-control"></td>\
-                                                    <td><input type="number" oninput="calculateQuantity('+x+', 1), getAmount('+x+')" min="0" step="any" name="quantity1[]" id="quantity1 color_wise_quantity'+x+'_qty_'+x+'" class="color_wise_quantity1_qty_'+x+' form-control quantity' + x + '"></td>\
+                                                    <td><input type="text" name="color_'+x+'_size1" class="form-control"></td>\
+                                                    <td><input type="text" name="color_'+x+'_prepack1" class="form-control"></td>\
+                                                    <td><input type="number" oninput="calculateQuantity('+x+', 1), getAmount('+x+')" min="0" step="any" name="color_'+x+'_quantity1" id="quantity1 color_wise_quantity'+x+'_qty_'+x+'" class="color_wise_quantity1_qty_'+x+' form-control quantity' + x + '"></td>\
                                                     <td><a id="remove_concat" class="btn btn-danger btn-sm" style="color:white;margin-left:10px;" onclick="removeRow(1, ' + x + ')">-</a></td>\
                                                 </tr>\
                                             </tbody>\
@@ -623,49 +623,39 @@
         }
 
         function removeRow(x, counter){
-            console.log(event);
             //$(this).parent().remove();
             $('#color_wise_quantity'+x+'_qty_'+counter).parent().parent().remove();
             this.calculateQuantity(x);
             this.getAmount(x);
         }
 
-        function remove_size(x){
 
-        }
-        // function calculateQuantity(rowNo, qty){
-        //     // alert($(this).val());
-        //         var count= 0;
-        //         var totalCount= 0;
-        //         $('.row-concat'+rowNo+ ' .quantity'+rowNo).each(function(){
-        //             count += parseInt($(this).val());
-        //             // console.log($('.row-concat_'+rowNo+'.quantity'+qty));
-        //         });
-        //         // console.log(count);
-        //         $('#color_wise_quantity'+rowNo).val(count);
-        //         $('.color_wise_quantity').each(function(){
-        //             totalCount += parseInt($('#color_wise_quantity'+rowNo).val());
-        //         });
-        //         $('#total_quantity').val(totalCount);
-        //     }
         var y = 1;
-        function addRow(x) {
+        function addRow(item,x) {
             // console.log($('.dd_'+x).length+2);
             y++;
             var counter = $('.row-concat' + x).length+x;
+            var name = 1;
+            $('.color_wise_quantity1_qty_'+x).each(function(){
+                name++;
+            });
+
+
             // if (counter - 2 < 13) {
                 // y++;
-                $('#t_body_id_' + x).append('<tr class="row-concat' + x + '" id="row-concat_' + counter + '"><td><input type="text" name="size' + counter + '[]" class="form-control" placeholder="Enter Size"></td><td><input type="text" name="prepack' + counter + '[]" class="form-control" placeholder="Enter Prepack"></td><td><input type="number" min="0" step="any" name="quantity' + counter + '[]" id="color_wise_quantity'+x+'_qty_'+ counter + '" oninput="calculateQuantity('+x+'), getAmount('+x+')" class="form-control color_wise_quantity1_qty_'+x+' quantity'+x+'" placeholder="Enter Quantity"></td><td><a id="remove_concat" class="btn btn-danger btn-sm" style="color:white;margin-left:10px;" onclick="removeRow('+x+','+counter+')">-</a></td></tr>');
+                $('#t_body_id_' + x).append('<tr class="row-concat' + x + '" id="row-concat_' + counter + '"><td><input type="text" name="color_'+x+'_size' + name + '" class="form-control" placeholder="Enter Size"></td><td><input type="text" name="color_'+x+'_prepack' + name + '" class="form-control" placeholder="Enter Prepack"></td><td><input type="number" min="0" step="any" name="color_'+x+'_quantity' + name + '" id="color_wise_quantity'+x+'_qty_'+ counter + '" oninput="calculateQuantity('+x+'), getAmount('+x+')" class="form-control color_wise_quantity1_qty_'+x+' quantity'+x+'" placeholder="Enter Quantity"></td><td><a id="remove_concat" class="btn btn-danger btn-sm" style="color:white;margin-left:10px;" onclick="removeRow('+x+','+counter+')">-</a></td></tr>');
             // } else {
             //     alert("Maximum row is 13");
             // }
         }
 
-        // function removeRow(counter, x) {
-        //     // console.log(counter);
-        //     $('.row-concat' + x + '#row-concat_' + counter).remove();
-        //     this.calculateQuantity(x, counter);
-        // }
+        function remove_size(x) {
+             console.log(x);
+            $('.rmv'+x).remove();
+            //$('.row-concat' + x + '#row-concat_' + counter).remove();
+            this.calculateQuantity(x);
+            this.getAmount(x);
+        }
 
         tinymce.init({
             selector: 'textarea',
