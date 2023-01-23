@@ -512,7 +512,7 @@
                     x++;
                     // y=1;
                     $('#color_number').val(x);
-                    $(wrapper).append('<div class="row">\
+                    $(wrapper).append('<div class="row rmv'+x+'">\
                                     <div class="col-md-12" style="margin: 30px 0px;">\
                                         <table id="colorSection">\
                                              <thead>\
@@ -623,7 +623,6 @@
         }
 
         function removeRow(x, counter){
-            console.log(event);
             //$(this).parent().remove();
             $('#color_wise_quantity'+x+'_qty_'+counter).parent().parent().remove();
             this.calculateQuantity(x);
@@ -650,11 +649,13 @@
             // }
         }
 
-        // function removeRow(counter, x) {
-        //     // console.log(counter);
-        //     $('.row-concat' + x + '#row-concat_' + counter).remove();
-        //     this.calculateQuantity(x, counter);
-        // }
+        function remove_size(x) {
+             console.log(x);
+            $('.rmv'+x).remove();
+            //$('.row-concat' + x + '#row-concat_' + counter).remove();
+            this.calculateQuantity(x);
+            this.getAmount(x);
+        }
 
         tinymce.init({
             selector: 'textarea',

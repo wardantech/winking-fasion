@@ -391,7 +391,7 @@
                                     <div class="color_box">
                                         <?php $__currentLoopData = $lim_details; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key => $value): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                             
-                                            <div class="row">
+                                            <div class="row rmv<?php echo e($key+1); ?>">
                                                 <div class="col-md-12" style="margin:30px 0px;">
                                                     <table id="colorSection" width="100%">
                                                         <thead>
@@ -403,6 +403,7 @@
                                                                 </th>
                                                             <?php else: ?>
                                                                 <th>Color Name <a id="remove_size"
+                                                                                  onclick="remove_size(<?php echo e($key+1); ?>)"
                                                                                   class="btn btn-danger btn-sm"
                                                                                   style="color:white;margin-left:10px;">-</a>
                                                                 </th>
@@ -456,11 +457,13 @@
                                                             <?php if($value['size'.$i] != null): ?>
                                                                 <tr class="row-concat<?php echo e($key); ?>"
                                                                     id="row-concat_<?php echo e($i); ?>">
-                                                                    <td><input type="text" name="color_<?php echo e($key+1); ?>_size<?php echo e($i); ?>"
+                                                                    <td><input type="text"
+                                                                               name="color_<?php echo e($key+1); ?>_size<?php echo e($i); ?>"
                                                                                class="form-control size<?php echo e($key+1); ?>"
                                                                                value="<?php echo e($value['size'.$i]); ?>"
                                                                                placeholder="Enter Size"></td>
-                                                                    <td><input type="text" name="color_<?php echo e($key+1); ?>_prepack<?php echo e($i); ?>"
+                                                                    <td><input type="text"
+                                                                               name="color_<?php echo e($key+1); ?>_prepack<?php echo e($i); ?>"
                                                                                class="form-control"
                                                                                value="<?php echo e($value['prepack'.$i]); ?>"
                                                                                placeholder="Enter prepack"></td>
@@ -537,14 +540,14 @@
                     x++;
                     $('#color_number').val(x);
                     $(wrapper).append(`
-                    <div class="row">
+                    <div class="row rmv${x}">
                         <div class="col-md-12" style="margin: 30px 0px;">
                             <table id="colorSection">
                                  <thead>
                                      <tr>
                                          <th>
                                             Color Name
-                                            <a id="remove_size" class="btn btn-danger btn-sm" style="color:white;margin-left:10px;">
+                                            <a id="" onclick="remove_size(${x})" class="btn btn-danger btn-sm" style="color:white;margin-left:10px;">
                                                 -
                                             </a>
                                         </th>
@@ -597,13 +600,13 @@
 
         function addRow(val, x) {
             console.log(val, x)
-            var c = x+1;
+            var c = x + 1;
             var item;
-            val == 0 ? item = x+1: item = x;
+            val == 0 ? item = x + 1 : item = x;
             y++;
             var counter = $('.row-concat' + x).length + x;
             //console.log(counter);
-            var cl = $('.size'+c).length + 1;
+            var cl = $('.size' + c).length + 1;
             console.log(cl);
             $('#t_body_id_' + x).append(`
                 <tr class="row-concat${item}" id="row-concat_${counter}">
@@ -688,8 +691,16 @@
             this.getAmount(x);
         }
 
-        function removeRowStatic(x, counter){
+        function removeRowStatic(x, counter) {
             $('#color_wise_quantity' + x + '_qty_' + counter).parent().parent().remove();
+            this.calculateQuantity(x);
+            this.getAmount(x);
+        }
+
+        function remove_size(x) {
+            console.log(x);
+            $('.rmv' + x).remove();
+            //$('.row-concat' + x + '#row-concat_' + counter).remove();
             this.calculateQuantity(x);
             this.getAmount(x);
         }
