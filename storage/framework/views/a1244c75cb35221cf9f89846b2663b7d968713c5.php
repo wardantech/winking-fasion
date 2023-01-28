@@ -389,6 +389,8 @@
                     <li class=""><a href="#account" aria-expanded="false" data-toggle="collapse"> <i class="dripicons-briefcase"></i><span><?php echo e(trans('file.Accounting')); ?></span></a>
                         <ul id="account" class="collapse list-unstyled ">
                             <?php if($index_permission_active): ?>
+                                <li id="account-list-menu"><a href="<?php echo e(route('banks.index')); ?>">Bank</a></li>
+                                <li id="account-list-menu"><a href="<?php echo e(route('bank_branches.index')); ?>">Branch</a></li>
                                 <li id="account-list-menu"><a href="<?php echo e(route('accounts.index')); ?>"><?php echo e(trans('file.Account List')); ?></a></li>
                                 
 
@@ -451,6 +453,7 @@
                                 <?php if($payroll_active): ?>
                                     <li id="payroll-menu"><a href="<?php echo e(route('payroll.index')); ?>"><?php echo e(trans('file.Payroll')); ?></a></li>
                                 <?php endif; ?>
+                                <li id="salary-sheet"><a href="<?php echo e(route('salary-sheet-index')); ?>"><?php echo e(trans('file.Salary Sheet')); ?></a></li>
 
                             </ul>
                         </li>
@@ -694,6 +697,7 @@
                     <li><a href="#export_documents" aria-expanded="false" data-toggle="collapse"> <i class="dripicons-gear"></i><span><?php echo e(trans('file.Export Documents')); ?></span></a>
                         <ul id="export_documents" class="collapse list-unstyled ">
                             <li><a href="<?php echo e(url('forwarding-letter')); ?>">Forwarding-letter</a></li>
+                            <li><a href="<?php echo e(url('commercial-invoice')); ?>">Commercial-Invoice</a></li>
                             <li><a href="<?php echo e(url('bill-exchange')); ?>">Bill-exchange</a></li>
                         </ul>
                     </li>

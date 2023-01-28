@@ -75,7 +75,9 @@
         text-transform: uppercase;
         font-size: 12px;
     }
-
+.ptop{
+    vertical-align: top;
+}
 </style>
 <section>
     <div class="container-fluid">
@@ -125,7 +127,7 @@
                                         </th>
                                     </thead>
                                     <tbody>
-                                        <td>
+                                        <td class="ptop">
                                             <div class="vendor">
                                                 <p><b><?php echo e($order->vendorInfo->name); ?></b></p>
                                                 <p><?php echo e($order->vendorInfo->address); ?>, <?php echo e($order->vendorInfo->city); ?>-<?php echo e($order->vendorInfo->state); ?>. <?php echo e($order->vendorInfo->country); ?>  </p>
@@ -138,7 +140,7 @@
                                                 <?php echo e($order->vendorInfo->mobile); ?> </p>
                                             </div>
                                         </td>
-                                        <td>
+                                        <td  class="ptop">
                                             <div class="vendor">
                                                 <p><b><?php echo e($order->shipTo->name); ?></b></p>
                                                 <p><?php echo e($order->shipTo->address); ?>, <?php echo e($order->shipTo->city); ?>, <?php echo e($order->shipTo->state); ?>, <?php echo e($order->shipTo->zip); ?>, <?php echo e($order->shipTo->country); ?>  </p>
@@ -153,7 +155,7 @@
                                                 </p>
                                             </div>
                                         </td>
-                                        <td>
+                                        <td  class="ptop">
                                             <div class="vendor">
                                                 <p><b><?php echo e($order->invoiceTo->name); ?></b></p>
                                                 <p><?php echo e($order->invoiceTo->address); ?>, <?php echo e($order->invoiceTo->city); ?>-<?php echo e($order->invoiceTo->state); ?>, <?php echo e($order->invoiceTo->country); ?>  </p>
@@ -168,7 +170,7 @@
                                                 </p>
                                             </div>
                                         </td>
-                                        <td>
+                                        <td  class="ptop">
                                             <div class="vendor">
                                                 <p><b><?php echo e($order->customer->name); ?></b></p>
                                                 <p><?php echo e($order->customer->address); ?>, <?php echo e($order->customer->city); ?>, <?php echo e($order->customer->state); ?>, <?php echo e($order->customer->postal_code); ?>, <?php echo e($order->customer->country); ?>  </p>
@@ -243,112 +245,187 @@
 
                     <div class="row">
                          <div class="col-md-12">
-                            <table class="custom_table details" width="100%">
+                            <table class="custom_table details table" width="100%">
                                 <thead>
                                     <tr>
-                                        <th width="10%">Color</th>
-                                        <th width="10%">Code</th>
-                                        <th width="10%">PRE PACK</th>
+                                        <th width="">Color</th>
+                                        <th width="">Code</th>
+                                        <th width="">PRE PACK</th>
+                                        <?php if($lim_sizes->size1): ?>
                                         <th style="text-align:center;"><?php echo e($lim_sizes->size1); ?></th>
+                                        <?php endif; ?>
+                                        <?php if($lim_sizes->size2): ?>
                                         <th style="text-align:center;"><?php echo e($lim_sizes->size2); ?></th>
+                                        <?php endif; ?>
+                                        <?php if($lim_sizes->size3): ?>
                                         <th style="text-align:center;"><?php echo e($lim_sizes->size3); ?></th>
+                                        <?php endif; ?>
+                                        <?php if($lim_sizes->size4): ?>
                                         <th style="text-align:center;"><?php echo e($lim_sizes->size4); ?></th>
+                                        <?php endif; ?>
+                                        <?php if($lim_sizes->size5): ?>
                                         <th style="text-align:center;"><?php echo e($lim_sizes->size5); ?></th>
+                                        <?php endif; ?>
+                                        <?php if($lim_sizes->size6): ?>
                                         <th style="text-align:center;"><?php echo e($lim_sizes->size6); ?></th>
+                                        <?php endif; ?>
+                                        <?php if($lim_sizes->size7): ?>
                                         <th style="text-align:center;"><?php echo e($lim_sizes->size7); ?></th>
+                                        <?php endif; ?>
+                                        <?php if($lim_sizes->size8): ?>
                                         <th style="text-align:center;"><?php echo e($lim_sizes->size8); ?></th>
+                                        <?php endif; ?>
+                                        <?php if($lim_sizes->size9): ?>
                                         <th style="text-align:center;"><?php echo e($lim_sizes->size9); ?></th>
+                                        <?php endif; ?>
+                                        <?php if($lim_sizes->size10): ?>
                                         <th style="text-align:center;"><?php echo e($lim_sizes->size10); ?></th>
+                                        <?php endif; ?>
+                                        <?php if($lim_sizes->size11): ?>
                                         <th style="text-align:center;"><?php echo e($lim_sizes->size11); ?></th>
+                                        <?php endif; ?>
+                                        <?php if($lim_sizes->size12): ?>
                                         <th style="text-align:center;"><?php echo e($lim_sizes->size12); ?></th>
+                                        <?php endif; ?>
+                                        <?php if($lim_sizes->size13): ?>
                                         <th style="text-align:center;"><?php echo e($lim_sizes->size13); ?></th>
-                                        <th style="text-align:center;" width="10%">Total Units</th>
-                                        <th style="text-align:center;" width="12%">Unit Price</th>
-                                        <th style="text-align:center;" width="13%">Total Amount</th>
+                                        <?php endif; ?>
+                                        <th style="text-align:center;" width="">Total Units</th>
+                                        <th style="text-align:center;" width="">Unit Price</th>
+                                        <th style="text-align:center;" width="">Total Amount</th>
                                     </tr>
                                 </thead>
                                     <tbody>
+                                        <?php ($count=0); ?>
                                         <?php $__currentLoopData = $lim_details; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=>$detail): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                            <tr>
+                                           <tr>
                                                 <td><?php echo e($detail->color); ?></td>
                                                 <td><?php echo e($detail->color_code); ?></td>
                                                 <td>
+                                                    <?php if($detail->prepack1): ?>
                                                     <?php echo e($detail->prepack1); ?>
 
-                                                    <?php if($detail->prepack2 !== null): ?>
-                                                       ,
+                                                        <?php if($detail->prepack2): ?>,<?php endif; ?>
                                                     <?php endif; ?>
+                                                    <?php if($detail->prepack2): ?>
                                                     <?php echo e($detail->prepack2); ?>
 
-                                                    <?php if($detail->prepack3 !== null): ?>
-                                                       ,
+                                                            <?php if($detail->prepack3): ?>
+                                                                ,
+                                                            <?php endif; ?>
                                                     <?php endif; ?>
+                                                    <?php if($detail->prepack3): ?>
                                                     <?php echo e($detail->prepack3); ?>
 
-                                                    <?php if($detail->prepack4 !== null): ?>
-                                                       ,
+                                                            <?php if($detail->prepack4): ?>
+                                                                ,
+                                                            <?php endif; ?>
                                                     <?php endif; ?>
+                                                    <?php if($detail->prepack4): ?>
                                                     <?php echo e($detail->prepack4); ?>
 
-                                                    <?php if($detail->prepack5 !== null): ?>
-                                                       ,
+                                                            <?php if($detail->prepack5): ?>
+                                                                ,
+                                                            <?php endif; ?>
                                                     <?php endif; ?>
+                                                    <?php if($detail->prepack5): ?>
                                                     <?php echo e($detail->prepack5); ?>
 
-                                                    <?php if($detail->prepack6 !== null): ?>
-                                                       ,
+                                                            <?php if($detail->prepack6): ?>
+                                                                ,
+                                                            <?php endif; ?>
                                                     <?php endif; ?>
+                                                    <?php if($detail->prepack6): ?>
                                                     <?php echo e($detail->prepack6); ?>
 
-                                                    <?php if($detail->prepack7 !== null): ?>
-                                                       ,
+                                                            <?php if($detail->prepack7): ?>
+                                                               ,
+                                                            <?php endif; ?>
                                                     <?php endif; ?>
-                                                    <?php echo e($detail->prepack7); ?>
+                                                    <?php if($detail->prepack7): ?>
+                                                        <?php echo e($detail->prepack7); ?>
 
-                                                    <?php if($detail->prepack8 !== null): ?>
-                                                       ,
                                                     <?php endif; ?>
-                                                    <?php echo e($detail->prepack8); ?>
+                                                    <?php if($detail->prepack8): ?>
+                                                        <?php echo e($detail->prepack8); ?>
 
-                                                    <?php if($detail->prepack9 !== null): ?>
-                                                       ,
+                                                            <?php if($detail->prepack9): ?>
+                                                                ,
+                                                            <?php endif; ?>
                                                     <?php endif; ?>
-                                                    <?php echo e($detail->prepack9); ?>
+                                                    <?php if($detail->prepack9): ?>
+                                                        <?php echo e($detail->prepack9); ?>
 
-                                                    <?php if($detail->prepack10 !== null): ?>
-                                                       ,
+                                                        <?php if($detail->prepack10): ?>
+                                                            ,
+                                                        <?php endif; ?>
                                                     <?php endif; ?>
-                                                    <?php echo e($detail->prepack10); ?>
+                                                    <?php if($detail->prepack10): ?>
+                                                        <?php echo e($detail->prepack10); ?>
 
-                                                    <?php if($detail->prepack11 !== null): ?>
-                                                       ,
+                                                        <?php if($detail->prepack11): ?>
+                                                            ,
+                                                        <?php endif; ?>
                                                     <?php endif; ?>
-                                                    <?php echo e($detail->prepack11); ?>
+                                                    <?php if($detail->prepack11): ?>
+                                                        <?php echo e($detail->prepack11); ?>
 
-                                                    <?php if($detail->prepack12 !== null): ?>
-                                                       ,
+                                                        <?php if($detail->prepack12): ?>
+                                                            ,
+                                                        <?php endif; ?>
                                                     <?php endif; ?>
-                                                    <?php echo e($detail->prepack13); ?>
+                                                    <?php if($detail->prepack12): ?>
+                                                        <?php echo e($detail->prepack12); ?>
 
-                                                    <?php if($detail->prepack10 !== null): ?>
-                                                       ,
+                                                        <?php if($detail->prepack13): ?>
+                                                            ,
+                                                        <?php endif; ?>
                                                     <?php endif; ?>
-                                                    <?php echo e($detail->prepack13); ?>
+                                                    <?php if($detail->prepack13): ?>
+                                                        <?php echo e($detail->prepack13); ?>
+
+                                                    <?php endif; ?>
 
                                                 </td>
+                                                <?php if($detail->quantity1): ?>
                                                 <td style="text-align:center;"><?php echo e($detail->quantity1); ?></td>
+                                                <?php endif; ?>
+                                                <?php if($detail->quantity2): ?>
                                                 <td style="text-align:center;"><?php echo e($detail->quantity2); ?></td>
+                                                <?php endif; ?>
+                                                <?php if($detail->quantity3): ?>
                                                 <td style="text-align:center;"><?php echo e($detail->quantity3); ?></td>
+                                                <?php endif; ?>
+                                                <?php if($detail->quantity4): ?>
                                                 <td style="text-align:center;"><?php echo e($detail->quantity4); ?></td>
+                                                <?php endif; ?>
+                                                <?php if($detail->quantity5): ?>
                                                 <td style="text-align:center;"><?php echo e($detail->quantity5); ?></td>
+                                                <?php endif; ?>
+                                                <?php if($detail->quantity6): ?>
                                                 <td style="text-align:center;"><?php echo e($detail->quantity6); ?></td>
+                                                <?php endif; ?>
+                                                <?php if($detail->quantity7): ?>
                                                 <td style="text-align:center;"><?php echo e($detail->quantity7); ?></td>
+                                                <?php endif; ?>
+                                                <?php if($detail->quantity8): ?>
                                                 <td style="text-align:center;"><?php echo e($detail->quantity8); ?></td>
+                                                <?php endif; ?>
+                                                <?php if($detail->quantity9): ?>
                                                 <td style="text-align:center;"><?php echo e($detail->quantity9); ?></td>
+                                                <?php endif; ?>
+                                                <?php if($detail->quantity10): ?>
                                                 <td style="text-align:center;"><?php echo e($detail->quantity10); ?></td>
+                                                <?php endif; ?>
+                                                <?php if($detail->quantity11): ?>
                                                 <td style="text-align:center;"><?php echo e($detail->quantity11); ?></td>
+                                                <?php endif; ?>
+                                                <?php if($detail->quantity12): ?>
                                                 <td style="text-align:center;"><?php echo e($detail->quantity12); ?></td>
+                                                <?php endif; ?>
+                                                <?php if($detail->quantity13): ?>
                                                 <td style="text-align:center;"><?php echo e($detail->quantity13); ?></td>
+                                                <?php endif; ?>
                                                 <td style="text-align:center;"><?php echo e($detail->color_wise_quantity); ?></td>
                                                 <td style="text-align:center;">$ <?php echo e(number_format((float)$detail->color_unit_price, 2, '.', '')); ?></td>
                                                 <td style="text-align:center;">$ <?php echo e(number_format((float)$detail->sub_total, 2, '.', '')); ?></td>
@@ -357,7 +434,7 @@
                                     </tbody>
                                     <tfoot>
                                         <tr>
-                                            <th colspan="16" style="text-align: right;">Total</th>
+                                            <th colspan="<?php echo e($sizeCount+3); ?>" style="text-align: right;">Total</th>
                                             <th style="text-align:center;"><?php echo e($order->total_quantity); ?></th>
                                             <th></th>
                                             <th style="text-align:center;">$<?php echo e(number_format((float)$order->total_amount, 2, '.', '')); ?></th>

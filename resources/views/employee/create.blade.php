@@ -37,11 +37,11 @@
 
                                 <div class="form-group">
                                     <label>{{trans('Present Salary')}}</label>
-                                    <input type="text" placeholder="Enter Present Salary" name="present_salary" class="form-control">
+                                    <input type="number" placeholder="Enter Present Salary" name="present_salary" class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label>{{trans('Joining Salary')}}</label>
-                                    <input type="text" name="joining_salary" class="form-control" placeholder="Enter Joining Salary">
+                                    <input type="number" name="joining_salary" class="form-control" placeholder="Enter Joining Salary">
                                 </div>
                                 <!--<div class="form-group">-->
                                 <!--    <label>{{trans('file.City')}}</label>-->
