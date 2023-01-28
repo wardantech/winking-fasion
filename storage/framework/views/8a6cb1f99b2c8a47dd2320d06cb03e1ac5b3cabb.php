@@ -245,12 +245,12 @@
 
                     <div class="row">
                          <div class="col-md-12">
-                            <table class="custom_table details table table-responsive" width="100%">
+                            <table class="custom_table details table" width="100%">
                                 <thead>
                                     <tr>
-                                        <th width="15%">Color</th>
-                                        <th width="15%">Code</th>
-                                        <th width="15%">PRE PACK</th>
+                                        <th width="">Color</th>
+                                        <th width="">Code</th>
+                                        <th width="">PRE PACK</th>
                                         <?php if($lim_sizes->size1): ?>
                                         <th style="text-align:center;"><?php echo e($lim_sizes->size1); ?></th>
                                         <?php endif; ?>
@@ -290,91 +290,101 @@
                                         <?php if($lim_sizes->size13): ?>
                                         <th style="text-align:center;"><?php echo e($lim_sizes->size13); ?></th>
                                         <?php endif; ?>
-                                        <th style="text-align:center;" width="10%">Total Units</th>
-                                        <th style="text-align:center;" width="15%">Unit Price</th>
-                                        <th style="text-align:center;" width="15%">Total Amount</th>
+                                        <th style="text-align:center;" width="">Total Units</th>
+                                        <th style="text-align:center;" width="">Unit Price</th>
+                                        <th style="text-align:center;" width="">Total Amount</th>
                                     </tr>
                                 </thead>
                                     <tbody>
                                         <?php ($count=0); ?>
                                         <?php $__currentLoopData = $lim_details; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=>$detail): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                        
-                                            
-                                            <tr>
+                                           <tr>
                                                 <td><?php echo e($detail->color); ?></td>
                                                 <td><?php echo e($detail->color_code); ?></td>
                                                 <td>
                                                     <?php if($detail->prepack1): ?>
                                                     <?php echo e($detail->prepack1); ?>
 
-                                                    <?php if($detail->prepack2 !== null): ?>
-                                                    ,
-                                                    <?php endif; ?>
+                                                        <?php if($detail->prepack2): ?>,<?php endif; ?>
                                                     <?php endif; ?>
                                                     <?php if($detail->prepack2): ?>
                                                     <?php echo e($detail->prepack2); ?>
 
-                                                    <?php if($detail->prepack3 !== null): ?>
-                                                    ,
-                                                    <?php endif; ?>
+                                                            <?php if($detail->prepack3): ?>
+                                                                ,
+                                                            <?php endif; ?>
                                                     <?php endif; ?>
                                                     <?php if($detail->prepack3): ?>
                                                     <?php echo e($detail->prepack3); ?>
 
-                                                    <?php if($detail->prepack4 !== null): ?>
-                                                       ,
-                                                    <?php endif; ?>
+                                                            <?php if($detail->prepack4): ?>
+                                                                ,
+                                                            <?php endif; ?>
                                                     <?php endif; ?>
                                                     <?php if($detail->prepack4): ?>
                                                     <?php echo e($detail->prepack4); ?>
 
-                                                    <?php if($detail->prepack5 !== null): ?>
-                                                       ,
-                                                    <?php endif; ?>
+                                                            <?php if($detail->prepack5): ?>
+                                                                ,
+                                                            <?php endif; ?>
                                                     <?php endif; ?>
                                                     <?php if($detail->prepack5): ?>
                                                     <?php echo e($detail->prepack5); ?>
 
-                                                    <?php if($detail->prepack6 !== null): ?>
-                                                       ,
+                                                            <?php if($detail->prepack6): ?>
+                                                                ,
+                                                            <?php endif; ?>
                                                     <?php endif; ?>
-                                                    <?php endif; ?>
+                                                    <?php if($detail->prepack6): ?>
                                                     <?php echo e($detail->prepack6); ?>
 
-                                                    <?php if($detail->prepack7 !== null): ?>
-                                                       ,
+                                                            <?php if($detail->prepack7): ?>
+                                                               ,
+                                                            <?php endif; ?>
                                                     <?php endif; ?>
-                                                    <?php echo e($detail->prepack7); ?>
+                                                    <?php if($detail->prepack7): ?>
+                                                        <?php echo e($detail->prepack7); ?>
 
-                                                    <?php if($detail->prepack8 !== null): ?>
-                                                       ,
                                                     <?php endif; ?>
-                                                    <?php echo e($detail->prepack8); ?>
+                                                    <?php if($detail->prepack8): ?>
+                                                        <?php echo e($detail->prepack8); ?>
 
-                                                    <?php if($detail->prepack9 !== null): ?>
-                                                       ,
+                                                            <?php if($detail->prepack9): ?>
+                                                                ,
+                                                            <?php endif; ?>
                                                     <?php endif; ?>
-                                                    <?php echo e($detail->prepack9); ?>
+                                                    <?php if($detail->prepack9): ?>
+                                                        <?php echo e($detail->prepack9); ?>
 
-                                                    <?php if($detail->prepack10 !== null): ?>
-                                                       ,
+                                                        <?php if($detail->prepack10): ?>
+                                                            ,
+                                                        <?php endif; ?>
                                                     <?php endif; ?>
-                                                    <?php echo e($detail->prepack10); ?>
+                                                    <?php if($detail->prepack10): ?>
+                                                        <?php echo e($detail->prepack10); ?>
 
-                                                    <?php if($detail->prepack11 !== null): ?>
-                                                       ,
+                                                        <?php if($detail->prepack11): ?>
+                                                            ,
+                                                        <?php endif; ?>
                                                     <?php endif; ?>
-                                                    <?php echo e($detail->prepack11); ?>
+                                                    <?php if($detail->prepack11): ?>
+                                                        <?php echo e($detail->prepack11); ?>
 
-                                                    <?php if($detail->prepack12 !== null): ?>
-                                                       ,
+                                                        <?php if($detail->prepack12): ?>
+                                                            ,
+                                                        <?php endif; ?>
                                                     <?php endif; ?>
-                                                    <?php echo e($detail->prepack13); ?>
+                                                    <?php if($detail->prepack12): ?>
+                                                        <?php echo e($detail->prepack12); ?>
 
-                                                    <?php if($detail->prepack10 !== null): ?>
-                                                       ,
+                                                        <?php if($detail->prepack13): ?>
+                                                            ,
+                                                        <?php endif; ?>
                                                     <?php endif; ?>
-                                                    <?php echo e($detail->prepack13); ?>
+                                                    <?php if($detail->prepack13): ?>
+                                                        <?php echo e($detail->prepack13); ?>
+
+                                                    <?php endif; ?>
 
                                                 </td>
                                                 <?php if($detail->quantity1): ?>

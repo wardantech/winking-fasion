@@ -34,6 +34,7 @@
                     <th><?php echo e(trans('file.Phone Number')); ?></th>
                     <th><?php echo e(trans('file.Department')); ?></th>
                     <th><?php echo e(trans('file.Address')); ?></th>
+                    <th><?php echo e(trans('status')); ?></th>
                     <th><?php echo e(trans('Download CV')); ?></th>
                     <th class="not-exported"><?php echo e(trans('file.action')); ?></th>
                 </tr>
@@ -59,6 +60,19 @@
                             <?php if($employee->state): ?><?php echo e(', '.$employee->state); ?><?php endif; ?>
                             <?php if($employee->postal_code): ?><?php echo e(', '.$employee->postal_code); ?><?php endif; ?>
                             <?php if($employee->country): ?><?php echo e(', '.$employee->country); ?><?php endif; ?></td>
+                    <td>
+                        <?php if($employee->status == 0): ?>
+                        <form action="<?php echo e(route('employees.change-status',$employee->id)); ?>" method="post">
+                            <?php echo csrf_field(); ?>
+                            <input type="submit" class="btn btn-danger btn-sm" value="Inactive">
+                        </form>
+                        <?php elseif($employee->status == 1): ?>
+                        <form action="<?php echo e(route('employees.change-status',$employee->id)); ?>" method="post">
+                            <?php echo csrf_field(); ?>
+                            <input type="submit" class="btn btn-primary btn-sm" value="Active">
+                        </form>
+                        <?php endif; ?>
+                    </td>
                     <td>
                         <?php if(isset($employee->image_cv)): ?>
                             <a href="public/images/employee/cv/<?php echo e($employee->image_cv); ?>" class="btn btn-link" style="font-size:12px;">  <i class="dripicons-download"></i> <?php echo e(trans('Download CV')); ?></a>
@@ -115,7 +129,7 @@
                     <div class="col-md-6 form-group">
                         <input type="hidden" name="employee_id" />
                         <label><?php echo e(trans('file.name')); ?> *</label>
-                        <input type="text" name="name" required class="form-control">
+                        <input type="text" name="name" required class="form-control" placeholder="Enter Name">
                     </div>
                     <div class="col-md-6 form-group">
                         <label><?php echo e(trans('file.Image')); ?></label>
@@ -123,7 +137,7 @@
                     </div>
                     <div class="col-md-6 form-group">
                         <label>Designation</label>
-                        <input type="text" name="designation" class="form-control">
+                        <input type="text" name="designation" class="form-control" placeholder="Enter Designation">
                     </div>
                     <div class="col-md-6 form-group">
                         <label><?php echo e(trans('Upload CV')); ?></label>
@@ -131,7 +145,7 @@
                     </div>
                     <div class="col-md-6 form-group">
                         <label><?php echo e(trans('file.Department')); ?> *</label>
-                        <select class="form-control selectpicker" name="department_id" required>
+                        <select class="form-control selectpicker" name="department_id" placeholder="Enter Department" required>
                             <?php $__currentLoopData = $lims_department_list; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $department): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <option value="<?php echo e($department->id); ?>"><?php echo e($department->name); ?></option>
                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -139,36 +153,36 @@
                     </div>
                     <div class="col-md-6 form-group">
                         <label><?php echo e(trans('file.Email')); ?> </label>
-                        <input type="email" name="email" class="form-control">
+                        <input type="email" name="email" placeholder="Enter Email" class="form-control">
                     </div>
                     <div class="col-md-6 form-group">
                         <label><?php echo e(trans('file.Phone Number')); ?> *</label>
-                        <input type="text" name="phone_number" required class="form-control">
+                        <input type="text" name="phone_number" required class="form-control" placeholder="Enter Phone Number">
                     </div>
                     <div class="col-md-6 form-group">
                         <label><?php echo e(trans('Present Address')); ?></label>
-                        <input type="text" name="address" class="form-control">
+                        <input type="text" name="address" placeholder="Enter Address" class="form-control">
                     </div>
                     <div class="col-md-6 form-group">
                         <label><?php echo e(trans('NID')); ?></label>
-                        <input type="text" name="nid_number" class="form-control">
+                        <input type="text" name="nid_number" class="form-control" placeholder="Enter NID Number">
                     </div>
                     <div class="col-md-6 form-group">
                         <label><?php echo e(trans('Prmanent Address')); ?></label>
-                        <input type="text" name="address2" class="form-control">
+                        <input type="text" name="address2" placeholder="Enter Address" class="form-control">
                     </div>
                     <div class="col-md-6 form-group">
                         <label><?php echo e(trans('Joining Date')); ?></label>
-                        <input type="text" name="joining_date" class="datepicker form-control">
+                        <input type="text" name="joining_date" class="datepicker form-control" placeholder="Enter Joining Date">
                     </div>
 
                     <div class="col-md-6 form-group">
                         <label><?php echo e(trans('Present Salary')); ?></label>
-                        <input type="text" name="present_salary" class="form-control">
+                        <input type="text" name="present_salary" class="form-control" placeholder="Enter Present Salary">
                     </div>
                     <div class="col-md-6 form-group">
                         <label><?php echo e(trans('Joining Salary')); ?></label>
-                        <input type="text" name="joining_salary" class="form-control">
+                        <input type="text" name="joining_salary" class="form-control" placeholder="Enter Joining Salary">
                     </div>
                     <!--<div class="col-md-6 form-group">-->
                     <!--    <label><?php echo e(trans('file.City')); ?></label>-->

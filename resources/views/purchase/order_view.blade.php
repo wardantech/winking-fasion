@@ -238,12 +238,12 @@
 
                     <div class="row">
                          <div class="col-md-12">
-                            <table class="custom_table details table table-responsive" width="100%">
+                            <table class="custom_table details table"  width="100%">
                                 <thead>
                                     <tr>
-                                        <th width="15%">Color</th>
-                                        <th width="15%">Code</th>
-                                        <th width="15%">PRE PACK</th>
+                                        <th width="">Color</th>
+                                        <th width="">Code</th>
+                                        <th width="">PRE PACK</th>
                                         @if($lim_sizes->size1)
                                         <th style="text-align:center;">{{$lim_sizes->size1 }}</th>
                                         @endif
@@ -283,79 +283,89 @@
                                         @if($lim_sizes->size13)
                                         <th style="text-align:center;">{{$lim_sizes->size13 }}</th>
                                         @endif
-                                        <th style="text-align:center;" width="10%">Total Units</th>
-                                        <th style="text-align:center;" width="15%">Unit Price</th>
-                                        <th style="text-align:center;" width="15%">Total Amount</th>
+                                        <th style="text-align:center;" width="">Total Units</th>
+                                        <th style="text-align:center;" width="">Unit Price</th>
+                                        <th style="text-align:center;" width="">Total Amount</th>
                                     </tr>
                                 </thead>
                                     <tbody>
                                         @php($count=0)
                                         @foreach ($lim_details as $key=>$detail)
-                                        {{-- {{ dd($detail) }} --}}
-                                            {{-- {{ dd(sizeOf($detail->toArray())) }} --}}
-                                            <tr>
+                                           <tr>
                                                 <td>{{ $detail->color }}</td>
                                                 <td>{{ $detail->color_code }}</td>
                                                 <td>
                                                     @if($detail->prepack1)
                                                     {{ $detail->prepack1 }}
-                                                    @if($detail->prepack2 !== null)
-                                                    ,
-                                                    @endif
+                                                        @if($detail->prepack2),@endif
                                                     @endif
                                                     @if($detail->prepack2)
                                                     {{ $detail->prepack2 }}
-                                                    @if($detail->prepack3 !== null)
-                                                    ,
-                                                    @endif
+                                                            @if($detail->prepack3)
+                                                                ,
+                                                            @endif
                                                     @endif
                                                     @if($detail->prepack3)
                                                     {{ $detail->prepack3 }}
-                                                    @if($detail->prepack4 !== null)
-                                                       ,
-                                                    @endif
+                                                            @if($detail->prepack4)
+                                                                ,
+                                                            @endif
                                                     @endif
                                                     @if($detail->prepack4)
                                                     {{ $detail->prepack4 }}
-                                                    @if($detail->prepack5 !== null)
-                                                       ,
-                                                    @endif
+                                                            @if($detail->prepack5)
+                                                                ,
+                                                            @endif
                                                     @endif
                                                     @if($detail->prepack5)
                                                     {{ $detail->prepack5 }}
-                                                    @if($detail->prepack6 !== null)
-                                                       ,
+                                                            @if($detail->prepack6)
+                                                                ,
+                                                            @endif
                                                     @endif
-                                                    @endif
+                                                    @if($detail->prepack6)
                                                     {{ $detail->prepack6 }}
-                                                    @if($detail->prepack7 !== null)
-                                                       ,
+                                                            @if($detail->prepack7)
+                                                               ,
+                                                            @endif
                                                     @endif
-                                                    {{ $detail->prepack7 }}
-                                                    @if($detail->prepack8 !== null)
-                                                       ,
+                                                    @if($detail->prepack7)
+                                                        {{ $detail->prepack7 }}
                                                     @endif
-                                                    {{ $detail->prepack8 }}
-                                                    @if($detail->prepack9 !== null)
-                                                       ,
+                                                    @if($detail->prepack8)
+                                                        {{ $detail->prepack8 }}
+                                                            @if($detail->prepack9)
+                                                                ,
+                                                            @endif
                                                     @endif
-                                                    {{ $detail->prepack9 }}
-                                                    @if($detail->prepack10 !== null)
-                                                       ,
+                                                    @if($detail->prepack9)
+                                                        {{ $detail->prepack9 }}
+                                                        @if($detail->prepack10)
+                                                            ,
+                                                        @endif
                                                     @endif
-                                                    {{ $detail->prepack10 }}
-                                                    @if($detail->prepack11 !== null)
-                                                       ,
+                                                    @if($detail->prepack10)
+                                                        {{ $detail->prepack10 }}
+                                                        @if($detail->prepack11)
+                                                            ,
+                                                        @endif
                                                     @endif
-                                                    {{ $detail->prepack11 }}
-                                                    @if($detail->prepack12 !== null)
-                                                       ,
+                                                    @if($detail->prepack11)
+                                                        {{ $detail->prepack11 }}
+                                                        @if($detail->prepack12)
+                                                            ,
+                                                        @endif
                                                     @endif
-                                                    {{ $detail->prepack13 }}
-                                                    @if($detail->prepack10 !== null)
-                                                       ,
+                                                    @if($detail->prepack12)
+                                                        {{ $detail->prepack12}}
+                                                        @if($detail->prepack13)
+                                                            ,
+                                                        @endif
                                                     @endif
-                                                    {{ $detail->prepack13 }}
+                                                    @if($detail->prepack13)
+                                                        {{ $detail->prepack13 }}
+                                                    @endif
+
                                                 </td>
                                                 @if($detail->quantity1)
                                                 <td style="text-align:center;">{{ $detail->quantity1 }}</td>

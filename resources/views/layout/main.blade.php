@@ -402,6 +402,8 @@
                     <li class=""><a href="#account" aria-expanded="false" data-toggle="collapse"> <i class="dripicons-briefcase"></i><span>{{trans('file.Accounting')}}</span></a>
                         <ul id="account" class="collapse list-unstyled ">
                             @if($index_permission_active)
+                                <li id="account-list-menu"><a href="{{route('banks.index')}}">Bank</a></li>
+                                <li id="account-list-menu"><a href="{{route('bank_branches.index')}}">Branch</a></li>
                                 <li id="account-list-menu"><a href="{{route('accounts.index')}}">{{trans('file.Account List')}}</a></li>
                                 {{--
                                        <li><a id="add-account" href="">{{trans('file.Add Account')}}</a></li>
