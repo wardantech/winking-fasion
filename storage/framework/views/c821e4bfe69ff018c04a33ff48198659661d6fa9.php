@@ -14,7 +14,19 @@
                       <img class="card-img-top" src="<?php echo e(url('public/images/employee',$employee->image)); ?>" alt="Card image cap" width="180px !importent;">
                       <div class="card-body">
                         <h5 class="card-title"><?php echo e($employee->name); ?></h5></h5>
+                        <?php if($employee->leave_job == 0): ?>
+                        <form action="<?php echo e(route('employees.leave-job',$employee->id)); ?>" method="post">
+                            <?php echo csrf_field(); ?>
+                            <input type="submit" class="btn btn-primary" value="Leave Job">
+                        </form>
+                        <?php elseif($employee->leave_job == 1): ?>
+                        <form action="<?php echo e(route('employees.cancel-leave-job',$employee->id)); ?>" method="post">
+                            <?php echo csrf_field(); ?>
+                            <input type="submit" class="btn btn-primary" value="Cancel Leave Job">
+                        </form>
+                        <?php endif; ?>
                       </div>
+                      
                 </div>
            </div>
 
@@ -69,6 +81,12 @@
                                     <td>Present Salary</td>
                                     <td><?php echo e($employee->present_salary); ?> BDT</td>
                                 </tr>
+                                <?php if($employee->leave_job_date != null): ?>
+                                <tr>
+                                    <td>Job Left Date</td>
+                                    <td><?php echo e($employee->leave_job_date); ?></td>
+                                </tr>
+                                <?php endif; ?>
 
                             </tbody>
                        </table>

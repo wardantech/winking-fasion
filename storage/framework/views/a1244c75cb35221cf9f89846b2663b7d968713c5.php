@@ -389,6 +389,8 @@
                     <li class=""><a href="#account" aria-expanded="false" data-toggle="collapse"> <i class="dripicons-briefcase"></i><span><?php echo e(trans('file.Accounting')); ?></span></a>
                         <ul id="account" class="collapse list-unstyled ">
                             <?php if($index_permission_active): ?>
+                                <li id="account-list-menu"><a href="<?php echo e(route('banks.index')); ?>">Bank</a></li>
+                                <li id="account-list-menu"><a href="<?php echo e(route('bank_branches.index')); ?>">Branch</a></li>
                                 <li id="account-list-menu"><a href="<?php echo e(route('accounts.index')); ?>"><?php echo e(trans('file.Account List')); ?></a></li>
                                 
 

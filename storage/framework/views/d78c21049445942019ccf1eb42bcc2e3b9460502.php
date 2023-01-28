@@ -1,14 +1,14 @@
  <?php $__env->startSection('content'); ?>
 <?php if(session()->has('message')): ?>
-  <div class="alert alert-success alert-dismissible text-center"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><?php echo e(session()->get('message')); ?></div> 
+  <div class="alert alert-success alert-dismissible text-center"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><?php echo e(session()->get('message')); ?></div>
 <?php endif; ?>
 <?php if(session()->has('not_permitted')): ?>
-  <div class="alert alert-danger alert-dismissible text-center"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><?php echo e(session()->get('not_permitted')); ?></div> 
+  <div class="alert alert-danger alert-dismissible text-center"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><?php echo e(session()->get('not_permitted')); ?></div>
 <?php endif; ?>
 <?php if($errors->has('account_no')): ?>
 <div class="alert alert-danger alert-dismissible text-center">
     <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button><?php echo e($errors->first('account_no')); ?></div>
-<?php endif; ?> 
+<?php endif; ?>
 
 <section>
     <div class="container-fluid">
@@ -95,20 +95,20 @@
 
                     <div class="form-group">
                         <label><?php echo e(trans('file.Account')); ?> No *</label>
-                        <input type="text" name="account_no" required class="form-control">
+                        <input type="text" name="account_no" required class="form-control" placeholder="Enter Account No">
                         <input type="hidden" name="account_id">
                     </div>
                     <div class="form-group">
                         <label><?php echo e(trans('file.name')); ?> *</label>
-                        <input type="text" name="name" required class="form-control">
+                        <input type="text" name="name" placeholder="Enter Name"   required class="form-control">
                     </div>
                     <div class="form-group">
                         <label><?php echo e(trans('file.Initial Balance')); ?></label>
-                        <input type="number" name="initial_balance" step="any" class="form-control">
+                        <input type="number" name="initial_balance" step="any" class="form-control" placeholder="Enter initial_balance">
                     </div>
                     <div class="form-group">
                         <label><?php echo e(trans('file.Note')); ?></label>
-                        <textarea name="note" rows="3" class="form-control"></textarea>
+                        <textarea name="note" rows="3" class="form-control" placeholder="Enter Note"></textarea>
                     </div>
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary"><?php echo e(trans('file.update')); ?></button>
@@ -273,4 +273,5 @@ function confirmDelete() {
 
 </script>
 <?php $__env->stopSection(); ?>
+
 <?php echo $__env->make('layout.main', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH D:\laragon\www\salepro\winking-fasion\resources\views/account/index.blade.php ENDPATH**/ ?>

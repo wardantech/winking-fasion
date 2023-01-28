@@ -15,7 +15,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label><strong><?php echo e(trans('file.name')); ?> *</strong> </label>
-                                    <input type="text" name="employee_name" required class="form-control">
+                                    <input type="text" name="employee_name" required class="form-control" placeholder="Enter Employee Name">
                                 </div>
                                 <div class="form-group">
                                     <label><?php echo e(trans('file.Department')); ?> *</label>
@@ -28,21 +28,21 @@
 
                                 <div class="form-group">
                                     <label><?php echo e(trans('Present Address')); ?> *</label>
-                                    <textarea class="form-control" name="address"></textarea>
+                                    <textarea class="form-control" name="address" placeholder="Enter Address"></textarea>
                                     <!--<input type="text" name="address" class="form-control">-->
                                 </div>
                                 <div class="form-group">
                                     <label><?php echo e(trans('Joining Date')); ?></label>
-                                    <input type="text" name="joining_date" class="datepicker form-control">
+                                    <input type="text" name="joining_date" class="datepicker form-control" placeholder="Enter Joining Date">
                                 </div>
 
                                 <div class="form-group">
                                     <label><?php echo e(trans('Present Salary')); ?></label>
-                                    <input type="text" name="present_salary" class="form-control">
+                                    <input type="number" placeholder="Enter Present Salary" name="present_salary" class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label><?php echo e(trans('Joining Salary')); ?></label>
-                                    <input type="text" name="joining_salary" class="form-control">
+                                    <input type="number" name="joining_salary" class="form-control" placeholder="Enter Joining Salary">
                                 </div>
                                 <!--<div class="form-group">-->
                                 <!--    <label><?php echo e(trans('file.City')); ?></label>-->
@@ -65,7 +65,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Designation</label>
-                                    <input type="text" name="designation" class="form-control">
+                                    <input type="text" name="designation" class="form-control" placeholder="Enter Designation">
                                 </div>
                                 <div class="form-group">
                                     <label><?php echo e(trans('Upload CV')); ?></label>
@@ -78,11 +78,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label><?php echo e(trans('Permanent Address')); ?> *</label>
-                                    <textarea class="form-control" name="address2"></textarea>
+                                    <textarea class="form-control" name="address2" placeholder="Enter Permanent Address"></textarea>
                                 </div>
                                 <div class="form-group">
                                     <label><?php echo e(trans('file.Email')); ?> </label>
-                                    <input type="email" name="email" placeholder="example@example.com" class="form-control">
+                                    <input type="email" name="email" placeholder="example@example.com" class="form-control" placeholder="Enter Email">
                                     <?php if($errors->has('email')): ?>
                                    <span>
                                        <strong><?php echo e($errors->first('email')); ?></strong>
@@ -91,11 +91,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label><?php echo e(trans('file.Phone Number')); ?> *</label>
-                                    <input type="text" name="phone_number" required class="form-control">
+                                    <input type="text" name="phone_number" required class="form-control" placeholder="Enter Phone Number">
                                 </div>
                                 <div class="form-group">
                                     <label><?php echo e(trans('NID No')); ?> *</label>
-                                    <input type="text" name="nid_number" required class="form-control">
+                                    <input type="text" name="nid_number" required class="form-control" placeholder="Enter Nid No">
                                 </div>
                             </div>
                         </div>
@@ -103,12 +103,12 @@
                             <div class="col-md-12">
                                 <div class="form-group mt-4">
                                     <label><?php echo e(trans('file.Add User')); ?></label>
-                                    <input type="checkbox" name="user" checked value="1" />
+                                    <input type="checkbox" name="user" checked value="1"  />
                                 </div>
                                 <div id="user-input" class="mt-4">
                                     <div class="form-group">
                                         <label><?php echo e(trans('file.UserName')); ?> *</label>
-                                        <input type="text" name="name" required class="form-control">
+                                        <input type="text" name="name" required class="form-control" placeholder="Enter UserName">
                                         <?php if($errors->has('name')): ?>
                                        <span>
                                            <strong><?php echo e($errors->first('name')); ?></strong>
@@ -117,7 +117,7 @@
                                     </div>
                                     <div class="form-group">
                                         <label><?php echo e(trans('file.Password')); ?> *</label>
-                                        <input required type="text" name="password" class="form-control">
+                                        <input required type="text" name="password" placeholder="Enter Password" class="form-control">
                                     </div>
                                     <div class="form-group">
                                         <label><?php echo e(trans('file.Role')); ?> *</label>
