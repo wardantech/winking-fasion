@@ -18,7 +18,7 @@
 </style>
 <section>
     <div class="container-fluid">
-        <a href="{{route('bill-exchange.create')}}" class="btn btn-info"><i class="dripicons-plus"></i> Add Commercial-Invoice</a>
+        <a href="{{route('bill-exchange.create')}}" class="btn btn-info"><i class="dripicons-plus"></i> Bill Exchange</a>
     </div>
     <div class="table-responsive proTable">
         <table id="bill-exchange-table" class="table">

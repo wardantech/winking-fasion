@@ -275,5 +275,9 @@
             <td>BRAKBDDH</td>
         </tr>
     </table>
+
+    <div style="float:right;margin-top:90px;" class="autorized">
+        <p><u>Authorised Signature</u></p>
+    </div>
 </body>
 </html>
