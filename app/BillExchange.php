@@ -12,4 +12,5 @@ class BillExchange extends Model
     public function bank(){
         return $this->belongsTo(Bank::class, 'drawn_under');
     }
+    
 }
