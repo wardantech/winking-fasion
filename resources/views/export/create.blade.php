@@ -213,7 +213,7 @@
 
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label>Status *</label>
+                                            <label>Payment Status *</label>
                                             <select name="export_status" id="" class="form-control" required>
                                                 <option>Select Status</option>
                                                 <option value="Received">Received</option>

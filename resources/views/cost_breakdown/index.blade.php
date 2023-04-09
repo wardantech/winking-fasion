@@ -89,11 +89,13 @@
                         <select name="status" class="selectpicker form-control" data-live-search="true" data-live-search-style="begins" title="Select status...">
                             <option value="Running" {{ ($status == 'Running') ? 'selected':'' }}>Running</option>
                             <option value="Delivered" {{ ($status == 'Delivered') ? 'selected':'' }}>Delivered</option>
+                            <option value="Dropped/Hold" {{ ($status == 'Dropped/Hold') ? 'selected':'' }}>Dropped/Hold</option>
                         </select>
                         @else
                         <select name="status" class="selectpicker form-control" data-live-search="true" data-live-search-style="begins" title="Select status...">
                             <option value="Running">Running</option>
                             <option value="Delivered">Delivered</option>
+                            <option value="Dropped/Hold">Dropped/Hold</option>
                         </select>
                         @endif
 

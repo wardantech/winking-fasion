@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Spatie\Permission\Models\Role;
-use App\Warehouse;
+use Auth;
+use App\User;
 use App\Biller;
 use App\Employee;
-use App\User;
+use App\Warehouse;
 use App\Department;
-use Auth;
+use App\SalaryHistory;
+use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Spatie\Permission\Models\Role;
 
 class EmployeeController extends Controller
 {
@@ -115,14 +116,25 @@ class EmployeeController extends Controller
         $data['name'] = $data['employee_name'];
         $data['is_active'] = true;
         //dd($data);
-        Employee::create($data);
+        $employee= Employee::create($data);
+
+        $salaryHistory= new SalaryHistory();
+
+        $salaryHistory->employee_id = $employee->id;
+        $salaryHistory->present_salary = $request->joining_salary;
+        $salaryHistory->effective_month = date('F, Y', strtotime($request->joining_date));
+
+        $salaryHistory->save();
 
         return redirect('employees')->with('message', $message);
     }
 
     public function show($id){
         $employee = Employee::find($id);
-        return view('employee.profile',compact('employee'));
+        $salaryHistory= SalaryHistory::where('employee_id', $id)->get();
+        // dd($salaryHistory);
+
+        return view('employee.profile',compact('employee', 'salaryHistory'));
     }
 
     public function update(Request $request, $id)
@@ -147,20 +159,32 @@ class EmployeeController extends Controller
             ]);
         }
         //validation in employee table
-        $this->validate($request, [
-            // 'email' => [
-            //     'email',
-            //     'max:255',
-            //         Rule::unique('employees')->ignore($lims_employee_data->id)->where(function ($query) {
-            //         return $query->where('is_active', true);
-            //     }),
-            // ],
-            'image' => 'image|mimes:jpg,jpeg,png,gif|max:100000',
-            // 'image_cv' => 'image|mimes:doc,docx,pdf|max:100000',
-        ]);
+        $rules['image'] = 'image|mimes:jpg,jpeg,png,gif|max:100000';
+
+        if($request->status == 0){
+            $rules['leave_date'] = 'required';
+        }
+        $this->validate($request, $rules);
+        // $this->validate($request, [
+        //     // 'email' => [
+        //     //     'email',
+        //     //     'max:255',
+        //     //         Rule::unique('employees')->ignore($lims_employee_data->id)->where(function ($query) {
+        //     //         return $query->where('is_active', true);
+        //     //     }),
+        //     // ],
+        //     'image' => 'image|mimes:jpg,jpeg,png,gif|max:100000',
+        //     // 'image_cv' => 'image|mimes:doc,docx,pdf|max:100000',
+        // ]);
 
         $data = $request->except('image','image_cv');
         $data['joining_date'] = date("Y-m-d", strtotime($request->joining_date));
+        if($request->leave_date){
+            $data['leave_date'] = date("Y-m-d", strtotime($request->leave_date));
+        }else{
+            $data['leave_date'] = NULL;
+        }
+
         $image = $request->image;
         if ($image) {
             $ext = pathinfo($image->getClientOriginalName(), PATHINFO_EXTENSION);
@@ -229,17 +253,24 @@ class EmployeeController extends Controller
         return redirect('employees')->with('message', 'Job left cancel successfully');
     }
 
-    public function changeStatus($id){
-        $employee= Employee::find($id);
-        if($employee->status== 0){
-            $employee->status= 1;
-            $employee->save();
-        }
-        elseif($employee->status== 1){
-            $employee->status= 0;
-            $employee->save();
-        }
+    public function salaryIncrement(Request $request){
+        // dd($request->all());
+        $salaryHistory= new SalaryHistory();
 
-        return redirect('employees')->with('message', 'Status changed successfully');
+        $salaryHistory->employee_id = $request->employee_id;
+        $salaryHistory->previous_salary = $request->previous_salary;
+        $salaryHistory->present_salary = $request->new_salary;
+        $salaryHistory->effective_month = date('F, Y', strtotime($request->effective_month));
+        // $salaryHistory->effective_month = $request->effective_month;
+
+        $salaryHistory->save();
+
+        $employee= Employee::find($request->employee_id);
+
+        $employee->present_salary = $request->new_salary;
+
+        $employee->save();
+
+        return redirect('employees')->with('message', 'Salary increment done.');
     }
 }

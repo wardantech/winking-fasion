@@ -125,6 +125,7 @@
                                             <select name="status" class="selectpicker form-control" data-live-search="true" data-live-search-style="begins" title="Select status...">
                                                 <option value="Running" {{ ($breakdown->status == "Running")?'selected':'' }}>Running</option>
                                                 <option value="Delivered" {{ ($breakdown->status == "Delivered")?'selected':'' }}>Delivered</option>
+                                                <option value="Dropped/Hold" {{ ($breakdown->status == "Dropped/Hold")?'selected':'' }}>Dropped/Hold</option>
                                             </select>
                                             @if($errors->has('status'))
                                                 <span class="text-danger">

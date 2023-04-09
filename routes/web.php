@@ -353,6 +353,7 @@ Route::group(['middleware' => ['auth', 'active']], function() {
 	Route::get('setting/pos_setting', 'SettingController@posSetting')->name('setting.pos');
 	Route::post('setting/pos_setting_store', 'SettingController@posSettingStore')->name('setting.posStore');
 	Route::get('setting/empty-database', 'SettingController@emptyDatabase')->name('setting.emptyDatabase');
+    Route::resource('salary-sheet-settings', 'SalarySheetSettingsController');
 
 	Route::get('expense_categories/gencode', 'ExpenseCategoryController@generateCode');
 	Route::post('expense_categories/import', 'ExpenseCategoryController@import')->name('expense_category.import');
@@ -363,6 +364,7 @@ Route::group(['middleware' => ['auth', 'active']], function() {
     Route::get('expenses/filter', 'ExpenseController@expenseFilterGet');
     Route::post('expenses/filter', 'ExpenseController@expenseFilter')->name('expense.filter');
 	Route::resource('expenses', 'ExpenseController');
+	Route::resource('cost-budget', 'CostBudgetController');
 
 	Route::get('gift_cards/gencode', 'GiftCardController@generateCode');
 	Route::post('gift_cards/recharge/{id}', 'GiftCardController@recharge')->name('gift_cards.recharge');
@@ -390,10 +392,10 @@ Route::group(['middleware' => ['auth', 'active']], function() {
     Route::post('export/filter', 'ExportController@filtering')->name('export.filtering');
     Route::resource('export', 'ExportController');
 
+	Route::post('employees/salary-increment', 'EmployeeController@salaryIncrement')->name('employees.salary-increment');
 	Route::post('employees/deletebyselection', 'EmployeeController@deleteBySelection');
 	Route::post('employees/leave-job/{id}', 'EmployeeController@leaveJob')->name('employees.leave-job');
 	Route::post('employees/cancel-leave-job/{id}', 'EmployeeController@cancelLeaveJob')->name('employees.cancel-leave-job');
-	Route::post('employees/employees.change-status/{id}', 'EmployeeController@changeStatus')->name('employees.change-status');
 	Route::resource('employees', 'EmployeeController');
 
 	Route::get('payroll/filter', 'PayrollController@payrollFilterGet');
