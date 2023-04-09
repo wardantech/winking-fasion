@@ -290,7 +290,8 @@
                                         <thead>
                                             <tr>
                                                 <th></th>
-                                                <th>Wastage (%)</th>
+                                                <th></th>
+                                                {{-- <th>Wastage (%)</th> --}}
                                                 <th>Total Cost ($)</th>
                                             </tr>
                                         </thead>
@@ -314,6 +315,11 @@
                                                 <td width="30%"><b>CTL*</b></td>
                                                 <td><input type="number" name="cil_wastage" id="cil_wastage" min="0" step="0.1" class="form-control cil_wastage" required></td>
                                                 <td><input type="number" name="cil_price" id="cil_total_price" value="0.00" class="form-control cil_total_price" readonly required></td>
+                                            </tr>
+                                            <tr>
+                                                <td width="30%"><b>Commercial Cost*</b></td>
+                                                <td><input type="number" name="commercial_cost" id="commercial_cost" min="0" step="0.1" class="form-control commercial_cost" required></td>
+                                                <td><input type="number" name="cc_amount" id="total_cc_amount" value="0.00" class="form-control total_cc_amount" readonly required></td>
                                             </tr>
                                             <tr>
                                                 <td width="30%"><b>TOTAL COST</b></td>
@@ -437,7 +443,8 @@
                 //var total_nrtfob = $("#fob_total_price").val();
                 //var tf_cost = $("#tf_total_price").val();
                 var cil_cost = $('.cil_total_price').val();
-                var total_cost = parseFloat(total_netfob) + parseFloat(subtotal) +parseFloat(cil_cost);
+                var total_cc_amount = $('.total_cc_amount').val();
+                var total_cost = parseFloat(total_netfob) + parseFloat(subtotal) + parseFloat(cil_cost) + parseFloat(total_cc_amount);
                 var cost_per_pc = total_cost / 12;
 
                 $("#total_cost_price").val(parseFloat(total_cost).toFixed(2));
@@ -514,7 +521,8 @@
             //var total_nrtfob = $("#fob_total_price").val();
             //var tf_cost = $("#tf_total_price").val();
             var cil_cost = $('.cil_total_price').val();
-            var total_cost = parseFloat(total_netfob) + parseFloat(subtotal)+ parseFloat(cil_cost);
+            var total_cc_amount = $('.total_cc_amount').val();
+            var total_cost = parseFloat(total_netfob) + parseFloat(subtotal) + parseFloat(cil_cost) + parseFloat(total_cc_amount);
             var cost_per_pc = total_cost / 12;
 
             $("#total_cost_price").val(parseFloat(total_cost).toFixed(2));
@@ -559,7 +567,8 @@ $(document).ready(function () {
         //var total_nrtfob = $("#fob_total_price").val();
         //var tf_cost = $("#tf_total_price").val();
         var cil_cost = $('.cil_total_price').val();
-        var total_cost = parseFloat(total_netfob) + parseFloat(subtotal)+ parseFloat(cil_cost);
+        var total_cc_amount = $('.total_cc_amount').val();
+        var total_cost = parseFloat(total_netfob) + parseFloat(subtotal) + parseFloat(cil_cost) + parseFloat(total_cc_amount);
         var cost_per_pc = total_cost / 12;
 
         $("#total_cost_price").val(parseFloat(total_cost).toFixed(2));
@@ -615,7 +624,8 @@ $(document).ready(function () {
        var total_nrtfob = $("#fob_total_price").val();
        var tf_cost = $("#tf_total_price").val();
        var cil_cost = $('.cil_total_price').val();
-       var total_cost = parseFloat(total_nrtfob) + parseFloat(tf_cost)+ parseFloat(cil_cost);
+       var total_cc_amount = $('.total_cc_amount').val();
+       var total_cost = parseFloat(total_nrtfob) + parseFloat(tf_cost) + parseFloat(cil_cost) + parseFloat(total_cc_amount);
        var cost_per_pc = total_cost / 12;
 
        $("#total_cost_price").val(parseFloat(total_cost).toFixed(2));
@@ -642,6 +652,12 @@ $(document).ready(function () {
     $(document).on('keyup change', '#cil_wastage', function() {
         var cil_wastage = $('.cil_wastage').val();
         $('.cil_total_price').val(parseFloat(cil_wastage).toFixed(2));
+        total_cost();
+    });
+
+    $(document).on('keyup change', '#commercial_cost', function() {
+        var commercial_cost = $('.commercial_cost').val();
+        $('.total_cc_amount').val(parseFloat(commercial_cost).toFixed(2));
         total_cost();
     });
 
@@ -675,7 +691,8 @@ $(document).ready(function () {
        var total_nrtfob = $("#fob_total_price").val();
        var tf_cost = $("#tf_total_price").val();
        var cil_cost = $('.cil_total_price').val();
-       var total_cost = parseFloat(total_nrtfob) + parseFloat(tf_cost) + parseFloat(cil_cost);
+       var total_cc_amount = $('.total_cc_amount').val();
+       var total_cost = parseFloat(total_nrtfob) + parseFloat(tf_cost) + parseFloat(cil_cost) + parseFloat(total_cc_amount);
        var cost_per_pc = total_cost / 12;
 
        $("#total_cost_price").val(parseFloat(total_cost).toFixed(2));

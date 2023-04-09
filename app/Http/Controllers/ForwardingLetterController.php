@@ -69,6 +69,7 @@ class ForwardingLetterController extends Controller
     {
          $request->validate([
             'date'=>'required',
+            'reference'=>'required',
             'bank_id'=>'required',
             'branch_id'=>'required',
             'export_id'=>'required',
@@ -78,6 +79,7 @@ class ForwardingLetterController extends Controller
 
         $forwardingLetter= new ForwaringLetter();
         $forwardingLetter->date = $request->date;
+        $forwardingLetter->reference = $request->reference;
         $forwardingLetter->bank_id = $request->bank_id;
         $forwardingLetter->branch_id = $request->branch_id;
         $forwardingLetter->export_id = $request->export_id;
@@ -126,6 +128,7 @@ class ForwardingLetterController extends Controller
     {
         $request->validate([
             'date'=>'required',
+            'reference'=>'required',
             'bank_id'=>'required',
             'branch_id'=>'required',
             'export_id'=>'required',
@@ -135,6 +138,7 @@ class ForwardingLetterController extends Controller
 
         $forwardingLetter = ForwaringLetter::find($id);
         $forwardingLetter->date = $request->date;
+        $forwardingLetter->reference = $request->reference;
         $forwardingLetter->bank_id = $request->bank_id;
         $forwardingLetter->branch_id = $request->branch_id;
         $forwardingLetter->export_id = $request->export_id;

@@ -17,19 +17,19 @@
     @media print{
         #printButton{
             display: none;
-        }  
+        }
     }
 </style>
 <section class="forms">
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-12">
-               
+
                 <div id="printThisDiv" class="card">
                     <div class="card-body">
                         <header class="header">
                             <span>
-                                <p class="float-left"><strong> Ref : DBL/CL/07839 </strong></p>
+                                <p class="float-left"><strong> Ref : {{ $forwardLetter->reference }} </strong></p>
                             </span>
                             <a class="btn print btn-sm btn-secondary float-right mr-1 d-print-noneb" href="#"  data-abc="true" id="printButton">
                                 <i class="fa fa-print"></i> Print</a>

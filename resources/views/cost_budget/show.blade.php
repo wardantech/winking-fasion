@@ -556,6 +556,10 @@
             .table th.bg-light-5 {
                 background-color: #ececec !important;
             }
+
+            .comment{
+                border: none !important;
+            }
         }
 
         /* =================================== */
@@ -715,7 +719,7 @@
     </style>
 
 </head>
-<body>
+<body class="mt-500">
 <!-- Container -->
     <div class="container-fluid invoice-container">
         <!-- Header -->
@@ -728,105 +732,49 @@
         </div>
         @endif
         <main class="bg-imge">
-            <div class="text-center">
+            {{-- <div class="text-center">
                 <h2>WINKING FASHION</h2>
                 <h5> HOUSE#128, ROAD#01, BARIDHARA DOHS, DHAKA-1206, BANGLADESH</h5>
-            </div><br>
-            <form action="{{ route('salary-sheet.confirm') }}" method="POST">
-                @csrf
+            </div><br> --}}
             <div>
-                <div>
-                    <h6>Salary Sheet: {{ $salarySheet->month.' '.$salarySheet->year }}</h6>
+                <div class="text-center">
+                    <h4>Cost Budget</h4>
                 </div>
                 <div class="float-right">
-                    <h6>Date: <input type="date" name="date" value="{{ $salarySheet->date }}" class="form-control" readonly></h6>
+                    <h6>Date: {{ $costBudget->month }}</h6>
                 </div>
             </div>
             <div>
+                <?php
+                    $purposeIds= json_decode($costBudget->purpose);
+                    $amounts= json_decode($costBudget->amount);
+                    $purposes= \App\ExpenseCategory::whereIn('id', $purposeIds)->get();
+                ?>
                 <table class="table table-bordered">
                     <tr>
-                        <th rowspan="2">SL</th>
-                        <th  rowspan="2">Name</th>
-                        <th  rowspan="2">Designation</th>
-                        <th  rowspan="2">Gross Salary</th>
-                        <th  colspan="3">Allowances</th>
-                        <th  rowspan="2">Net Pay</th>
-                        <th  rowspan="2">Status</th>
+                        <th>Purpose</th>
+                        <th>Amount (TK.)</th>
+                        <th style="width: 12%">Comment</th>
                     </tr>
+
+                    @foreach ($purposes as $key=>$purpose)
                     <tr>
-                        <td>Basic</td>
-                        <td>H.rent</td>
-                        <td>Medical</td>
-                        <td>T.port</td>
-                    </tr>
-                    {{-- <input type="hidden" name="h_rent_percent" value="{{ $requests['h_rent'] }}" class="form-control">
-                    <input type="hidden" name="medical_percent" value="{{ $requests['medical'] }}" class="form-control">
-                    <input type="hidden" name="t_port_percent" value="{{ $requests['t_port'] }}" class="form-control">
-                    <input type="hidden" name= "allowed_leave" value="{{ $requests['allowed_leave'] }}">
-                    <input type="hidden" name="status" value="{{ $requests['status'] }}">
-                    <input type="hidden" name="year" value="{{ $requests['year'] }}">
-                    <input type="hidden" name="month" value="{{ $requests['month'] }}"> --}}
-                    @foreach ($salarySheetDetails as $key=>$salarySheetDetail)
-                    <tr>
-                        <td>{{ $key+1 }}</td>
-                        <td>
-                            {{ $salarySheetDetail->employee->name }}
-                            {{-- <input type="hidden" name="employee_id[]" value="{{ $employee->id }}"> --}}
-                        </td>
-                        <td>
-                            {{-- {{ $employee->designation != NULL ? $employee->designation : '' }} --}}
-                        </td>
-                        <?php
-                            // $hRent= ($employee->present_salary*$requests['h_rent'])/100;
-                            // $medical= ($employee->present_salary*$requests['medical'])/100;
-                            // $tPort= ($employee->present_salary*$requests['t_port'])/100;
-                            // $basicSalary= $employee->present_salary - ($hRent + $medical + $tPort);
-                        ?>
-                        <td><input type="number" name="basic_pay[]" value="{{ $salarySheetDetail->basic_pay }}" class="form-control" readonly></td>
-                        <td>
-                            <input type="number" name="h_rent[]" value="{{ $salarySheetDetail->h_rent }}" class="form-control" readonly>
-                        </td>
-                        <td>
-                            <input type="number" name="medical[]" value="{{ $salarySheetDetail->medical }}" class="form-control" readonly>
-                        </td>
-                        <td>
-                            <input type="number" name="t_port[]" value="{{ $salarySheetDetail->t_port }}" class="form-control" readonly>
-                        </td>
-                        {{-- <td>{{ $requests['allowed_leave'] }}</td>
-                        <td> --}}
-                            <?php
-                                // $days=0;
-                                // if($employee->user){
-                                //     $leaves= App\Holiday::where('user_id', $employee->user->id)->get();
-                                //     $count= count($leaves);
-                                // }
-                            ?>
-                            {{-- @foreach($leaves as $leave) --}}
-                                <?php
-                                    // $to = \Carbon\Carbon::parse($leave->to_date);
-                                    // $from = \Carbon\Carbon::parse($leave->from_date);
-                                    // $days += $to->diffInDays($from);
-                                ?>
-                            {{-- @endforeach
-                            <span>{{ $days }}</span>
-                        </td> --}}
-                        <td><input type="number" name="net_pay[]" value="{{ $salarySheetDetail->net_pay }}" class="form-control"></td>
-                        {{-- <td>{{ $requests['deduction'] }}</td> --}}
-                        {{-- <td>{{ $employee->present_salary - $requests['deduction']}}</td> --}}
-                        <td>
-                            @if ($salarySheet->status==1)
-                                {{-- <input type="hidden" value="1" name="status"> --}}
-                                Cash Paid
-                            @elseif ($salarySheet->status==2)
-                                {{-- <input type="hidden" value="2" name="status"> --}}
-                                Bank Paid
-                            @endif
-                        </td>
+                        <td>{{ $purpose->name.' ['.$purpose->code.']' }}</td>
+                        <td>{{ $amounts[$key] }}</td>
+                        <td><input type="text" class="form-control comment"></td>
                     </tr>
                     @endforeach
-                    {{-- <input type="submit" value="Confirm Salary Sheet" class="btn btn-primary"> --}}
-                </form>
+
+                    <tr>
+                        <td><span class="p-2">Total</span></td>
+                        <td><strong>{{ $costBudget->total }}</strong></td>
+                    </tr>
                 </table>
+                @if($costBudget->note)
+                <div>
+                    <strong>Note:</strong> {{ $costBudget->note }}
+                </div>
+                @endif
             </div>
         </main>
         <!-- Footer -->
