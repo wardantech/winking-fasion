@@ -74,7 +74,11 @@ class SalarySheetController extends Controller
             'h_rent'   => $request->h_rent[$key],
             'medical'   => $request->medical[$key],
             't_port'   => $request->t_port[$key],
+            'absent'   => $request->absent[$key],
+            'deduction'   => $request->deduction[$key],
             'net_pay'   => $request->net_pay[$key],
+            'status'   => $request->status[$key],
+            'payment_received_date'   => $request->payment_received_date[$key],
         ]);
 
         return redirect()->route('salary-sheet-index')->with('message', 'Salary Sheet generated successfully.');
@@ -85,5 +89,19 @@ class SalarySheetController extends Controller
         $salarySheetDetails=SalarySheetDetails::with('employee')->where('salary_sheet_id', $id)->get();
 
         return view("salary_sheet.show", compact('salarySheet', 'salarySheetDetails'));
+    }
+
+    public function destroy($id){
+        $salarySheet= SalarySheet::find($id);
+
+        $salarySheetDetails= SalarySheetDetails::where('salary_sheet_id', $id)->get();
+
+        foreach($salarySheetDetails as $salarySheetDetail){
+            $salarySheetDetail->delete();
+        }
+
+        $salarySheet->delete();
+
+        return redirect()->back()->with('message', 'Salary sheet deleted successfully.');
     }
 }

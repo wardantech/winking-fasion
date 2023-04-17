@@ -445,6 +445,7 @@ Route::group(['middleware' => ['auth', 'active']], function() {
     Route::post('salary-sheet-generate', 'SalarySheetController@salarySheetGenerate')->name('salary-sheet.generate');
     Route::post('salary-sheet-confirm', 'SalarySheetController@salarySheetConfirm')->name('salary-sheet.confirm');
     Route::get('salary-sheet/show/{id}', 'SalarySheetController@show')->name('salary-sheet-show');
+    Route::delete('salary-sheet/delete/{id}', 'SalarySheetController@destroy')->name('salary-sheet-destroy');
 	Route::resource('bill-exchange','BillExchangeController');
     Route::get('all.bank.branches', 'ForwardingLetterController@AllBranches')->name('all.bank.branches');
 	Route::resource('commercial-invoice','CommercialInvoiceController');

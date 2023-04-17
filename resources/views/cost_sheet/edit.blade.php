@@ -340,7 +340,7 @@
                                                 <td><input type="number" name="cil_price" id="cil_total_price" value="{{number_format((float)$lims_cost_data->cil_price, 2, '.', '')}}" class="form-control cil_total_price" readonly required></td>
                                             </tr>
                                             <tr>
-                                                <td width="30%"><b>Commercial Cost*</b></td>
+                                                <td width="30%"><b>COMMERCIAL COST*</b></td>
                                                 <td><input type="number" name="commercial_cost" id="commercial_cost" value="{{$lims_cost_data->commercial_cost}}" min="0" step="0.1" class="form-control commercial_cost" required></td>
                                                 <td><input type="number" name="cc_amount" id="total_cc_amount" value="{{number_format((float)$lims_cost_data->cc_amount, 2, '.', '')}}" class="form-control total_cc_amount" readonly required></td>
                                             </tr>

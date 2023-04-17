@@ -202,6 +202,7 @@ return [
 	'Total Amount' => 'Total Amount',
 	'Gift Card' => 'Gift Card',
 	'Card' => 'Card',
+	'Salary Month' => 'Salary Month',
 	'Expired Date' => 'Expired Date',
 	'Recharge' => 'Recharge',
 	'Deposit' => 'Deposit',

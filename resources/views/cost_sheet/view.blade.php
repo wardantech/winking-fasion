@@ -50,7 +50,7 @@
         font-weight: bold;
         text-transform: uppercase;
     }
-    
+
     .amount_table p{
        margin: 0px;
     }
@@ -330,6 +330,12 @@
                                             <th>:</th>
                                             <th></th>
                                             <th style="text-align: center;">$ {{number_format((float)$lims_cost_data->cil_price, 2, '.', '')}}</th>
+                                        </tr>
+                                        <tr>
+                                            <th>COMMERCIAL COST</th>
+                                            <th>:</th>
+                                            <th></th>
+                                            <th style="text-align: center;">$ {{number_format((float)$lims_cost_data->cc_amount, 2, '.', '')}}</th>
                                         </tr>
                                         <tr>
                                             <th>TOTAL COST</th>

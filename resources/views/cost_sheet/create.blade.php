@@ -317,7 +317,7 @@
                                                 <td><input type="number" name="cil_price" id="cil_total_price" value="0.00" class="form-control cil_total_price" readonly required></td>
                                             </tr>
                                             <tr>
-                                                <td width="30%"><b>Commercial Cost*</b></td>
+                                                <td width="30%"><b>COMMERCIAL COST*</b></td>
                                                 <td><input type="number" name="commercial_cost" id="commercial_cost" min="0" step="0.1" class="form-control commercial_cost" required></td>
                                                 <td><input type="number" name="cc_amount" id="total_cc_amount" value="0.00" class="form-control total_cc_amount" readonly required></td>
                                             </tr>
@@ -657,7 +657,10 @@ $(document).ready(function () {
 
     $(document).on('keyup change', '#commercial_cost', function() {
         var commercial_cost = $('.commercial_cost').val();
-        $('.total_cc_amount').val(parseFloat(commercial_cost).toFixed(2));
+        var fob_total_price = $('#fob_total_price').val();
+        var totalCCAmount= (commercial_cost*fob_total_price)/100;
+        // $('.total_cc_amount').val(parseFloat(commercial_cost).toFixed(2));
+        $('.total_cc_amount').val(parseFloat(totalCCAmount).toFixed(2));
         total_cost();
     });
 
