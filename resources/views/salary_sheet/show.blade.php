@@ -731,104 +731,61 @@
             <div class="text-center">
                 <h2>WINKING FASHION</h2>
                 <h5> HOUSE#128, ROAD#01, BARIDHARA DOHS, DHAKA-1206, BANGLADESH</h5>
+                <?php
+                    $time=strtotime($salarySheet->date);
+                    $month=date("F",$time);
+                    $year=date("Y",$time);
+                ?>
+                <h5>Salary of Month: {{ $month.' '.$year }}</h5>
             </div><br>
             <form action="{{ route('salary-sheet.confirm') }}" method="POST">
                 @csrf
             <div>
-                <div>
-                    <h6>Salary Sheet: {{ $salarySheet->month.' '.$salarySheet->year }}</h6>
-                </div>
                 <div class="float-right">
-                    <h6>Date: <input type="date" name="date" value="{{ $salarySheet->date }}" class="form-control" readonly></h6>
+                    <h6>Date: {{ $salarySheet->date }}</h6>
                 </div>
             </div>
             <div>
                 <table class="table table-bordered">
                     <tr>
                         <th rowspan="2">SL</th>
-                        <th  rowspan="2">Name</th>
-                        <th  rowspan="2">Designation</th>
-                        <th  rowspan="2">Basic Pay</th>
-                        <th  colspan="3">Allowances</th>
-                        {{-- <th   rowspan="2">Allowed Leave</th> --}}
-                        {{-- <th  rowspan="2">Leave Taken</th> --}}
-                        {{-- <th  rowspan="2">Worked Days</th> --}}
-                        <th  rowspan="2">Net Pay</th>
-                        {{-- <th  rowspan="2">Deduction</th>
-                        <th  rowspan="2">Net Pay</th> --}}
-                        <th  rowspan="2">Status</th>
+                        <th rowspan="2">Name</th>
+                        <th rowspan="2">Designation</th>
+                        <th rowspan="2">Gross Salary</th>
+                        <th colspan="4">Allowances</th>
+                        <th rowspan="2">Absent</th>
+                        <th rowspan="2">Deduction</th>
+                        <th rowspan="2">Net Pay</th>
+                        <th rowspan="2">Status</th>
+                        <th rowspan="2">Payment Received Date</th>
                     </tr>
                     <tr>
+                        <td>Basic</td>
                         <td>H.rent</td>
                         <td>Medical</td>
                         <td>T.port</td>
                     </tr>
-                    {{-- <input type="hidden" name="h_rent_percent" value="{{ $requests['h_rent'] }}" class="form-control">
-                    <input type="hidden" name="medical_percent" value="{{ $requests['medical'] }}" class="form-control">
-                    <input type="hidden" name="t_port_percent" value="{{ $requests['t_port'] }}" class="form-control">
-                    <input type="hidden" name= "allowed_leave" value="{{ $requests['allowed_leave'] }}">
-                    <input type="hidden" name="status" value="{{ $requests['status'] }}">
-                    <input type="hidden" name="year" value="{{ $requests['year'] }}">
-                    <input type="hidden" name="month" value="{{ $requests['month'] }}"> --}}
                     @foreach ($salarySheetDetails as $key=>$salarySheetDetail)
                     <tr>
                         <td>{{ $key+1 }}</td>
                         <td>
                             {{ $salarySheetDetail->employee->name }}
-                            {{-- <input type="hidden" name="employee_id[]" value="{{ $employee->id }}"> --}}
                         </td>
                         <td>
-                            {{-- {{ $employee->designation != NULL ? $employee->designation : '' }} --}}
+                            {{ $salarySheetDetail->employee->designation != NULL ? $salarySheetDetail->employee->designation : '' }}
                         </td>
-                        <?php
-                            // $hRent= ($employee->present_salary*$requests['h_rent'])/100;
-                            // $medical= ($employee->present_salary*$requests['medical'])/100;
-                            // $tPort= ($employee->present_salary*$requests['t_port'])/100;
-                            // $basicSalary= $employee->present_salary - ($hRent + $medical + $tPort);
-                        ?>
-                        <td><input type="number" name="basic_pay[]" value="{{ $salarySheetDetail->basic_pay }}" class="form-control" readonly></td>
-                        <td>
-                            <input type="number" name="h_rent[]" value="{{ $salarySheetDetail->h_rent }}" class="form-control" readonly>
-                        </td>
-                        <td>
-                            <input type="number" name="medical[]" value="{{ $salarySheetDetail->medical }}" class="form-control" readonly>
-                        </td>
-                        <td>
-                            <input type="number" name="t_port[]" value="{{ $salarySheetDetail->t_port }}" class="form-control" readonly>
-                        </td>
-                        {{-- <td>{{ $requests['allowed_leave'] }}</td>
-                        <td> --}}
-                            <?php
-                                // $days=0;
-                                // if($employee->user){
-                                //     $leaves= App\Holiday::where('user_id', $employee->user->id)->get();
-                                //     $count= count($leaves);
-                                // }
-                            ?>
-                            {{-- @foreach($leaves as $leave) --}}
-                                <?php
-                                    // $to = \Carbon\Carbon::parse($leave->to_date);
-                                    // $from = \Carbon\Carbon::parse($leave->from_date);
-                                    // $days += $to->diffInDays($from);
-                                ?>
-                            {{-- @endforeach
-                            <span>{{ $days }}</span>
-                        </td> --}}
-                        <td><input type="number" name="net_pay[]" value="{{ $salarySheetDetail->net_pay }}" class="form-control"></td>
-                        {{-- <td>{{ $requests['deduction'] }}</td> --}}
-                        {{-- <td>{{ $employee->present_salary - $requests['deduction']}}</td> --}}
-                        <td>
-                            @if ($salarySheet->status==1)
-                                {{-- <input type="hidden" value="1" name="status"> --}}
-                                Cash Paid
-                            @elseif ($salarySheet->status==2)
-                                {{-- <input type="hidden" value="2" name="status"> --}}
-                                Bank Paid
-                            @endif
-                        </td>
+                        <td>{{ $salarySheetDetail->gross_salary }}</td>
+                        <td>{{ $salarySheetDetail->basic }}</td>
+                        <td>{{ $salarySheetDetail->h_rent }}</td>
+                        <td>{{ $salarySheetDetail->medical }}</td>
+                        <td>{{ $salarySheetDetail->t_port }}</td>
+                        <td>{{ $salarySheetDetail->absent }}</td>
+                        <td>{{ $salarySheetDetail->deduction }}</td>
+                        <td>{{ $salarySheetDetail->net_pay }}</td>
+                        <td>{{ $salarySheetDetail->status }}</td>
+                        <td>{{ $salarySheetDetail->payment_received_date }}</td>
                     </tr>
                     @endforeach
-                    {{-- <input type="submit" value="Confirm Salary Sheet" class="btn btn-primary"> --}}
                 </form>
                 </table>
             </div>

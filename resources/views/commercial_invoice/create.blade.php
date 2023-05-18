@@ -39,7 +39,7 @@
                                 </div>
                                 <div class="col-md-4 form-group">
                                     <label>Lc No *</label>
-                                    <input type="text" name="invoice_no" id="invoice-no" class="form-control" readonly>
+                                    <input type="text" name="lc_number" id="lc_number" class="form-control" readonly>
                                 </div>
                                 <div class="col-md-4 form-group">
                                     <label>Invoice Date *</label>
@@ -208,7 +208,7 @@
 
                     success: function(data){
                         $('#value').val(data.invoiceAmount);
-                        $('#invoice-no').val(data.lcNumber);
+                        $('#lc_number').val(data.lcNumber);
                         $('#invoice-date').val(data.invoiceDate);
                     }
                 });

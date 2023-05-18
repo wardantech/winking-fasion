@@ -125,6 +125,7 @@
                                             <select name="status" class="selectpicker form-control" data-live-search="true" data-live-search-style="begins" title="Select status...">
                                                 <option value="Running">Running</option>
                                                 <option value="Delivered">Delivered</option>
+                                                <option value="Cancelled/Hold">Cancelled/Hold</option>
                                             </select>
                                             @if($errors->has('status'))
                                                 <span class="text-danger">

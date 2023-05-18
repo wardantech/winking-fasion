@@ -196,8 +196,13 @@ return [
 	'Register' => 'Register',
 	'Expense Category' => 'Expense Category',
 	'Expense' => 'Expense',
+	'Cost Budget' => 'Cost Budget',
+	'Add Cost Budget' => 'Add Cost Budget',
+	'Purpose' => 'Purpose',
+	'Total Amount' => 'Total Amount',
 	'Gift Card' => 'Gift Card',
 	'Card' => 'Card',
+	'Salary Month' => 'Salary Month',
 	'Expired Date' => 'Expired Date',
 	'Recharge' => 'Recharge',
 	'Deposit' => 'Deposit',
@@ -600,5 +605,6 @@ return [
 	"Medical(%)" => "Medical(%)",
 	"T. Port(%)" => "T. Port(%)",
 	"Create Salary Sheet" => "Create Salary Sheet",
+	"Payment Date" => "Payment Date",
 ];
 ?>

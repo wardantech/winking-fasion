@@ -142,13 +142,14 @@
                     <th>LC/Contract No</th>
                     <th>BL No</th>
                     <th>Quantity</th>
-                    <th>Quantity</th>
+                    {{-- <th>Quantity</th> --}}
                     <th>Invoice Value</th>
                     <th>Shipper Invoice Value</th>
                     <th>Difference Amount</th>
                     <th style="padding-right:70px;">ETD</th>
                     <th style="padding-right:70px;">ETA</th>
                     <th style="padding-right:50px;">Payment Due Date</th>
+                    <th style="padding-right:50px;">Payment Received Date</th>
                     <th>Payment Status</th>
                     <th class="not-exported">{{trans('file.action')}}</th>
                 </tr>
@@ -180,8 +181,8 @@
                     @endif
                     <td>{{ $export->lc_number }}</td>
                     <td>{{ $export->contact_number }}</td>
-                    <td>{{ $export->quantity_pcs }} pcs</td>
-                    <td>{{ $export->quantity_crt }} ctn</td>
+                    <td>{{ $export->quantity_pcs }} pcs - {{ $export->quantity_crt }} ctn</td>
+                    {{-- <td></td> --}}
 
                     <td>${{ number_format((float)$export->invoice_value, 2, '.', '') }}</td>
                     <td>${{ number_format((float)$export->shipper_invoice_value, 2, '.', '') }}</td>
@@ -189,6 +190,11 @@
                     <td>{{ date('d-m-Y', strtotime($export->etd)) }}</td>
                     <td>{{ date('d-m-Y', strtotime($export->eta)) }}</td>
                     <td>{{ date('d-m-Y', strtotime($export->due_date)) }}</td>
+                    @if($export->payment_date)
+                    <td>{{ $export->payment_date }}</td>
+                    @else
+                    <td>-</td>
+                    @endif
                     <td>
                         @if($export->export_status == 'Pending')
                           <span class="badge badge-danger">{{ $export->export_status }}</span>
@@ -237,7 +243,7 @@
                 <th></th>
                 <th></th>
                 <th></th>
-                <th></th>
+                {{-- <th></th> --}}
                 <th></th>
                 <th></th>
                 <th></th>

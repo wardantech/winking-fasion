@@ -63,20 +63,42 @@ class ExportController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'invoice_no' => 'required|string|max:50',
-            'date' => 'required|date',
-            'ship_to_id' => 'required|integer',
-            'lc_number' => 'required|string|max:20',
-            'contact_number' => 'required|string|max:30',
-            'customer_id' => 'required|integer',
-            'quantity_pcs' => 'required|integer',
-            'quantity_crt' => 'required|numeric',
-            'invoice_value' => 'required|numeric',
-            'shipper_invoice_value' => 'required|numeric',
-            'due_date' => 'required',
-            'export_status' => 'required|string',
-        ],[
+        // dd($request->payment_date);
+        $validateDate= [];
+
+        $validateDate['invoice_no']= 'required|string|max:50';
+        $validateDate['date']= 'required|date';
+        $validateDate['ship_to_id']= 'required|integer';
+        $validateDate['lc_number']= 'required|string|max:20';
+        $validateDate['contact_number']= 'required|string|max:30';
+        $validateDate['customer_id']= 'required|integer';
+        $validateDate['quantity_pcs']= 'required|integer';
+        $validateDate['quantity_crt']= 'required|numeric';
+        $validateDate['invoice_value']= 'required|numeric';
+        $validateDate['shipper_invoice_value']= 'required|numeric';
+        $validateDate['due_date']= 'required';
+        $validateDate['export_status']= 'required|string';
+
+        if($request->export_status == "Received"){
+            $validateDate['payment_date']= 'required';
+        }
+            // [
+                // '' => ,
+                // '' => ,
+                // '' => ,
+                // '' => ,
+                // '' => ,
+                // '' => ,
+                // '' => ,
+                // '' => ,
+                // '' => ,
+                // '' => ,
+                // '' => ,
+                // '' => ,
+                // '' => 'required',
+            // ]
+        // ];
+        $this->validate($request, $validateDate,[
             'customer_id.required' => 'Please select customer',
             'ship_to_id.required' => 'Please select Shipper',
         ]);

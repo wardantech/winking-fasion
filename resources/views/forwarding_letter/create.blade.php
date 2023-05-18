@@ -21,6 +21,15 @@
                                 </div>
 
                                 <div class="col-md-4 form-group">
+                                    <label> Reference *</label>
+                                    <input type="text" name="reference" class="form-control" placeholder="Enter Reference" required>
+
+                                    @error('reference')
+                                      <p style="color: red">{{ $message }}</p>
+                                    @enderror
+                                </div>
+
+                                <div class="col-md-4 form-group">
                                     <label> Reference Bank *</label>
                                     <input type="text" name="reference_bank" class="form-control" placeholder="Enter Reference Bank" required>
 
@@ -61,11 +70,11 @@
                                 </div>
 
                                 <div class="col-md-4 form-group">
-                                    <label>Lc No *</label>
+                                    <label>Invoice No *</label>
                                     <select name="export_id" id="export-id" class="form-control" required>
-                                        <option value="">Select Lc No</option>
+                                        <option value="">Select Invoice No</option>
                                         @foreach ($exports as $export)
-                                            <option value="{{ $export->id }}">{{ $export->lc_number }}</option>
+                                            <option value="{{ $export->id }}">{{ $export->invoice_no }}</option>
                                         @endforeach
                                     </select>
 
@@ -78,8 +87,8 @@
                                     <input type="number" name="value" id="value" class="form-control" readonly>
                                 </div>
                                 <div class="col-md-4 form-group">
-                                    <label>Invoice Number *</label>
-                                    <input type="text" name="invoice_no" id="invoice-no" class="form-control" readonly>
+                                    <label>Lc Number *</label>
+                                    <input type="text" name="lc_number" id="lc_number" class="form-control" readonly>
                                 </div>
                                 <div class="col-md-4 form-group">
                                     <label>Invoice Date *</label>
@@ -114,7 +123,7 @@
 
                     success: function(data){
                         $('#value').val(data.invoiceAmount);
-                        $('#invoice-no').val(data.invoiceNumber);
+                        $('#lc_number').val(data.lcNumber);
                         $('#invoice-date').val(data.invoiceDate);
                     }
                 });

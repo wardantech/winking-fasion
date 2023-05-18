@@ -261,6 +261,7 @@
                         <ul id="expense" class="collapse list-unstyled ">
                             <li id="exp-cat-menu"><a href="{{route('expense_categories.index')}}">{{trans('file.Expense Category')}}</a></li>
                             <li id="exp-list-menu"><a href="{{route('expenses.index')}}">{{trans('file.Expense List')}}</a></li>
+                            <li id="exp-list-menu"><a href="{{route('cost-budget.index')}}">{{trans('file.Cost Budget')}}</a></li>
                             <?php
                             $add_permission = DB::table('permissions')->where('name', 'expenses-add')->first();
                             $add_permission_active = DB::table('role_has_permissions')->where([
@@ -719,7 +720,7 @@
                     <li><a href="#export_documents" aria-expanded="false" data-toggle="collapse"> <i class="dripicons-gear"></i><span>{{trans('file.Export Documents')}}</span></a>
                         <ul id="export_documents" class="collapse list-unstyled ">
                             <li><a href="{{url('forwarding-letter')}}">Forwarding-letter</a></li>
-                            <li><a href="{{url('commercial-invoice')}}">Commercial-Invoice</a></li>
+                            {{-- <li><ahref="url('commercial-invoice') }}">Commercial-Invoice</a></li> --}}
                             <li><a href="{{url('bill-exchange')}}">Bill-exchange</a></li>
                         </ul>
                     </li>

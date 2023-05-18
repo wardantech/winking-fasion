@@ -27,37 +27,32 @@
         <table id="employee-table" class="table">
             <thead>
                 <tr>
-                    <th class="not-exported"></th>
+                    <th></th>
                     <th>{{trans('file.Date')}}</th>
-                    <th>{{trans('file.House Rent(%)')}}</th>
-                    <th>{{trans('file.Medical(%)')}}</th>
-                    <th>{{trans('file.T. Port(%)')}}</th>
-                    <th>{{trans('file.Allowed Leave')}}</th>
-                    <th>{{trans('file.Year')}}</th>
-                    <th>{{trans('file.Month')}}</th>
-                    <th>{{trans('file.Status')}}</th>
-                    <th class="not-exported">{{trans('file.action')}}</th>
+                    <th>{{trans('file.Salary Month')}}</th>
+                    <th>{{trans('file.action')}}</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach ($salarySheets as $salarySheet)
+                    <?php
+                    $time=strtotime($salarySheet->date);
+                    $month=date("F",$time);
+                    $year=date("Y",$time);
+                    ?>
                     <tr>
                         <td></td>
                         <td>{{ $salarySheet->date }}</td>
-                        <td>{{ $salarySheet->h_rent }}</td>
-                        <td>{{ $salarySheet->medical }}</td>
-                        <td>{{ $salarySheet->t_port }}</td>
-                        <td>{{ $salarySheet->allowed_leave }}</td>
-                        <td>{{ $salarySheet->year }}</td>
-                        <td>{{ $salarySheet->month }}</td>
+                        <td>{{ $month." ".$year }}</td>
                         <td>
-                            @if($salarySheet->status == 1)
-                                Cash Paid
-                            @elseif($salarySheet->status == 2)
-                                Bank Paid
-                            @endif
+                            <div class="d-flex">
+                                <a href="{{ route('salary-sheet-show', $salarySheet->id) }}" class="btn btn-link"><i class="fa fa-eye"></i></a>
+                                {{-- <a href="{{ route('salary-sheet-destroy', $salarySheet->id) }}" class="btn btn-link"><i class="fa fa-eye"></i></a> --}}
+                                {{ Form::open(['route' => ['salary-sheet-destroy', $salarySheet->id], 'method' => 'DELETE'] ) }}
+                                    <button type="submit" class="btn btn-link" onclick="return confirmDelete()"><i class="fa fa-trash"></i></button>
+                                {{ Form::close() }}
+                            </div>
                         </td>
-                        <td><a href="{{ route('salary-sheet-show', $salarySheet->id) }}" class="btn btn-link"><i class="fa fa-eye"></i></a></td>
                     </tr>
                 @endforeach
             </tbody>
