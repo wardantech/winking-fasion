@@ -14,63 +14,77 @@
                         @csrf
                         @method('put')
                         <input type="hidden" id="up_id" name="id">
-                        <div class="row">
+                       <div class="row">
                                 <div class="col-md-4 form-group">
                                     <label>Date *</label>
-                                    <input type="date" value="{{$forwardLetter->date}}" name="date" class="form-control" >
+                                    <input type="date" value="{{$forwardLetter->date}}" name="date" class="form-control" required>
+                                     @error('date')
+                                        <p style="color: red">{{ $message }}</p>
+                                     @enderror
+                                </div>
 
-                                    @error('date')
+                                <div class="col-md-4 form-group">
+                                    <label> Reference *</label>
+                                    <input type="text" value="{{$forwardLetter->reference}}" name="reference" class="form-control" placeholder="Enter Reference" required>
+
+                                    @error('reference')
                                       <p style="color: red">{{ $message }}</p>
                                     @enderror
                                 </div>
 
                                 <div class="col-md-4 form-group">
                                     <label> Reference Bank *</label>
-                                    <input type="text" name="reference_bank" value="{{$forwardLetter->reference_bank}}" class="form-control" placeholder="Enter Reference Bank" required>
-
-                                    @error('reference_bank')
+                                    <select name="reference_bank_id" id="reference_bank_id" class="form-control" required>
+                                    <option value=""> Select Bank </option>
+                                        @foreach ($banks as $bank)
+                                        <option  @if($forwardLetter->reference_bank_id == $bank->id ) selected @endif value="{{ $bank->id }}">{{ $bank->name }}
+                                        </option>
+                                        @endforeach
+                                    </select>
+                                    @error('reference_bank_id')
                                       <p style="color: red">{{ $message }}</p>
                                     @enderror
                                 </div>
 
-                                <div class="col-md-4 form-group">
+                                <!-- <div class="col-md-4 form-group">
                                     <label> Reference No *</label>
-                                    <input type="text" name="reference_no" value="{{$forwardLetter->reference_no}}" class="form-control" placeholder="Enter Reference No" required>
+                                    <input type="text" name="reference_no" class="form-control" placeholder="Enter Reference No" required>
                                     @error('reference_no')
                                         <p style="color: red">{{ $message }}</p>
                                      @enderror
-                                </div>
+                                </div> -->
 
                                 <div class="col-md-4 form-group">
-                                    <label> Bank *</label>
-                                    <select name="bank_id" id="bank_id" class="form-control" required>
-                                        <option value=""> Select Bank </option>
-                                        @foreach ($banks as $bank)
-                                        <option  @if($forwardLetter->bank_id == $bank->id ) selected @endif value="{{ $bank->id }}">{{ $bank->name }}
-                                        </option>
-                                        @endforeach
-                                    </select>
-                                    @error('bank_id')
-                                        <p style="color: red">{{ $message }}</p>
-                                     @enderror
-                                </div>
-
-                                <div class="col-md-4 form-group">
-                                    <label> Bank Branch *</label>
-                                    <select name="branch_id" id="branch_id" class="form-control selectpicker" required>
-                                        <option value="">Select Branch</option>
+                                    <label>Reference Bank Branch *</label>
+                                    <select name="ref_branch_id" id="ref_branch_id" class="form-control selectpicker" required>
+                                    <option value="">Select Branch</option>
                                         @foreach ($branches as $branch)
 
-                                        <option  @if($forwardLetter->branch_id == $branch->id ) selected @endif value="{{ $branch->id }}">
+                                        <option  @if($forwardLetter->ref_branch_id == $branch->id ) selected @endif value="{{ $branch->id }}">
                                             {{ $branch->name }}
                                         </option>
                                         @endforeach
                                     </select>
-                                    @error('branch_id')
+                                    @error('ref_branch_id')
                                         <p style="color: red">{{ $message }}</p>
                                      @enderror
                                 </div>
+                                <div class="col-md-4 form-group">
+                                    <label> Shipper Bank *</label>
+                                    <input type="text" name="shipper_bank" value="{{$forwardLetter->shipper_bank}}" class="form-control" placeholder="Enter Shipper Bank" required>
 
+                                    @error('shipper_bank')
+                                    <p style="color: red">{{ $message }}</p>
+                                    @enderror
+                                </div>
+                                <div class="col-md-4 form-group">
+                                    <label> Shipper Ref *</label>
+                                    <input type="text" name="shipper_ref" value="{{$forwardLetter->shipper_ref}}"  class="form-control" placeholder="Enter Shipper Ref" required>
+
+                                    @error('shipper_ref')
+                                    <p style="color: red">{{ $message }}</p>
+                                    @enderror
+                                </div>
                                 <div class="col-md-4 form-group">
                                     <label>Lc No *</label>
                                     <select name="export_id" id="export-id" class="form-control" required>
@@ -97,7 +111,8 @@
                                     <input type="date" name="invoice_date" value="{{$forwardLetter->export->date}}" id="invoice-date" class="form-control" readonly>
                                 </div>
                             </div>
-                        <div class="form-group">
+                       
+                            <div class="form-group">
                             <button type="submit" class="btn btn-primary">{{trans('file.update')}}</button>
                         </div>
                         {{ Form::close() }}
@@ -110,9 +125,9 @@
 
 <script>
 
-    $('#bank_id').on('change', function(){
-        $('#branch_id').empty();
-        var bank_id = $("#bank_id").val();
+    $('#reference_bank_id').on('change', function(){
+        $('#ref_branch_id').empty();
+        var bank_id = $("#reference_bank_id").val();
         var url = "{{route('all.bank.branches')}}";
             $.ajax({
                 type: "GET",
@@ -121,9 +136,9 @@
                     bank_id: bank_id
                 },
                 success: function(data){
-                 $('#branch_id').append("<option value=''> Select Branch </option>");
+                 $('#ref_branch_id').append("<option value=''> Select Branch </option>");
                 $.each(data, function(key, value){
-                    $('#branch_id').append("<option value="+value.id+">"+value.name+"</option>");
+                    $('#ref_branch_id').append("<option value="+value.id+">"+value.name+"</option>");
                 });
                 $('.selectpicker').selectpicker('refresh');
             },

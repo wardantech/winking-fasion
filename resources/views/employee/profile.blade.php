@@ -111,11 +111,13 @@
                             <table class="table table-bordered">
                                 <tr>
                                     <td>Previous Salary</td>
+                                    <td>Increment Salary</td>
                                     <td>Reveised Salary</td>
                                 </tr>
                                 @foreach ($salaryHistory as $salary)
                                 <tr>
                                     <td>{{ $salary->previous_salary }}</td>
+                                    <td>{{ $salary->increment_salary ?? 0 }}</td>
                                     <td>{{ $salary->present_salary }}</td>
                                 </tr>
                                 @endforeach

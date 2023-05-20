@@ -259,6 +259,7 @@ class EmployeeController extends Controller
 
         $salaryHistory->employee_id = $request->employee_id;
         $salaryHistory->previous_salary = $request->previous_salary;
+        $salaryHistory->increment_salary = $request->increment_salary;
         $salaryHistory->present_salary = $request->new_salary;
         $salaryHistory->effective_month = date('F, Y', strtotime($request->effective_month));
         // $salaryHistory->effective_month = $request->effective_month;

@@ -14,12 +14,13 @@
                             <div class="row">
                                 <div class="col-md-4 form-group">
                                     <label>Drawn Under *</label>
-                                    <select name="drawn_under" id="" class="form-control">
+                                    <input type="text" name="drawn_under"  class="form-control">
+                                    <!-- <select name="drawn_under" id="" class="form-control">
                                         <option value="">Select Account</option>
                                         @foreach($bankNames as $bankName)
                                         <option value="{{$bankName->id}}">{{$bankName->name}}</option>
                                        @endforeach
-                                    </select>
+                                    </select> -->
                                 </div>
                                 <div class="col-md-4 form-group">
                                     <label>Export L/C No *</label>
