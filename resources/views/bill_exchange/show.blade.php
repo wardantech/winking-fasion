@@ -45,24 +45,24 @@
     </header>
     <table width="100%">
         <tr>
-            <td style="text-transform:uppercase;padding-bottom:20px;" colspan="2"><strong>DRAWN UNDER:</strong> {{$bill_exchange->bank->name}}</td>
+            <td style="text-transform:uppercase;padding-bottom:20px;" colspan="2"><strong>DRAWN UNDER:</strong> {{$bill_exchange->drawn_under}}</td>
         </tr>
         <tr>
             <td colspan="2"></td>
         </tr>
         <tr>
             <td><strong>EXPORT L/C NO:</strong> {{$bill_exchange->export_id}}</td>
-            <td style="text-align: right;"><strong>DATE: </strong> {{$bill_exchange->export_date}}</td>
+            <td style="text-align: right;"><strong>DATE: </strong> {{$bill_exchange->export->date}}</td>
         </tr>
         <tr>
-            <td><strong>INVOICE NO: </strong> {{$bill_exchange->invoice_no}}</td>
-            <td style="text-align: right;"><strong>DATE: </strong> {{$bill_exchange->invoice_date}}</td>
+            <td><strong>INVOICE NO: </strong> {{$bill_exchange->export->invoice_no}}</td>
+            <td style="text-align: right;"><strong>DATE: </strong> {{$bill_exchange->export->due_date}}</td>
         </tr>
     </table>
-    <P>Exchange for <STRONG>{{$bill_exchange->amount}}</STRONG> at 60 days after bl date of this <strong style="font-size:25px"><i>FIRST</i></strong> of exchange {{$bill_exchange->bank->name}}. trade operations department, head office, 220/b, anik tower, level 2, tejgaon 1/a, dhaka-1208, bangladesh. a/c winking fashion the sum of us {{$bill_exchange->amount}}(say us {{$inword}} dollar only) values received & charge the same to a/c of jeanilogie inc. 4951 blvd de la cote vertu o.st-laurent, qc,h4s iei canada</P>
+    <P>Exchange for <STRONG>{{$bill_exchange->export->invoice_value}}</STRONG> at 60 days after bl date of this <strong style="font-size:25px"><i>FIRST</i></strong> of exchange {{$bill_exchange->drawn_under}}. trade operations department, head office, 220/b, anik tower, level 2, tejgaon 1/a, dhaka-1208, bangladesh. a/c winking fashion the sum of us {{$bill_exchange->export->drawn_under}}(say us {{$inword}} dollar only) values received & charge the same to a/c of jeanilogie inc. 4951 blvd de la cote vertu o.st-laurent, qc,h4s iei canada</P>
 
     <p style="margin-bottom:0px;">TO</p>
-    <p style="margin:0px;"><strong>{{$bill_exchange->bank->name}}</strong></p>
+    <p style="margin:0px;"><strong>{{$bill_exchange->drawn_under}}</strong></p>
                     </div>
 
                     {{-- ================== --}}
@@ -73,24 +73,24 @@
                         </header>
                         <table width="100%">
                             <tr>
-                                <td style="text-transform:uppercase;padding-bottom:20px;" colspan="2"><strong>DRAWN UNDER:</strong> {{$bill_exchange->bank->name}}</td>
+                                <td style="text-transform:uppercase;padding-bottom:20px;" colspan="2"><strong>DRAWN UNDER:</strong> {{$bill_exchange->drawn_under}}</td>
                             </tr>
                             <tr>
                                 <td colspan="2"></td>
                             </tr>
                             <tr>
-                                <td><strong>EXPORT L/C NO:</strong> {{$bill_exchange->export_id}}</td>
-                                <td style="text-align: right;"><strong>DATE: </strong> {{$bill_exchange->export_date}}</td>
+                                <td><strong>EXPORT L/C NO:</strong> {{$bill_exchange->export->lc_number}}</td>
+                                <td style="text-align: right;"><strong>DATE: </strong> {{$bill_exchange->export->date}}</td>
                             </tr>
                             <tr>
-                                <td><strong>INVOICE NO: </strong> {{$bill_exchange->invoice_no}}</td>
-                                <td style="text-align: right;"><strong>DATE: </strong> {{$bill_exchange->invoice_date}}</td>
+                                <td><strong>INVOICE NO: </strong> {{$bill_exchange->export->invoice_no}}</td>
+                                <td style="text-align: right;"><strong>DATE: </strong> {{$bill_exchange->export->date}}</td>
                             </tr>
                         </table>
-                        <P>Exchange for <STRONG>{{$bill_exchange->amount}}</STRONG> at 60 days after bl date of this <strong style="font-size:25px"><i>FIRST</i></strong> of exchange {{$bill_exchange->bank->name}}. trade operations department, head office, 220/b, anik tower, level 2, tejgaon 1/a, dhaka-1208, bangladesh. a/c winking fashion the sum of us {{$bill_exchange->amount}}(say us {{$inword}} dollar only) values received & charge the same to a/c of jeanilogie inc. 4951 blvd de la cote vertu o.st-laurent, qc,h4s iei canada</P>
+                        <P>Exchange for <STRONG>{{$bill_exchange->export->invoice_value}}</STRONG> at 60 days after bl date of this <strong style="font-size:25px"><i>FIRST</i></strong> of exchange {{$bill_exchange->drawn_under}}. trade operations department, head office, 220/b, anik tower, level 2, tejgaon 1/a, dhaka-1208, bangladesh. a/c winking fashion the sum of us {{$bill_exchange->export->invoice_value}}(say us {{$inword}} dollar only) values received & charge the same to a/c of jeanilogie inc. 4951 blvd de la cote vertu o.st-laurent, qc,h4s iei canada</P>
 
                         <p style="margin-bottom:0px;">TO</p>
-                        <p style="margin:0px;"><strong>{{$bill_exchange->bank->name}}</strong></p>
+                        <p style="margin:0px;"><strong>{{$bill_exchange->drawn_under}}</strong></p>
                     </div>
                 </div>
             </div>

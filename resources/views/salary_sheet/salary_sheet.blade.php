@@ -728,15 +728,16 @@
         </div>
         @endif
         <main class="bg-imge">
-            <div class="text-center">
+            <!-- <div class="text-center">
                 <h2>WINKING FASHION</h2>
                 <h5> HOUSE#128, ROAD#01, BARIDHARA DOHS, DHAKA-1206, BANGLADESH</h5>
-            </div><br>
+            </div><br> -->
             <form action="{{ route('salary-sheet.confirm') }}" method="POST">
                 @csrf
-            <div>
-                <div class="float-right">
-                    <h6>Date: <input type="date" name="date" value="" class="form-control" id="date"></h6>
+            <div class="col">
+                <div class="float-right text-right">
+                    <h5>Salary Sheet</h5>
+                    <h6 class="d-flex"><span style="margin-right:20px;">Date:</span> <input type="date" name="date" value="" class="form-control" id="date" required></h6>
                 </div>
             </div>
             <div>
@@ -804,6 +805,7 @@
                         </td>
                     </tr>
                     @endforeach
+                    <img style="width:200px;" src="{{asset('public/logo/FinalLogo.png')}}" alt=""> <br>
                     <input type="submit" value="Confirm Salary Sheet" class="btn btn-primary">
                 </form>
                 </table>

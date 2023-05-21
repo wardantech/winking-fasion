@@ -729,16 +729,17 @@
         </div>
         @endif
         <main class="bg-imge">
-            {{-- <div class="text-center">
-                <h2>WINKING FASHION</h2>
-                <h5> HOUSE#128, ROAD#01, BARIDHARA DOHS, DHAKA-1206, BANGLADESH</h5>
-            </div><br> --}}
-            <div>
-                <div class="text-center">
-                    <h4>Cost Budget</h4>
+            <div class="row">
+                <div class="col">
+                <div class="text-left">
+                  <img style="width:200px;" src="{{asset('public/logo/FinalLogo.png')}}" alt="">
                 </div>
-                <div class="float-right">
-                    <h6>Date: {{ $costBudget->month }}</h6>
+                </div>
+                <div class="col">
+                <div class="float-right text-right">
+                    <h4 class="text-right">Cost Budget</h4>
+                    <h6>{{ $costBudget->month }}</h6>
+                </div>
                 </div>
             </div>
             <div>
