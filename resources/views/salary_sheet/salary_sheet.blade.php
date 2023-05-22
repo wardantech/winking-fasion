@@ -736,6 +736,7 @@
                 @csrf
             <div class="col">
                 <div class="float-right text-right">
+                    {{$general_setting->site_logo}}
                     <h5>Salary Sheet</h5>
                     <h6 class="d-flex"><span style="margin-right:20px;">Date:</span> <input type="date" name="date" value="" class="form-control" id="date" required></h6>
                 </div>
@@ -805,7 +806,7 @@
                         </td>
                     </tr>
                     @endforeach
-                    <img style="width:200px;" src="{{asset('public/logo/FinalLogo.png')}}" alt=""> <br>
+                    <img style="width:200px;" src="{{asset('public/logo/'.$general_setting->site_logo)}}" alt=""> <br>
                     <input type="submit" value="Confirm Salary Sheet" class="btn btn-primary">
                 </form>
                 </table>

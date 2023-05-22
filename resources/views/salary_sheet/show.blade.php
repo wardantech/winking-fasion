@@ -736,7 +736,7 @@
         <div class="row">
                 <div class="col">
                 <div class="text-left">
-                  <img style="width:200px;" src="{{asset('public/logo/FinalLogo.png')}}" alt="">
+                <img style="width:200px;" src="{{asset('public/logo/'.$general_setting->site_logo)}}" alt="">
                 </div>
                 </div>
                 <div class="col">
@@ -760,7 +760,7 @@
                 </div>
             </div> -->
             <div>
-                <table class="table table-bordered">
+                <table style="margin-top: 25px;" class="table mt-10 table-bordered">
                     <tr>
                         <th rowspan="2">SL</th>
                         <th rowspan="2">Name</th>

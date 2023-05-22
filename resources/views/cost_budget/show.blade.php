@@ -732,7 +732,7 @@
             <div class="row">
                 <div class="col">
                 <div class="text-left">
-                  <img style="width:200px;" src="{{asset('public/logo/FinalLogo.png')}}" alt="">
+                <img style="width:200px;" src="{{asset('public/logo/'.$general_setting->site_logo)}}" alt="">
                 </div>
                 </div>
                 <div class="col">
