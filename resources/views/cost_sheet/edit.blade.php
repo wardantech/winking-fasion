@@ -362,7 +362,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label><b>OFFERED FOB *</b></label>
-                                        <input type="text" name="offered_fob" value="{{number_format((float)$lims_cost_data->offered_fob, 2, '.', '')}}" class="form-control" required>
+                                        <input type="text" name="offered_fob" value="{{number_format((float)$lims_cost_data->offered_fob, 2, '.', '')}}" class="form-control" step="any" required>
                                     </div>
                                 </div>
                             </div>

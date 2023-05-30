@@ -70,21 +70,21 @@ class ForwardingLetterController extends Controller
          $request->validate([
             'date'=>'required',
             'reference'=>'required',
-            'bank_id'=>'required',
-            'branch_id'=>'required',
+            'reference_bank_id'=>'required',
+            'ref_branch_id'=>'required',
             'export_id'=>'required',
-            'reference_bank'=>'required',
-            'reference_no'=>'required',
+            'shipper_bank'=>'required',
+            'shipper_ref'=>'required',
         ]);
 
         $forwardingLetter= new ForwaringLetter();
         $forwardingLetter->date = $request->date;
         $forwardingLetter->reference = $request->reference;
-        $forwardingLetter->bank_id = $request->bank_id;
-        $forwardingLetter->branch_id = $request->branch_id;
+        $forwardingLetter->reference_bank_id = $request->reference_bank_id;
+        $forwardingLetter->ref_branch_id = $request->ref_branch_id;
         $forwardingLetter->export_id = $request->export_id;
-        $forwardingLetter->reference_bank = $request->reference_bank;
-        $forwardingLetter->reference_no = $request->reference_no;
+        $forwardingLetter->shipper_bank = $request->shipper_bank;
+        $forwardingLetter->shipper_ref = $request->shipper_ref;
         $forwardingLetter->save();
 
         return redirect('forwarding-letter')->with('message', 'Forwarding Letter Submitted Successfully');
@@ -113,7 +113,7 @@ class ForwardingLetterController extends Controller
         $banks= Bank::all();
         $exports= Export::all();
         $forwardLetter = ForwaringLetter::with('account','export')->find($id);
-        $branches = BankBranch::where('bank_id',$forwardLetter->bank_id)->get();
+        $branches = BankBranch::where('bank_id',$forwardLetter->reference_bank_id)->get();
         return view('forwarding_letter.edit', compact('forwardLetter','banks','exports','branches'));
     }
 
@@ -129,21 +129,21 @@ class ForwardingLetterController extends Controller
         $request->validate([
             'date'=>'required',
             'reference'=>'required',
-            'bank_id'=>'required',
-            'branch_id'=>'required',
+            'reference_bank_id'=>'required',
+            'ref_branch_id'=>'required',
             'export_id'=>'required',
-            'reference_bank'=>'required',
-            'reference_no'=>'required',
+            'shipper_bank'=>'required',
+            'shipper_ref'=>'required',
         ]);
 
         $forwardingLetter = ForwaringLetter::find($id);
         $forwardingLetter->date = $request->date;
         $forwardingLetter->reference = $request->reference;
-        $forwardingLetter->bank_id = $request->bank_id;
-        $forwardingLetter->branch_id = $request->branch_id;
+        $forwardingLetter->reference_bank_id = $request->reference_bank_id;
+        $forwardingLetter->ref_branch_id = $request->ref_branch_id;
         $forwardingLetter->export_id = $request->export_id;
-        $forwardingLetter->reference_bank = $request->reference_bank;
-        $forwardingLetter->reference_no = $request->reference_no;
+        $forwardingLetter->shipper_bank = $request->shipper_bank;
+        $forwardingLetter->shipper_ref = $request->shipper_ref;
         $forwardingLetter->update();
         return redirect('forwarding-letter')->with('message', 'Forwarding Letter Updated Successfully');
     }

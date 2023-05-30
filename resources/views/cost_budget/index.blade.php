@@ -175,12 +175,12 @@
                     <div class="row">
                         <div class="col-md-4 form-group">
                             <label>{{ trans('Date') }} *</label>
-                            <input type="date" name="month" required class="form-control">
+                            <input type="month" name="month" required class="form-control">
                         </div>
                     </div>
                     <div id="add_row_div">
                         <div class="row">
-                            <div class="col-md-5 form-group">
+                            <div class="col-md-4 form-group">
                                 <label>{{ trans('file.Purpose') }} *</label>
                                 <select name="purpose[]" class="selectpicker form-control" required data-live-search="true"
                                     data-live-search-style="begins" title="Select Purpose...">
@@ -190,10 +190,14 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="col-md-5 form-group">
+                            <div class="col-md-3 form-group">
                                 <label>{{ trans('file.Amount') }} *</label>
                                 <input type="number" name="amount[]" class="form-control amount" oninput="totalAmount()"
                                     required>
+                            </div>
+                            <div class="col-md-3 form-group">
+                                <label>{{ trans('file.Payment Date') }} *</label>
+                                <input type="date" name="payment_date[]" class="form-control" required>
                             </div>
                         </div>
                     </div>
@@ -247,7 +251,7 @@
                         <input type="hidden" name="cost_budget_id">
                         <div class="col-md-4 form-group">
                             <label>{{ trans('Date') }} *</label>
-                            <input type="date" name="month" required class="form-control">
+                            <input type="month" name="month" required class="form-control">
                         </div>
                     </div>
                     <?php
@@ -261,6 +265,11 @@
                     }else{
                         $amounts= [];
                     }
+                    if(isset($costBudget->payment_date)){
+                        $payment_dates= json_decode($costBudget->payment_date);
+                    }else{
+                        $payment_dates= [];
+                    }
 
 
                     ?>
@@ -268,7 +277,7 @@
                     <div id="add_row_edit_div">
                         @foreach ($purposes as $key=>$purpose)
                         <div class="row">
-                            <div class="col-md-5 form-group">
+                            <div class="col-md-4 form-group">
                                 <label>{{ trans('file.Purpose') }} *</label>
                                 <select name="purpose[]" class="selectpicker form-control" required data-live-search="true"
                                     data-live-search-style="begins" title="Select Purpose...">
@@ -277,10 +286,14 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="col-md-5 form-group">
+                            <div class="col-md-3 form-group">
                                 <label>{{ trans('file.Amount') }} *</label>
                                 <input type="number" name="amount[]" class="form-control edit-div-amount" value="{{ $amounts[$key] }}" oninput="totalAmountForEdit()"
                                     required>
+                            </div>
+                            <div class="col-md-3 form-group">
+                                <label>{{ trans('file.Payment Date') }} *</label>
+                                <input type="date" name="payment_date[]" class="form-control" value="{{ $payment_dates[$key] }}" required>
                             </div>
                             <div>
                                 <a class="edit_div_remove_row btn btn-danger btn-sm">-</a>
@@ -321,7 +334,7 @@
             $('#add_row').on('click', function() {
                 $('#add_row_div').append(
                     '<div class="row">\n' +
-                    '<div class="col-md-5 form-group">\n' +
+                    '<div class="col-md-4 form-group">\n' +
                     // '<label>{{ trans('file.Purpose') }} *</label>\n'+
                     '<select name="purpose[]" class="form-control" required data-live-search="true" data-live-search-style="begins" title="Select Purpose...">\n' +
                     '<option>Select Purpose</option>\n' +
@@ -330,10 +343,13 @@
                     '@endforeach\n' +
                     '</select>\n' +
                     '</div>\n' +
-                    '<div class="col-md-5 form-group">\n' +
+                    '<div class="col-md-3 form-group">\n' +
                     // '<label>{{ trans('file.Amount') }} *</label>\n'+
                     '<input type="number" name="amount[]" step="any" required class="form-control amount" oninput="totalAmount()">\n' +
                     '</div>\n' +
+                    '<div class="col-md-3 form-group">\n'+
+                    '<input type="date" name="payment_date[]" class="form-control" required>\n'+
+                    '</div>\n'+
                     '<div>\n' +
                     '<a class="remove_row btn btn-danger btn-sm">-</a>\n' +
                     '</div>\n' +
@@ -344,7 +360,7 @@
             $('#edit_add_row').on('click', function() {
                 $('#add_row_edit_div').append(
                     '<div class="row">\n' +
-                    '<div class="col-md-5 form-group">\n' +
+                    '<div class="col-md-4 form-group">\n' +
                     // '<label>{{ trans('file.Purpose') }} *</label>\n'+
                     '<select name="purpose[]" class="form-control" required data-live-search="true" data-live-search-style="begins" title="Select Purpose...">\n' +
                     '<option>Select Purpose</option>\n' +
@@ -353,10 +369,13 @@
                     '@endforeach\n' +
                     '</select>\n' +
                     '</div>\n' +
-                    '<div class="col-md-5 form-group">\n' +
+                    '<div class="col-md-3 form-group">\n' +
                     // '<label>{{ trans('file.Amount') }} *</label>\n'+
                     '<input type="number" name="amount[]" step="any" required class="form-control edit-div-amount" oninput="totalAmountForEdit()">\n' +
                     '</div>\n' +
+                    '<div class="col-md-3 form-group">\n'+
+                    '<input type="date" name="payment_date[]" class="form-control" required>\n'+
+                    '</div>\n'+
                     '<div>\n' +
                     '<a class="edit_div_remove_row btn btn-danger btn-sm">-</a>\n' +
                     '</div>\n' +

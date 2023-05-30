@@ -728,15 +728,17 @@
         </div>
         @endif
         <main class="bg-imge">
-            <div class="text-center">
+            <!-- <div class="text-center">
                 <h2>WINKING FASHION</h2>
                 <h5> HOUSE#128, ROAD#01, BARIDHARA DOHS, DHAKA-1206, BANGLADESH</h5>
-            </div><br>
+            </div><br> -->
             <form action="{{ route('salary-sheet.confirm') }}" method="POST">
                 @csrf
-            <div>
-                <div class="float-right">
-                    <h6>Date: <input type="date" name="date" value="" class="form-control" id="date"></h6>
+            <div class="col">
+                <div class="float-right text-right">
+                    {{$general_setting->site_logo}}
+                    <h5>Salary Sheet</h5>
+                    <h6 class="d-flex"><span style="margin-right:20px;">Date:</span> <input type="date" name="date" value="" class="form-control" id="date" required></h6>
                 </div>
             </div>
             <div>
@@ -745,8 +747,9 @@
                         <th rowspan="2">SL</th>
                         <th rowspan="2" style="width:200px">Name</th>
                         <th rowspan="2" style="width:120px">Designation</th>
+                        <td  rowspan="2" style="width:120px">Basic</td>
+                        <th colspan="3">Allowances</th>
                         <th rowspan="2" style="width:120px">Gross Salary</th>
-                        <th colspan="4">Allowances</th>
                         <th rowspan="2" style="width:100px">Absent</th>
                         <th rowspan="2" style="width:120px">Deduction</th>
                         <th rowspan="2" style="width:150px">Net Pay</th>
@@ -754,7 +757,6 @@
                         <th rowspan="2" style="width:150px">Payment Received Date</th>
                     </tr>
                     <tr>
-                        <td style="width:120px">Basic</td>
                         <td style="width:120px">H.rent</td>
                         <td style="width:120px">Medical</td>
                         <td style="width:120px">T.port</td>
@@ -768,16 +770,17 @@
                             <input type="hidden" name="salary_sheet_setting" value="{{ $salarySetting->id }}">
                         </td>
                         <td>{{ $employee->designation != NULL ? $employee->designation : '' }}</td>
+
                         <?php
                             $hRent= ($employee->present_salary*$salarySetting->h_rent)/100;
                             $medical= ($employee->present_salary*$salarySetting->medical)/100;
                             $tPort= ($employee->present_salary*$salarySetting->t_port)/100;
                             $basicSalary= $employee->present_salary - ($hRent + $medical + $tPort);
                         ?>
-                        <td><input type="number" name="gross_salary[]" value="{{ $employee->present_salary }}" class="form-control" id="gross_salary_{{ $key }}" readonly></td>
                         <td>
                             <input type="number" name="basic[]" value="{{ $basicSalary }}" class="form-control" readonly>
                         </td>
+                        
                         <td>
                             <input type="number" name="h_rent[]" value="{{ $hRent }}" class="form-control" readonly>
                         </td>
@@ -787,6 +790,7 @@
                         <td>
                             <input type="number" name="t_port[]" value="{{ $tPort }}" class="form-control" readonly>
                         </td>
+                        <td><input type="number" name="gross_salary[]" value="{{ $employee->present_salary }}" class="form-control" id="gross_salary_{{ $key }}" readonly></td>
                         <td>
                             <input type="number" name="absent[]" id="absent_{{ $key }}" value="0" class="form-control" oninput="getNetPay({{ $key }})">
                         </td>
@@ -802,6 +806,7 @@
                         </td>
                     </tr>
                     @endforeach
+                    <img style="width:200px;" src="{{asset('public/logo/'.$general_setting->site_logo)}}" alt=""> <br>
                     <input type="submit" value="Confirm Salary Sheet" class="btn btn-primary">
                 </form>
                 </table>

@@ -29,7 +29,6 @@
                     <th style="min-width: 65px !important;">Export L/C</th>
                     <th style="min-width: 65px !important;">Export Date</th>
                     <th >Invoice No</th>
-                    <th>Invoice Date</th>
                     <th>Amount</th>
                     <th class="not-exported">{{trans('file.action')}}</th>
                 </tr>
@@ -39,11 +38,10 @@
                 <tr>
                     <td>{{$loop->iteration}}</td>
                     <td>{{$bill_exchange->drawn_under}}</td>
-                    <td>{{$bill_exchange->export}}</td>
-                    <td>{{$bill_exchange->export_date}}</td>
-                    <td>{{$bill_exchange->invoice_no}}</td>
-                    <td>{{$bill_exchange->invoice_date}}</td>
-                    <td>{{$bill_exchange->amount}}</td>
+                    <td>{{$bill_exchange->export->lc_number}}</td>
+                    <td>{{$bill_exchange->export->date}}</td>
+                    <td>{{$bill_exchange->export->invoice_no}}</td>
+                    <td>{{$bill_exchange->export->invoice_value}}</td>
                     <td>
                         <div class="btn-group">
                             <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action

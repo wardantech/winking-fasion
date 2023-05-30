@@ -21,6 +21,9 @@ class CreateForwaringLettersTable extends Migration
             $table->unsignedInteger('export_id')->index();
             $table->string('reference_bank');
             $table->string('reference_no');
+            $table->string('shipper_bank');
+            $table->string('shipper_ref');
+            $table->string('reference_no');
             $table->timestamps();
         });
     }

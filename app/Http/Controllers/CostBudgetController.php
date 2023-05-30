@@ -67,6 +67,7 @@ class CostBudgetController extends Controller
         $costBudget->month = $request->month;
         $costBudget->purpose = json_encode($request->purpose);
         $costBudget->amount = json_encode($request->amount);
+        $costBudget->payment_date = json_encode($request->payment_date);
         $costBudget->total = $request->total;
         $costBudget->note = $request->note;
 
@@ -117,6 +118,7 @@ class CostBudgetController extends Controller
         $costBudget->month = $request->month;
         $costBudget->purpose = json_encode($request->purpose);
         $costBudget->amount = json_encode($request->amount);
+        $costBudget->payment_date = json_encode($request->payment_date);
         $costBudget->total = $request->total;
         $costBudget->note = $request->edit_modal_note;
 

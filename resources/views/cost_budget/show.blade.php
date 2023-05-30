@@ -713,9 +713,6 @@
         .table td, .table th {
             padding: 0;
         }
-        .table th{
-            text-align: center;
-        }
     </style>
 
 </head>
@@ -732,35 +729,38 @@
         </div>
         @endif
         <main class="bg-imge">
-            {{-- <div class="text-center">
-                <h2>WINKING FASHION</h2>
-                <h5> HOUSE#128, ROAD#01, BARIDHARA DOHS, DHAKA-1206, BANGLADESH</h5>
-            </div><br> --}}
-            <div>
-                <div class="text-center">
-                    <h4>Cost Budget</h4>
+            <div class="row">
+                <div class="col">
+                <div class="text-left">
+                <img style="width:200px;" src="{{asset('public/logo/'.$general_setting->site_logo)}}" alt="">
                 </div>
-                <div class="float-right">
-                    <h6>Date: {{ $costBudget->month }}</h6>
+                </div>
+                <div class="col">
+                <div class="float-right text-right">
+                    <h4 class="text-right">Cost Budget</h4>
+                    <h6>{{ $costBudget->month }}</h6>
+                </div>
                 </div>
             </div>
             <div>
                 <?php
                     $purposeIds= json_decode($costBudget->purpose);
                     $amounts= json_decode($costBudget->amount);
+                    $payment_dates= json_decode($costBudget->payment_date);
                     $purposes= \App\ExpenseCategory::whereIn('id', $purposeIds)->get();
                 ?>
                 <table class="table table-bordered">
                     <tr>
                         <th>Purpose</th>
                         <th>Amount (TK.)</th>
+                        <th>Payment Date</th>
                         <th style="width: 12%">Comment</th>
                     </tr>
-
                     @foreach ($purposes as $key=>$purpose)
                     <tr>
                         <td>{{ $purpose->name.' ['.$purpose->code.']' }}</td>
                         <td>{{ $amounts[$key] }}</td>
+                        <td>{{ $payment_dates[$key] }}</td>
                         <td><input type="text" class="form-control comment"></td>
                     </tr>
                     @endforeach

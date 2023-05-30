@@ -31,44 +31,50 @@
 
                                 <div class="col-md-4 form-group">
                                     <label> Reference Bank *</label>
-                                    <input type="text" name="reference_bank" class="form-control" placeholder="Enter Reference Bank" required>
-
-                                    @error('reference_bank')
-                                      <p style="color: red">{{ $message }}</p>
-                                    @enderror
-                                </div>
-
-                                <div class="col-md-4 form-group">
-                                    <label> Reference No *</label>
-                                    <input type="text" name="reference_no" class="form-control" placeholder="Enter Reference No" required>
-                                    @error('reference_no')
-                                        <p style="color: red">{{ $message }}</p>
-                                     @enderror
-                                </div>
-
-                                <div class="col-md-4 form-group">
-                                    <label> Bank *</label>
-                                    <select name="bank_id" id="bank_id" class="form-control" required>
+                                    <select name="reference_bank_id" id="reference_bank_id" class="form-control" required>
                                         <option value="">Select Bank</option>
                                         @foreach ($banks as $bank)
                                             <option value="{{ $bank->id }}">{{ $bank->name }}</option>
                                         @endforeach
                                     </select>
-                                    @error('bank_id')
+                                    @error('reference_bank_id')
+                                      <p style="color: red">{{ $message }}</p>
+                                    @enderror
+                                </div>
+
+                                <!-- <div class="col-md-4 form-group">
+                                    <label> Reference No *</label>
+                                    <input type="text" name="reference_no" class="form-control" placeholder="Enter Reference No" required>
+                                    @error('reference_no')
                                         <p style="color: red">{{ $message }}</p>
                                      @enderror
-                                </div>
+                                </div> -->
 
                                 <div class="col-md-4 form-group">
-                                    <label> Bank Branch *</label>
-                                    <select name="branch_id" id="branch_id" class="form-control selectpicker" required>
+                                    <label>Reference Bank Branch *</label>
+                                    <select name="ref_branch_id" id="ref_branch_id" class="form-control selectpicker" required>
                                         <option value="">Select Branch</option>
                                     </select>
-                                    @error('branch_id')
+                                    @error('ref_branch_id')
                                         <p style="color: red">{{ $message }}</p>
                                      @enderror
                                 </div>
+                                <div class="col-md-4 form-group">
+                                    <label> Shipper Bank *</label>
+                                    <input type="text" name="shipper_bank" class="form-control" placeholder="Enter Shipper Bank" required>
 
+                                    @error('shipper_bank')
+                                    <p style="color: red">{{ $message }}</p>
+                                    @enderror
+                                </div>
+                                <div class="col-md-4 form-group">
+                                    <label> Shipper Ref *</label>
+                                    <input type="text" name="shipper_ref" class="form-control" placeholder="Enter Shipper Ref" required>
+
+                                    @error('shipper_ref')
+                                    <p style="color: red">{{ $message }}</p>
+                                    @enderror
+                                </div>
                                 <div class="col-md-4 form-group">
                                     <label>Invoice No *</label>
                                     <select name="export_id" id="export-id" class="form-control" required>
@@ -130,9 +136,9 @@
             }
         });
 
-        $('#bank_id').on('change', function(){
-        $('#branch_id').empty();
-        var bank_id = $("#bank_id").val();
+        $('#reference_bank_id').on('change', function(){
+        $('#ref_branch_id').empty();
+        var bank_id = $("#reference_bank_id").val();
         var url = "{{route('all.bank.branches')}}";
             $.ajax({
                 type: "get",
@@ -141,9 +147,9 @@
                     bank_id: bank_id
                 },
                 success: function(data){
-                 $('#branch_id').append("<option value=''> Select Branch </option>");
+                 $('#ref_branch_id').append("<option value=''> Select Branch </option>");
                 $.each(data, function(key, value){
-                    $('#branch_id').append("<option value="+value.id+">"+value.name+"</option>");
+                    $('#ref_branch_id').append("<option value="+value.id+">"+value.name+"</option>");
                 });
                 $('.selectpicker').selectpicker('refresh');
             },

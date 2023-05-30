@@ -43,11 +43,11 @@
                             </div>
                             <br>
                             <div class="letter-subject">
-                                <p><strong>Subject : Request to forward the LC documents to issuing bank against export LC no. {{$forwardLetter->export->lc_number}} date - {{$forwardLetter->export->date}} value {{$forwardLetter->export->invoice_value}} as per Commercial Invoice No {{$forwardLetter->export->invoice_no}}  Dated: {{$forwardLetter->export->due_date}} ({{ $forwardLetter->reference_bank}} Ref No: {{$forwardLetter->reference_no }}).</strong></p>
+                                <p><strong>Subject : Request to forward the LC documents to issuing bank against export LC no. {{$forwardLetter->export->lc_number}} date - {{$forwardLetter->export->date}} value ${{$forwardLetter->export->invoice_value}} as per Commercial Invoice No {{$forwardLetter->export->invoice_no}}  Dated: {{$forwardLetter->export->due_date}} ({{ $forwardLetter->shipper_bank}} Ref No: {{$forwardLetter->shipper_ref }}).</strong></p>
                             </div>
                             <div class="letter-body">
                                 <p>Dear Sir</p>
-                                <p>We would like to request you to forward the LC document to issuing bank aganist export LC no.  {{$forwardLetter->export->lc_number}} dated {{$forwardLetter->export->date}} value {{$forwardLetter->export->invoice_value}} as per Commercial Invoice no {{$forwardLetter->export->invoice_no}} Dated:  {{$forwardLetter->export->due_date}} </p>
+                                <p>We would like to request you to forward the LC document to issuing bank aganist export LC no.  {{$forwardLetter->export->lc_number}} dated {{$forwardLetter->export->date}} value ${{$forwardLetter->export->invoice_value}} as per Commercial Invoice no {{$forwardLetter->export->invoice_no}} Dated:  {{$forwardLetter->export->due_date}} </p>
                                 <p>Applicant: WINKING FASHION</p>
                                 <p>Please replace Invoice, whice i have sent you</p>
                                 <p style="padding-top:10px ;">Your nice corporation will be highly appreciated in this regard</p>

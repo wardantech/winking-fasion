@@ -149,6 +149,7 @@
                     <th style="padding-right:70px;">ETD</th>
                     <th style="padding-right:70px;">ETA</th>
                     <th style="padding-right:50px;">Payment Due Date</th>
+                    <th style="padding-right:50px;">Payment Received Date</th>
                     <th>Payment Status</th>
                     <th class="not-exported">{{trans('file.action')}}</th>
                 </tr>
@@ -189,6 +190,11 @@
                     <td>{{ date('d-m-Y', strtotime($export->etd)) }}</td>
                     <td>{{ date('d-m-Y', strtotime($export->eta)) }}</td>
                     <td>{{ date('d-m-Y', strtotime($export->due_date)) }}</td>
+                    @if($export->payment_date)
+                    <td>{{ $export->payment_date }}</td>
+                    @else
+                    <td>-</td>
+                    @endif
                     <td>
                         @if($export->export_status == 'Pending')
                           <span class="badge badge-danger">{{ $export->export_status }}</span>

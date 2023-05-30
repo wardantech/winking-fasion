@@ -16,37 +16,28 @@
                             <div class="row">
                                 <div class="col-md-4 form-group">
                                     <label>Drawn Under *</label>
-                                    <select name="drawn_under" id="" class="form-control">
-                                        <option value="">Select Account</option>
-                                        @foreach($bankNames as $bankName)
-                                        <option @if ($bill->drawn_under == $bankName->id) selected @endif value="{{$bankName->id}}">{{$bankName->name}}</option>
-                                       @endforeach
+                                    <input type="text" name="drawn_under" value="{{$bill->drawn_under}}"  class="form-control">
+                                </div>
+                                <div class="col-md-4 form-group">
+                                <label>Invoice No *</label>
+                                    <select name="export_id" id="export-id" class="form-control" required>
+                                        <option value="">Select Invoice No</option>
+                                        @foreach ($exports as $export)
+                                            <option  @if ($bill->export_id == $export->id) selected @endif value="{{ $export->id }}">{{ $export->invoice_no }}</option>
+                                        @endforeach
                                     </select>
                                 </div>
                                 <div class="col-md-4 form-group">
-                                    <label>Export L/C No *</label>
-                                    <select name="export_id" class="form-control">
-                                            <option value="">Select Lc No</option>
-                                            @foreach($exports as $export)
-                                        <option @if ($bill->export_id == $export->id) selected @endif value="{{$export->id}}">{{$export->lc_number}}</option>
-                                       @endforeach
-                                    </select>
+                                    <label>Invoice amount *</label>
+                                    <input type="number" name="value" value="{{$bill->export->invoice_value}}" id="value" class="form-control" readonly>
                                 </div>
                                 <div class="col-md-4 form-group">
-                                    <label>Export Date *</label>
-                                    <input type="date" value="{{$bill->export_date}}" name="export_date"  class="form-control">
-                                </div>
-                                <div class="col-md-4 form-group">
-                                    <label>Invoice No *</label>
-                                    <input type="text" value="{{$bill->invoice_no}}" name="invoice_no" class="form-control">
+                                    <label>Lc Number *</label>
+                                    <input type="text" name="lc_number" value="{{$bill->export->lc_number}}" id="lc_number" class="form-control" readonly>
                                 </div>
                                 <div class="col-md-4 form-group">
                                     <label>Invoice Date *</label>
-                                    <input type="date" value="{{$bill->invoice_date}}" name="invoice_date"  class="form-control">
-                                </div>
-                                <div class="col-md-4 form-group">
-                                    <label>Amount</label>
-                                    <input type="number"  value="{{$bill->amount}}"  name="amount"  class="form-control">
+                                    <input type="date" name="invoice_date" value="{{$bill->export->date}}" id="invoice-date" class="form-control" readonly>
                                 </div>
                             </div>
                         <div class="form-group">
@@ -65,7 +56,6 @@
         $('#export-id').on('change', function(){
             var exportId= $('#export-id').val();
             var url = '{{ route("get-export") }}';
-
             if(exportId){
                 $.ajax({
                     type: "GET",
@@ -74,13 +64,12 @@
                     data: {
                         exportId: exportId
                     },
-                    success: function(data){
-                        console.log(data);
-                        $('#value').val(data.invoice_value);
-                        $('#invoice-no').val(data.invoice_no);
-                        $('#invoice-date').val(data.date);
-                    }
 
+                    success: function(data){
+                        $('#value').val(data.invoiceAmount);
+                        $('#lc_number').val(data.lcNumber);
+                        $('#invoice-date').val(data.invoiceDate);
+                    }
                 });
             }
         });

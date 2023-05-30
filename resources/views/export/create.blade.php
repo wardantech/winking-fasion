@@ -67,7 +67,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Shipper *</label>
-                                            <select name="shipper_id" class="selectpicker form-control" data-live-search="true" data-live-search-style="begins" title="Select shipper..." required>
+                                            <select name="shipper_id" class="selectpicker form-control" data-live-search="true" data-live-search-style="begins" title="Select Shipper..." required>
                                                 @foreach ($lims_shipper_all as $shipper)
                                                     <option value="{{ $shipper->id }}">{{ $shipper->name }}</option>
                                                 @endforeach
@@ -83,7 +83,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Ship To *</label>
-                                            <select name="ship_to_id" class="selectpicker form-control" data-live-search="true" data-live-search-style="begins" title="Select ship to..." required>
+                                            <select name="ship_to_id" class="selectpicker form-control" data-live-search="true" data-live-search-style="begins" title="Select Ship To..." required>
                                                 @foreach ($lims_ship_to_all as $shipper)
                                                     <option value="{{ $shipper->id }}">{{ $shipper->name }}</option>
                                                 @endforeach
@@ -99,7 +99,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Account Of *</label>
-                                            <select name="account_of" class="selectpicker form-control" data-live-search="true" data-live-search-style="begins" title="Select account of..." required>
+                                            <select name="account_of" class="selectpicker form-control" data-live-search="true" data-live-search-style="begins" title="Select Account Of..." required>
                                                 <option value="1">Winking</option>
                                                 <option value="2">Artisan</option>
                                             </select>
@@ -198,7 +198,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Payment Due Date *</label>
                                             <input type="text" name="due_date" class="datepicker form-control"
@@ -210,20 +210,38 @@
                                             @endif
                                         </div>
                                     </div>
-
-                                    <div class="col-md-6">
+                                    <div class="col-md-4">
                                         <div class="form-group">
                                             <label>Payment Status *</label>
-                                            <select name="export_status" id="" class="form-control" required>
+                                            <select name="export_status" id="payment-status" class="form-control" required>
                                                 <option>Select Status</option>
+                                                @if(old('export_status') == 'Received')
+                                                <option value="Received" selected>Received</option>
+                                                <option value="Pending">Pending</option>
+                                                @elseif(old('export_status') == 'Pending')
+                                                <option value="Received">Received</option>
+                                                <option value="Pending" selected>Pending</option>
+                                                @else
                                                 <option value="Received">Received</option>
                                                 <option value="Pending">Pending</option>
+                                                @endif
                                             </select>
                                         </div>
                                     </div>
+                                    <div class="col-md-4" id="payment_date_div">
+                                        <div class="form-group">
+                                            <label>Payment Date *</label>
+                                            <input type="date" name="payment_date" id="payment_date" class="form-control">
+                                        </div>
+                                        @if($errors->has('payment_date'))
+                                            <span class="text-danger">
+                                                {{ $errors->first('payment_date') }}
+                                            </span>
+                                        @endif
+                                    </div>
 
 
-                                <div class="row">
+                                <div class="row col-md-12">
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <button type="submit" class="btn btn-primary" id="submit-btn">{{trans('file.submit')}}</button>
@@ -246,6 +264,26 @@
     $("ul#export-summary").siblings('a').attr('aria-expanded','true');
     $("ul#export-summary").addClass("show");
     $("ul#export-summary #export-summary-list-menu").addClass("active");
+    if($('#payment-status').val() == "Received"){
+        $("#payment_date_div").show();
+    }
+    else{
+        $("#payment_date_div").hide();
+    }
+
+    $('#payment-status').on('change', function(){
+        var paymentStatus= $(this).val();
+
+        if(paymentStatus=="Received"){
+            $("#payment_date_div").show(100);
+            // $("#payment_date").attr("required", true);
+        }
+        else if(paymentStatus=="Pending"){
+            $("#payment_date").val('');
+            $("#payment_date_div").hide();
+            $("#payment_date").attr("required", false);
+        }
+    });
 
 </script>
 @endsection

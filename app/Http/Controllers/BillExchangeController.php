@@ -46,10 +46,6 @@ class BillExchangeController extends Controller
         $data = $request->validate([
             'drawn_under'=>'required',
             'export_id'=>'required',
-            'export_date'=>'required',
-            'invoice_no'=>'required',
-            'invoice_date'=>'required',
-            'amount'=>'required'
         ]);
         BillExchange::create($data);
         return redirect('bill-exchange');
@@ -191,7 +187,7 @@ class BillExchangeController extends Controller
      */
     public function edit($id)
     {
-        $bill = BillExchange::find($id);
+        $bill = BillExchange::with('export')->find($id);
         $bankNames = Bank::all();
         $exports= Export::all();
        return view('bill_exchange.edit', compact('bankNames','exports','bill'));
@@ -209,10 +205,6 @@ class BillExchangeController extends Controller
         $data = $request->validate([
             'drawn_under'=>'required',
             'export_id'=>'required',
-            'export_date'=>'required',
-            'invoice_no'=>'required',
-            'invoice_date'=>'required',
-            'amount'=>'required'
         ]);
         $response = BillExchange::find($id);
         $response->update($data);

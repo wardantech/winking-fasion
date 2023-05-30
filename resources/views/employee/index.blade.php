@@ -292,7 +292,7 @@
         <div role="document" class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 id="exampleModalLabel" class="modal-title">{{ trans('file.Increment Salary') }}</h5>
+                    <h5 id="exampleModalLabel" class="modal-title">{{ trans('file.Salary Increment') }}</h5>
                     <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span
                             aria-hidden="true"><i class="dripicons-cross"></i></span></button>
                 </div>
@@ -303,14 +303,18 @@
                     <div class="row">
 
                         <input type="hidden" name="employee_id">
-                        <div class="col-md-6 form-group">
+                        <div class="col-md-4 form-group">
                             <label>{{ trans('Present Salary') }}</label>
-                            <input type="text" name="previous_salary" class="form-control" readonly>
+                            <input type="text" id="previous_salary" name="previous_salary" class="form-control" readonly>
                         </div>
-                        <div class="col-md-6 form-group">
-                            <label>{{ trans('New Salary') }}</label>
-                            <input type="text" name="new_salary" class="form-control"
-                                placeholder="Enter new Salary">
+                        <div class="col-md-4 form-group">
+                            <label>{{ trans('Increment Amount') }}</label>
+                            <input id="increment_salary" type="text" name="increment_salary" class="form-control" >
+                        </div>
+                        <div class="col-md-4 form-group">
+                            <label>{{ trans('Revised Salary') }}</label>
+                            <input type="text" name="new_salary" id="new_salary" class="form-control"
+                                placeholder="Enter new Salary" readonly>
                         </div>
                         <div class="col-md-6 form-group">
                             <label>{{ trans('Effective Month') }}</label>
@@ -530,5 +534,17 @@
                 },
             ],
         });
+    </script>
+    <script>
+        $(document).ready(function() {
+  $("#increment_salary").keyup(function(event) {
+    var increment_salary = $(this).val(); // Get the current value of the input field
+    var previous_salary = $('#previous_salary').val(); // Get the current value of the input field
+    console.log(increment_salary); // Display the current value in the console (optional)
+    var new_salary = parseFloat(increment_salary) + parseFloat(previous_salary);
+    $('#new_salary').val(new_salary); 
+  });
+});
+
     </script>
 @endsection

@@ -39,7 +39,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Customer *</label>
-                                            <select required name="customer_id" class="selectpicker form-control" data-live-search="true" data-live-search-style="begins" title="Select customer...">
+                                            <select required name="customer_id" class="selectpicker form-control" data-live-search="true" data-live-search-style="begins" title="Select Customer...">
                                                 @foreach ($lims_customer_all as $customer)
                                                      <option value="{{$customer->id}}">{{$customer->name}}</option>
                                                 @endforeach
@@ -339,7 +339,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label><b>OFFERED FOB *</b></label>
-                                        <input type="number" name="offered_fob" class="form-control" required>
+                                        <input type="number" name="offered_fob" class="form-control" step="any" required>
                                     </div>
                                 </div>
                             </div>

@@ -728,31 +728,46 @@
         </div>
         @endif
         <main class="bg-imge">
-            <div class="text-center">
-                <h2>WINKING FASHION</h2>
-                <h5> HOUSE#128, ROAD#01, BARIDHARA DOHS, DHAKA-1206, BANGLADESH</h5>
-                <?php
+        <?php
                     $time=strtotime($salarySheet->date);
                     $month=date("F",$time);
                     $year=date("Y",$time);
                 ?>
+        <div class="row">
+                <div class="col">
+                <div class="text-left">
+                <img style="width:200px;" src="{{asset('public/logo/'.$general_setting->site_logo)}}" alt="">
+                </div>
+                </div>
+                <div class="col">
+                <div class="float-right text-right">
+                    <h4 class="text-right">Salary Sheet</h4>
+                    <h6>{{ $month.' '.$year }}</h6>
+                </div>
+                </div>
+            </div>
+            <!-- <div class="text-center">
+                <h2>WINKING FASHION</h2>
+                <h5> HOUSE#128, ROAD#01, BARIDHARA DOHS, DHAKA-1206, BANGLADESH</h5>
+                
                 <h5>Salary of Month: {{ $month.' '.$year }}</h5>
-            </div><br>
+            </div><br> -->
             <form action="{{ route('salary-sheet.confirm') }}" method="POST">
                 @csrf
-            <div>
+            <!-- <div>
                 <div class="float-right">
                     <h6>Date: {{ $salarySheet->date }}</h6>
                 </div>
-            </div>
+            </div> -->
             <div>
-                <table class="table table-bordered">
+                <table style="margin-top: 25px;" class="table mt-10 table-bordered">
                     <tr>
                         <th rowspan="2">SL</th>
                         <th rowspan="2">Name</th>
                         <th rowspan="2">Designation</th>
+                        <td rowspan="2">Basic</td>
+                        <th colspan="3">Allowances</th>
                         <th rowspan="2">Gross Salary</th>
-                        <th colspan="4">Allowances</th>
                         <th rowspan="2">Absent</th>
                         <th rowspan="2">Deduction</th>
                         <th rowspan="2">Net Pay</th>
@@ -774,11 +789,11 @@
                         <td>
                             {{ $salarySheetDetail->employee->designation != NULL ? $salarySheetDetail->employee->designation : '' }}
                         </td>
-                        <td>{{ $salarySheetDetail->gross_salary }}</td>
                         <td>{{ $salarySheetDetail->basic }}</td>
                         <td>{{ $salarySheetDetail->h_rent }}</td>
                         <td>{{ $salarySheetDetail->medical }}</td>
                         <td>{{ $salarySheetDetail->t_port }}</td>
+                        <td>{{ $salarySheetDetail->gross_salary }}</td>
                         <td>{{ $salarySheetDetail->absent }}</td>
                         <td>{{ $salarySheetDetail->deduction }}</td>
                         <td>{{ $salarySheetDetail->net_pay }}</td>
