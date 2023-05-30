@@ -198,6 +198,7 @@ return [
 	'Expense' => 'Expense',
 	'Cost Budget' => 'Cost Budget',
 	'Add Cost Budget' => 'Add Cost Budget',
+	'Update Cost Budget' => 'Update Cost Budget',
 	'Purpose' => 'Purpose',
 	'Total Amount' => 'Total Amount',
 	'Gift Card' => 'Gift Card',
