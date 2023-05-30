@@ -606,5 +606,6 @@ return [
 	"T. Port(%)" => "T. Port(%)",
 	"Create Salary Sheet" => "Create Salary Sheet",
 	"Payment Date" => "Payment Date",
+	"Salary Increment" => "Salary Increment",
 ];
 ?>

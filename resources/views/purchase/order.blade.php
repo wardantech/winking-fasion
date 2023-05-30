@@ -75,7 +75,7 @@
                                                 <label>Ship To*</label>
                                                 <select name="ship_to" class="selectpicker form-control"
                                                         data-live-search="true" data-live-search-style="begins"
-                                                        title="Select ship to...">
+                                                        title="Select Ship To...">
                                                     @foreach ($lims_ship_to_all as $ship)
                                                         <option value="{{ $ship->id }}">{{ $ship->name }}</option>
                                                     @endforeach
@@ -92,7 +92,7 @@
                                                 <label>Customer*</label>
                                                 <select name="customer_id" class="selectpicker form-control"
                                                         data-live-search="true" data-live-search-style="begins"
-                                                        title="Select customer...">
+                                                        title="Select Customer...">
                                                     @foreach ($lims_customer_all as $customer)
                                                         <option
                                                             value="{{ $customer->id }}">{{ $customer->name }}</option>
@@ -110,7 +110,7 @@
 
                                                 <label>Invoice To*</label>
                                                 <select name="invoice_to" class="form-control" data-live-search="true"
-                                                        data-live-search-style="begins" title="Select invoice to..."
+                                                        data-live-search-style="begins" title="Select Invoice To..."
                                                         required>
                                                     @foreach ($lims_invoice_to_all as $invoice)
                                                         <option value="{{ $invoice->id }}">{{ $invoice->name }}</option>

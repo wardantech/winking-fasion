@@ -59,7 +59,7 @@
             <td style="text-align: right;"><strong>DATE: </strong> {{$bill_exchange->export->due_date}}</td>
         </tr>
     </table>
-    <P>Exchange for <STRONG>{{$bill_exchange->export->invoice_value}}</STRONG> at 60 days after bl date of this <strong style="font-size:25px"><i>FIRST</i></strong> of exchange {{$bill_exchange->drawn_under}}. trade operations department, head office, 220/b, anik tower, level 2, tejgaon 1/a, dhaka-1208, bangladesh. a/c winking fashion the sum of us {{$bill_exchange->export->drawn_under}}(say us {{$inword}} dollar only) values received & charge the same to a/c of jeanilogie inc. 4951 blvd de la cote vertu o.st-laurent, qc,h4s iei canada</P>
+    <P style="text-align: justify;">Exchange for <STRONG>{{$bill_exchange->export->invoice_value}}</STRONG> at 60 days after bl date of this <strong style="font-size:25px"><i>FIRST</i></strong> of exchange {{$bill_exchange->drawn_under}}. trade operations department, head office, 220/b, anik tower, level 2, tejgaon 1/a, dhaka-1208, bangladesh. a/c winking fashion the sum of us {{$bill_exchange->export->drawn_under}}(say us {{$inword}} dollar only) values received & charge the same to a/c of jeanilogie inc. 4951 blvd de la cote vertu o.st-laurent, qc,h4s iei canada</P>
 
     <p style="margin-bottom:0px;">TO</p>
     <p style="margin:0px;"><strong>{{$bill_exchange->drawn_under}}</strong></p>
@@ -87,7 +87,7 @@
                                 <td style="text-align: right;"><strong>DATE: </strong> {{$bill_exchange->export->date}}</td>
                             </tr>
                         </table>
-                        <P>Exchange for <STRONG>{{$bill_exchange->export->invoice_value}}</STRONG> at 60 days after bl date of this <strong style="font-size:25px"><i>FIRST</i></strong> of exchange {{$bill_exchange->drawn_under}}. trade operations department, head office, 220/b, anik tower, level 2, tejgaon 1/a, dhaka-1208, bangladesh. a/c winking fashion the sum of us {{$bill_exchange->export->invoice_value}}(say us {{$inword}} dollar only) values received & charge the same to a/c of jeanilogie inc. 4951 blvd de la cote vertu o.st-laurent, qc,h4s iei canada</P>
+                        <P style="text-align: justify;">Exchange for <STRONG>{{$bill_exchange->export->invoice_value}}</STRONG> at 60 days after bl date of this <strong style="font-size:25px"><i>SECOND</i></strong> of exchange {{$bill_exchange->drawn_under}}. trade operations department, head office, 220/b, anik tower, level 2, tejgaon 1/a, dhaka-1208, bangladesh. a/c winking fashion the sum of us {{$bill_exchange->export->invoice_value}}(say us {{$inword}} dollar only) values received & charge the same to a/c of jeanilogie inc. 4951 blvd de la cote vertu o.st-laurent, qc,h4s iei canada</P>
 
                         <p style="margin-bottom:0px;">TO</p>
                         <p style="margin:0px;"><strong>{{$bill_exchange->drawn_under}}</strong></p>

@@ -292,7 +292,7 @@
         <div role="document" class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 id="exampleModalLabel" class="modal-title">{{ trans('file.Increment Salary') }}</h5>
+                    <h5 id="exampleModalLabel" class="modal-title">{{ trans('file.Salary Increment') }}</h5>
                     <button type="button" data-dismiss="modal" aria-label="Close" class="close"><span
                             aria-hidden="true"><i class="dripicons-cross"></i></span></button>
                 </div>
@@ -308,7 +308,7 @@
                             <input type="text" id="previous_salary" name="previous_salary" class="form-control" readonly>
                         </div>
                         <div class="col-md-4 form-group">
-                            <label>{{ trans('Incriment Salary') }}</label>
+                            <label>{{ trans('Increment Amount') }}</label>
                             <input id="increment_salary" type="text" name="increment_salary" class="form-control" >
                         </div>
                         <div class="col-md-4 form-group">
