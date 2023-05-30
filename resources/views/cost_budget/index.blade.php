@@ -33,6 +33,55 @@
         </div>
         <div class="container-fluid" style="margin-top:20px;">
             <div class="card">
+                {{-- {!! Form::open(['route' => 'expense.filter', 'method' => 'post']) !!}
+            <div class="row pl-3 pr-3 mb-3">
+                <div class="col-sm-6 col-md-3 mt-4">
+                    <div class="form-group">
+                        <div class="d-tc">
+                            <div class="form-group">
+                                <label class="d-tc mt-2"><strong>Choose Your Date</strong> &nbsp;</label>
+                                <input type="text" name="date_range" class="daterangepicker-field form-control" value="{{ isset($date_range) ? $date_range:'' }}" placeholder="Please select your date range" autocomplete="off"/>
+                                <input type="hidden" name="start_date" value="{{ isset($start_date) ? $start_date:'' }}"/>
+                                <input type="hidden" name="end_date" value="{{ isset($end_date) ? $end_date:'' }}"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3 mt-4">
+                    <div class="form-group">
+                        <div class="d-tc">
+                            <div class="form-group">
+                                <label class="d-tc mt-2"><strong>Choose Your Payment Date</strong> &nbsp;</label>
+                                <input type="text" name="payment_date_range" class="payment_daterangepicker-field form-control" value="{{ isset($payment_date_range) ? $payment_date_range:'' }}" placeholder="Please select your date range" autocomplete="off"/>
+                                <input type="hidden" name="payment_start_date" value="{{ isset($payment_start_date) ? $payment_start_date:'' }}"/>
+                                <input type="hidden" name="payment_end_date" value="{{ isset($payment_end_date) ? $payment_end_date:'' }}"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-8 col-md-3 mt-4">
+                    <div class="form-group has-feedback">
+                        <label class="d-tc mt-2"><strong>Choose Expense Category</strong> &nbsp;</label>
+                        <select name="expense_category_id" id="expense_category_id" class="form-control">
+                            <option value="">Select Expense Category</option>
+                            @foreach ($lims_expense_category_all as $category)
+                                @if (!empty($expense_category_id))
+                                    <option value="{{ $category->id }}" {{ ($category->id == $expense_category_id) ? 'selected':'' }}>{{ $category->name }}</option>
+                                @else
+                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                @endif
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="col-sm-4 col-md-3 mt-4">
+                    <div class="form-group">
+                        <button class="btn btn-primary" type="submit" style="margin-top:40px;"><i class="fa fa-search" aria-hidden="true"></i> Search</button>
+                    </div>
+                </div>
+            </div>
+            {!! Form::close() !!} --}}
+
             </div>
         </div>
         <div class="table-responsive">

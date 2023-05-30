@@ -775,6 +775,7 @@
                         <th rowspan="2">Payment Received Date</th>
                     </tr>
                     <tr>
+                        <td>Basic</td>
                         <td>H.rent</td>
                         <td>Medical</td>
                         <td>T.port</td>
